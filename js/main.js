@@ -61,11 +61,6 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                         Внимание! Игрок является модератором чата!
                     </div>
                 ` : ``}
-                ${data.uid == 14070362 ? `
-                    <div class="result-additional">
-                        Игрок насрет поносом!
-                    </div>
-                ` : ``}
                 ${data.uid == 2640274 ? `
                     <div class="result-additional">
                         Мрак, епта!
