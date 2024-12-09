@@ -30,7 +30,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         }
 
         const resultBlock = document.getElementById('result');
-        const currentSeason = Math.max(...data.rating_history.map(x => x.season)) + 1;
+        // const currentSeason = Math.max(...data.rating_history.map(x => x.season)) + 1;
+        const currentSeason = getCurrentSeason();
         const maxRating = Math.max(...data.rating_history.map(x => x.rating));
 
         const resultHTML = `
@@ -92,6 +93,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     }).join('')}
             </table>
             <br>
+            <div class="result-additional">~ Xorek</div>
         `;
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');
@@ -156,4 +158,12 @@ async function getData(id) {
         }
         return 'error';
     }
+}
+
+function getCurrentSeason() {
+    const knownSeasonStart = new Date('2024-12-02');
+    const knownSeason = 487;
+    const today = new Date();
+    const weeksDiff = Math.floor((today - knownSeasonStart) / (7 * 24 * 60 * 60 * 1000)); 
+    return knownSeason + weeksDiff;
 }
