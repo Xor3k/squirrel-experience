@@ -8,9 +8,21 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     submitButton.classList.add('loading');
     submitButton.disabled = true;
 
+    const loadingTimeout = setTimeout(() => {
+        const timeoutBlock = document.getElementById('result');
+        timeoutBlock.innerHTML = `
+            <div class="result-text">
+                Запрос выполняется дольше обычного...<br>
+                Возможно, интернет соединение слабое или сервер игры отключен...
+            </div>
+        `;
+        timeoutBlock.classList.remove('hidden');
+    }, 7000);
+
     try {
         let one_sqr = await getData(document.getElementById('player-a').value);
         let two_sqr = await getData(document.getElementById('player-b').value);
+        clearTimeout(loadingTimeout);
         
         const resultBlock = document.getElementById('result');
 
@@ -22,14 +34,28 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         
         const resultHTML = `
             <div class="result-text">
-                ${one_sqr.name} [${one_sqr.level}] и ${two_sqr.name} [${two_sqr.level}]<br>
+                ${one_sqr.vip_info.vip_exist !== 0 ? `
+                    <span class="vip-color-${one_sqr.vip_info.vip_color}">${one_sqr.name} [${one_sqr.level}] </span>
+                ` : one_sqr.moderator > 0 ? `
+                    <span class="moderator-color">${one_sqr.name} [${one_sqr.level}] </span>
+                ` : `
+                    ${one_sqr.name} [${one_sqr.level}] 
+                `}
+                и 
+                ${two_sqr.vip_info.vip_exist !== 0 ? `
+                        <span class="vip-color-${two_sqr.vip_info.vip_color}">${two_sqr.name} [${two_sqr.level}] </span>
+                    ` : two_sqr.moderator > 0 ? `
+                        <span class="moderator-color">${two_sqr.name} [${two_sqr.level}] </span>
+                    ` : `
+                        ${two_sqr.name} [${two_sqr.level}] 
+                `}<br>
                 ${one_sqr.moderator == 1 ? `
-                    <div class="result-additional">
+                    <div class="result-additional warning-color">
                         Внимание! Игрок ${one_sqr.name} является модератором чата!
                     </div>
                 ` : ``}
                 ${two_sqr.moderator == 1 ? `
-                    <div class="result-additional">
+                    <div class="result-additional warning-color">
                         Внимание! Игрок ${two_sqr.name} является модератором чата!
                     </div>
                 ` : ``}
@@ -71,7 +97,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             <div class="error-message">
                 <div class="error-title">Произошла ошибка!</div>
                 <div class="error-description">
-                    Не удалось получить данные игроков. Возможно, один из ID указан неверно или связь прервана. <br>
+                    Не удалось получить данные игроков. Возможно, один из UID указан неверно или связь прервана. <br>
                     Повторите попытку еще раз. 
                 </div>
             </div>
@@ -85,12 +111,22 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
 });
 
 async function getData(id) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
     try {
-        const response = await fetch('https://squirrelsquery.yukkerike.ru/user/' + id + '?json');
+        const response = await fetch('https://squirrelsquery.yukkerike.ru/user/' + id + '?json', {
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Ошибка:', error);
+        if (error.name === 'AbortError') {
+            console.error('Запрос отменен по таймауту (15 секунд)');
+        } else {
+            console.error('Ошибка:', error);
+        }
         return 'error';
     }
 }
