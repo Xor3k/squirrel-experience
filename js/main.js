@@ -4,6 +4,17 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     const submitButton = this.querySelector('.submit-button');
     submitButton.classList.add('loading');
     submitButton.disabled = true;
+
+    const loadingTimeout = setTimeout(() => {
+        const timeoutBlock = document.getElementById('result');
+        timeoutBlock.innerHTML = `
+            <div class="result-text">
+                Запрос выполняется дольше обычного...<br>
+                Возможно, интернет соединение слабое или сервер игры отключен...
+            </div>
+        `;
+        timeoutBlock.classList.remove('hidden');
+    }, 7000);
  
     let currentLevel = 0;
     let nextLevel = 0;
@@ -11,19 +22,27 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
 
     try {
         let data = await getData(document.getElementById('numberInput').value);
+        clearTimeout(loadingTimeout);
         console.log('Спасибо за использование Squirrel EXperience!)');
         console.log('Данные предоставлены squirrelsquery.yukkerike.ru. Обязательно посетите https://squirrelsquery.yukkerike.ru для поддержки!');
         console.log(data);
-        const resultBlock = document.getElementById('result');
-
+        
         if (!data || data === 'errorMessage') {
             throw new Error();
-        }
+        } 
 
+        const resultBlock = document.getElementById('result');
         if (data.exp >= 66045137) {
             const resultHTML = `
                 <div class="result-text">
-                    Игрок ${data.name} достиг максимального уровня!) <br>
+                    Игрок ${data.vip_info.vip_exist !== 0 ? `
+                        <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span>
+                    ` : data.moderator > 0 ? `
+                        <span class="moderator-color">${data.name}</span>
+                    ` : `
+                        ${data.name} 
+                    `}
+                    достиг максимального уровня!) <br>
                     <div class="result-additional">
                         Игрок набрал больше на ${(data.exp - 66045137).toLocaleString()} XP от максимального уровня.
                     </div><br>
@@ -55,9 +74,16 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         let remainingXP = requiredXP - data.exp;
         const resultHTML = `
             <div class="result-text">
-                ${data.name} | Текущий уровень: ${data.level} <br>
+                ${data.vip_info.vip_exist !== 0 ? `
+                    <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span>
+                ` : data.moderator > 0 ? `
+                    <span class="moderator-color">${data.name}</span>
+                ` : `
+                    ${data.name} 
+                `}
+                | Текущий уровень: ${data.level} <br>
                 ${data.moderator == 1 ? `
-                    <div class="result-additional">
+                    <div class="result-additional warning-color">
                         Внимание! Игрок является модератором чата!
                     </div>
                 ` : ``}
@@ -103,7 +129,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             <div class="error-message">
                 <div class="error-title">Произошла ошибка!</div>
                 <div class="error-description">
-                    Не удалось получить данные игрока. Возможно, указан неверный ID или связь прервана. <br>
+                    Не удалось получить данные игрока. Возможно, указан неверный UID или связь прервана. <br>
                     Повторите попытку еще раз. 
                 </div>
             </div>
@@ -117,12 +143,22 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
 });
 
 async function getData(id) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
     try {
-        const response = await fetch('https://squirrelsquery.yukkerike.ru/user/' + id + '?json');
+        const response = await fetch('https://squirrelsquery.yukkerike.ru/user/' + id + '?json', {
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Ошибка:', error);
+        if (error.name === 'AbortError') {
+            console.error('Запрос отменен по таймауту (15 секунд)');
+        } else {
+            console.error('Ошибка:', error);
+        }
         return 'error';
     }
 }
