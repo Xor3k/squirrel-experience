@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Squirrel EXperience</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" type="image/png" href="img/ferret.png">
+        <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <div class="christmas-lights">
+        <ul class="lights">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <img src="img/jewellery/thee-ball-1.png" class="floating-image image-1" alt="">
+    <img src="img/jewellery/thee-ball-2.png" class="floating-image image-2" alt="">
+    <img src="img/jewellery/thee-ball-3.png" class="floating-image image-3" alt="">
+    <img src="img/jewellery/thee-ball-4.png" class="floating-image image-4" alt="">
+    <img src="img/jewellery/thee-ball-5.png" class="floating-image image-5" alt="">
+    <img src="img/jewellery/thee-ball-5.png" class="floating-image image-6" alt="">
+    <img src="img/jewellery/star.png" class="floating-image image-7" alt="">
+    <div class="container">
+        <div class="header-text">
+            <nav class="navigation">
+                <a href="index.html" class="nav-link">Калькулятор опыта</a>
+                <span class="nav-separator">/</span>
+                <a href="comparison.html" class="nav-link">Режим сравнения</a>
+            </nav>
+            <span class="header-text-additional">
+                История рейтинга. <br> Показывает историю рейтинга игрока  за все время.
+                На сколько понимаю, история рейтинга хранит накопленные очки за каждую неделю, 
+                если вы получали очки рейтинга в течение данной недели. <br> 
+                Начало истории рейтинга - это ваши первые полученные очки рейтинга в игре.
+                На основе этих предположений и выводится очки рейтинга, с расчетом даты начала и конца недельного рейтинга.
+            </span> 
+            <span class="header-text-additional">
+                Введите UID игрока в форме ниже <div class="curved-arrow"></div>
+            </span>
+        </div>
+        <form id="calculatorForm" class="calculator-form">
+            <div class="form-group">
+                <label for="player" class="form-label">UID игрока</label>
+                <input type="number" class="form-control" id="player" required>
+            </div>
+            <button type="submit" class="submit-button">Рассчитать</button>
+        </form>
+        <div id="result" class="result-block hidden">
+            <!-- результат -->
+        </div>
+    </div>
+    <script src="js/data_level.js"></script>
+    <script src="js/browser.js"></script>
+    <script src="js/rating.js"></script>
+</body>
+</html>
