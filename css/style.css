@@ -11,12 +11,30 @@ body {
     color: #ffffff;
 }
 
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .container {
     width: 100%;
     max-width: 500px;
-    padding: 20px;
+    padding: 10px;
     margin-top: 50px;
-    z-index: 2; /* Поверх других элементов - Временный, удалить! */
+    z-index: 2;
+}
+
+/* Отступ */
+.text-down {
+    margin-top: 10px;
+    display: inline-block;
 }
 
 /* Стили формы */
@@ -46,18 +64,6 @@ body {
     box-sizing: border-box;
     background-color: #2d2d2d;
     color: #ffffff;
-}
-
-/* Firefox */
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
 }
 
 /* Текст над формой */ 
@@ -96,7 +102,7 @@ input::-webkit-inner-spin-button {
     opacity: 0.7;
 }
 
-/* стрелочка вниз */
+/* Cтрелочка вниз */
 .curved-arrow {
     position: relative;
     display: inline-block;
@@ -112,11 +118,11 @@ input::-webkit-inner-spin-button {
     position: absolute;
     top: 0;
     left: 0;
-    width: 12px;  /* увеличили ширину горизонтальной части */
+    width: 12px;
     height: 10px;
     border-top: 2px solid rgba(255, 255, 255, 0.8);
     border-right: 2px solid rgba(255, 255, 255, 0.8);
-    border-radius: 0 25px 0 0;  /* увеличили радиус для более плавного изгиба */
+    border-radius: 0 25px 0 0;
 }
 
 .curved-arrow::after {
@@ -150,7 +156,7 @@ input::-webkit-inner-spin-button {
 }
 
 .submit-button.loading {
-    color: transparent;  /* скрываем текст кнопки во время загрузки */
+    color: transparent;
 }
 
 .submit-button.loading::after {
@@ -210,6 +216,8 @@ button.stats-button:hover {
 .result-additional {
     color: #888;
     font-size: 0.9rem;
+    text-align: left;
+    display: block;
 }
 
 .stats-block {
@@ -324,13 +332,11 @@ button.stats-button:hover {
     display: none;
 }
 
-/* Убираем стрелки у input number */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
 
 /* ferret */
 .text {
@@ -478,7 +484,10 @@ input[type="number"]::-webkit-outer-spin-button {
     padding: 8px 0;
 }
 
-/* подчеркивание */
+/* подчеркивание - выделение */
+.underline-text {
+    text-decoration: underline;
+}
 
 .highlight-text {
     color: #ffd700;
@@ -488,7 +497,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /* цвета вип статусов */
-
 .vip-color-1 {
     color: #ff5a3a;
 }
@@ -530,6 +538,17 @@ input[type="number"]::-webkit-outer-spin-button {
     animation: pulse 2.5s infinite;
 }
 
+.icon-vip {
+    max-height: 21px;
+    max-width: 21px;
+    pointer-events: none;
+}
+
+.max-count-rating {
+    color: #ffe033;
+    animation: pulse 2.5s infinite;
+}
+
 @keyframes pulse {
     0% {
         opacity: 0.2;
@@ -542,9 +561,10 @@ input[type="number"]::-webkit-outer-spin-button {
     }
 }
 
-/* табличка */
+/* табличка рейтинга спасенок */
 .container-table {
-    max-width: 800px;
+    max-width: 850px;
+    min-width: 648px;
     margin: 0 auto;
 }
 
@@ -552,16 +572,54 @@ input[type="number"]::-webkit-outer-spin-button {
     text-align: center;
 }
 
-.rating-table tr {
-    padding: 5px 0;
+.text-date-reload-table {
+    text-align: right !important;
+    color: #888;
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
 }
 
-.rating-table td {
+.rating-table-lider {
+    margin-bottom: 200px;
+}
+
+.rating-table-lider tr {
+    padding: 5px 0;
+    min-width: 648px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rating-table-lider td {
     padding: 5px 10px;
 }
 
-/* светлячки */
+/* Сообщения об ошибках подключения */
+.error-title {
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin-top: 5;
+    margin-bottom: 5px;
+    font-size: 1.3em;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
 
+.error-description {
+    color: rgba(255, 255, 255, 0.8);
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    display: block;
+}
+
+
+/* светлячки */
 .christmas-lights {
     position: fixed;
     top: 0;
@@ -661,7 +719,7 @@ input[type="number"]::-webkit-outer-spin-button {
     50% { box-shadow: 0 0 30px 10px rgba(128, 0, 255, 0.8); }
 }
 
-
+/* Применение анимаций */
 .lights li:nth-child(8n+1)::after { animation: glow-red 3s infinite ease-in-out; }
 .lights li:nth-child(8n+2)::after { animation: glow-green 3.2s infinite ease-in-out; }
 .lights li:nth-child(8n+3)::after { animation: glow-blue 3.4s infinite ease-in-out; }

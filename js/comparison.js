@@ -11,9 +11,9 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     const loadingTimeout = setTimeout(() => {
         const timeoutBlock = document.getElementById('result');
         timeoutBlock.innerHTML = `
-            <div class="result-text">
-                Запрос выполняется дольше обычного...<br>
-                Возможно, интернет соединение слабое или сервер игры отключен...
+            <div class="error-title">Запрос выполняется дольше обычного...</div> <br>
+            <div class="error-description">
+                Возможно, интернет соединение слишком слабое или сервер игры отключен...
             </div>
         `;
         timeoutBlock.classList.remove('hidden');
@@ -29,26 +29,33 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         if (!one_sqr || !two_sqr || one_sqr === 'errorMessage' || two_sqr === 'errorMessage') {
             throw new Error();
         }
+        if (one_sqr === 'error' || two_sqr === 'error') {
+            throw new Error("error connection");
+        }
 
         const difference = Math.abs(two_sqr.exp - one_sqr.exp);
-        
         const resultHTML = `
             <div class="result-text">
-                ${one_sqr.vip_info.vip_exist !== 0 ? `
-                    <span class="vip-color-${one_sqr.vip_info.vip_color}">${one_sqr.name} [${one_sqr.level}] </span>
-                ` : one_sqr.moderator > 0 ? `
-                    <span class="moderator-color">${one_sqr.name} [${one_sqr.level}] </span>
-                ` : `
-                    ${one_sqr.name} [${one_sqr.level}] 
-                `}
+                ${one_sqr.vip_info.vip_exist !== 0 && one_sqr.moderator > 0 ? ` 
+                    <span class="moderator-color">${one_sqr.name} [${one_sqr.level}]</span> 
+                    <img src="img/gold_wings.png" class="icon-vip">
+                ` : one_sqr.vip_info.vip_exist !== 0 ? ` 
+                    <span class="vip-color-${one_sqr.vip_info.vip_color}"> 
+                        ${one_sqr.name} [${one_sqr.level}] 
+                        <img src="img/gold_wings.png" class="icon-vip"> 
+                    </span> 
+                ` : ` ${one_sqr.name} [${one_sqr.level}] `}
                 и 
-                ${two_sqr.vip_info.vip_exist !== 0 ? `
-                        <span class="vip-color-${two_sqr.vip_info.vip_color}">${two_sqr.name} [${two_sqr.level}] </span>
-                    ` : two_sqr.moderator > 0 ? `
-                        <span class="moderator-color">${two_sqr.name} [${two_sqr.level}] </span>
-                    ` : `
+                ${two_sqr.vip_info.vip_exist !== 0 && two_sqr.moderator > 0 ? ` 
+                    <span class="moderator-color">${two_sqr.name} [${two_sqr.level}]</span> 
+                    <img src="img/gold_wings.png" class="icon-vip">
+                ` : two_sqr.vip_info.vip_exist !== 0 ? ` 
+                    <span class="vip-color-${two_sqr.vip_info.vip_color}"> 
                         ${two_sqr.name} [${two_sqr.level}] 
-                `}<br>
+                        <img src="img/gold_wings.png" class="icon-vip"> 
+                    </span> 
+                ` : ` ${two_sqr.name} [${two_sqr.level}] `}
+                <br>
                 ${one_sqr.moderator == 1 ? `
                     <div class="result-additional warning-color">
                         Внимание! Игрок ${one_sqr.name} является модератором чата!
@@ -61,7 +68,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 ` : ``}
             </div>
             <div class="result-additional">
-                Разница в опыте: ${difference.toLocaleString()} XP
+                Разница в опыте: ${difference.toLocaleString()} XP <br>
+                Лидирует: ${one_sqr.exp > two_sqr.exp ? one_sqr.name : two_sqr.name}
                 <button class="copy-button" data-copy="${difference.toLocaleString()}">Копировать</button>
             </div><br>
             <div class="result-additional">
@@ -86,24 +94,35 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             </div><br>
             <div class="result-additional">~ Xorek</div>
         `;
-        
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');
-
     } catch (error) {
-        console.error('Ошибка:', error);
+        // console.error('Ошибка:', error);
         const resultBlock = document.getElementById('result');
-        const resultHTML = `
-            <div class="error-message">
-                <div class="error-title">Произошла ошибка!</div>
-                <div class="error-description">
-                    Не удалось получить данные игроков. Возможно, один из UID указан неверно или связь прервана. <br>
-                    Повторите попытку еще раз. 
+        if (error.message === 'error connection') {
+            const resultHTML = `
+                <div class="error-message">
+                    <div class="error-title">Похоже, сервер игры отключен...</div> <br>
+                    <div class="error-description">
+                        Соединение с сервером игры прервано. Попробуйте позже. 
+                    </div>
                 </div>
-            </div>
-        `;
-        resultBlock.innerHTML = resultHTML;
-        resultBlock.classList.remove('hidden');
+            `;
+            resultBlock.innerHTML = resultHTML;
+            resultBlock.classList.remove('hidden');
+        } else {
+            const resultHTML = `
+                <div class="error-message">
+                    <div class="error-title">Произошла ошибка!</div>
+                    <div class="error-description">
+                        Не удалось получить данные игроков. Возможно, один из UID указан неверно или связь прервана. <br>
+                        Повторите попытку еще раз. 
+                    </div>
+                </div>
+            `;
+            resultBlock.innerHTML = resultHTML;
+            resultBlock.classList.remove('hidden');
+        } 
     } finally {
         submitButton.classList.remove('loading');
         submitButton.disabled = false;

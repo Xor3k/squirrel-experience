@@ -8,9 +8,9 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     const loadingTimeout = setTimeout(() => {
         const timeoutBlock = document.getElementById('result');
         timeoutBlock.innerHTML = `
-            <div class="result-text">
-                Запрос выполняется дольше обычного...<br>
-                Возможно, интернет соединение слабое или сервер игры отключен...
+            <div class="error-title">Запрос выполняется дольше обычного...</div> <br>
+            <div class="error-description">
+                Возможно, интернет соединение слишком слабое или сервер игры отключен...
             </div>
         `;
         timeoutBlock.classList.remove('hidden');
@@ -23,36 +23,50 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     try {
         let data = await getData(document.getElementById('numberInput').value);
         clearTimeout(loadingTimeout);
+
+        if (!data || data === 'errorMessage'  || data === 'error') {
+            if (data === 'error') {
+                throw new Error("error connection");
+            }
+            throw new Error();
+        }
+
         console.log('Спасибо за использование Squirrel EXperience!)');
         console.log('Данные предоставлены squirrelsquery.yukkerike.ru. Обязательно посетите https://squirrelsquery.yukkerike.ru для поддержки!');
-        console.log(data);
-        
-        if (!data || data === 'errorMessage') {
-            throw new Error();
-        } 
 
         const resultBlock = document.getElementById('result');
         if (data.exp >= 66045137) {
             const resultHTML = `
                 <div class="result-text">
-                    Игрок ${data.vip_info.vip_exist !== 0 ? `
-                        <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span>
-                    ` : data.moderator > 0 ? `
-                        <span class="moderator-color">${data.name}</span>
-                    ` : `
-                        ${data.name} 
-                    `}
+                    Игрок 
+                    ${data.vip_info.vip_exist !== 0 && data.moderator > 0 ? ` 
+                        <span class="moderator-color">${data.name}</span> 
+                        <img src="img/gold_wings.png" class="icon-vip">
+                    ` : data.vip_info.vip_exist !== 0 ? `
+                        <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span> 
+                        <img src="img/gold_wings.png" class="icon-vip"> 
+                    ` : data.vip_info.vip_exist == 0 && data.moderator > 0 ? `
+                        <span class="moderator-color">${data.name}</span> 
+                    ` : ` ${data.name} `
+                    }
                     достиг максимального уровня!) <br>
-                    <div class="result-additional">
-                        Игрок набрал больше на ${(data.exp - 66045137).toLocaleString()} XP от максимального уровня.
+                    ${data.moderator == 1 ? `
+                        <div class="result-additional warning-color">
+                            Внимание! Игрок является модератором чата!
+                        </div>
+                    ` : ``}
+                    <div class="result-additional text-down">
+                        и набрал больше на ${(data.exp - 66045137).toLocaleString()} XP от максимального уровня.
+                        <button class="copy-button" data-copy="${(data.exp - 66045137).toLocaleString()}">Копировать</button>
                     </div><br>
                     <div class="result-additional">
                         Общий опыт: ${(data.exp).toLocaleString()}
+                        <button class="copy-button" data-copy="${(data.exp).toLocaleString()}">Копировать</button>
                     </div><br>
                     <div class="result-additional">
                         <a class="header-link" href="${data.person_info.profile}" target="_blank">${data.person_info.profile}</a>
                         <button class="copy-button-profile" data-copy="${data.person_info.profile}">Копировать</button>
-                    </div>
+                    </div><br>
                     <div class="result-additional">~ Xorek</div>
                 </div>
             `;
@@ -74,13 +88,17 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         let remainingXP = requiredXP - data.exp;
         const resultHTML = `
             <div class="result-text">
-                ${data.vip_info.vip_exist !== 0 ? `
-                    <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span>
-                ` : data.moderator > 0 ? `
-                    <span class="moderator-color">${data.name}</span>
-                ` : `
-                    ${data.name} 
-                `}
+                ${data.vip_info.vip_exist !== 0 && data.moderator > 0 ? ` 
+                        <span class="moderator-color">${data.name}</span> 
+                        <img src="img/gold_wings.png" class="icon-vip">
+                    ` : data.vip_info.vip_exist !== 0 ? `
+                        <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span> 
+                        <img src="img/gold_wings.png" class="icon-vip"> 
+                    ` : data.vip_info.vip_exist == 0 && data.moderator > 0 ? `
+                        <span class="moderator-color">${data.name}</span> 
+                    ` : ` ${data.name} `
+                }
+
                 | Текущий уровень: ${data.level} <br>
                 ${data.moderator == 1 ? `
                     <div class="result-additional warning-color">
@@ -88,18 +106,29 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     </div>
                 ` : ``}
                 ${data.uid == 2640274 ? `
-                    <div class="result-additional">
-                        Мрак, епта!
+                    <div class="result-additional text-down">
+                        ${data.name}, епта!
                     </div>
                 ` : ``}
                 ${data.uid == 20637878 ? `
-                    <div class="result-additional">
+                    <div class="result-additional text-down">
                         Самая лучшая девочка!
                     </div>
                 ` : ``}
                 ${data.uid == 19198621 ? `
-                    <div class="result-additional">
+                    <div class="result-additional text-down">
                         ${data.name} лучший качер!
+                        
+                    </div>
+                ` : ``}
+                ${data.uid == 13143497 ? `
+                    <div class="result-additional text-down">
+                        Ура, ${data.name}, хехехе
+                    </div>
+                ` : ``}
+                ${data.uid == 17816916 ? `
+                    <div class="result-additional text-down">
+                        ${data.name} не испытывает счастья...
                     </div>
                 ` : ``}
             </div>
@@ -119,28 +148,42 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             </div><br>
             <div class="result-additional">
                 До 200-го уровня осталось: ${(66045137 - data.exp).toLocaleString()} XP
+                <button class="copy-button" data-copy="${(66045137 - data.exp).toLocaleString()}">Копировать</button>
             </div><br>
             <div class="result-additional">
                 Общий опыт: ${(data.exp).toLocaleString()}
+                <button class="copy-button" data-copy="${(data.exp).toLocaleString()}">Копировать</button>
             </div><br> 
             <div class="result-additional">~ Xorek</div>
         `;
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');
     } catch (error) {
-        console.error('Ошибка:', error);
         const resultBlock = document.getElementById('result');
-        const resultHTML = `
-            <div class="error-message">
-                <div class="error-title">Произошла ошибка!</div>
-                <div class="error-description">
+        if (error.message === 'error connection') {
+                const resultHTML = `
+                <div class="error-message">
+                    <div class="error-title">Похоже, сервер игры отключен...</div> <br>
+                    <div class="error-description">
+                        Соединение с сервером игры прервано. Попробуйте позже. 
+                    </div>
+                </div>
+            `;
+            resultBlock.innerHTML = resultHTML;
+            resultBlock.classList.remove('hidden');
+        } else {
+            const resultHTML = `
+                <div class="error-message">
+                <div class="error-title">Произошла ошибка!</div> <br>
+                <div class="">
                     Не удалось получить данные игрока. Возможно, указан неверный UID или связь прервана. <br>
                     Повторите попытку еще раз. 
                 </div>
             </div>
-        `;
-        resultBlock.innerHTML = resultHTML;
-        resultBlock.classList.remove('hidden');
+            `;
+            resultBlock.innerHTML = resultHTML;
+            resultBlock.classList.remove('hidden');
+        }
     } finally {
         submitButton.classList.remove('loading');
         submitButton.disabled = false;
@@ -184,9 +227,9 @@ document.addEventListener('click', function(e) {
 });
 
 document.getElementById('statsButton').addEventListener('click', function() {
-    let statsTable = document.getElementById('statsTable');
-    
+    const statsTable = document.getElementById('statsTable');
     if (statsTable.classList.contains('hidden')) {
+        generateStatsTable();
         statsTable.classList.remove('hidden');
         setTimeout(() => {
             statsTable.classList.add('visible');
@@ -198,3 +241,39 @@ document.getElementById('statsButton').addEventListener('click', function() {
         }, 300);
     }
 });
+
+function generateStatsTable() {
+    const statsTable = document.getElementById('statsTable');
+    const table = document.createElement('table');
+    table.className = 'stats-table';
+
+    Object.entries(levelData)
+        .sort((a, b) => Number(b[0]) - Number(a[0]))
+        .forEach(([level, data]) => {
+            const rows = `
+                <tr class="separator">
+                    <td colspan="2"><span>${level}</span></td>
+                </tr>
+                <tr>
+                    <td>Общий опыт:</td>
+                    <td id="totalXp">${level === '200' ? '> ' : ''}${data.totalXp.toLocaleString()}</td>
+                </tr>
+                <tr>
+                    <td>Уровень:</td>
+                    <td id="level">${level}</td>
+                </tr>
+                <tr>
+                    <td>Опыт до следующего уровня:</td>
+                    <td id="nextLevelXp">${data.nextLevelXp ? data.nextLevelXp.toLocaleString() : '-'}</td>
+                </tr>
+                <tr>
+                    <td>Кликуха:</td>
+                    <td id="name">${data.name}</td>
+                </tr>
+            `;
+            table.insertAdjacentHTML('beforeend', rows);
+        });
+
+    statsTable.innerHTML = '';
+    statsTable.appendChild(table);
+}

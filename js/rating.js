@@ -10,9 +10,9 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     const loadingTimeout = setTimeout(() => {
         const timeoutBlock = document.getElementById('result');
         timeoutBlock.innerHTML = `
-            <div class="result-text">
-                Запрос выполняется дольше обычного...<br>
-                Возможно, интернет соединение слабое или сервер игры отключен...
+            <div class="error-title">Запрос выполняется дольше обычного...</div> <br>
+            <div class="error-description">
+                Возможно, интернет соединение слишком слабое или сервер игры отключен...
             </div>
         `;
         timeoutBlock.classList.remove('hidden');
@@ -25,7 +25,10 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         console.log('Данные предоставлены squirrelsquery.yukkerike.ru. Обязательно посетите https://squirrelsquery.yukkerike.ru для поддержки!');
         console.log(data);
 
-        if (!data || data === 'error') {
+        if (!data || data === 'errorMessage'  || data === 'error') {
+            if (data === 'error') {
+                throw new Error("error connection");
+            }
             throw new Error();
         }
 
@@ -36,13 +39,16 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
 
         const resultHTML = `
             <div class="result-text">
-                ${data.vip_info.vip_exist !== 0 ? `
-                    <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span>
-                ` : data.moderator > 0 ? `
-                    <span class="moderator-color">${data.name}</span>
-                ` : `
-                    ${data.name} 
-                `}
+                ${data.vip_info.vip_exist !== 0 && data.moderator > 0 ? ` 
+                    <span class="moderator-color">${data.name}</span> 
+                    <img src="img/gold_wings.png" class="icon-vip">
+                ` : data.vip_info.vip_exist !== 0 ? `
+                    <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span> 
+                    <img src="img/gold_wings.png" class="icon-vip"> 
+                ` : data.vip_info.vip_exist == 0 && data.moderator > 0 ? `
+                    <span class="moderator-color">${data.name}</span> 
+                ` : ` ${data.name} `
+                }
                 | Текущий уровень: ${data.level} <br>
                 ${data.moderator == 1 ? `
                     <div class="result-additional warning-color">
@@ -99,17 +105,30 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         resultBlock.classList.remove('hidden');
     } catch (error) {
         const resultBlock = document.getElementById('result');
-        resultBlock.innerHTML = `
-            <div class="error-message">
-                <div class="error-title">Произошла ошибка!</div>
-                <div class="error-description">
-                    Не удалось получить данные игрока. Возможно, указан неверный UID или связь прервана. <br>
-                    Повторите попытку еще раз. 
+        if (error.message === 'error connection') {
+            const resultHTML = `
+                <div class="error-message">
+                    <div class="error-title">Похоже, сервер игры отключен...</div> <br>
+                    <div class="error-description">
+                        Соединение с сервером игры прервано. Попробуйте позже. 
+                    </div>
                 </div>
-            </div>
-        `;
-        resultBlock.classList.remove('hidden');
-        console.error('Ошибка:', error);
+            `;
+            resultBlock.innerHTML = resultHTML;
+            resultBlock.classList.remove('hidden');
+        } else {
+            resultBlock.innerHTML = `
+                <div class="error-message">
+                    <div class="error-title">Произошла ошибка!</div>
+                    <div class="error-description">
+                        Не удалось получить данные игрока. Возможно, указан неверный UID или связь прервана. <br>
+                        Повторите попытку еще раз. 
+                    </div>
+                </div>
+            `;
+            resultBlock.innerHTML = resultHTML;
+            resultBlock.classList.remove('hidden');
+        }
     } finally {
         submitButton.classList.remove('loading');
         submitButton.disabled = false;
