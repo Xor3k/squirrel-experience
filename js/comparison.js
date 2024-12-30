@@ -8,6 +8,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     submitButton.classList.add('loading');
     submitButton.disabled = true;
 
+    let timeoutTriggered = false;
+
     const loadingTimeout = setTimeout(() => {
         const timeoutBlock = document.getElementById('result');
         timeoutBlock.innerHTML = `
@@ -30,7 +32,10 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             throw new Error();
         }
         if (one_sqr === 'error' || two_sqr === 'error') {
-            throw new Error("error connection");
+            if (timeoutTriggered) {
+                throw new Error('error connection');
+            }
+            throw new Error();
         }
 
         const difference = Math.abs(two_sqr.exp - one_sqr.exp);
@@ -92,12 +97,17 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     <button class="copy-button-profile" data-copy="${two_sqr.person_info.profile}">Копировать</button>
                 `}
             </div><br>
+            <div class="result-additional">
+                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${one_sqr.uid}" target="_blank">Перейти на yukkerike.ru + UID [${one_sqr.name}]</a>
+            </div><br>
+            <div class="result-additional">
+                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${two_sqr.uid}" target="_blank">Перейти на yukkerike.ru + UID [${two_sqr.name}]</a>
+            </div><br>
             <div class="result-additional">~ Xorek</div>
         `;
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');
     } catch (error) {
-        // console.error('Ошибка:', error);
         const resultBlock = document.getElementById('result');
         if (error.message === 'error connection') {
             const resultHTML = `

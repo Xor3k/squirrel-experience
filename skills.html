@@ -39,48 +39,30 @@
         <div class="container">
             <div class="header-text">
                 <nav class="navigation">
-                    <a href="index.html" class="nav-link active">Калькулятор опыта</a>
+                    <a href="index.html" class="nav-link">Калькулятор опыта</a>
                     <span class="nav-separator">/</span>
                     <a href="comparison.html" class="nav-link">Режим сравнения</a>
                 </nav>
                 <span class="header-text-additional">
-                    Страничка рассчитывает количество опыта для получения следующего уровня. <br>
-                    Данные предоставляет сайт 
-                    <a class="header-link" target="_blank" href="https://squirrelsquery.yukkerike.ru/">squirrelsquery.yukkerike.ru</a>. 
-                    Обязательно посетите 
-                    <a class="header-link" target="_blank" href="https://squirrelsquery.yukkerike.ru/">squirrelsquery.yukkerike.ru</a> 
-                    для поддержки и большего получения информации!
-                    <br>
-                    Если у игрока уровень ниже 150-го - будет рассчитываться, сколько ему осталось до 150-го. <br>
-                    <a href="skills.html" class="nav-link">Навыки.</a> <br>
-                    <a href="table.html" class="nav-link">Табличка.</a> <br>
-                    <a href="rating.html" class="nav-link">История рейтинга. </a>
+                    Простая страничка, которая позволяет удобно посмотреть прокачку навыков у игрока выбранной им професии на данный момент.
+                    То, на сколько и какой навык вкачен у игрока.
                 </span>
             </div>
             <form id="calculatorForm" class="calculator-form">
                 <div class="form-group">
                     <label for="numberInput" class="form-label">Введите UID игрока</label>
-                    <input name="squirrel-id" class="form-control" id="numberInput" required>
+                    <input name="player" class="form-control" id="player" required>
                 </div>
                 <button type="submit" class="submit-button">Рассчитать</button>
-                <button type="button" id="statsButton" class="stats-button">Табличка опыта</button>
             </form>
             <div id="result" class="result-block hidden">
                 <!-- результат -->
             </div>
-    
-            <!-- Табличка -->
-            <div id="statsTable" class="stats-block hidden">
-                <table class="stats-table">
-                    <!-- data from js/data_js/data_level.js -->
-                </table>
-            </div>
-    
             <div class="text">Xorek!</div>
         </div>
     
-        <script src="js/data_js/data_level.js"></script>
+        <!-- <script src="js/data_js/data_level.js"></script> -->
         <script src="js//browser.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/skills.js"></script>
     </body>
 </html>

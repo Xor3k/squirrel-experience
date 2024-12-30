@@ -7,6 +7,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     submitButton.classList.add('loading');
     submitButton.disabled = true;
 
+    let timeoutTriggered = false;
+
     const loadingTimeout = setTimeout(() => {
         const timeoutBlock = document.getElementById('result');
         timeoutBlock.innerHTML = `
@@ -26,14 +28,13 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         console.log(data);
 
         if (!data || data === 'errorMessage'  || data === 'error') {
-            if (data === 'error') {
-                throw new Error("error connection");
+            if (timeoutTriggered) {
+                throw new Error('error connection');
             }
             throw new Error();
         }
 
         const resultBlock = document.getElementById('result');
-        // const currentSeason = Math.max(...data.rating_history.map(x => x.season)) + 1;
         const currentSeason = getCurrentSeason();
         const maxRating = Math.max(...data.rating_history.map(x => x.rating));
 
@@ -56,6 +57,9 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     </div>
                 ` : ''}
             </div>
+            <div class="result-additional">
+                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Перейти на yukkerike.ru + UID</a>
+            </div><br> 
             <div class="result-additional"> 
                 Количество побед: ${(data.rating_info.rating_player).toLocaleString()} <br>
                 Спасено белок: ${(data.rating_info.rating_shaman).toLocaleString()}
@@ -72,7 +76,12 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             </div><br>
             <div class="result-additional">
                 Текущий сезон ${currentSeason} <br> Текущий рейтинг: ${(data.rating_info.rating_score).toLocaleString()} <br>
-                Максимальный рейтинг: ${(maxRating).toLocaleString()}
+                Максимальный рейтинг:
+                ${!data.rating_history || data.rating_history.length === 0 ? `
+                    Данных нет
+                ` : 
+                    `${(maxRating).toLocaleString()}`
+                }
             </div>
             <table class="rating-table" style="width: 100%; text-align: left;">
                 <tr class="result-additional">
@@ -135,6 +144,27 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     }
 });
 
+async function getData(id) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+    try {
+        const response = await fetch('https://squirrelsquery.yukkerike.ru/user/' + id + '?json', {
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            console.error('Запрос отменен по таймауту (15 секунд)');
+        } else {
+            console.error('Ошибка:', error);
+        }
+        return 'error';
+    }
+}
+
 function getSeasonStartDate(season, currentSeason) {
     const today = new Date();
     const lastMonday = new Date(today);
@@ -156,27 +186,6 @@ function getSeasonStartDate(season, currentSeason) {
         year: 'numeric' 
     });
     return `${formatDate(startDate)} - ${formatDate(endDate)}`;
-}
-
-async function getData(id) {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 15000);
-
-    try {
-        const response = await fetch('https://squirrelsquery.yukkerike.ru/user/' + id + '?json', {
-            signal: controller.signal
-        });
-        clearTimeout(timeoutId);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        if (error.name === 'AbortError') {
-            console.error('Запрос отменен по таймауту (15 секунд)');
-        } else {
-            console.error('Ошибка:', error);
-        }
-        return 'error';
-    }
 }
 
 function getCurrentSeason() {

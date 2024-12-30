@@ -5,6 +5,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     submitButton.classList.add('loading');
     submitButton.disabled = true;
 
+    let timeoutTriggered = false;
+
     const loadingTimeout = setTimeout(() => {
         const timeoutBlock = document.getElementById('result');
         timeoutBlock.innerHTML = `
@@ -14,6 +16,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             </div>
         `;
         timeoutBlock.classList.remove('hidden');
+        timeoutTriggered = true;
     }, 7000);
  
     let currentLevel = 0;
@@ -24,9 +27,9 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         let data = await getData(document.getElementById('numberInput').value);
         clearTimeout(loadingTimeout);
 
-        if (!data || data === 'errorMessage'  || data === 'error') {
-            if (data === 'error') {
-                throw new Error("error connection");
+        if (!data || data === 'errorMessage' || data === 'error') {
+            if (timeoutTriggered) {
+                throw new Error('error connection');
             }
             throw new Error();
         }
@@ -133,6 +136,9 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 ` : ``}
             </div>
             <div class="result-additional">
+                Статус: ${data.online == 1 ? 'В сети' : 'Не в сети'}
+            </div><br>
+            <div class="result-additional">
                 До ${nextLevel} уровня осталось: ${remainingXP.toLocaleString()} XP
                 <button class="copy-button" data-copy="${remainingXP.toLocaleString()}">Копировать</button>
             </div><br>
@@ -154,6 +160,9 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 Общий опыт: ${(data.exp).toLocaleString()}
                 <button class="copy-button" data-copy="${(data.exp).toLocaleString()}">Копировать</button>
             </div><br> 
+            <div class="result-additional">
+                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Перейти на yukkerike.ru + UID</a>
+            </div><br> 
             <div class="result-additional">~ Xorek</div>
         `;
         resultBlock.innerHTML = resultHTML;
@@ -161,7 +170,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     } catch (error) {
         const resultBlock = document.getElementById('result');
         if (error.message === 'error connection') {
-                const resultHTML = `
+            const resultHTML = `
                 <div class="error-message">
                     <div class="error-title">Похоже, сервер игры отключен...</div> <br>
                     <div class="error-description">
@@ -174,12 +183,12 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         } else {
             const resultHTML = `
                 <div class="error-message">
-                <div class="error-title">Произошла ошибка!</div> <br>
-                <div class="">
-                    Не удалось получить данные игрока. Возможно, указан неверный UID или связь прервана. <br>
-                    Повторите попытку еще раз. 
+                    <div class="error-title">Произошла ошибка!</div> <br>
+                    <div class="error-description">
+                        Не удалось получить данные игрока. Возможно, указан неверный UID или связь прервана. <br>
+                        Повторите попытку еще раз. 
+                    </div>
                 </div>
-            </div>
             `;
             resultBlock.innerHTML = resultHTML;
             resultBlock.classList.remove('hidden');

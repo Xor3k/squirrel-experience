@@ -44,23 +44,27 @@
                 <a href="comparison.html" class="nav-link">Режим сравнения</a>
             </nav>
             <span class="header-text-additional">
+                Рейтинг по спасенным белочкам. <br> Небольшая статичная табличка с топом игроков, которые набрали больше 
+                100 000 спасенных белочек.
+                Имейте ввиду, что данные обновляются вручную и возможны некоторые не состыковки или ошибки данных в
+                <div class="curved-arrow"></div>
+                <span class="text-date-reload-table">Последнее обновление: 30.12.2024, 22:00 (UTC+3)</span>
             </span> 
         </div>
         <div class="table-content">
             <table id="rating-table" class="rating-table-lider" style="width: 100%;">
                 <thead>
-                    <tr class="result-additional">
-                        <td style="width: 1%; text-align: left;">№</td>
-                        <td style="width: 12%; text-align: left;">UID</td>
-                        <td style="width: 26%; text-align: left;">Никнейм</td>
+                    <tr class="header-text-table">
+                        <td style="width: 4%; text-align: left;" data-column="0" class="sortable">№</td>
+                        <td style="width: 13%; text-align: left;" data-column="1" class="sortable">UID</td>
+                        <td style="width: 27%; text-align: left;" data-column="2" class="sortable">Никнейм</td>
+                        <td style="width: 23%; text-align: center;" data-column="3" class="sortable">Кол-во спасенных</td>
+                        <td style="width: 23%; text-align: center;" data-column="4" class="sortable">Кол-во игр</td>
+                        <td style="width: 10%; text-align: center;" data-column="5" class="sortable">Коэффициент</td>
                     </tr>
                 </thead>
-                <tbody id="rating-table-data">
-                    <tr class="result-additional">
-                        <td style="width: 1%; text-align: left;">1</td>
-                        <td style="width: 12%; text-align: left;">No data</td>
-                        <td style="width: 26%; text-align: left;">No data</td>
-                    </tr>
+                <tbody class="rating-table-data" id="rating-table-data">
+
                 </tbody>
             </table>
         </div>
@@ -68,8 +72,7 @@
     </div>
     <script src="js/data_js/data_level.js"></script>
     <script src="js/data_js/data_player.js"></script>
-    <!-- <script src="js/table.js"></script> -->
-    <!-- <script src="js/data_js/browser.js"></script> -->
-    <!-- <script src="js/data_js/rating.js"></script> -->
+    <script src="js/table.js"></script>
+    <script src="js/browser.js"></script>
 </body>
 </html>
