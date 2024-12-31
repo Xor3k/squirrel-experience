@@ -89,8 +89,6 @@ function detectSocialNetwork(url) {
     return "Unknown";
 }
 
-
-
 function makeButton() {
     const hiddenContainers = document.querySelectorAll('.hidden-container');
 
@@ -124,9 +122,10 @@ document.addEventListener('click', function(e) {
     }
 });
 
-function changeSortTable() {
+function initializeSortableTable() {
     const tableBody = document.getElementById('rating-table-data');
     const headers = document.querySelectorAll('.sortable');
+
     let currentSortColumn = null;
     let currentSortDirection = -1;
 
@@ -138,33 +137,49 @@ function changeSortTable() {
                 currentSortColumn = index;
                 currentSortDirection = -1;
             }
-            sortTableByColumn(tableBody, currentSortColumn, currentSortDirection);
+
+            sortTable(tableBody, currentSortColumn, currentSortDirection);
         });
     });
 }
 
-function sortTableByColumn(tableBody, columnIndex, direction) {
+function sortTable(tableBody, columnIndex, direction) {
     const rows = Array.from(tableBody.querySelectorAll('tr'));
 
-    rows.sort((rowA, rowB) => {
-        const cellA = rowA.children[columnIndex].innerText.trim();
-        const cellB = rowB.children[columnIndex].innerText.trim();
-
-        const valueA = parseFloat(cellA);
-        const valueB = parseFloat(cellB);
-
-        if (!isNaN(valueA) && !isNaN(valueB)) {
-            return direction * (valueA - valueB);
+    const parseCellValue = (cellText, columnIndex) => {
+        if (columnIndex === 1) {
+            return cellText.replace(/\|\s*/, '').trim();
         }
-        return direction * cellA.localeCompare(cellB, 'ru');
+        return cellText.trim();
+    };
+
+    rows.sort((rowA, rowB) => {
+        const cellA = rowA.children[columnIndex]?.innerText || '';
+        const cellB = rowB.children[columnIndex]?.innerText || '';
+
+        const valueA = parseCellValue(cellA, columnIndex);
+        const valueB = parseCellValue(cellB, columnIndex);
+
+        const numA = parseFloat(valueA);
+        const numB = parseFloat(valueB);
+
+        if (!isNaN(numA) && !isNaN(numB)) {
+            return direction * (numA - numB);
+        }
+        
+        return direction * valueA.localeCompare(valueB, 'ru');
     });
+
     tableBody.innerHTML = '';
-    rows.forEach(row => tableBody.appendChild(row));
+    rows.forEach((row, index) => {
+        row.children[0].innerText = index + 1;
+        tableBody.appendChild(row);
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     fillRatingTable();
-    changeSortTable();
+    initializeSortableTable();
 });
 
 window.addEventListener('load', makeButton);
