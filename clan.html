@@ -36,52 +36,39 @@
         <img src="img/jewellery/thee-ball-5.png" class="floating-image image-5" alt="">
         <img src="img/jewellery/thee-ball-5.png" class="floating-image image-6" alt="">
         <img src="img/jewellery/star.png" class="floating-image image-7" alt="">
-        <div class="container">
+        <div class="clan-container">
             <div class="header-text">
                 <nav class="navigation">
-                    <a href="index.html" class="nav-link active">Калькулятор опыта</a>
+                    <a href="index.html" class="nav-link">Калькулятор опыта</a>
                     <span class="nav-separator">/</span>
                     <a href="comparison.html" class="nav-link">Режим сравнения</a>
                 </nav>
                 <span class="header-text-additional">
-                    Страничка рассчитывает количество опыта для получения следующего уровня. <br>
                     Данные предоставляет сайт 
                     <a class="header-link" target="_blank" href="https://squirrelsquery.yukkerike.ru/">squirrelsquery.yukkerike.ru</a>. 
                     Обязательно посетите 
                     <a class="header-link" target="_blank" href="https://squirrelsquery.yukkerike.ru/">squirrelsquery.yukkerike.ru</a> 
-                    для поддержки и большего получения информации!
-                    <br>
-                    Если у игрока уровень ниже 150-го - будет рассчитываться, сколько ему осталось до 150-го. <br>
-                    <a href="skills.html" class="nav-link">Навыки.</a><br>
-                    <a href="table.html" class="nav-link">Табличка.</a><br>
-                    <a href="clan.html" class="nav-link">Статистика клана.</a><br>
-                    <a href="rating.html" class="nav-link">История рейтинга.</a><br>
+                    для получения полной информации про клан! <br>
+                    На данной странички лишь частичная информация о клане. Для более детальной информации 
+                    <a class="header-link" target="_blank" href="https://squirrelsquery.yukkerike.ru/">ищите клан по ссылке.</a><br><br>
+                    Страничка позволяет получить частичную информацию клана и сохранить ее на данный момент в Excel или Json файл. 
                 </span>
             </div>
             <form id="calculatorForm" class="calculator-form">
                 <div class="form-group">
-                    <label for="numberInput" class="form-label">Введите UID игрока</label>
-                    <input name="squirrel-id" class="form-control" id="numberInput" required>
+                    <label for="numberInput" class="form-label">Введите ID клана</label>
+                    <input name="clan-id" class="form-control" id="numberInput" required>
                 </div>
-                <button type="submit" class="submit-button">Рассчитать</button>
-                <button type="button" id="statsButton" class="stats-button">Табличка опыта</button>
+                <button type="submit" class="submit-button">Получить</button>
             </form>
             <div id="result" class="result-block hidden">
                 <!-- результат -->
             </div>
-    
-            <!-- Табличка -->
-            <div id="statsTable" class="stats-block hidden">
-                <table class="stats-table">
-                    <!-- data from js/data_js/data_level.js -->
-                </table>
-            </div>
-    
             <div class="text">Xorek!</div>
         </div>
-    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
         <script src="js/data_js/data_level.js"></script>
         <script src="js//browser.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/clan.js"></script>
     </body>
 </html>

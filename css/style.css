@@ -468,7 +468,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .nav-separator {
-    color: rgba(255, 255, 255, 0.4);
+    color: #ffffff66;
     margin: 0 5px;
     display: flex;
     align-items: center;
@@ -488,7 +488,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .rating-table tr {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #ffffff1a;
 }
 
 .rating-table tr:last-child {
@@ -726,6 +726,34 @@ input[type="number"]::-webkit-outer-spin-button {
     display: block;
 }
 
+/* Таблица клана */
+.clan-container {
+    width: 100%;
+    max-width: 550px;
+}
+
+.text-table-clan {
+    color: #ffffffcc;
+}
+
+.photo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.photo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.photo-container img {
+    max-width: 100px;
+    height: auto;
+    object-fit: cover;
+    cursor: none;
+}
 
 /* светлячки */
 .christmas-lights {
