@@ -108,10 +108,10 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 </tbody>
             </table> <br>
             <div class="result-additional">
-                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToExcel()">Сохранить статистику в Excel</button>
+                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToExcel('${data.info.name}')">Сохранить статистику в Excel</button>
             </div><br>
             <div class="result-additional">
-                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToJson()">Сохранить статистику в Json</button>
+                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToJson('${data.info.name}')">Сохранить статистику в Json</button>
             </div><br>
             <div class="result-additional">~ Xorek</div>
         `;
@@ -199,7 +199,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-function saveStatisticsToExcel() {
+function saveStatisticsToExcel(name) {
     var table = document.getElementById('clan-statistics');
     if (!table) {
         console.error("Таблица не найдена!");
@@ -212,7 +212,7 @@ function saveStatisticsToExcel() {
     const headers = Array.from(headerRow.querySelectorAll('td')).map(cell => cell.textContent);
     const currentTime = new Date().toLocaleString();
 
-    data.push(["Дата сохранения:", currentTime]);
+    data.push(["Название клана:", name], ["Дата сохранения:", currentTime]);
     data.push(headers);
 
     rows.forEach((row) => {
@@ -230,10 +230,10 @@ function saveStatisticsToExcel() {
     const ws = XLSX.utils.aoa_to_sheet(data);
     ws['!cols'] = headers.map(() => ({ wch: 17 }));
     XLSX.utils.book_append_sheet(wb, ws, 'Статистика клана');
-    XLSX.writeFile(wb, 'clan-statistics.xlsx');
+    XLSX.writeFile(wb, `clan-statistics-${name}.xlsx`);
 }
 
-function saveStatisticsToJson() {
+function saveStatisticsToJson(name) {
     var table = document.getElementById('clan-statistics');
     if (!table) {
         console.error("Таблица не найдена!");
@@ -247,6 +247,7 @@ function saveStatisticsToJson() {
     const currentTime = new Date().toLocaleString();
     const statistics = {
         date: currentTime,
+        name: name,
         headers: headers,
         rows: []
     };
