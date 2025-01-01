@@ -199,38 +199,60 @@ document.addEventListener('click', function(e) {
     }
 });
 
-function saveStatisticsToExcel(name) {
-    var table = document.getElementById('clan-statistics');
+async function saveStatisticsToExcel(name) {
+    const table = document.getElementById('clan-statistics');
     if (!table) {
         console.error("Таблица не найдена!");
         return;
     }
 
-    const data = [];
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet('Статистика клана');
+
     const rows = table.querySelectorAll('tbody tr');
     const headerRow = table.querySelector('thead tr');
-    const headers = Array.from(headerRow.querySelectorAll('td')).map(cell => cell.textContent);
+    const headers = Array.from(headerRow.querySelectorAll('td')).map(cell => cell.textContent.trim());
     const currentTime = new Date().toLocaleString();
 
-    data.push(["Название клана:", name], ["Дата сохранения:", currentTime]);
-    data.push(headers);
+    sheet.addRow(["Название клана:", name]);
+    sheet.addRow(["Дата сохранения:", currentTime]);
+    sheet.addRow(headers);
 
-    rows.forEach((row) => {
-        const rowData = [];
-        const cells = row.querySelectorAll('td');
-
-        cells.forEach(cell => {
-            rowData.push(cell.textContent.trim());
-        });
-
-        data.push(rowData);
+    rows.forEach(row => {
+        const rowData = Array.from(row.querySelectorAll('td')).map(cell => cell.textContent.trim());
+        sheet.addRow(rowData);
     });
 
-    const wb = XLSX.utils.book_new();
-    const ws = XLSX.utils.aoa_to_sheet(data);
-    ws['!cols'] = headers.map(() => ({ wch: 17 }));
-    XLSX.utils.book_append_sheet(wb, ws, 'Статистика клана');
-    XLSX.writeFile(wb, `clan-statistics-${name}.xlsx`);
+    const headerRowNumber = 3;
+    headers.forEach((_, colIndex) => {
+        const cell = sheet.getRow(headerRowNumber).getCell(colIndex + 1);
+        cell.fill = {
+            type: 'pattern',
+            pattern: 'solid',
+            fgColor: { argb: '1B3A57' }
+        };
+        cell.font = { color: { argb: 'FFFFFFFF' }, bold: true };
+        cell.alignment = { horizontal: 'center' };
+    });
+
+    sheet.eachRow((row, rowNumber) => {
+        if (rowNumber > headerRowNumber) {
+            row.eachCell(cell => {
+                cell.fill = {
+                    type: 'pattern',
+                    pattern: 'solid',
+                    fgColor: { argb: rowNumber % 2 === 0 ? 'B0C4DE' : 'D6E4F0' }
+                };
+            });
+        }
+    });
+
+    sheet.columns.forEach(column => {
+        column.width = 20;
+    });
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `clan-statistics-${name}.xlsx`);
 }
 
 function saveStatisticsToJson(name) {
