@@ -1,4 +1,7 @@
 function fillRatingTable() {
+    let date_reload = document.getElementById('text-date-reload-table');
+    date_reload.innerText = 'Последнее обновление: ' + dateReloadTable.toLocaleString();
+
     let table = document.getElementById('rating-table-data');
     let max_player_rating = Math.max(...playerData.users.map(p => p.player_rating));
     let max_shaman_rating = Math.max(...playerData.users.map(p => p.shaman_rating));
