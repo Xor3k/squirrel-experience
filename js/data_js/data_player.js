@@ -1,6 +1,806 @@
-const dateReloadTable = "03.01.2025, 22:00 (GMT+3)";
+const dateReloadTable = "05.01.2025, 23:00 (GMT+3)";
 const playerData ={
   "users": [
+    {
+      "uid": 8601113,
+      "name": "Токси",
+      "player_rating": 135054,
+      "shaman_rating": 224712,
+      "person_info": "http://vk.com/id60644510",
+      "exp": 27426689
+    },
+    {
+      "uid": 8380857,
+      "name": "[ СуМаШеДшИй ]",
+      "player_rating": 55021,
+      "shaman_rating": 131658,
+      "person_info": "http://vk.com/id159080626",
+      "exp": 4481891
+    },
+    {
+      "uid": 7961737,
+      "name": "VSOP",
+      "player_rating": 72078,
+      "shaman_rating": 113973,
+      "person_info": "http://vk.com/id23035702",
+      "exp": 11705437
+    },
+    {
+      "uid": 7946938,
+      "name": "Blitzkrieg",
+      "player_rating": 85185,
+      "shaman_rating": 115843,
+      "person_info": "http://vk.com/id185979035",
+      "exp": 13327552
+    },
+    {
+      "uid": 7566641,
+      "name": "DI",
+      "player_rating": 62457,
+      "shaman_rating": 113645,
+      "person_info": "https://my.mail.ru/mail/cucuruzean.d/",
+      "exp": 6197467
+    },
+    {
+      "uid": 7545044,
+      "name": "Язол",
+      "player_rating": 139013,
+      "shaman_rating": 126129,
+      "person_info": "http://vk.com/id238356641",
+      "exp": 59352978
+    },
+    {
+      "uid": 7439926,
+      "name": "Листик",
+      "player_rating": 42947,
+      "shaman_rating": 103494,
+      "person_info": "http://vk.com/id63672281",
+      "exp": 4852125
+    },
+    {
+      "uid": 7367462,
+      "name": "ЧёрнаяБорода",
+      "player_rating": 59777,
+      "shaman_rating": 115946,
+      "person_info": "http://vk.com/id59605428",
+      "exp": 7991064
+    },
+    {
+      "uid": 7222318,
+      "name": "Зайка ППхD",
+      "player_rating": 61221,
+      "shaman_rating": 115177,
+      "person_info": "http://vk.com/id61374261",
+      "exp": 6540217
+    },
+    {
+      "uid": 6868889,
+      "name": "NANA",
+      "player_rating": 91942,
+      "shaman_rating": 161660,
+      "person_info": "http://vk.com/id152369937",
+      "exp": 12480215
+    },
+    {
+      "uid": 6673247,
+      "name": "123",
+      "player_rating": 51206,
+      "shaman_rating": 112060,
+      "person_info": "http://vk.com/id154931492",
+      "exp": 5714003
+    },
+    {
+      "uid": 6646709,
+      "name": "Паранойя",
+      "player_rating": 47052,
+      "shaman_rating": 115825,
+      "person_info": "http://www.odnoklassniki.ru/profile/124188790655",
+      "exp": 5320673
+    },
+    {
+      "uid": 6256976,
+      "name": "Вольная",
+      "player_rating": 243811,
+      "shaman_rating": 295285,
+      "person_info": "https://my.mail.ru/mail/16_natali_98/",
+      "exp": 47015695
+    },
+    {
+      "uid": 6171717,
+      "name": "Вечная",
+      "player_rating": 95630,
+      "shaman_rating": 115586,
+      "person_info": "http://vk.com/id179269461",
+      "exp": 16520765
+    },
+    {
+      "uid": 6146928,
+      "name": "селёдка",
+      "player_rating": 234781,
+      "shaman_rating": 115497,
+      "person_info": "https://my.mail.ru/mail/nastuyha_30/",
+      "exp": 43645202
+    },
+    {
+      "uid": 6107049,
+      "name": "[Cheshire]",
+      "player_rating": 100779,
+      "shaman_rating": 133768,
+      "person_info": "http://vk.com/id177715281",
+      "exp": 16236556
+    },
+    {
+      "uid": 6001202,
+      "name": "Масик",
+      "player_rating": 42782,
+      "shaman_rating": 103982,
+      "person_info": "http://vk.com/id1100314",
+      "exp": 2758365
+    },
+    {
+      "uid": 5795250,
+      "name": "PIVObest",
+      "player_rating": 59918,
+      "shaman_rating": 220107,
+      "person_info": "http://vk.com/id31516333",
+      "exp": 4852348
+    },
+    {
+      "uid": 5606081,
+      "name": "Avo mazaI",
+      "player_rating": 55194,
+      "shaman_rating": 105953,
+      "person_info": "http://vk.com/id138249639",
+      "exp": 7110387
+    },
+    {
+      "uid": 5574644,
+      "name": "Славик",
+      "player_rating": 118087,
+      "shaman_rating": 136467,
+      "person_info": "http://vk.com/id14153545",
+      "exp": 13538858
+    },
+    {
+      "uid": 5346339,
+      "name": "l[о о]l",
+      "player_rating": 68574,
+      "shaman_rating": 106791,
+      "person_info": "http://vk.com/id141934594",
+      "exp": 5535467
+    },
+    {
+      "uid": 5307058,
+      "name": "МАМА",
+      "player_rating": 55180,
+      "shaman_rating": 101817,
+      "person_info": "http://vk.com/id143046162",
+      "exp": 4083477
+    },
+    {
+      "uid": 5164437,
+      "name": "xxxHIKxxx",
+      "player_rating": 77784,
+      "shaman_rating": 158237,
+      "person_info": "http://vk.com/id30024002",
+      "exp": 10941640
+    },
+    {
+      "uid": 5092743,
+      "name": "Юка",
+      "player_rating": 35502,
+      "shaman_rating": 102320,
+      "person_info": "http://my.mail.ru/mail/l.buray/",
+      "exp": 4621574
+    },
+    {
+      "uid": 5062844,
+      "name": "[Медуза]",
+      "player_rating": 103375,
+      "shaman_rating": 111639,
+      "person_info": "http://vk.com/id59158767",
+      "exp": 13315971
+    },
+    {
+      "uid": 4956194,
+      "name": "Каваи Миса",
+      "player_rating": 54361,
+      "shaman_rating": 103561,
+      "person_info": "http://vk.com/id169894032",
+      "exp": 3892258
+    },
+    {
+      "uid": 4754912,
+      "name": "Наказание",
+      "player_rating": 94394,
+      "shaman_rating": 143135,
+      "person_info": "http://vk.com/id122755672",
+      "exp": 12814818
+    },
+    {
+      "uid": 4701879,
+      "name": "Рыжик",
+      "player_rating": 107737,
+      "shaman_rating": 142703,
+      "person_info": "https://my.mail.ru/mail/your_happiness_forever/",
+      "exp": 7650910
+    },
+    {
+      "uid": 4656907,
+      "name": "Бизон",
+      "player_rating": 123831,
+      "shaman_rating": 170044,
+      "person_info": "https://my.mail.ru/mail/vlad.golovashenko/",
+      "exp": 10361939
+    },
+    {
+      "uid": 4460510,
+      "name": "Манящий пряник",
+      "player_rating": 57808,
+      "shaman_rating": 104320,
+      "person_info": "http://vk.com/id135650403",
+      "exp": 8711534
+    },
+    {
+      "uid": 4391492,
+      "name": "не нужны друзья",
+      "player_rating": 34809,
+      "shaman_rating": 107654,
+      "person_info": "http://fotostrana.ru/user/57607529",
+      "exp": 1106130
+    },
+    {
+      "uid": 4369105,
+      "name": "Лайм",
+      "player_rating": 95382,
+      "shaman_rating": 116118,
+      "person_info": "http://vk.com/id63755085",
+      "exp": 14627227
+    },
+    {
+      "uid": 4349971,
+      "name": "МУРЛЫСЯ",
+      "player_rating": 82499,
+      "shaman_rating": 186329,
+      "person_info": "http://vk.com/id15913164",
+      "exp": 10315339
+    },
+    {
+      "uid": 4297176,
+      "name": "Arwen",
+      "player_rating": 63460,
+      "shaman_rating": 132155,
+      "person_info": "http://vk.com/id59670684",
+      "exp": 5455425
+    },
+    {
+      "uid": 4210196,
+      "name": "Ч У М А",
+      "player_rating": 63560,
+      "shaman_rating": 107424,
+      "person_info": "http://vk.com/id42643108",
+      "exp": 9702559
+    },
+    {
+      "uid": 4205954,
+      "name": "пТАШкА",
+      "player_rating": 90918,
+      "shaman_rating": 137294,
+      "person_info": "http://vk.com/id33066072",
+      "exp": 9697135
+    },
+    {
+      "uid": 4202588,
+      "name": "MaEsTrO",
+      "player_rating": 100414,
+      "shaman_rating": 135731,
+      "person_info": "http://vk.com/id154907764",
+      "exp": 20496391
+    },
+    {
+      "uid": 4201101,
+      "name": "Леся",
+      "player_rating": 98441,
+      "shaman_rating": 150824,
+      "person_info": "http://vk.com/id49087460",
+      "exp": 14876859
+    },
+    {
+      "uid": 4210537,
+      "name": "Pierra",
+      "player_rating": 60105,
+      "shaman_rating": 138954,
+      "person_info": "http://my.mail.ru/mail/sweetmoire/",
+      "exp": 5996775
+    },
+    {
+      "uid": 4202162,
+      "name": "Татьяна",
+      "player_rating": 112823,
+      "shaman_rating": 231450,
+      "person_info": "http://vk.com/id106301957",
+      "exp": 11753028
+    },
+    {
+      "uid": 4144357,
+      "name": "ZZtop",
+      "player_rating": 60507,
+      "shaman_rating": 294474,
+      "person_info": "http://vk.com/zztop2013",
+      "exp": 3818361
+    },
+    {
+      "uid": 4076074,
+      "name": "ТвойНежныйАнгел",
+      "player_rating": 83483,
+      "shaman_rating": 111768,
+      "person_info": "http://vk.com/id99731335",
+      "exp": 12566160
+    },
+    {
+      "uid": 4019108,
+      "name": "Фрейя",
+      "player_rating": 108292,
+      "shaman_rating": 145173,
+      "person_info": "http://vk.com/id171267994",
+      "exp": 14575820
+    },
+    {
+      "uid": 3949271,
+      "name": "Trigger",
+      "player_rating": 145277,
+      "shaman_rating": 114509,
+      "person_info": "http://vk.com/id138174619",
+      "exp": 22347298
+    },
+    {
+      "uid": 3732587,
+      "name": "шаПочка",
+      "player_rating": 38278,
+      "shaman_rating": 158259,
+      "person_info": "http://vk.com/id8262186",
+      "exp": 3321451
+    },
+    {
+      "uid": 3717751,
+      "name": "IQ",
+      "player_rating": 40379,
+      "shaman_rating": 126676,
+      "person_info": "http://vk.com/id76474855",
+      "exp": 4527418
+    },
+    {
+      "uid": 3661903,
+      "name": "Совунья",
+      "player_rating": 110682,
+      "shaman_rating": 124895,
+      "person_info": "http://vk.com/id121424214",
+      "exp": 17035993
+    },
+    {
+      "uid": 3667111,
+      "name": "Bethoven",
+      "player_rating": 66825,
+      "shaman_rating": 230161,
+      "person_info": "http://vk.com/id99423210",
+      "exp": 7399555
+    },
+    {
+      "uid": 3628028,
+      "name": "Владислав",
+      "player_rating": 123374,
+      "shaman_rating": 170981,
+      "person_info": "http://vk.com/id159120383",
+      "exp": 19207122
+    },
+    {
+      "uid": 3603675,
+      "name": "RedGoldAngel",
+      "player_rating": 160322,
+      "shaman_rating": 135538,
+      "person_info": "http://vk.com/id57330034",
+      "exp": 25241059
+    },
+    {
+      "uid": 3613675,
+      "name": "Трына",
+      "player_rating": 88033,
+      "shaman_rating": 103557,
+      "person_info": "http://my.mail.ru/mail/anita.kuzmicheva/",
+      "exp": 11903504
+    },
+    {
+      "uid": 3495974,
+      "name": "Crazy  World",
+      "player_rating": 110525,
+      "shaman_rating": 235888,
+      "person_info": "https://my.mail.ru/mail/yuri-37/",
+      "exp": 13449870
+    },
+    {
+      "uid": 3429259,
+      "name": "Ёжуванчик",
+      "player_rating": 85365,
+      "shaman_rating": 162393,
+      "person_info": "http://vk.com/id154586703",
+      "exp": 13351091
+    },
+    {
+      "uid": 3393711,
+      "name": "Дашуля [Elite]",
+      "player_rating": 323431,
+      "shaman_rating": 253834,
+      "person_info": "http://vk.com/id166806786",
+      "exp": 37453007
+    },
+    {
+      "uid": 3374283,
+      "name": "Player 3374283",
+      "player_rating": 178012,
+      "shaman_rating": 323111,
+      "person_info": "http://vk.com/id155104249",
+      "exp": 38355853
+    },
+    {
+      "uid": 3347300,
+      "name": "Дикий",
+      "player_rating": 46878,
+      "shaman_rating": 111146,
+      "person_info": "http://vk.com/id40061942",
+      "exp": 6492533
+    },
+    {
+      "uid": 3319722,
+      "name": "KOBRA KAI",
+      "player_rating": 65961,
+      "shaman_rating": 130129,
+      "person_info": "http://vk.com/id158710416",
+      "exp": 10386674
+    },
+    {
+      "uid": 3317907,
+      "name": "[Деля]ДиноБелка",
+      "player_rating": 71566,
+      "shaman_rating": 107348,
+      "person_info": "http://vk.com/id135946457",
+      "exp": 13655818
+    },
+    {
+      "uid": 3304741,
+      "name": "K I L L E R",
+      "player_rating": 36024,
+      "shaman_rating": 127449,
+      "person_info": "http://vk.com/id108863475",
+      "exp": 2009951
+    },
+    {
+      "uid": 3279645,
+      "name": "Тик Так",
+      "player_rating": 100243,
+      "shaman_rating": 110088,
+      "person_info": "http://vk.com/id49683953",
+      "exp": 11049840
+    },
+    {
+      "uid": 3276544,
+      "name": "l Игорь l",
+      "player_rating": 277453,
+      "shaman_rating": 194131,
+      "person_info": "http://vk.com/id141123024",
+      "exp": 58466586
+    },
+    {
+      "uid": 3204561,
+      "name": "Сестричка",
+      "player_rating": 166589,
+      "shaman_rating": 151764,
+      "person_info": "https://ok.ru/profile/522083438976",
+      "exp": 27691401
+    },
+    {
+      "uid": 3155352,
+      "name": "1781Gradus",
+      "player_rating": 116536,
+      "shaman_rating": 161696,
+      "person_info": "http://vk.com/id135928072",
+      "exp": 15450192
+    },
+    {
+      "uid": 3136121,
+      "name": "С У С А Н И Н",
+      "player_rating": 111139,
+      "shaman_rating": 205218,
+      "person_info": "profile not found",
+      "exp": 18293393
+    },
+    {
+      "uid": 3085893,
+      "name": "Твой Сон",
+      "player_rating": 167483,
+      "shaman_rating": 467146,
+      "person_info": "http://vk.com/id19890318",
+      "exp": 31118335
+    },
+    {
+      "uid": 3063608,
+      "name": "zStep",
+      "player_rating": 187537,
+      "shaman_rating": 312623,
+      "person_info": "http://vk.com/id76645363",
+      "exp": 36395091
+    },
+    {
+      "uid": 3051240,
+      "name": "Snow",
+      "player_rating": 128377,
+      "shaman_rating": 176068,
+      "person_info": "http://vk.com/id159322471",
+      "exp": 24867604
+    },
+    {
+      "uid": 2977432,
+      "name": "Leidenschaft",
+      "player_rating": 80203,
+      "shaman_rating": 148669,
+      "person_info": "http://vk.com/id139844650",
+      "exp": 14537374
+    },
+    {
+      "uid": 2961465,
+      "name": "RamyS",
+      "player_rating": 210651,
+      "shaman_rating": 294092,
+      "person_info": "http://vk.com/id166764411",
+      "exp": 34869434
+    },
+    {
+      "uid": 2935011,
+      "name": "Юся",
+      "player_rating": 82969,
+      "shaman_rating": 150968,
+      "person_info": "https://ok.ru/profile/490876931235",
+      "exp": 16370705
+    },
+    {
+      "uid": 2905032,
+      "name": "Деметрио",
+      "player_rating": 106603,
+      "shaman_rating": 131627,
+      "person_info": "http://vk.com/id145790569",
+      "exp": 17459395
+    },
+    {
+      "uid": 2854496,
+      "name": "Naughty",
+      "player_rating": 78557,
+      "shaman_rating": 100304,
+      "person_info": "http://vk.com/id136389359",
+      "exp": 16041860
+    },
+    {
+      "uid": 2645150,
+      "name": "солевой сомелье",
+      "player_rating": 98884,
+      "shaman_rating": 116545,
+      "person_info": "https://my.mail.ru/mail/lina_17_03_02/",
+      "exp": 16241342
+    },
+    {
+      "uid": 2640274,
+      "name": "Мрак",
+      "player_rating": 188720,
+      "shaman_rating": 518156,
+      "person_info": "https://my.mail.ru/mail/miyashov00/",
+      "exp": 33036517
+    },
+    {
+      "uid": 2607086,
+      "name": "Jaline",
+      "player_rating": 209123,
+      "shaman_rating": 245158,
+      "person_info": "http://vk.com/id156353301",
+      "exp": 44202566
+    },
+    {
+      "uid": 2312563,
+      "name": "Майская",
+      "player_rating": 94497,
+      "shaman_rating": 169247,
+      "person_info": "http://vk.com/id36465589",
+      "exp": 14963087
+    },
+    {
+      "uid": 2297635,
+      "name": "Remember me",
+      "player_rating": 99291,
+      "shaman_rating": 113775,
+      "person_info": "http://vk.com/id150824608",
+      "exp": 15617152
+    },
+    {
+      "uid": 2279667,
+      "name": "ИкарУс",
+      "player_rating": 109298,
+      "shaman_rating": 143206,
+      "person_info": "https://my.mail.ru/list/syntex/",
+      "exp": 9865315
+    },
+    {
+      "uid": 2141604,
+      "name": "[ХиППи]",
+      "player_rating": 131880,
+      "shaman_rating": 190951,
+      "person_info": "http://vk.com/id162415824",
+      "exp": 28095503
+    },
+    {
+      "uid": 2084358,
+      "name": "sunder",
+      "player_rating": 188850,
+      "shaman_rating": 156640,
+      "person_info": "https://my.mail.ru/mail/sonyasanya/",
+      "exp": 36801785
+    },
+    {
+      "uid": 2067385,
+      "name": "МрiЯ",
+      "player_rating": 110484,
+      "shaman_rating": 235711,
+      "person_info": "http://vk.com/id117981600",
+      "exp": 18631114
+    },
+    {
+      "uid": 3297466,
+      "name": "НикСредиЧужих",
+      "player_rating": 103725,
+      "shaman_rating": 109375,
+      "person_info": "http://vk.com/id139793943",
+      "exp": 9450446
+    },
+    {
+      "uid": 3271911,
+      "name": "ВЕРЮ v Тебя",
+      "player_rating": 45648,
+      "shaman_rating": 123192,
+      "person_info": "http://vk.com/id3134344",
+      "exp": 2653599
+    },
+    {
+      "uid": 3059741,
+      "name": "Эскобар",
+      "player_rating": 38043,
+      "shaman_rating": 153488,
+      "person_info": "http://vk.com/webdemon",
+      "exp": 3947430
+    },
+    {
+      "uid": 2960498,
+      "name": "[МеТеОр]",
+      "player_rating": 85206,
+      "shaman_rating": 160187,
+      "person_info": "http://vk.com/id37404391",
+      "exp": 6912375
+    },
+    {
+      "uid": 2954193,
+      "name": "[7Я]  М И Л О В",
+      "player_rating": 49233,
+      "shaman_rating": 188470,
+      "person_info": "http://vk.com/id150122572",
+      "exp": 5506342
+    },
+    {
+      "uid": 2930133,
+      "name": "Кукловод",
+      "player_rating": 96454,
+      "shaman_rating": 264716,
+      "person_info": "http://www.odnoklassniki.ru/profile/447855412234",
+      "exp": 5274007
+    },
+    {
+      "uid": 2928112,
+      "name": "ЛисА",
+      "player_rating": 152823,
+      "shaman_rating": 202817,
+      "person_info": "http://vk.com/id164539024",
+      "exp": 24562975
+    },
+    {
+      "uid": 2844065,
+      "name": "8 круг ада",
+      "player_rating": 68404,
+      "shaman_rating": 157022,
+      "person_info": "http://vk.com/id6044452",
+      "exp": 14532992
+    },
+    {
+      "uid": 2787067,
+      "name": "Штуша",
+      "player_rating": 64693,
+      "shaman_rating": 158864,
+      "person_info": "http://vk.com/id13730680",
+      "exp": 7341864
+    },
+    {
+      "uid": 2751236,
+      "name": "АнтиСвятой",
+      "player_rating": 89208,
+      "shaman_rating": 161421,
+      "person_info": "http://vk.com/id140237839",
+      "exp": 18016825
+    },
+    {
+      "uid": 2747550,
+      "name": "ArHaNgEL",
+      "player_rating": 137238,
+      "shaman_rating": 194853,
+      "person_info": "http://vk.com/id89738952",
+      "exp": 19690420
+    },
+    {
+      "uid": 2707862,
+      "name": "[оп оп оп]",
+      "player_rating": 103819,
+      "shaman_rating": 183488,
+      "person_info": "http://vk.com/id23446111",
+      "exp": 14499058
+    },
+    {
+      "uid": 2690174,
+      "name": "l  Эдди l",
+      "player_rating": 50056,
+      "shaman_rating": 107550,
+      "person_info": "http://vk.com/id164812381",
+      "exp": 7848476
+    },
+    {
+      "uid": 2579466,
+      "name": "Акварель",
+      "player_rating": 115992,
+      "shaman_rating": 132536,
+      "person_info": "profile not found",
+      "exp": 22609091
+    },
+    {
+      "uid": 2570123,
+      "name": "[VeinarD]",
+      "player_rating": 145814,
+      "shaman_rating": 499915,
+      "person_info": "http://vk.com/id40058225",
+      "exp": 18590752
+    },
+    {
+      "uid": 2568384,
+      "name": "Котя Мур",
+      "player_rating": 80868,
+      "shaman_rating": 105280,
+      "person_info": "http://vk.com/id530679",
+      "exp": 14323062
+    },
+    {
+      "uid": 2524551,
+      "name": "91Вадим91",
+      "player_rating": 69337,
+      "shaman_rating": 160165,
+      "person_info": "http://vk.com/id31488247",
+      "exp": 9644608
+    },
+    {
+      "uid": 2508751,
+      "name": "стажер",
+      "player_rating": 73326,
+      "shaman_rating": 154572,
+      "person_info": "http://www.odnoklassniki.ru/profile/560295344",
+      "exp": 6926743
+    },
+    {
+      "uid": 2427463,
+      "name": "KING",
+      "player_rating": 69007,
+      "shaman_rating": 216702,
+      "person_info": "http://vk.com/fuck_you_stupid_asshole",
+      "exp": 4592695
+    },
     {
       "uid": 2417241,
       "name": "Deja Vu",
@@ -12,10 +812,10 @@ const playerData ={
     {
       "uid": 2415189,
       "name": "онимэ",
-      "player_rating": 245897,
-      "shaman_rating": 218978,
+      "player_rating": 245977,
+      "shaman_rating": 219245,
       "person_info": "http://vk.com/id156864890",
-      "exp": 50888635
+      "exp": 50910335
     },
     {
       "uid": 2400646,
@@ -108,10 +908,10 @@ const playerData ={
     {
       "uid": 2030618,
       "name": "Юшик",
-      "player_rating": 83016,
+      "player_rating": 83027,
       "shaman_rating": 137142,
       "person_info": "http://vk.com/id32350427",
-      "exp": 12323994
+      "exp": 12326234
     },
     {
       "uid": 2026595,
@@ -732,10 +1532,10 @@ const playerData ={
     {
       "uid": 47056,
       "name": "Царь",
-      "player_rating": 174862,
+      "player_rating": 174877,
       "shaman_rating": 145902,
       "person_info": "http://vk.com/id133118282",
-      "exp": 33764586
+      "exp": 33767776
     },
     {
       "uid": 48566,
@@ -802,804 +1602,804 @@ const playerData ={
       "exp": 2080420
     },
     {
-      "uid": 8601113,
-      "name": "Токси",
-      "player_rating": 135054,
-      "shaman_rating": 224712,
-      "person_info": "http://vk.com/id60644510",
-      "exp": 27426689
-    },
-    {
-      "uid": 8380857,
-      "name": "[ СуМаШеДшИй ]",
-      "player_rating": 55021,
-      "shaman_rating": 131658,
-      "person_info": "http://vk.com/id159080626",
-      "exp": 4481891
-    },
-    {
-      "uid": 7961737,
-      "name": "VSOP",
-      "player_rating": 72078,
-      "shaman_rating": 113973,
-      "person_info": "http://vk.com/id23035702",
-      "exp": 11705437
-    },
-    {
-      "uid": 7946938,
-      "name": "Blitzkrieg",
-      "player_rating": 85185,
-      "shaman_rating": 115843,
-      "person_info": "http://vk.com/id185979035",
-      "exp": 13327552
-    },
-    {
-      "uid": 7566641,
-      "name": "DI",
-      "player_rating": 62457,
-      "shaman_rating": 113645,
-      "person_info": "https://my.mail.ru/mail/cucuruzean.d/",
-      "exp": 6197467
-    },
-    {
-      "uid": 7545044,
-      "name": "Язол",
-      "player_rating": 139013,
-      "shaman_rating": 126129,
-      "person_info": "http://vk.com/id238356641",
-      "exp": 59352978
-    },
-    {
-      "uid": 7439926,
-      "name": "Листик",
-      "player_rating": 42947,
-      "shaman_rating": 103494,
-      "person_info": "http://vk.com/id63672281",
-      "exp": 4852125
-    },
-    {
-      "uid": 7367462,
-      "name": "ЧёрнаяБорода",
-      "player_rating": 59777,
-      "shaman_rating": 115946,
-      "person_info": "http://vk.com/id59605428",
-      "exp": 7991064
-    },
-    {
-      "uid": 7222318,
-      "name": "Зайка ППхD",
-      "player_rating": 61221,
-      "shaman_rating": 115177,
-      "person_info": "http://vk.com/id61374261",
-      "exp": 6540217
-    },
-    {
-      "uid": 6868889,
-      "name": "NANA",
-      "player_rating": 91942,
-      "shaman_rating": 161660,
-      "person_info": "http://vk.com/id152369937",
-      "exp": 12480215
-    },
-    {
-      "uid": 6673247,
-      "name": "123",
-      "player_rating": 51206,
-      "shaman_rating": 112060,
-      "person_info": "http://vk.com/id154931492",
-      "exp": 5714003
-    },
-    {
-      "uid": 6646709,
-      "name": "Паранойя",
-      "player_rating": 47052,
-      "shaman_rating": 115825,
-      "person_info": "http://www.odnoklassniki.ru/profile/124188790655",
-      "exp": 5320673
-    },
-    {
-      "uid": 6256976,
-      "name": "Вольная",
-      "player_rating": 243811,
-      "shaman_rating": 295285,
-      "person_info": "https://my.mail.ru/mail/16_natali_98/",
-      "exp": 47015695
-    },
-    {
-      "uid": 6171717,
-      "name": "Вечная",
-      "player_rating": 95630,
-      "shaman_rating": 115586,
-      "person_info": "http://vk.com/id179269461",
-      "exp": 16520765
-    },
-    {
-      "uid": 6146928,
-      "name": "селёдка",
-      "player_rating": 234557,
-      "shaman_rating": 115483,
-      "person_info": "https://my.mail.ru/mail/nastuyha_30/",
-      "exp": 43573327
-    },
-    {
-      "uid": 6107049,
-      "name": "[Cheshire]",
-      "player_rating": 100779,
-      "shaman_rating": 133768,
-      "person_info": "http://vk.com/id177715281",
-      "exp": 16236556
-    },
-    {
-      "uid": 6001202,
-      "name": "Масик",
-      "player_rating": 42782,
-      "shaman_rating": 103982,
-      "person_info": "http://vk.com/id1100314",
-      "exp": 2758365
-    },
-    {
-      "uid": 5795250,
-      "name": "PIVObest",
-      "player_rating": 59918,
-      "shaman_rating": 220107,
-      "person_info": "http://vk.com/id31516333",
-      "exp": 4852348
-    },
-    {
-      "uid": 5606081,
-      "name": "Avo mazaI",
-      "player_rating": 55194,
-      "shaman_rating": 105953,
-      "person_info": "http://vk.com/id138249639",
-      "exp": 7110387
-    },
-    {
-      "uid": 5574644,
-      "name": "Славик",
-      "player_rating": 118087,
-      "shaman_rating": 136467,
-      "person_info": "http://vk.com/id14153545",
-      "exp": 13538858
-    },
-    {
-      "uid": 5346339,
-      "name": "l[о о]l",
-      "player_rating": 68574,
-      "shaman_rating": 106791,
-      "person_info": "http://vk.com/id141934594",
-      "exp": 5535467
-    },
-    {
-      "uid": 5307058,
-      "name": "МАМА",
-      "player_rating": 55180,
-      "shaman_rating": 101817,
-      "person_info": "http://vk.com/id143046162",
-      "exp": 4083477
-    },
-    {
-      "uid": 5164437,
-      "name": "xxxHIKxxx",
-      "player_rating": 77784,
-      "shaman_rating": 158237,
-      "person_info": "http://vk.com/id30024002",
-      "exp": 10941640
-    },
-    {
-      "uid": 5092743,
-      "name": "Юка",
-      "player_rating": 35502,
-      "shaman_rating": 102320,
-      "person_info": "http://my.mail.ru/mail/l.buray/",
-      "exp": 4621574
-    },
-    {
-      "uid": 5062844,
-      "name": "[Медуза]",
-      "player_rating": 103375,
-      "shaman_rating": 111639,
-      "person_info": "http://vk.com/id59158767",
-      "exp": 13315971
-    },
-    {
-      "uid": 4956194,
-      "name": "Каваи Миса",
-      "player_rating": 54361,
-      "shaman_rating": 103561,
-      "person_info": "http://vk.com/id169894032",
-      "exp": 3892258
-    },
-    {
-      "uid": 4754912,
-      "name": "Наказание",
-      "player_rating": 94394,
-      "shaman_rating": 143135,
-      "person_info": "http://vk.com/id122755672",
-      "exp": 12814818
-    },
-    {
-      "uid": 4701879,
-      "name": "Рыжик",
-      "player_rating": 107737,
-      "shaman_rating": 142703,
-      "person_info": "https://my.mail.ru/mail/your_happiness_forever/",
-      "exp": 7650910
-    },
-    {
-      "uid": 4656907,
-      "name": "Бизон",
-      "player_rating": 123831,
-      "shaman_rating": 170044,
-      "person_info": "https://my.mail.ru/mail/vlad.golovashenko/",
-      "exp": 10361939
-    },
-    {
-      "uid": 4460510,
-      "name": "Манящий пряник",
-      "player_rating": 57808,
-      "shaman_rating": 104320,
-      "person_info": "http://vk.com/id135650403",
-      "exp": 8711534
-    },
-    {
-      "uid": 4391492,
-      "name": "не нужны друзья",
-      "player_rating": 34809,
-      "shaman_rating": 107654,
-      "person_info": "http://fotostrana.ru/user/57607529",
-      "exp": 1106130
-    },
-    {
-      "uid": 4369105,
-      "name": "Лайм",
-      "player_rating": 95382,
-      "shaman_rating": 116118,
-      "person_info": "http://vk.com/id63755085",
-      "exp": 14627227
-    },
-    {
-      "uid": 4349971,
-      "name": "МУРЛЫСЯ",
-      "player_rating": 82499,
-      "shaman_rating": 186329,
-      "person_info": "http://vk.com/id15913164",
-      "exp": 10315339
-    },
-    {
-      "uid": 4297176,
-      "name": "Arwen",
-      "player_rating": 63460,
-      "shaman_rating": 132155,
-      "person_info": "http://vk.com/id59670684",
-      "exp": 5455425
-    },
-    {
-      "uid": 4210196,
-      "name": "Ч У М А",
-      "player_rating": 63560,
-      "shaman_rating": 107424,
-      "person_info": "http://vk.com/id42643108",
-      "exp": 9702559
-    },
-    {
-      "uid": 4205954,
-      "name": "пТАШкА",
-      "player_rating": 90918,
-      "shaman_rating": 137294,
-      "person_info": "http://vk.com/id33066072",
-      "exp": 9697135
-    },
-    {
-      "uid": 4202588,
-      "name": "MaEsTrO",
-      "player_rating": 100414,
-      "shaman_rating": 135731,
-      "person_info": "http://vk.com/id154907764",
-      "exp": 20496391
-    },
-    {
-      "uid": 4201101,
-      "name": "Леся",
-      "player_rating": 98441,
-      "shaman_rating": 150824,
-      "person_info": "http://vk.com/id49087460",
-      "exp": 14876859
-    },
-    {
-      "uid": 4210537,
-      "name": "Pierra",
-      "player_rating": 60105,
-      "shaman_rating": 138954,
-      "person_info": "http://my.mail.ru/mail/sweetmoire/",
-      "exp": 5996775
-    },
-    {
-      "uid": 4202162,
-      "name": "Татьяна",
-      "player_rating": 112823,
-      "shaman_rating": 231450,
-      "person_info": "http://vk.com/id106301957",
-      "exp": 11753028
-    },
-    {
-      "uid": 4144357,
-      "name": "ZZtop",
-      "player_rating": 60507,
-      "shaman_rating": 294474,
-      "person_info": "http://vk.com/zztop2013",
-      "exp": 3818361
-    },
-    {
-      "uid": 4076074,
-      "name": "ТвойНежныйАнгел",
-      "player_rating": 83483,
-      "shaman_rating": 111768,
-      "person_info": "http://vk.com/id99731335",
-      "exp": 12566160
-    },
-    {
-      "uid": 4019108,
-      "name": "Фрейя",
-      "player_rating": 108292,
-      "shaman_rating": 145173,
-      "person_info": "http://vk.com/id171267994",
-      "exp": 14575820
-    },
-    {
-      "uid": 3949271,
-      "name": "Trigger",
-      "player_rating": 145277,
-      "shaman_rating": 114509,
-      "person_info": "http://vk.com/id138174619",
-      "exp": 22347298
-    },
-    {
-      "uid": 3732587,
-      "name": "шаПочка",
-      "player_rating": 38278,
-      "shaman_rating": 158259,
-      "person_info": "http://vk.com/id8262186",
-      "exp": 3321451
-    },
-    {
-      "uid": 3717751,
-      "name": "IQ",
-      "player_rating": 40379,
-      "shaman_rating": 126676,
-      "person_info": "http://vk.com/id76474855",
-      "exp": 4527418
-    },
-    {
-      "uid": 3661903,
-      "name": "Совунья",
-      "player_rating": 110682,
-      "shaman_rating": 124895,
-      "person_info": "http://vk.com/id121424214",
-      "exp": 17035993
-    },
-    {
-      "uid": 3667111,
-      "name": "Bethoven",
-      "player_rating": 66825,
-      "shaman_rating": 230161,
-      "person_info": "http://vk.com/id99423210",
-      "exp": 7399555
-    },
-    {
-      "uid": 3628028,
-      "name": "Владислав",
-      "player_rating": 123374,
-      "shaman_rating": 170981,
-      "person_info": "http://vk.com/id159120383",
-      "exp": 19207122
-    },
-    {
-      "uid": 3603675,
-      "name": "RedGoldAngel",
-      "player_rating": 160322,
-      "shaman_rating": 135538,
-      "person_info": "http://vk.com/id57330034",
-      "exp": 25241059
-    },
-    {
-      "uid": 3613675,
-      "name": "Трына",
-      "player_rating": 88033,
-      "shaman_rating": 103557,
-      "person_info": "http://my.mail.ru/mail/anita.kuzmicheva/",
-      "exp": 11903504
-    },
-    {
-      "uid": 3495974,
-      "name": "Crazy  World",
-      "player_rating": 110525,
-      "shaman_rating": 235888,
-      "person_info": "https://my.mail.ru/mail/yuri-37/",
-      "exp": 13449870
-    },
-    {
-      "uid": 3429259,
-      "name": "Ёжуванчик",
-      "player_rating": 85365,
-      "shaman_rating": 162393,
-      "person_info": "http://vk.com/id154586703",
-      "exp": 13351091
-    },
-    {
-      "uid": 3393711,
-      "name": "Дашуля [Elite]",
-      "player_rating": 323421,
-      "shaman_rating": 253832,
-      "person_info": "http://vk.com/id166806786",
-      "exp": 37451272
-    },
-    {
-      "uid": 3374283,
-      "name": "Player 3374283",
-      "player_rating": 178012,
-      "shaman_rating": 323111,
-      "person_info": "http://vk.com/id155104249",
-      "exp": 38355853
-    },
-    {
-      "uid": 3347300,
-      "name": "Дикий",
-      "player_rating": 46878,
-      "shaman_rating": 111146,
-      "person_info": "http://vk.com/id40061942",
-      "exp": 6492533
-    },
-    {
-      "uid": 3319722,
-      "name": "KOBRA KAI",
-      "player_rating": 65961,
-      "shaman_rating": 130129,
-      "person_info": "http://vk.com/id158710416",
-      "exp": 10386674
-    },
-    {
-      "uid": 3317907,
-      "name": "[Деля]ДиноБелка",
-      "player_rating": 71566,
-      "shaman_rating": 107348,
-      "person_info": "http://vk.com/id135946457",
-      "exp": 13655818
-    },
-    {
-      "uid": 3304741,
-      "name": "K I L L E R",
-      "player_rating": 36024,
-      "shaman_rating": 127449,
-      "person_info": "http://vk.com/id108863475",
-      "exp": 2009951
-    },
-    {
-      "uid": 3279645,
-      "name": "Тик Так",
-      "player_rating": 100243,
-      "shaman_rating": 110088,
-      "person_info": "http://vk.com/id49683953",
-      "exp": 11049840
-    },
-    {
-      "uid": 3276544,
-      "name": "l Игорь l",
-      "player_rating": 277453,
-      "shaman_rating": 194131,
-      "person_info": "http://vk.com/id141123024",
-      "exp": 58466586
-    },
-    {
-      "uid": 3204561,
-      "name": "Сестричка",
-      "player_rating": 166589,
-      "shaman_rating": 151764,
-      "person_info": "https://ok.ru/profile/522083438976",
-      "exp": 27691401
-    },
-    {
-      "uid": 3155352,
-      "name": "1781Gradus",
-      "player_rating": 116536,
-      "shaman_rating": 161696,
-      "person_info": "http://vk.com/id135928072",
-      "exp": 15450192
-    },
-    {
-      "uid": 3136121,
-      "name": "С У С А Н И Н",
-      "player_rating": 111139,
-      "shaman_rating": 205218,
-      "person_info": "profile not found",
-      "exp": 18293393
-    },
-    {
-      "uid": 3085893,
-      "name": "Твой Сон",
-      "player_rating": 167483,
-      "shaman_rating": 467146,
-      "person_info": "http://vk.com/id19890318",
-      "exp": 31118335
-    },
-    {
-      "uid": 3063608,
-      "name": "zStep",
-      "player_rating": 187537,
-      "shaman_rating": 312623,
-      "person_info": "http://vk.com/id76645363",
-      "exp": 36395091
-    },
-    {
-      "uid": 3051240,
+      "uid": 8328205,
+      "name": "beLk",
+      "player_rating": 118353,
+      "shaman_rating": 303307,
+      "person_info": "http://vk.com/id132605012",
+      "exp": 11057678
+    },
+    {
+      "uid": 8271831,
+      "name": "Внучок",
+      "player_rating": 67800,
+      "shaman_rating": 146822,
+      "person_info": "http://vk.com/id34225931",
+      "exp": 10058039
+    },
+    {
+      "uid": 8153353,
+      "name": "LeTosh",
+      "player_rating": 111792,
+      "shaman_rating": 128311,
+      "person_info": "http://vk.com/id104849618",
+      "exp": 20654200
+    },
+    {
+      "uid": 7998666,
+      "name": "Adelheid",
+      "player_rating": 133775,
+      "shaman_rating": 119714,
+      "person_info": "https://ok.ru/profile/539437349375",
+      "exp": 25626057
+    },
+    {
+      "uid": 7976765,
+      "name": "ПерчиК",
+      "player_rating": 131484,
+      "shaman_rating": 119727,
+      "person_info": "http://vk.com/id184861257",
+      "exp": 24680400
+    },
+    {
+      "uid": 7943953,
+      "name": "Героин",
+      "player_rating": 142738,
+      "shaman_rating": 124023,
+      "person_info": "https://my.mail.ru/bk/ms.skripchenko/",
+      "exp": 24955784
+    },
+    {
+      "uid": 7897406,
+      "name": "ANYUTA",
+      "player_rating": 454584,
+      "shaman_rating": 724035,
+      "person_info": "https://ok.ru/profile/354022450596",
+      "exp": 81314388
+    },
+    {
+      "uid": 7744885,
       "name": "Snow",
-      "player_rating": 128377,
-      "shaman_rating": 176068,
-      "person_info": "http://vk.com/id159322471",
-      "exp": 24867604
+      "player_rating": 233366,
+      "shaman_rating": 425674,
+      "person_info": "http://vk.com/id166842096",
+      "exp": 49267281
     },
     {
-      "uid": 2977432,
-      "name": "Leidenschaft",
-      "player_rating": 80203,
-      "shaman_rating": 148669,
-      "person_info": "http://vk.com/id139844650",
-      "exp": 14537374
+      "uid": 7791482,
+      "name": "Грешник",
+      "player_rating": 70506,
+      "shaman_rating": 124420,
+      "person_info": "http://my.mail.ru/inbox/diana2006/",
+      "exp": 10126541
     },
     {
-      "uid": 2961465,
-      "name": "RamyS",
-      "player_rating": 210651,
-      "shaman_rating": 294092,
-      "person_info": "http://vk.com/id166764411",
-      "exp": 34869434
+      "uid": 7746129,
+      "name": "[ БУБОЧКА ]",
+      "player_rating": 70105,
+      "shaman_rating": 131882,
+      "person_info": "http://vk.com/id6649829",
+      "exp": 4973814
     },
     {
-      "uid": 2935011,
-      "name": "Юся",
-      "player_rating": 82969,
-      "shaman_rating": 150968,
-      "person_info": "https://ok.ru/profile/490876931235",
-      "exp": 16370705
+      "uid": 7677993,
+      "name": "im crigy",
+      "player_rating": 86721,
+      "shaman_rating": 103043,
+      "person_info": "http://vk.com/id116716614",
+      "exp": 18458903
     },
     {
-      "uid": 2905032,
-      "name": "Деметрио",
-      "player_rating": 106603,
-      "shaman_rating": 131627,
-      "person_info": "http://vk.com/id145790569",
-      "exp": 17459395
+      "uid": 7617662,
+      "name": "Besame",
+      "player_rating": 276034,
+      "shaman_rating": 421709,
+      "person_info": "http://vk.com/id38242091",
+      "exp": 57746097
     },
     {
-      "uid": 2854496,
-      "name": "Naughty",
-      "player_rating": 78557,
-      "shaman_rating": 100304,
-      "person_info": "http://vk.com/id136389359",
-      "exp": 16041860
+      "uid": 7590875,
+      "name": "Употребитель",
+      "player_rating": 56089,
+      "shaman_rating": 102190,
+      "person_info": "http://vk.com/id168917136",
+      "exp": 7936880
     },
     {
-      "uid": 2645150,
-      "name": "солевой сомелье",
-      "player_rating": 98884,
-      "shaman_rating": 116545,
-      "person_info": "https://my.mail.ru/mail/lina_17_03_02/",
-      "exp": 16241342
+      "uid": 7516880,
+      "name": "Тёмный Рыцарь",
+      "player_rating": 55826,
+      "shaman_rating": 121915,
+      "person_info": "http://vk.com/id138256083",
+      "exp": 7009670
     },
     {
-      "uid": 2640274,
-      "name": "Мрак",
-      "player_rating": 188565,
-      "shaman_rating": 517718,
-      "person_info": "https://my.mail.ru/mail/miyashov00/",
-      "exp": 32978625
+      "uid": 7541340,
+      "name": "Бейба",
+      "player_rating": 53300,
+      "shaman_rating": 109658,
+      "person_info": "http://vk.com/id52862087",
+      "exp": 6215209
     },
     {
-      "uid": 2607086,
-      "name": "Jaline",
-      "player_rating": 209123,
-      "shaman_rating": 245158,
-      "person_info": "http://vk.com/id156353301",
-      "exp": 44202566
-    },
-    {
-      "uid": 2312563,
-      "name": "Майская",
-      "player_rating": 94497,
-      "shaman_rating": 169247,
-      "person_info": "http://vk.com/id36465589",
-      "exp": 14963087
-    },
-    {
-      "uid": 2297635,
-      "name": "Remember me",
-      "player_rating": 99291,
-      "shaman_rating": 113775,
-      "person_info": "http://vk.com/id150824608",
-      "exp": 15617152
-    },
-    {
-      "uid": 2279667,
-      "name": "ИкарУс",
-      "player_rating": 109298,
-      "shaman_rating": 143206,
-      "person_info": "https://my.mail.ru/list/syntex/",
-      "exp": 9865315
-    },
-    {
-      "uid": 2141604,
-      "name": "[ХиППи]",
-      "player_rating": 131880,
-      "shaman_rating": 190951,
-      "person_info": "http://vk.com/id162415824",
-      "exp": 28095503
-    },
-    {
-      "uid": 2084358,
-      "name": "sunder",
-      "player_rating": 188729,
-      "shaman_rating": 156630,
-      "person_info": "https://my.mail.ru/mail/sonyasanya/",
-      "exp": 36786718
-    },
-    {
-      "uid": 2067385,
-      "name": "МрiЯ",
-      "player_rating": 110484,
-      "shaman_rating": 235711,
-      "person_info": "http://vk.com/id117981600",
-      "exp": 18631114
-    },
-    {
-      "uid": 3297466,
-      "name": "НикСредиЧужих",
-      "player_rating": 103725,
-      "shaman_rating": 109375,
-      "person_info": "http://vk.com/id139793943",
-      "exp": 9450446
-    },
-    {
-      "uid": 3271911,
-      "name": "ВЕРЮ v Тебя",
-      "player_rating": 45648,
-      "shaman_rating": 123192,
-      "person_info": "http://vk.com/id3134344",
-      "exp": 2653599
-    },
-    {
-      "uid": 3059741,
-      "name": "Эскобар",
-      "player_rating": 38043,
-      "shaman_rating": 153488,
-      "person_info": "http://vk.com/webdemon",
-      "exp": 3947430
-    },
-    {
-      "uid": 2960498,
-      "name": "[МеТеОр]",
-      "player_rating": 85206,
-      "shaman_rating": 160187,
-      "person_info": "http://vk.com/id37404391",
-      "exp": 6912375
-    },
-    {
-      "uid": 2954193,
-      "name": "[7Я]  М И Л О В",
-      "player_rating": 49233,
-      "shaman_rating": 188470,
-      "person_info": "http://vk.com/id150122572",
-      "exp": 5506342
-    },
-    {
-      "uid": 2930133,
-      "name": "Кукловод",
-      "player_rating": 96454,
-      "shaman_rating": 264716,
-      "person_info": "http://www.odnoklassniki.ru/profile/447855412234",
-      "exp": 5274007
-    },
-    {
-      "uid": 2928112,
-      "name": "ЛисА",
-      "player_rating": 152823,
-      "shaman_rating": 202817,
-      "person_info": "http://vk.com/id164539024",
-      "exp": 24562975
-    },
-    {
-      "uid": 2844065,
-      "name": "8 круг ада",
-      "player_rating": 68404,
-      "shaman_rating": 157022,
-      "person_info": "http://vk.com/id6044452",
-      "exp": 14532992
-    },
-    {
-      "uid": 2787067,
-      "name": "Штуша",
-      "player_rating": 64693,
-      "shaman_rating": 158864,
-      "person_info": "http://vk.com/id13730680",
-      "exp": 7341864
-    },
-    {
-      "uid": 2751236,
-      "name": "АнтиСвятой",
-      "player_rating": 89208,
-      "shaman_rating": 161421,
-      "person_info": "http://vk.com/id140237839",
-      "exp": 18016825
-    },
-    {
-      "uid": 2747550,
-      "name": "ArHaNgEL",
-      "player_rating": 137238,
-      "shaman_rating": 194853,
-      "person_info": "http://vk.com/id89738952",
-      "exp": 19690420
-    },
-    {
-      "uid": 2707862,
-      "name": "[оп оп оп]",
-      "player_rating": 103819,
-      "shaman_rating": 183488,
-      "person_info": "http://vk.com/id23446111",
-      "exp": 14499058
-    },
-    {
-      "uid": 2690174,
-      "name": "l  Эдди l",
-      "player_rating": 50056,
-      "shaman_rating": 107550,
-      "person_info": "http://vk.com/id164812381",
-      "exp": 7848476
-    },
-    {
-      "uid": 2579466,
-      "name": "Акварель",
-      "player_rating": 115992,
-      "shaman_rating": 132536,
+      "uid": 7447759,
+      "name": "DellK",
+      "player_rating": 110321,
+      "shaman_rating": 182760,
       "person_info": "profile not found",
-      "exp": 22609091
+      "exp": 4853640
     },
     {
-      "uid": 2570123,
-      "name": "[VeinarD]",
-      "player_rating": 145814,
-      "shaman_rating": 499915,
-      "person_info": "http://vk.com/id40058225",
-      "exp": 18590752
+      "uid": 7400927,
+      "name": "Calipso",
+      "player_rating": 39136,
+      "shaman_rating": 122680,
+      "person_info": "http://my.mail.ru/mail/shlyk-lena/",
+      "exp": 7110897
     },
     {
-      "uid": 2568384,
-      "name": "Котя Мур",
-      "player_rating": 80868,
-      "shaman_rating": 105280,
-      "person_info": "http://vk.com/id530679",
-      "exp": 14323062
+      "uid": 7361518,
+      "name": "Джон",
+      "player_rating": 86098,
+      "shaman_rating": 146738,
+      "person_info": "http://my.mail.ru/mail/koala17031997/",
+      "exp": 12743204
     },
     {
-      "uid": 2524551,
-      "name": "91Вадим91",
-      "player_rating": 69337,
-      "shaman_rating": 160165,
-      "person_info": "http://vk.com/id31488247",
-      "exp": 9644608
+      "uid": 7320534,
+      "name": "Good Game",
+      "player_rating": 115208,
+      "shaman_rating": 130028,
+      "person_info": "http://vk.com/id15028516",
+      "exp": 16746368
     },
     {
-      "uid": 2508751,
-      "name": "стажер",
-      "player_rating": 73326,
-      "shaman_rating": 154572,
-      "person_info": "http://www.odnoklassniki.ru/profile/560295344",
-      "exp": 6926743
+      "uid": 7290682,
+      "name": "hungry pussy",
+      "player_rating": 82197,
+      "shaman_rating": 141433,
+      "person_info": "http://vk.com/id80813004",
+      "exp": 14792779
     },
     {
-      "uid": 2427463,
-      "name": "KING",
-      "player_rating": 69007,
-      "shaman_rating": 216702,
-      "person_info": "http://vk.com/fuck_you_stupid_asshole",
-      "exp": 4592695
+      "uid": 7275537,
+      "name": "Weltschmerz",
+      "player_rating": 149741,
+      "shaman_rating": 241376,
+      "person_info": "http://vk.com/id9001719",
+      "exp": 29761153
+    },
+    {
+      "uid": 7221758,
+      "name": "Gaara",
+      "player_rating": 101830,
+      "shaman_rating": 108899,
+      "person_info": "https://ok.ru/profile/532252592510",
+      "exp": 17168852
+    },
+    {
+      "uid": 7206311,
+      "name": "HITMAN",
+      "player_rating": 148989,
+      "shaman_rating": 230865,
+      "person_info": "http://vk.com/id114794842",
+      "exp": 33675308
+    },
+    {
+      "uid": 7270247,
+      "name": "Жрец",
+      "player_rating": 88187,
+      "shaman_rating": 193087,
+      "person_info": "http://vk.com/id36624548",
+      "exp": 8597752
+    },
+    {
+      "uid": 7143549,
+      "name": "РЫСЬка",
+      "player_rating": 188438,
+      "shaman_rating": 219074,
+      "person_info": "https://ok.ru/profile/514007085541",
+      "exp": 38752348
+    },
+    {
+      "uid": 7128071,
+      "name": "iWATрушка",
+      "player_rating": 71699,
+      "shaman_rating": 137132,
+      "person_info": "http://vk.com/id157240066",
+      "exp": 10143309
+    },
+    {
+      "uid": 7121394,
+      "name": "Asta",
+      "player_rating": 72541,
+      "shaman_rating": 104007,
+      "person_info": "http://vk.com/id36251627",
+      "exp": 11715432
+    },
+    {
+      "uid": 7019046,
+      "name": "Баскервиль",
+      "player_rating": 66520,
+      "shaman_rating": 122468,
+      "person_info": "https://my.mail.ru/mail/maslova.alino4ka/",
+      "exp": 10597068
+    },
+    {
+      "uid": 7076682,
+      "name": "ЁжЫк [PMS]",
+      "player_rating": 113662,
+      "shaman_rating": 141650,
+      "person_info": "http://vk.com/id177529396",
+      "exp": 20759616
+    },
+    {
+      "uid": 6814091,
+      "name": "Макейла",
+      "player_rating": 149974,
+      "shaman_rating": 115770,
+      "person_info": "https://ok.ru/profile/545906968508",
+      "exp": 29457964
+    },
+    {
+      "uid": 6789314,
+      "name": "ТлстЛуи",
+      "player_rating": 93338,
+      "shaman_rating": 110083,
+      "person_info": "http://vk.com/id113953116",
+      "exp": 14208868
+    },
+    {
+      "uid": 6743147,
+      "name": "uh huh",
+      "player_rating": 234622,
+      "shaman_rating": 164508,
+      "person_info": "http://vk.com/id181726722",
+      "exp": 35487620
+    },
+    {
+      "uid": 6674456,
+      "name": "Мя",
+      "player_rating": 102155,
+      "shaman_rating": 111994,
+      "person_info": "http://vk.com/id181566702",
+      "exp": 17448030
+    },
+    {
+      "uid": 6631598,
+      "name": "Кот Барсик",
+      "player_rating": 98626,
+      "shaman_rating": 131852,
+      "person_info": "http://vk.com/id181460922",
+      "exp": 13867700
+    },
+    {
+      "uid": 6549620,
+      "name": "[]Zlata[]",
+      "player_rating": 132768,
+      "shaman_rating": 100198,
+      "person_info": "https://ok.ru/profile/496190065714",
+      "exp": 11664935
+    },
+    {
+      "uid": 6526351,
+      "name": "БеленькаЯ",
+      "player_rating": 169401,
+      "shaman_rating": 300538,
+      "person_info": "http://vk.com/id18822032",
+      "exp": 32910844
+    },
+    {
+      "uid": 6431441,
+      "name": "[ Прокурор ]",
+      "player_rating": 125160,
+      "shaman_rating": 184644,
+      "person_info": "http://vk.com/id180708954",
+      "exp": 19244289
+    },
+    {
+      "uid": 6415238,
+      "name": "Мурзилка",
+      "player_rating": 134881,
+      "shaman_rating": 101711,
+      "person_info": "http://vk.com/id133290441",
+      "exp": 8770384
+    },
+    {
+      "uid": 6410201,
+      "name": "13",
+      "player_rating": 95183,
+      "shaman_rating": 146872,
+      "person_info": "http://vk.com/id152851436",
+      "exp": 15156718
+    },
+    {
+      "uid": 6389463,
+      "name": "Героин",
+      "player_rating": 333757,
+      "shaman_rating": 300250,
+      "person_info": "https://my.mail.ru/mail/darya.dasha.p/",
+      "exp": 75356485
+    },
+    {
+      "uid": 6349468,
+      "name": "ВСБ",
+      "player_rating": 195133,
+      "shaman_rating": 165226,
+      "person_info": "http://my.mail.ru/mail/bazhan.78/",
+      "exp": 31340742
+    },
+    {
+      "uid": 6240079,
+      "name": "Вне закона",
+      "player_rating": 97401,
+      "shaman_rating": 124237,
+      "person_info": "https://ok.ru/profile/357645958632",
+      "exp": 15260772
+    },
+    {
+      "uid": 5970810,
+      "name": "BYSO",
+      "player_rating": 57565,
+      "shaman_rating": 148836,
+      "person_info": "http://vk.com/id178670863",
+      "exp": 10280258
+    },
+    {
+      "uid": 5967737,
+      "name": "misery",
+      "player_rating": 203668,
+      "shaman_rating": 107151,
+      "person_info": "http://vk.com/id164790985",
+      "exp": 39752947
+    },
+    {
+      "uid": 5951835,
+      "name": "Амброзия",
+      "player_rating": 123163,
+      "shaman_rating": 182814,
+      "person_info": "http://vk.com/id178556720",
+      "exp": 18709082
+    },
+    {
+      "uid": 5955376,
+      "name": "Lowenbrau",
+      "player_rating": 100286,
+      "shaman_rating": 145965,
+      "person_info": "profile not found",
+      "exp": 19800637
+    },
+    {
+      "uid": 5928200,
+      "name": "БеSSтия",
+      "player_rating": 49302,
+      "shaman_rating": 110919,
+      "person_info": "http://vk.com/id33396720",
+      "exp": 8487695
+    },
+    {
+      "uid": 5898984,
+      "name": "СССР",
+      "player_rating": 111314,
+      "shaman_rating": 140006,
+      "person_info": "http://vk.com/id49879929",
+      "exp": 7011198
+    },
+    {
+      "uid": 5889141,
+      "name": "Никсон",
+      "player_rating": 153251,
+      "shaman_rating": 272107,
+      "person_info": "http://vk.com/id171997248",
+      "exp": 19918929
+    },
+    {
+      "uid": 5860943,
+      "name": "[ЙО] ж [Ы] к",
+      "player_rating": 88767,
+      "shaman_rating": 114598,
+      "person_info": "http://vk.com/id103344990",
+      "exp": 16062660
+    },
+    {
+      "uid": 5850438,
+      "name": "Palladis",
+      "player_rating": 77621,
+      "shaman_rating": 109937,
+      "person_info": "http://vk.com/id122524258",
+      "exp": 9851432
+    },
+    {
+      "uid": 5744271,
+      "name": "[] ADDICTED []",
+      "player_rating": 118064,
+      "shaman_rating": 165698,
+      "person_info": "http://vk.com/id20573801",
+      "exp": 15068730
+    },
+    {
+      "uid": 5607064,
+      "name": "LeNiVaЯ КоТя",
+      "player_rating": 98813,
+      "shaman_rating": 197108,
+      "person_info": "https://fotostrana.ru/user/31034963",
+      "exp": 9972645
+    },
+    {
+      "uid": 5553785,
+      "name": "Шмяк",
+      "player_rating": 114643,
+      "shaman_rating": 126876,
+      "person_info": "http://vk.com/id97517719",
+      "exp": 19880263
+    },
+    {
+      "uid": 5536965,
+      "name": "[Вали в дупло]",
+      "player_rating": 39618,
+      "shaman_rating": 139344,
+      "person_info": "http://vk.com/id20795632",
+      "exp": 2496187
+    },
+    {
+      "uid": 5528692,
+      "name": "Перчик",
+      "player_rating": 101998,
+      "shaman_rating": 143373,
+      "person_info": "http://vk.com/id4317463",
+      "exp": 17676293
+    },
+    {
+      "uid": 5507128,
+      "name": "Jack Daniels",
+      "player_rating": 77708,
+      "shaman_rating": 101018,
+      "person_info": "http://vk.com/id175318305",
+      "exp": 15716648
+    },
+    {
+      "uid": 5496183,
+      "name": "Fierce",
+      "player_rating": 104480,
+      "shaman_rating": 211878,
+      "person_info": "http://vk.com/id78098992",
+      "exp": 15425602
+    },
+    {
+      "uid": 5397799,
+      "name": "Диббук",
+      "player_rating": 134231,
+      "shaman_rating": 155953,
+      "person_info": "http://vk.com/id117226972",
+      "exp": 18637932
+    },
+    {
+      "uid": 5393071,
+      "name": "[Чиж]",
+      "player_rating": 236181,
+      "shaman_rating": 478151,
+      "person_info": "http://vk.com/id130224802",
+      "exp": 49458902
+    },
+    {
+      "uid": 5274171,
+      "name": "Soul TempesT",
+      "player_rating": 108845,
+      "shaman_rating": 172298,
+      "person_info": "http://vk.com/id37218011",
+      "exp": 18884822
+    },
+    {
+      "uid": 5267770,
+      "name": "[АРМЕЕЦ]",
+      "player_rating": 114373,
+      "shaman_rating": 105371,
+      "person_info": "http://vk.com/id66893500",
+      "exp": 13679191
+    },
+    {
+      "uid": 5275871,
+      "name": "Пессимист",
+      "player_rating": 83075,
+      "shaman_rating": 165501,
+      "person_info": "http://vk.com/id166325926",
+      "exp": 11087164
+    },
+    {
+      "uid": 5222206,
+      "name": "Ledis",
+      "player_rating": 92623,
+      "shaman_rating": 250478,
+      "person_info": "http://vk.com/id55333276",
+      "exp": 12777287
+    },
+    {
+      "uid": 5185419,
+      "name": "Великий Батя",
+      "player_rating": 119458,
+      "shaman_rating": 192794,
+      "person_info": "http://vk.com/id86417416",
+      "exp": 23555599
+    },
+    {
+      "uid": 5027363,
+      "name": "Nervoz",
+      "player_rating": 150961,
+      "shaman_rating": 221759,
+      "person_info": "http://vk.com/id146513262",
+      "exp": 26256372
+    },
+    {
+      "uid": 5021459,
+      "name": "lust for hate",
+      "player_rating": 60462,
+      "shaman_rating": 123153,
+      "person_info": "http://vk.com/id147542543",
+      "exp": 10004974
+    },
+    {
+      "uid": 5016496,
+      "name": "DEN",
+      "player_rating": 52755,
+      "shaman_rating": 137047,
+      "person_info": "http://my.mail.ru/mail/xs_lover/",
+      "exp": 4604555
+    },
+    {
+      "uid": 4928879,
+      "name": "Black Box",
+      "player_rating": 86769,
+      "shaman_rating": 214602,
+      "person_info": "http://my.mail.ru/mail/2012nn/",
+      "exp": 8595419
+    },
+    {
+      "uid": 4907199,
+      "name": "беды с башкой",
+      "player_rating": 94695,
+      "shaman_rating": 119560,
+      "person_info": "http://vk.com/id165981157",
+      "exp": 11662177
+    },
+    {
+      "uid": 4911931,
+      "name": "Death Eaters",
+      "player_rating": 93526,
+      "shaman_rating": 130596,
+      "person_info": "http://vk.com/id173969520",
+      "exp": 15306636
+    },
+    {
+      "uid": 4899217,
+      "name": "Боль",
+      "player_rating": 216726,
+      "shaman_rating": 288060,
+      "person_info": "http://vk.com/id80991656",
+      "exp": 41341445
+    },
+    {
+      "uid": 4895807,
+      "name": "Кабачок",
+      "player_rating": 63070,
+      "shaman_rating": 131116,
+      "person_info": "http://vk.com/id152773174",
+      "exp": 9124428
+    },
+    {
+      "uid": 4889031,
+      "name": "КУКС",
+      "player_rating": 89430,
+      "shaman_rating": 315959,
+      "person_info": "http://vk.com/id4700182",
+      "exp": 10970799
+    },
+    {
+      "uid": 4817042,
+      "name": "Ёжик",
+      "player_rating": 37655,
+      "shaman_rating": 119781,
+      "person_info": "http://vk.com/id119895570",
+      "exp": 4413740
+    },
+    {
+      "uid": 4710173,
+      "name": "Лучик",
+      "player_rating": 118153,
+      "shaman_rating": 157599,
+      "person_info": "http://vk.com/id135876718",
+      "exp": 23743496
+    },
+    {
+      "uid": 4682363,
+      "name": "Слепой",
+      "player_rating": 37244,
+      "shaman_rating": 127865,
+      "person_info": "http://vk.com/id44723481",
+      "exp": 7236426
+    },
+    {
+      "uid": 4677528,
+      "name": "ВЕДЬМАЧКА  ЛЮ",
+      "player_rating": 97312,
+      "shaman_rating": 189166,
+      "person_info": "profile not found",
+      "exp": 17461866
+    },
+    {
+      "uid": 4696563,
+      "name": "Lik",
+      "player_rating": 74260,
+      "shaman_rating": 143675,
+      "person_info": "http://vk.com/id4459646",
+      "exp": 11463766
+    },
+    {
+      "uid": 4559854,
+      "name": "Game over",
+      "player_rating": 95894,
+      "shaman_rating": 161263,
+      "person_info": "http://vk.com/id144563229",
+      "exp": 16291762
+    },
+    {
+      "uid": 4535272,
+      "name": "[ Anastella ]",
+      "player_rating": 70185,
+      "shaman_rating": 142747,
+      "person_info": "http://vk.com/id164439322",
+      "exp": 9103249
+    },
+    {
+      "uid": 4529868,
+      "name": "Электрик",
+      "player_rating": 116901,
+      "shaman_rating": 232087,
+      "person_info": "http://vk.com/id72218290",
+      "exp": 13964472
+    },
+    {
+      "uid": 4518032,
+      "name": "Justice",
+      "player_rating": 90473,
+      "shaman_rating": 171511,
+      "person_info": "http://vk.com/id75046264",
+      "exp": 11507183
+    },
+    {
+      "uid": 4485302,
+      "name": "Чумачечая Весна",
+      "player_rating": 103526,
+      "shaman_rating": 179599,
+      "person_info": "profile not found",
+      "exp": 17253113
+    },
+    {
+      "uid": 4428982,
+      "name": "Выхода Нет",
+      "player_rating": 138616,
+      "shaman_rating": 156059,
+      "person_info": "http://vk.com/id131612119",
+      "exp": 26973248
+    },
+    {
+      "uid": 4432860,
+      "name": "Memento morI",
+      "player_rating": 60596,
+      "shaman_rating": 143327,
+      "person_info": "http://vk.com/id25797126",
+      "exp": 9170832
+    },
+    {
+      "uid": 4395368,
+      "name": "Shekspirt",
+      "player_rating": 52696,
+      "shaman_rating": 149616,
+      "person_info": "http://vk.com/id77655942",
+      "exp": 6913955
+    },
+    {
+      "uid": 4334064,
+      "name": "Mini",
+      "player_rating": 93594,
+      "shaman_rating": 100435,
+      "person_info": "https://my.mail.ru/mail/www.nataly7/",
+      "exp": 11682008
+    },
+    {
+      "uid": 4315596,
+      "name": "Beetle",
+      "player_rating": 127324,
+      "shaman_rating": 228572,
+      "person_info": "http://vk.com/id6171448",
+      "exp": 24395400
+    },
+    {
+      "uid": 4260771,
+      "name": "Цербер",
+      "player_rating": 125583,
+      "shaman_rating": 100315,
+      "person_info": "http://vk.com/id165619328",
+      "exp": 23827783
+    },
+    {
+      "uid": 4194384,
+      "name": "[Доверюсь тебе]",
+      "player_rating": 74859,
+      "shaman_rating": 126855,
+      "person_info": "http://vk.com/id154610119",
+      "exp": 15925307
+    },
+    {
+      "uid": 4098045,
+      "name": "МИЛОЧКА",
+      "player_rating": 132654,
+      "shaman_rating": 254260,
+      "person_info": "http://vk.com/id153711014",
+      "exp": 17173475
+    },
+    {
+      "uid": 4095529,
+      "name": "Граф Дракула",
+      "player_rating": 93198,
+      "shaman_rating": 230082,
+      "person_info": "http://vk.com/id76262627",
+      "exp": 5971583
+    },
+    {
+      "uid": 4093065,
+      "name": "groan",
+      "player_rating": 83765,
+      "shaman_rating": 105316,
+      "person_info": "profile not found",
+      "exp": 12552645
+    },
+    {
+      "uid": 4088831,
+      "name": "МУРКА",
+      "player_rating": 54093,
+      "shaman_rating": 124175,
+      "person_info": "https://ok.ru/profile/61877756054",
+      "exp": 5541736
+    },
+    {
+      "uid": 4078790,
+      "name": "l SOLITUDE l",
+      "player_rating": 72699,
+      "shaman_rating": 111198,
+      "person_info": "http://vk.com/id109912192",
+      "exp": 10745752
+    },
+    {
+      "uid": 4061769,
+      "name": "l Madness l",
+      "player_rating": 49587,
+      "shaman_rating": 132390,
+      "person_info": "http://www.odnoklassniki.ru/profile/516094844504",
+      "exp": 7401049
+    },
+    {
+      "uid": 4018273,
+      "name": "афлисун",
+      "player_rating": 83346,
+      "shaman_rating": 114821,
+      "person_info": "http://vk.com/id51992508",
+      "exp": 15137697
+    },
+    {
+      "uid": 4017316,
+      "name": "TimeIsOver",
+      "player_rating": 87460,
+      "shaman_rating": 149279,
+      "person_info": "http://vk.com/id55888302",
+      "exp": 15461058
+    },
+    {
+      "uid": 3968717,
+      "name": "[LoS] Дейдара",
+      "player_rating": 87346,
+      "shaman_rating": 140412,
+      "person_info": "http://www.odnoklassniki.ru/profile/478594845",
+      "exp": 8480601
     },
     {
       "uid": 3828861,
@@ -1700,10 +2500,10 @@ const playerData ={
     {
       "uid": 14070362,
       "name": "Evermore",
-      "player_rating": 279150,
-      "shaman_rating": 257437,
+      "player_rating": 279398,
+      "shaman_rating": 257858,
       "person_info": "http://vk.com/id233427447",
-      "exp": 57737885
+      "exp": 57857657
     },
     {
       "uid": 14052847,
@@ -1716,10 +2516,10 @@ const playerData ={
     {
       "uid": 14035695,
       "name": "Цитадель",
-      "player_rating": 102890,
-      "shaman_rating": 123982,
+      "player_rating": 103142,
+      "shaman_rating": 124177,
       "person_info": "http://vk.com/id239217393",
-      "exp": 16917344
+      "exp": 16952679
     },
     {
       "uid": 14020764,
@@ -2003,11 +2803,11 @@ const playerData ={
     },
     {
       "uid": 1413732,
-      "name": "ХАТЬФУ",
-      "player_rating": 306314,
-      "shaman_rating": 406010,
+      "name": "БАГ",
+      "player_rating": 306694,
+      "shaman_rating": 406916,
       "person_info": "http://vk.com/id152935501",
-      "exp": 65066168
+      "exp": 65500128
     },
     {
       "uid": 411478,
@@ -2047,7 +2847,7 @@ const playerData ={
       "player_rating": 170402,
       "shaman_rating": 149490,
       "person_info": "http://vk.com/id104062983",
-      "exp": 27844327
+      "exp": 27844827
     },
     {
       "uid": 322793,
@@ -2060,10 +2860,10 @@ const playerData ={
     {
       "uid": 307243,
       "name": "Рыжуля",
-      "player_rating": 325924,
-      "shaman_rating": 364288,
+      "player_rating": 326738,
+      "shaman_rating": 364695,
       "person_info": "http://vk.com/id88852410",
-      "exp": 62018235
+      "exp": 62202160
     },
     {
       "uid": 385722,
@@ -2402,1606 +3202,6 @@ const playerData ={
       "exp": 9361745
     },
     {
-      "uid": 8328205,
-      "name": "beLk",
-      "player_rating": 118353,
-      "shaman_rating": 303307,
-      "person_info": "http://vk.com/id132605012",
-      "exp": 11057678
-    },
-    {
-      "uid": 8271831,
-      "name": "Внучок",
-      "player_rating": 67800,
-      "shaman_rating": 146822,
-      "person_info": "http://vk.com/id34225931",
-      "exp": 10058039
-    },
-    {
-      "uid": 8153353,
-      "name": "LeTosh",
-      "player_rating": 111792,
-      "shaman_rating": 128311,
-      "person_info": "http://vk.com/id104849618",
-      "exp": 20654200
-    },
-    {
-      "uid": 7998666,
-      "name": "Adelheid",
-      "player_rating": 133775,
-      "shaman_rating": 119714,
-      "person_info": "https://ok.ru/profile/539437349375",
-      "exp": 25626057
-    },
-    {
-      "uid": 7976765,
-      "name": "ПерчиК",
-      "player_rating": 131484,
-      "shaman_rating": 119727,
-      "person_info": "http://vk.com/id184861257",
-      "exp": 24680400
-    },
-    {
-      "uid": 7943953,
-      "name": "Героин",
-      "player_rating": 142738,
-      "shaman_rating": 124023,
-      "person_info": "https://my.mail.ru/bk/ms.skripchenko/",
-      "exp": 24955784
-    },
-    {
-      "uid": 7897406,
-      "name": "ANYUTA",
-      "player_rating": 454584,
-      "shaman_rating": 724035,
-      "person_info": "https://ok.ru/profile/354022450596",
-      "exp": 81314388
-    },
-    {
-      "uid": 7744885,
-      "name": "Snow",
-      "player_rating": 233366,
-      "shaman_rating": 425674,
-      "person_info": "http://vk.com/id166842096",
-      "exp": 49267281
-    },
-    {
-      "uid": 7791482,
-      "name": "Грешник",
-      "player_rating": 70506,
-      "shaman_rating": 124420,
-      "person_info": "http://my.mail.ru/inbox/diana2006/",
-      "exp": 10126541
-    },
-    {
-      "uid": 7746129,
-      "name": "[ БУБОЧКА ]",
-      "player_rating": 70105,
-      "shaman_rating": 131882,
-      "person_info": "http://vk.com/id6649829",
-      "exp": 4973814
-    },
-    {
-      "uid": 7677993,
-      "name": "im crigy",
-      "player_rating": 86721,
-      "shaman_rating": 103043,
-      "person_info": "http://vk.com/id116716614",
-      "exp": 18458903
-    },
-    {
-      "uid": 7617662,
-      "name": "Besame",
-      "player_rating": 275645,
-      "shaman_rating": 420678,
-      "person_info": "http://vk.com/id38242091",
-      "exp": 57600402
-    },
-    {
-      "uid": 7590875,
-      "name": "Употребитель",
-      "player_rating": 56089,
-      "shaman_rating": 102190,
-      "person_info": "http://vk.com/id168917136",
-      "exp": 7936880
-    },
-    {
-      "uid": 7516880,
-      "name": "Тёмный Рыцарь",
-      "player_rating": 55826,
-      "shaman_rating": 121915,
-      "person_info": "http://vk.com/id138256083",
-      "exp": 7009670
-    },
-    {
-      "uid": 7541340,
-      "name": "Бейба",
-      "player_rating": 53300,
-      "shaman_rating": 109658,
-      "person_info": "http://vk.com/id52862087",
-      "exp": 6215209
-    },
-    {
-      "uid": 7447759,
-      "name": "DellK",
-      "player_rating": 110321,
-      "shaman_rating": 182760,
-      "person_info": "profile not found",
-      "exp": 4853640
-    },
-    {
-      "uid": 7400927,
-      "name": "Calipso",
-      "player_rating": 39136,
-      "shaman_rating": 122680,
-      "person_info": "http://my.mail.ru/mail/shlyk-lena/",
-      "exp": 7110897
-    },
-    {
-      "uid": 7361518,
-      "name": "Джон",
-      "player_rating": 86098,
-      "shaman_rating": 146738,
-      "person_info": "http://my.mail.ru/mail/koala17031997/",
-      "exp": 12743204
-    },
-    {
-      "uid": 7320534,
-      "name": "Good Game",
-      "player_rating": 115208,
-      "shaman_rating": 130028,
-      "person_info": "http://vk.com/id15028516",
-      "exp": 16746368
-    },
-    {
-      "uid": 7290682,
-      "name": "hungry pussy",
-      "player_rating": 82197,
-      "shaman_rating": 141433,
-      "person_info": "http://vk.com/id80813004",
-      "exp": 14792779
-    },
-    {
-      "uid": 7275537,
-      "name": "Weltschmerz",
-      "player_rating": 149741,
-      "shaman_rating": 241376,
-      "person_info": "http://vk.com/id9001719",
-      "exp": 29761153
-    },
-    {
-      "uid": 7221758,
-      "name": "Gaara",
-      "player_rating": 101830,
-      "shaman_rating": 108899,
-      "person_info": "https://ok.ru/profile/532252592510",
-      "exp": 17168852
-    },
-    {
-      "uid": 7206311,
-      "name": "HITMAN",
-      "player_rating": 148989,
-      "shaman_rating": 230865,
-      "person_info": "http://vk.com/id114794842",
-      "exp": 33675308
-    },
-    {
-      "uid": 7270247,
-      "name": "Жрец",
-      "player_rating": 88187,
-      "shaman_rating": 193087,
-      "person_info": "http://vk.com/id36624548",
-      "exp": 8597752
-    },
-    {
-      "uid": 7143549,
-      "name": "РЫСЬка",
-      "player_rating": 188408,
-      "shaman_rating": 219040,
-      "person_info": "https://ok.ru/profile/514007085541",
-      "exp": 38747453
-    },
-    {
-      "uid": 7128071,
-      "name": "iWATрушка",
-      "player_rating": 71699,
-      "shaman_rating": 137132,
-      "person_info": "http://vk.com/id157240066",
-      "exp": 10143309
-    },
-    {
-      "uid": 7121394,
-      "name": "Asta",
-      "player_rating": 72541,
-      "shaman_rating": 104007,
-      "person_info": "http://vk.com/id36251627",
-      "exp": 11715432
-    },
-    {
-      "uid": 7019046,
-      "name": "Баскервиль",
-      "player_rating": 66520,
-      "shaman_rating": 122468,
-      "person_info": "https://my.mail.ru/mail/maslova.alino4ka/",
-      "exp": 10597068
-    },
-    {
-      "uid": 7076682,
-      "name": "ЁжЫк [PMS]",
-      "player_rating": 113662,
-      "shaman_rating": 141650,
-      "person_info": "http://vk.com/id177529396",
-      "exp": 20759616
-    },
-    {
-      "uid": 6814091,
-      "name": "Макейла",
-      "player_rating": 149974,
-      "shaman_rating": 115770,
-      "person_info": "https://ok.ru/profile/545906968508",
-      "exp": 29457964
-    },
-    {
-      "uid": 6789314,
-      "name": "ТлстЛуи",
-      "player_rating": 93338,
-      "shaman_rating": 110083,
-      "person_info": "http://vk.com/id113953116",
-      "exp": 14208868
-    },
-    {
-      "uid": 6743147,
-      "name": "uh huh",
-      "player_rating": 234567,
-      "shaman_rating": 164490,
-      "person_info": "http://vk.com/id181726722",
-      "exp": 35471385
-    },
-    {
-      "uid": 6674456,
-      "name": "Мя",
-      "player_rating": 102155,
-      "shaman_rating": 111994,
-      "person_info": "http://vk.com/id181566702",
-      "exp": 17448030
-    },
-    {
-      "uid": 6631598,
-      "name": "Кот Барсик",
-      "player_rating": 98626,
-      "shaman_rating": 131852,
-      "person_info": "http://vk.com/id181460922",
-      "exp": 13867700
-    },
-    {
-      "uid": 6549620,
-      "name": "[]Zlata[]",
-      "player_rating": 132755,
-      "shaman_rating": 100189,
-      "person_info": "https://ok.ru/profile/496190065714",
-      "exp": 11664005
-    },
-    {
-      "uid": 6526351,
-      "name": "БеленькаЯ",
-      "player_rating": 169401,
-      "shaman_rating": 300538,
-      "person_info": "http://vk.com/id18822032",
-      "exp": 32910844
-    },
-    {
-      "uid": 6431441,
-      "name": "[ Прокурор ]",
-      "player_rating": 125160,
-      "shaman_rating": 184644,
-      "person_info": "http://vk.com/id180708954",
-      "exp": 19242989
-    },
-    {
-      "uid": 6415238,
-      "name": "Мурзилка",
-      "player_rating": 134837,
-      "shaman_rating": 101676,
-      "person_info": "http://vk.com/id133290441",
-      "exp": 8766649
-    },
-    {
-      "uid": 6410201,
-      "name": "13",
-      "player_rating": 95183,
-      "shaman_rating": 146872,
-      "person_info": "http://vk.com/id152851436",
-      "exp": 15156718
-    },
-    {
-      "uid": 6389463,
-      "name": "Героин",
-      "player_rating": 333757,
-      "shaman_rating": 300250,
-      "person_info": "https://my.mail.ru/mail/darya.dasha.p/",
-      "exp": 75355985
-    },
-    {
-      "uid": 6349468,
-      "name": "ВСБ",
-      "player_rating": 195133,
-      "shaman_rating": 165226,
-      "person_info": "http://my.mail.ru/mail/bazhan.78/",
-      "exp": 31340742
-    },
-    {
-      "uid": 6240079,
-      "name": "Вне закона",
-      "player_rating": 97401,
-      "shaman_rating": 124237,
-      "person_info": "https://ok.ru/profile/357645958632",
-      "exp": 15260772
-    },
-    {
-      "uid": 5970810,
-      "name": "BYSO",
-      "player_rating": 57565,
-      "shaman_rating": 148836,
-      "person_info": "http://vk.com/id178670863",
-      "exp": 10280258
-    },
-    {
-      "uid": 5967737,
-      "name": "misery",
-      "player_rating": 203446,
-      "shaman_rating": 107124,
-      "person_info": "http://vk.com/id164790985",
-      "exp": 39675337
-    },
-    {
-      "uid": 5951835,
-      "name": "Амброзия",
-      "player_rating": 123163,
-      "shaman_rating": 182814,
-      "person_info": "http://vk.com/id178556720",
-      "exp": 18709082
-    },
-    {
-      "uid": 5955376,
-      "name": "Lowenbrau",
-      "player_rating": 100286,
-      "shaman_rating": 145965,
-      "person_info": "profile not found",
-      "exp": 19800637
-    },
-    {
-      "uid": 5928200,
-      "name": "БеSSтия",
-      "player_rating": 49302,
-      "shaman_rating": 110919,
-      "person_info": "http://vk.com/id33396720",
-      "exp": 8487695
-    },
-    {
-      "uid": 5898984,
-      "name": "СССР",
-      "player_rating": 111314,
-      "shaman_rating": 140006,
-      "person_info": "http://vk.com/id49879929",
-      "exp": 7011198
-    },
-    {
-      "uid": 5889141,
-      "name": "Никсон",
-      "player_rating": 153251,
-      "shaman_rating": 272107,
-      "person_info": "http://vk.com/id171997248",
-      "exp": 19918929
-    },
-    {
-      "uid": 5860943,
-      "name": "[ЙО] ж [Ы] к",
-      "player_rating": 88767,
-      "shaman_rating": 114598,
-      "person_info": "http://vk.com/id103344990",
-      "exp": 16062660
-    },
-    {
-      "uid": 5850438,
-      "name": "Palladis",
-      "player_rating": 77621,
-      "shaman_rating": 109937,
-      "person_info": "http://vk.com/id122524258",
-      "exp": 9851432
-    },
-    {
-      "uid": 5744271,
-      "name": "[] ADDICTED []",
-      "player_rating": 118064,
-      "shaman_rating": 165698,
-      "person_info": "http://vk.com/id20573801",
-      "exp": 15068730
-    },
-    {
-      "uid": 5607064,
-      "name": "LeNiVaЯ КоТя",
-      "player_rating": 98813,
-      "shaman_rating": 197108,
-      "person_info": "https://fotostrana.ru/user/31034963",
-      "exp": 9972645
-    },
-    {
-      "uid": 5553785,
-      "name": "Шмяк",
-      "player_rating": 114643,
-      "shaman_rating": 126876,
-      "person_info": "http://vk.com/id97517719",
-      "exp": 19880263
-    },
-    {
-      "uid": 5536965,
-      "name": "[Вали в дупло]",
-      "player_rating": 39618,
-      "shaman_rating": 139344,
-      "person_info": "http://vk.com/id20795632",
-      "exp": 2496187
-    },
-    {
-      "uid": 5528692,
-      "name": "Перчик",
-      "player_rating": 101998,
-      "shaman_rating": 143373,
-      "person_info": "http://vk.com/id4317463",
-      "exp": 17676293
-    },
-    {
-      "uid": 5507128,
-      "name": "Jack Daniels",
-      "player_rating": 77708,
-      "shaman_rating": 101018,
-      "person_info": "http://vk.com/id175318305",
-      "exp": 15716648
-    },
-    {
-      "uid": 5496183,
-      "name": "Fierce",
-      "player_rating": 104480,
-      "shaman_rating": 211878,
-      "person_info": "http://vk.com/id78098992",
-      "exp": 15425602
-    },
-    {
-      "uid": 5397799,
-      "name": "Диббук",
-      "player_rating": 134231,
-      "shaman_rating": 155953,
-      "person_info": "http://vk.com/id117226972",
-      "exp": 18637932
-    },
-    {
-      "uid": 5393071,
-      "name": "[Чиж]",
-      "player_rating": 236181,
-      "shaman_rating": 478151,
-      "person_info": "http://vk.com/id130224802",
-      "exp": 49458902
-    },
-    {
-      "uid": 5274171,
-      "name": "Soul TempesT",
-      "player_rating": 108845,
-      "shaman_rating": 172298,
-      "person_info": "http://vk.com/id37218011",
-      "exp": 18884822
-    },
-    {
-      "uid": 5267770,
-      "name": "[АРМЕЕЦ]",
-      "player_rating": 114226,
-      "shaman_rating": 105247,
-      "person_info": "http://vk.com/id66893500",
-      "exp": 13640136
-    },
-    {
-      "uid": 5275871,
-      "name": "Пессимист",
-      "player_rating": 83075,
-      "shaman_rating": 165501,
-      "person_info": "http://vk.com/id166325926",
-      "exp": 11087164
-    },
-    {
-      "uid": 5222206,
-      "name": "Ledis",
-      "player_rating": 92623,
-      "shaman_rating": 250478,
-      "person_info": "http://vk.com/id55333276",
-      "exp": 12777287
-    },
-    {
-      "uid": 5185419,
-      "name": "Великий Батя",
-      "player_rating": 119458,
-      "shaman_rating": 192794,
-      "person_info": "http://vk.com/id86417416",
-      "exp": 23555599
-    },
-    {
-      "uid": 5027363,
-      "name": "Nervoz",
-      "player_rating": 150961,
-      "shaman_rating": 221759,
-      "person_info": "http://vk.com/id146513262",
-      "exp": 26256372
-    },
-    {
-      "uid": 5021459,
-      "name": "lust for hate",
-      "player_rating": 60462,
-      "shaman_rating": 123153,
-      "person_info": "http://vk.com/id147542543",
-      "exp": 10004974
-    },
-    {
-      "uid": 5016496,
-      "name": "DEN",
-      "player_rating": 52755,
-      "shaman_rating": 137047,
-      "person_info": "http://my.mail.ru/mail/xs_lover/",
-      "exp": 4604555
-    },
-    {
-      "uid": 4928879,
-      "name": "Black Box",
-      "player_rating": 86769,
-      "shaman_rating": 214602,
-      "person_info": "http://my.mail.ru/mail/2012nn/",
-      "exp": 8595419
-    },
-    {
-      "uid": 4907199,
-      "name": "беды с башкой",
-      "player_rating": 94695,
-      "shaman_rating": 119560,
-      "person_info": "http://vk.com/id165981157",
-      "exp": 11662177
-    },
-    {
-      "uid": 4911931,
-      "name": "Death Eaters",
-      "player_rating": 93526,
-      "shaman_rating": 130596,
-      "person_info": "http://vk.com/id173969520",
-      "exp": 15306636
-    },
-    {
-      "uid": 4899217,
-      "name": "Боль",
-      "player_rating": 216726,
-      "shaman_rating": 288060,
-      "person_info": "http://vk.com/id80991656",
-      "exp": 41341445
-    },
-    {
-      "uid": 4895807,
-      "name": "Кабачок",
-      "player_rating": 63070,
-      "shaman_rating": 131116,
-      "person_info": "http://vk.com/id152773174",
-      "exp": 9124428
-    },
-    {
-      "uid": 4889031,
-      "name": "КУКС",
-      "player_rating": 89430,
-      "shaman_rating": 315959,
-      "person_info": "http://vk.com/id4700182",
-      "exp": 10970799
-    },
-    {
-      "uid": 4817042,
-      "name": "Ёжик",
-      "player_rating": 37655,
-      "shaman_rating": 119781,
-      "person_info": "http://vk.com/id119895570",
-      "exp": 4413740
-    },
-    {
-      "uid": 4710173,
-      "name": "Лучик",
-      "player_rating": 118153,
-      "shaman_rating": 157599,
-      "person_info": "http://vk.com/id135876718",
-      "exp": 23743496
-    },
-    {
-      "uid": 4682363,
-      "name": "Слепой",
-      "player_rating": 37244,
-      "shaman_rating": 127865,
-      "person_info": "http://vk.com/id44723481",
-      "exp": 7236426
-    },
-    {
-      "uid": 4677528,
-      "name": "ВЕДЬМАЧКА  ЛЮ",
-      "player_rating": 97312,
-      "shaman_rating": 189166,
-      "person_info": "profile not found",
-      "exp": 17461866
-    },
-    {
-      "uid": 4696563,
-      "name": "Lik",
-      "player_rating": 74260,
-      "shaman_rating": 143675,
-      "person_info": "http://vk.com/id4459646",
-      "exp": 11463766
-    },
-    {
-      "uid": 4559854,
-      "name": "Game over",
-      "player_rating": 95894,
-      "shaman_rating": 161263,
-      "person_info": "http://vk.com/id144563229",
-      "exp": 16291762
-    },
-    {
-      "uid": 4535272,
-      "name": "[ Anastella ]",
-      "player_rating": 70185,
-      "shaman_rating": 142747,
-      "person_info": "http://vk.com/id164439322",
-      "exp": 9103249
-    },
-    {
-      "uid": 4529868,
-      "name": "Электрик",
-      "player_rating": 116901,
-      "shaman_rating": 232087,
-      "person_info": "http://vk.com/id72218290",
-      "exp": 13964472
-    },
-    {
-      "uid": 4518032,
-      "name": "Justice",
-      "player_rating": 90473,
-      "shaman_rating": 171511,
-      "person_info": "http://vk.com/id75046264",
-      "exp": 11507183
-    },
-    {
-      "uid": 4485302,
-      "name": "Чумачечая Весна",
-      "player_rating": 103526,
-      "shaman_rating": 179599,
-      "person_info": "profile not found",
-      "exp": 17253113
-    },
-    {
-      "uid": 4428982,
-      "name": "Выхода Нет",
-      "player_rating": 138616,
-      "shaman_rating": 156059,
-      "person_info": "http://vk.com/id131612119",
-      "exp": 26973248
-    },
-    {
-      "uid": 4432860,
-      "name": "Memento morI",
-      "player_rating": 60596,
-      "shaman_rating": 143327,
-      "person_info": "http://vk.com/id25797126",
-      "exp": 9170832
-    },
-    {
-      "uid": 4395368,
-      "name": "Shekspirt",
-      "player_rating": 52696,
-      "shaman_rating": 149616,
-      "person_info": "http://vk.com/id77655942",
-      "exp": 6913955
-    },
-    {
-      "uid": 4334064,
-      "name": "Mini",
-      "player_rating": 93572,
-      "shaman_rating": 100429,
-      "person_info": "https://my.mail.ru/mail/www.nataly7/",
-      "exp": 11680088
-    },
-    {
-      "uid": 4315596,
-      "name": "Beetle",
-      "player_rating": 127324,
-      "shaman_rating": 228572,
-      "person_info": "http://vk.com/id6171448",
-      "exp": 24395400
-    },
-    {
-      "uid": 4260771,
-      "name": "Цербер",
-      "player_rating": 125556,
-      "shaman_rating": 100305,
-      "person_info": "http://vk.com/id165619328",
-      "exp": 23822263
-    },
-    {
-      "uid": 4194384,
-      "name": "[Доверюсь тебе]",
-      "player_rating": 74859,
-      "shaman_rating": 126855,
-      "person_info": "http://vk.com/id154610119",
-      "exp": 15925307
-    },
-    {
-      "uid": 4098045,
-      "name": "МИЛОЧКА",
-      "player_rating": 132654,
-      "shaman_rating": 254260,
-      "person_info": "http://vk.com/id153711014",
-      "exp": 17173475
-    },
-    {
-      "uid": 4095529,
-      "name": "Граф Дракула",
-      "player_rating": 93198,
-      "shaman_rating": 230082,
-      "person_info": "http://vk.com/id76262627",
-      "exp": 5971583
-    },
-    {
-      "uid": 4093065,
-      "name": "groan",
-      "player_rating": 83765,
-      "shaman_rating": 105316,
-      "person_info": "profile not found",
-      "exp": 12552645
-    },
-    {
-      "uid": 4088831,
-      "name": "МУРКА",
-      "player_rating": 54093,
-      "shaman_rating": 124175,
-      "person_info": "https://ok.ru/profile/61877756054",
-      "exp": 5541736
-    },
-    {
-      "uid": 4078790,
-      "name": "l SOLITUDE l",
-      "player_rating": 72699,
-      "shaman_rating": 111198,
-      "person_info": "http://vk.com/id109912192",
-      "exp": 10745752
-    },
-    {
-      "uid": 4061769,
-      "name": "l Madness l",
-      "player_rating": 49587,
-      "shaman_rating": 132390,
-      "person_info": "http://www.odnoklassniki.ru/profile/516094844504",
-      "exp": 7401049
-    },
-    {
-      "uid": 4018273,
-      "name": "афлисун",
-      "player_rating": 83346,
-      "shaman_rating": 114821,
-      "person_info": "http://vk.com/id51992508",
-      "exp": 15137697
-    },
-    {
-      "uid": 4017316,
-      "name": "TimeIsOver",
-      "player_rating": 87460,
-      "shaman_rating": 149279,
-      "person_info": "http://vk.com/id55888302",
-      "exp": 15461058
-    },
-    {
-      "uid": 3968717,
-      "name": "[LoS] Дейдара",
-      "player_rating": 87346,
-      "shaman_rating": 140412,
-      "person_info": "http://www.odnoklassniki.ru/profile/478594845",
-      "exp": 8480601
-    },
-    {
-      "uid": 16197270,
-      "name": "Lieber Gott",
-      "player_rating": 124818,
-      "shaman_rating": 163442,
-      "person_info": "http://vk.com/id251750154",
-      "exp": 20676207
-    },
-    {
-      "uid": 16150974,
-      "name": "[Барс]",
-      "player_rating": 116906,
-      "shaman_rating": 137397,
-      "person_info": "http://vk.com/id270667118",
-      "exp": 19311951
-    },
-    {
-      "uid": 16186849,
-      "name": "ForeverWithYou",
-      "player_rating": 127358,
-      "shaman_rating": 212877,
-      "person_info": "http://vk.com/id271684154",
-      "exp": 23339157
-    },
-    {
-      "uid": 16179090,
-      "name": "Ларра",
-      "player_rating": 81091,
-      "shaman_rating": 115138,
-      "person_info": "http://vk.com/id133080728",
-      "exp": 10970871
-    },
-    {
-      "uid": 16076950,
-      "name": "Людмила",
-      "player_rating": 85151,
-      "shaman_rating": 153088,
-      "person_info": "http://vk.com/id132622384",
-      "exp": 10522605
-    },
-    {
-      "uid": 16010398,
-      "name": "Светлана",
-      "player_rating": 72611,
-      "shaman_rating": 130192,
-      "person_info": "http://vk.com/id226171803",
-      "exp": 6671267
-    },
-    {
-      "uid": 15965313,
-      "name": "[Delicacy]",
-      "player_rating": 55351,
-      "shaman_rating": 138019,
-      "person_info": "https://ok.ru/profile/580201516312",
-      "exp": 6671529
-    },
-    {
-      "uid": 15862694,
-      "name": "Пятница",
-      "player_rating": 81938,
-      "shaman_rating": 210001,
-      "person_info": "http://vk.com/id54073171",
-      "exp": 11165867
-    },
-    {
-      "uid": 15889763,
-      "name": "Сластёна",
-      "player_rating": 95290,
-      "shaman_rating": 127325,
-      "person_info": "http://vk.com/id216609633",
-      "exp": 10157072
-    },
-    {
-      "uid": 15809044,
-      "name": "117 Rus",
-      "player_rating": 43679,
-      "shaman_rating": 128834,
-      "person_info": "http://vk.com/id135683367",
-      "exp": 4465215
-    },
-    {
-      "uid": 15641999,
-      "name": "НеВлезайУбьёт",
-      "player_rating": 74604,
-      "shaman_rating": 123421,
-      "person_info": "http://vk.com/id262587216",
-      "exp": 16691161
-    },
-    {
-      "uid": 15627351,
-      "name": "Anjo Da Morte",
-      "player_rating": 52039,
-      "shaman_rating": 109819,
-      "person_info": "http://vk.com/id242011188",
-      "exp": 7731949
-    },
-    {
-      "uid": 15436864,
-      "name": "Луняшка",
-      "player_rating": 154584,
-      "shaman_rating": 185849,
-      "person_info": "http://vk.com/id228653519",
-      "exp": 28295124
-    },
-    {
-      "uid": 15389957,
-      "name": "похоть",
-      "player_rating": 69791,
-      "shaman_rating": 100780,
-      "person_info": "http://vk.com/id257629698",
-      "exp": 12161106
-    },
-    {
-      "uid": 15275031,
-      "name": "[ Диди ]",
-      "player_rating": 172265,
-      "shaman_rating": 155229,
-      "person_info": "https://ok.ru/profile/537612606973",
-      "exp": 17074755
-    },
-    {
-      "uid": 15265051,
-      "name": "[lИскреннийl]",
-      "player_rating": 107810,
-      "shaman_rating": 123137,
-      "person_info": "http://vk.com/id246289997",
-      "exp": 22042637
-    },
-    {
-      "uid": 15184113,
-      "name": "Governor",
-      "player_rating": 75376,
-      "shaman_rating": 125341,
-      "person_info": "http://vk.com/id218315382",
-      "exp": 12640010
-    },
-    {
-      "uid": 15051147,
-      "name": "ЛюБиМаЯ ТоБоЙ",
-      "player_rating": 102546,
-      "shaman_rating": 179808,
-      "person_info": "profile not found",
-      "exp": 14999190
-    },
-    {
-      "uid": 15011671,
-      "name": "чвк за пивом",
-      "player_rating": 106447,
-      "shaman_rating": 157390,
-      "person_info": "http://vk.com/id235227404",
-      "exp": 19033913
-    },
-    {
-      "uid": 15009224,
-      "name": "Кузя",
-      "player_rating": 124576,
-      "shaman_rating": 160812,
-      "person_info": "http://vk.com/id251680196",
-      "exp": 19944118
-    },
-    {
-      "uid": 14955687,
-      "name": "Dead rabbit",
-      "player_rating": 86901,
-      "shaman_rating": 139761,
-      "person_info": "https://my.mail.ru/inbox/smurovm/",
-      "exp": 13505080
-    },
-    {
-      "uid": 14854527,
-      "name": "ВкуS",
-      "player_rating": 324805,
-      "shaman_rating": 720141,
-      "person_info": "http://vk.com/id71229198",
-      "exp": 66798252
-    },
-    {
-      "uid": 14835076,
-      "name": "damn nation",
-      "player_rating": 89423,
-      "shaman_rating": 145702,
-      "person_info": "https://my.mail.ru/bk/tatjyana.w/",
-      "exp": 13544159
-    },
-    {
-      "uid": 14842451,
-      "name": "Рыжая Ведьма",
-      "player_rating": 81797,
-      "shaman_rating": 102772,
-      "person_info": "http://vk.com/id225097474",
-      "exp": 8634748
-    },
-    {
-      "uid": 14650915,
-      "name": "RIPPER",
-      "player_rating": 152368,
-      "shaman_rating": 386404,
-      "person_info": "http://vk.com/id215031199",
-      "exp": 15351518
-    },
-    {
-      "uid": 14537522,
-      "name": "АРАХНА",
-      "player_rating": 153515,
-      "shaman_rating": 112131,
-      "person_info": "https://my.mail.ru/bk/safonova1974/",
-      "exp": 24134769
-    },
-    {
-      "uid": 14593822,
-      "name": "[] Flamehost",
-      "player_rating": 109845,
-      "shaman_rating": 207110,
-      "person_info": "http://vk.com/id246753421",
-      "exp": 15124396
-    },
-    {
-      "uid": 14382731,
-      "name": "Незабудка",
-      "player_rating": 189510,
-      "shaman_rating": 149116,
-      "person_info": "http://www.odnoklassniki.ru/profile/456931168359",
-      "exp": 36997990
-    },
-    {
-      "uid": 14306465,
-      "name": "HeisenBerg",
-      "player_rating": 135914,
-      "shaman_rating": 367877,
-      "person_info": "http://vk.com/id147109547",
-      "exp": 29268026
-    },
-    {
-      "uid": 14354982,
-      "name": "SimkA",
-      "player_rating": 90713,
-      "shaman_rating": 209890,
-      "person_info": "https://ok.ru/profile/542932205376",
-      "exp": 11507760
-    },
-    {
-      "uid": 14280519,
-      "name": "Цык",
-      "player_rating": 142356,
-      "shaman_rating": 171561,
-      "person_info": "http://vk.com/id6413787",
-      "exp": 20020696
-    },
-    {
-      "uid": 14281094,
-      "name": "-АМУРА- -",
-      "player_rating": 93602,
-      "shaman_rating": 223966,
-      "person_info": "http://www.odnoklassniki.ru/profile/557892798930",
-      "exp": 5768973
-    },
-    {
-      "uid": 14111060,
-      "name": "Вовий I",
-      "player_rating": 115188,
-      "shaman_rating": 121339,
-      "person_info": "profile not found",
-      "exp": 19184120
-    },
-    {
-      "uid": 13664411,
-      "name": "Зловик",
-      "player_rating": 228471,
-      "shaman_rating": 388845,
-      "person_info": "http://my.mail.ru/mail/naaateee/",
-      "exp": 50148023
-    },
-    {
-      "uid": 13421283,
-      "name": "Икона",
-      "player_rating": 53179,
-      "shaman_rating": 102056,
-      "person_info": "profile not found",
-      "exp": 5905575
-    },
-    {
-      "uid": 13407857,
-      "name": "Кравц",
-      "player_rating": 123013,
-      "shaman_rating": 265155,
-      "person_info": "http://vk.com/id19328856",
-      "exp": 19921284
-    },
-    {
-      "uid": 13373842,
-      "name": "ВФС",
-      "player_rating": 96467,
-      "shaman_rating": 140458,
-      "person_info": "https://ok.ru/profile/510975683660",
-      "exp": 18980351
-    },
-    {
-      "uid": 13344634,
-      "name": "Ловушка",
-      "player_rating": 295533,
-      "shaman_rating": 160286,
-      "person_info": "https://ok.ru/profile/517508373842",
-      "exp": 69470001
-    },
-    {
-      "uid": 13294392,
-      "name": "Дядя Кот",
-      "player_rating": 196650,
-      "shaman_rating": 111656,
-      "person_info": "https://ok.ru/profile/572933662012",
-      "exp": 39864869
-    },
-    {
-      "uid": 13166671,
-      "name": "Ягуар",
-      "player_rating": 88256,
-      "shaman_rating": 111083,
-      "person_info": "http://my.mail.ru/mail/maks_opapr_10/",
-      "exp": 16685018
-    },
-    {
-      "uid": 13064701,
-      "name": "IZI",
-      "player_rating": 127063,
-      "shaman_rating": 185529,
-      "person_info": "http://vk.com/id29250964",
-      "exp": 17652910
-    },
-    {
-      "uid": 12873779,
-      "name": "Catharsis",
-      "player_rating": 199753,
-      "shaman_rating": 171289,
-      "person_info": "http://vk.com/id204359661",
-      "exp": 40598903
-    },
-    {
-      "uid": 12834702,
-      "name": "Алекс",
-      "player_rating": 190094,
-      "shaman_rating": 211008,
-      "person_info": "https://ok.ru/profile/527469985036",
-      "exp": 22406302
-    },
-    {
-      "uid": 12834794,
-      "name": "Страх",
-      "player_rating": 339390,
-      "shaman_rating": 386695,
-      "person_info": "http://vk.com/id187545651",
-      "exp": 71144198
-    },
-    {
-      "uid": 12724741,
-      "name": "Габриэль",
-      "player_rating": 90227,
-      "shaman_rating": 189317,
-      "person_info": "http://vk.com/id218642194",
-      "exp": 13917994
-    },
-    {
-      "uid": 12704475,
-      "name": "Пудра",
-      "player_rating": 266052,
-      "shaman_rating": 510324,
-      "person_info": "http://vk.com/id223963406",
-      "exp": 41893799
-    },
-    {
-      "uid": 12740019,
-      "name": "хвостТОМАхаха",
-      "player_rating": 89669,
-      "shaman_rating": 113734,
-      "person_info": "http://www.odnoklassniki.ru/profile/551466950745",
-      "exp": 13008507
-    },
-    {
-      "uid": 12558904,
-      "name": "Вичуга",
-      "player_rating": 315997,
-      "shaman_rating": 117246,
-      "person_info": "http://vk.com/id213506465",
-      "exp": 66666666
-    },
-    {
-      "uid": 12496843,
-      "name": "Май",
-      "player_rating": 185508,
-      "shaman_rating": 177202,
-      "person_info": "http://vk.com/id189672869",
-      "exp": 37009959
-    },
-    {
-      "uid": 12440427,
-      "name": "Лиара",
-      "player_rating": 256055,
-      "shaman_rating": 249098,
-      "person_info": "http://vk.com/id73187436",
-      "exp": 48885247
-    },
-    {
-      "uid": 12420004,
-      "name": "БANШИ",
-      "player_rating": 56593,
-      "shaman_rating": 125177,
-      "person_info": "http://vk.com/id195939341",
-      "exp": 5628521
-    },
-    {
-      "uid": 12263355,
-      "name": "Божий Одуванчик",
-      "player_rating": 116123,
-      "shaman_rating": 228390,
-      "person_info": "http://vk.com/id178544670",
-      "exp": 16593753
-    },
-    {
-      "uid": 12165051,
-      "name": "Ангелочек Фыр",
-      "player_rating": 96022,
-      "shaman_rating": 151042,
-      "person_info": "https://my.mail.ru/mail/smuk_93/",
-      "exp": 17542120
-    },
-    {
-      "uid": 12084695,
-      "name": "mylove",
-      "player_rating": 151342,
-      "shaman_rating": 175450,
-      "person_info": "http://vk.com/id182281061",
-      "exp": 34119467
-    },
-    {
-      "uid": 12083579,
-      "name": "[Осколок льда]",
-      "player_rating": 124785,
-      "shaman_rating": 176754,
-      "person_info": "http://vk.com/id209042049",
-      "exp": 9193668
-    },
-    {
-      "uid": 12067973,
-      "name": "Formalin",
-      "player_rating": 91682,
-      "shaman_rating": 119282,
-      "person_info": "http://vk.com/id139672236",
-      "exp": 16494161
-    },
-    {
-      "uid": 12040532,
-      "name": "совушка",
-      "player_rating": 66410,
-      "shaman_rating": 131338,
-      "person_info": "http://vk.com/id138415108",
-      "exp": 9132905
-    },
-    {
-      "uid": 11844985,
-      "name": "Несмеяна",
-      "player_rating": 108165,
-      "shaman_rating": 135880,
-      "person_info": "http://vk.com/id33160933",
-      "exp": 20056103
-    },
-    {
-      "uid": 11841585,
-      "name": "Sierra",
-      "player_rating": 105926,
-      "shaman_rating": 176664,
-      "person_info": "http://vk.com/id205986402",
-      "exp": 20577023
-    },
-    {
-      "uid": 11798907,
-      "name": "[Ушел]",
-      "player_rating": 168678,
-      "shaman_rating": 142450,
-      "person_info": "http://vk.com/id115956763",
-      "exp": 35552784
-    },
-    {
-      "uid": 11759458,
-      "name": "Пиу",
-      "player_rating": 112458,
-      "shaman_rating": 157963,
-      "person_info": "http://vk.com/id173884925",
-      "exp": 16904024
-    },
-    {
-      "uid": 11588198,
-      "name": "Shirayuki",
-      "player_rating": 135778,
-      "shaman_rating": 218874,
-      "person_info": "https://my.mail.ru/mail/karina20_00/",
-      "exp": 30133296
-    },
-    {
-      "uid": 11527520,
-      "name": "Святой",
-      "player_rating": 101626,
-      "shaman_rating": 139781,
-      "person_info": "https://ok.ru/profile/508578124896",
-      "exp": 7096230
-    },
-    {
-      "uid": 11509932,
-      "name": "Джесси",
-      "player_rating": 141598,
-      "shaman_rating": 105541,
-      "person_info": "https://ok.ru/profile/561591115170",
-      "exp": 22306190
-    },
-    {
-      "uid": 11470233,
-      "name": "саня",
-      "player_rating": 155639,
-      "shaman_rating": 128222,
-      "person_info": "http://vk.com/id143660317",
-      "exp": 15065305
-    },
-    {
-      "uid": 11367389,
-      "name": "Злодейка",
-      "player_rating": 119628,
-      "shaman_rating": 106054,
-      "person_info": "http://vk.com/id176656709",
-      "exp": 19110576
-    },
-    {
-      "uid": 11231704,
-      "name": "Рарити",
-      "player_rating": 215223,
-      "shaman_rating": 235439,
-      "person_info": "http://vk.com/id134675751",
-      "exp": 33083165
-    },
-    {
-      "uid": 10716069,
-      "name": "meow",
-      "player_rating": 65554,
-      "shaman_rating": 112717,
-      "person_info": "https://ok.ru/profile/554975107798",
-      "exp": 6264768
-    },
-    {
-      "uid": 10681709,
-      "name": "Не Доверяй Мне",
-      "player_rating": 213545,
-      "shaman_rating": 101103,
-      "person_info": "http://vk.com/id196765476",
-      "exp": 42238696
-    },
-    {
-      "uid": 10464997,
-      "name": "Ночь",
-      "player_rating": 106733,
-      "shaman_rating": 163085,
-      "person_info": "http://vk.com/id203860721",
-      "exp": 13324846
-    },
-    {
-      "uid": 10270588,
-      "name": "Тильт",
-      "player_rating": 214777,
-      "shaman_rating": 104492,
-      "person_info": "http://vk.com/id145319859",
-      "exp": 42348067
-    },
-    {
-      "uid": 10089418,
-      "name": "Ирбис",
-      "player_rating": 111241,
-      "shaman_rating": 241449,
-      "person_info": "http://vk.com/id78289731",
-      "exp": 31056828
-    },
-    {
-      "uid": 9985558,
-      "name": "РЫЖАЯ БЕSТИЯ",
-      "player_rating": 100714,
-      "shaman_rating": 132858,
-      "person_info": "http://vk.com/id183286465",
-      "exp": 11796211
-    },
-    {
-      "uid": 9907267,
-      "name": "Сamellia",
-      "player_rating": 203362,
-      "shaman_rating": 225097,
-      "person_info": "https://ok.ru/profile/518105361227",
-      "exp": 38255975
-    },
-    {
-      "uid": 9905394,
-      "name": "l Madness l",
-      "player_rating": 110011,
-      "shaman_rating": 115170,
-      "person_info": "profile not found",
-      "exp": 15452116
-    },
-    {
-      "uid": 9824751,
-      "name": "Тэш",
-      "player_rating": 60034,
-      "shaman_rating": 101615,
-      "person_info": "http://vk.com/id199763465",
-      "exp": 4518159
-    },
-    {
-      "uid": 9660188,
-      "name": "l ДЕДА ШЕР l",
-      "player_rating": 93524,
-      "shaman_rating": 107450,
-      "person_info": "https://ok.ru/profile/510363194477",
-      "exp": 18732619
-    },
-    {
-      "uid": 9516530,
-      "name": "Химико",
-      "player_rating": 88620,
-      "shaman_rating": 172353,
-      "person_info": "http://www.odnoklassniki.ru/profile/556922274236",
-      "exp": 18700423
-    },
-    {
-      "uid": 9479297,
-      "name": "Муэрте",
-      "player_rating": 172805,
-      "shaman_rating": 157429,
-      "person_info": "http://vk.com/id9048061",
-      "exp": 26521369
-    },
-    {
-      "uid": 9466506,
-      "name": "INSIDE",
-      "player_rating": 261522,
-      "shaman_rating": 404179,
-      "person_info": "http://vk.com/id74925317",
-      "exp": 52059505
-    },
-    {
-      "uid": 9442454,
-      "name": "МглА",
-      "player_rating": 84298,
-      "shaman_rating": 140180,
-      "person_info": "profile not found",
-      "exp": 17958084
-    },
-    {
-      "uid": 9409679,
-      "name": "Рыжик",
-      "player_rating": 113798,
-      "shaman_rating": 149378,
-      "person_info": "https://www.facebook.com/app_scoped_user_id/100005040902671/",
-      "exp": 8191775
-    },
-    {
-      "uid": 9386729,
-      "name": "EVA",
-      "player_rating": 51343,
-      "shaman_rating": 125668,
-      "person_info": "https://fotostrana.ru/user/68489276",
-      "exp": 7848329
-    },
-    {
-      "uid": 9236896,
-      "name": "Kolibri",
-      "player_rating": 90704,
-      "shaman_rating": 121238,
-      "person_info": "http://vk.com/id140941136",
-      "exp": 19863729
-    },
-    {
-      "uid": 9196610,
-      "name": "ТИНКА",
-      "player_rating": 70995,
-      "shaman_rating": 113209,
-      "person_info": "http://my.mail.ru/mail/valya-1977ujl/",
-      "exp": 11972475
-    },
-    {
-      "uid": 9169749,
-      "name": "КроХа",
-      "player_rating": 120536,
-      "shaman_rating": 185402,
-      "person_info": "http://vk.com/id72241798",
-      "exp": 17977068
-    },
-    {
-      "uid": 9099973,
-      "name": "MORV",
-      "player_rating": 136120,
-      "shaman_rating": 127595,
-      "person_info": "https://ok.ru/profile/553217262769",
-      "exp": 16714619
-    },
-    {
-      "uid": 9077265,
-      "name": "Медик",
-      "player_rating": 83882,
-      "shaman_rating": 214513,
-      "person_info": "http://vk.com/id12932688",
-      "exp": 8848317
-    },
-    {
-      "uid": 9077963,
-      "name": "Ким",
-      "player_rating": 137578,
-      "shaman_rating": 139992,
-      "person_info": "profile not found",
-      "exp": 23664322
-    },
-    {
-      "uid": 8930222,
-      "name": "ИнквизициЯ",
-      "player_rating": 174901,
-      "shaman_rating": 361583,
-      "person_info": "http://vk.com/id22537511",
-      "exp": 32247475
-    },
-    {
-      "uid": 8876281,
-      "name": "Ichi Ni Kun Shi",
-      "player_rating": 88666,
-      "shaman_rating": 131150,
-      "person_info": "http://my.mail.ru/mail/lukiluk/",
-      "exp": 17434875
-    },
-    {
-      "uid": 8857784,
-      "name": "Зая Оникса",
-      "player_rating": 254880,
-      "shaman_rating": 462133,
-      "person_info": "http://vk.com/id193620026",
-      "exp": 21650354
-    },
-    {
-      "uid": 8843754,
-      "name": "Рогатик",
-      "player_rating": 90684,
-      "shaman_rating": 111227,
-      "person_info": "http://vk.com/id193526880",
-      "exp": 12738728
-    },
-    {
-      "uid": 8775959,
-      "name": "Lowskill",
-      "player_rating": 91708,
-      "shaman_rating": 108725,
-      "person_info": "https://my.mail.ru/mail/maxotron-0/",
-      "exp": 16073606
-    },
-    {
-      "uid": 8681222,
-      "name": "Teufel",
-      "player_rating": 88269,
-      "shaman_rating": 103837,
-      "person_info": "http://vk.com/id187743516",
-      "exp": 12778505
-    },
-    {
-      "uid": 8676689,
-      "name": "Listvenenko",
-      "player_rating": 137933,
-      "shaman_rating": 164409,
-      "person_info": "http://vk.com/id171036514",
-      "exp": 25088190
-    },
-    {
-      "uid": 8542206,
-      "name": "[ MY WAY ]",
-      "player_rating": 75979,
-      "shaman_rating": 136039,
-      "person_info": "https://ok.ru/profile/515051211595",
-      "exp": 7097993
-    },
-    {
-      "uid": 8520823,
-      "name": "[МедвЭD]",
-      "player_rating": 145255,
-      "shaman_rating": 219893,
-      "person_info": "http://vk.com/id191475985",
-      "exp": 21240982
-    },
-    {
-      "uid": 8505270,
-      "name": "Kill Paris",
-      "player_rating": 134820,
-      "shaman_rating": 119498,
-      "person_info": "http://vk.com/id85651222",
-      "exp": 26349891
-    },
-    {
-      "uid": 8492902,
-      "name": "рыжий хвостик",
-      "player_rating": 128436,
-      "shaman_rating": 225113,
-      "person_info": "http://vk.com/id11072801",
-      "exp": 20945049
-    },
-    {
       "uid": 21102181,
       "name": "Феник",
       "player_rating": 48297,
@@ -4012,18 +3212,18 @@ const playerData ={
     {
       "uid": 20927343,
       "name": "GM",
-      "player_rating": 147273,
-      "shaman_rating": 128422,
+      "player_rating": 147659,
+      "shaman_rating": 129065,
       "person_info": "http://vk.com/id557223758",
-      "exp": 30419576
+      "exp": 30485992
     },
     {
       "uid": 20850091,
       "name": "Свет",
-      "player_rating": 164131,
-      "shaman_rating": 140586,
+      "player_rating": 164156,
+      "shaman_rating": 140611,
       "person_info": "http://vk.com/id539665404",
-      "exp": 26689395
+      "exp": 26698342
     },
     {
       "uid": 20790533,
@@ -4039,7 +3239,7 @@ const playerData ={
       "player_rating": 365966,
       "shaman_rating": 659608,
       "person_info": "http://vk.com/id325777696",
-      "exp": 68735503
+      "exp": 68736003
     },
     {
       "uid": 19966735,
@@ -4052,10 +3252,10 @@ const playerData ={
     {
       "uid": 19901438,
       "name": "ЖИЖ",
-      "player_rating": 203639,
+      "player_rating": 203812,
       "shaman_rating": 100854,
       "person_info": "http://vk.com/id378165728",
-      "exp": 42629993
+      "exp": 42673096
     },
     {
       "uid": 19856468,
@@ -4083,11 +3283,11 @@ const playerData ={
     },
     {
       "uid": 19198621,
-      "name": "fwurious",
-      "player_rating": 99817,
-      "shaman_rating": 121118,
+      "name": "Lovesick",
+      "player_rating": 99960,
+      "shaman_rating": 121368,
       "person_info": "http://vk.com/id350352752",
-      "exp": 22676353
+      "exp": 22733328
     },
     {
       "uid": 19095348,
@@ -4204,10 +3404,10 @@ const playerData ={
     {
       "uid": 18020123,
       "name": "[BERSERK]",
-      "player_rating": 129962,
-      "shaman_rating": 146237,
+      "player_rating": 130251,
+      "shaman_rating": 146575,
       "person_info": "https://my.mail.ru/mail/lis.romka/",
-      "exp": 22033236
+      "exp": 22074022
     },
     {
       "uid": 17986739,
@@ -4223,7 +3423,7 @@ const playerData ={
       "player_rating": 114377,
       "shaman_rating": 117699,
       "person_info": "http://vk.com/id71468253",
-      "exp": 16951956
+      "exp": 16952456
     },
     {
       "uid": 17768354,
@@ -4356,10 +3556,10 @@ const playerData ={
     {
       "uid": 16363505,
       "name": "Grilaxe",
-      "player_rating": 113650,
-      "shaman_rating": 144410,
+      "player_rating": 113677,
+      "shaman_rating": 144412,
       "person_info": "profile not found",
-      "exp": 18545754
+      "exp": 18552784
     },
     {
       "uid": 16235789,
@@ -4376,6 +3576,806 @@ const playerData ={
       "shaman_rating": 118480,
       "person_info": "http://vk.com/id154762423",
       "exp": 16548507
+    },
+    {
+      "uid": 16197270,
+      "name": "Lieber Gott",
+      "player_rating": 124818,
+      "shaman_rating": 163442,
+      "person_info": "http://vk.com/id251750154",
+      "exp": 20676207
+    },
+    {
+      "uid": 16150974,
+      "name": "[Барс]",
+      "player_rating": 116906,
+      "shaman_rating": 137397,
+      "person_info": "http://vk.com/id270667118",
+      "exp": 19311951
+    },
+    {
+      "uid": 16186849,
+      "name": "ForeverWithYou",
+      "player_rating": 127358,
+      "shaman_rating": 212877,
+      "person_info": "http://vk.com/id271684154",
+      "exp": 23339157
+    },
+    {
+      "uid": 16179090,
+      "name": "Ларра",
+      "player_rating": 81091,
+      "shaman_rating": 115138,
+      "person_info": "http://vk.com/id133080728",
+      "exp": 10970871
+    },
+    {
+      "uid": 16076950,
+      "name": "Людмила",
+      "player_rating": 85151,
+      "shaman_rating": 153088,
+      "person_info": "http://vk.com/id132622384",
+      "exp": 10522605
+    },
+    {
+      "uid": 16010398,
+      "name": "Светлана",
+      "player_rating": 72611,
+      "shaman_rating": 130192,
+      "person_info": "http://vk.com/id226171803",
+      "exp": 6671267
+    },
+    {
+      "uid": 15965313,
+      "name": "[Delicacy]",
+      "player_rating": 55351,
+      "shaman_rating": 138019,
+      "person_info": "https://ok.ru/profile/580201516312",
+      "exp": 6671529
+    },
+    {
+      "uid": 15862694,
+      "name": "Пятница",
+      "player_rating": 81938,
+      "shaman_rating": 210001,
+      "person_info": "http://vk.com/id54073171",
+      "exp": 11165867
+    },
+    {
+      "uid": 15889763,
+      "name": "Сластёна",
+      "player_rating": 95290,
+      "shaman_rating": 127325,
+      "person_info": "http://vk.com/id216609633",
+      "exp": 10157072
+    },
+    {
+      "uid": 15809044,
+      "name": "117 Rus",
+      "player_rating": 43679,
+      "shaman_rating": 128834,
+      "person_info": "http://vk.com/id135683367",
+      "exp": 4465215
+    },
+    {
+      "uid": 15641999,
+      "name": "НеВлезайУбьёт",
+      "player_rating": 74604,
+      "shaman_rating": 123421,
+      "person_info": "http://vk.com/id262587216",
+      "exp": 16691161
+    },
+    {
+      "uid": 15627351,
+      "name": "Anjo Da Morte",
+      "player_rating": 52039,
+      "shaman_rating": 109819,
+      "person_info": "http://vk.com/id242011188",
+      "exp": 7731949
+    },
+    {
+      "uid": 15436864,
+      "name": "Луняшка",
+      "player_rating": 154825,
+      "shaman_rating": 185893,
+      "person_info": "http://vk.com/id228653519",
+      "exp": 28356354
+    },
+    {
+      "uid": 15389957,
+      "name": "похоть",
+      "player_rating": 69791,
+      "shaman_rating": 100780,
+      "person_info": "http://vk.com/id257629698",
+      "exp": 12161606
+    },
+    {
+      "uid": 15275031,
+      "name": "[ Диди ]",
+      "player_rating": 172265,
+      "shaman_rating": 155229,
+      "person_info": "https://ok.ru/profile/537612606973",
+      "exp": 17074755
+    },
+    {
+      "uid": 15265051,
+      "name": "[lИскреннийl]",
+      "player_rating": 107810,
+      "shaman_rating": 123137,
+      "person_info": "http://vk.com/id246289997",
+      "exp": 22042637
+    },
+    {
+      "uid": 15184113,
+      "name": "Governor",
+      "player_rating": 75376,
+      "shaman_rating": 125341,
+      "person_info": "http://vk.com/id218315382",
+      "exp": 12640010
+    },
+    {
+      "uid": 15051147,
+      "name": "ЛюБиМаЯ ТоБоЙ",
+      "player_rating": 102546,
+      "shaman_rating": 179808,
+      "person_info": "profile not found",
+      "exp": 14999190
+    },
+    {
+      "uid": 15011671,
+      "name": "чвк за пивом",
+      "player_rating": 106447,
+      "shaman_rating": 157390,
+      "person_info": "http://vk.com/id235227404",
+      "exp": 19033913
+    },
+    {
+      "uid": 15009224,
+      "name": "Кузя",
+      "player_rating": 124576,
+      "shaman_rating": 160812,
+      "person_info": "http://vk.com/id251680196",
+      "exp": 19944118
+    },
+    {
+      "uid": 14955687,
+      "name": "Dead rabbit",
+      "player_rating": 86901,
+      "shaman_rating": 139761,
+      "person_info": "https://my.mail.ru/inbox/smurovm/",
+      "exp": 13505080
+    },
+    {
+      "uid": 14854527,
+      "name": "ВкуS",
+      "player_rating": 324805,
+      "shaman_rating": 720141,
+      "person_info": "http://vk.com/id71229198",
+      "exp": 66798252
+    },
+    {
+      "uid": 14835076,
+      "name": "damn nation",
+      "player_rating": 89423,
+      "shaman_rating": 145702,
+      "person_info": "https://my.mail.ru/bk/tatjyana.w/",
+      "exp": 13544159
+    },
+    {
+      "uid": 14842451,
+      "name": "Рыжая Ведьма",
+      "player_rating": 81797,
+      "shaman_rating": 102772,
+      "person_info": "http://vk.com/id225097474",
+      "exp": 8634748
+    },
+    {
+      "uid": 14650915,
+      "name": "RIPPER",
+      "player_rating": 152368,
+      "shaman_rating": 386404,
+      "person_info": "http://vk.com/id215031199",
+      "exp": 15351518
+    },
+    {
+      "uid": 14537522,
+      "name": "АРАХНА",
+      "player_rating": 153515,
+      "shaman_rating": 112131,
+      "person_info": "https://my.mail.ru/bk/safonova1974/",
+      "exp": 24134769
+    },
+    {
+      "uid": 14593822,
+      "name": "[] Flamehost",
+      "player_rating": 109845,
+      "shaman_rating": 207110,
+      "person_info": "http://vk.com/id246753421",
+      "exp": 15124396
+    },
+    {
+      "uid": 14382731,
+      "name": "Незабудка",
+      "player_rating": 189703,
+      "shaman_rating": 149157,
+      "person_info": "http://www.odnoklassniki.ru/profile/456931168359",
+      "exp": 37055170
+    },
+    {
+      "uid": 14306465,
+      "name": "HeisenBerg",
+      "player_rating": 135914,
+      "shaman_rating": 367877,
+      "person_info": "http://vk.com/id147109547",
+      "exp": 29268026
+    },
+    {
+      "uid": 14354982,
+      "name": "SimkA",
+      "player_rating": 90713,
+      "shaman_rating": 209890,
+      "person_info": "https://ok.ru/profile/542932205376",
+      "exp": 11507760
+    },
+    {
+      "uid": 14280519,
+      "name": "Цык",
+      "player_rating": 142356,
+      "shaman_rating": 171561,
+      "person_info": "http://vk.com/id6413787",
+      "exp": 20020696
+    },
+    {
+      "uid": 14281094,
+      "name": "-АМУРА- -",
+      "player_rating": 93602,
+      "shaman_rating": 223966,
+      "person_info": "http://www.odnoklassniki.ru/profile/557892798930",
+      "exp": 5768973
+    },
+    {
+      "uid": 14111060,
+      "name": "Вовий I",
+      "player_rating": 115188,
+      "shaman_rating": 121339,
+      "person_info": "profile not found",
+      "exp": 19184120
+    },
+    {
+      "uid": 13664411,
+      "name": "Зловик",
+      "player_rating": 228471,
+      "shaman_rating": 388845,
+      "person_info": "http://my.mail.ru/mail/naaateee/",
+      "exp": 50148023
+    },
+    {
+      "uid": 13421283,
+      "name": "Икона",
+      "player_rating": 53179,
+      "shaman_rating": 102056,
+      "person_info": "profile not found",
+      "exp": 5905575
+    },
+    {
+      "uid": 13407857,
+      "name": "Кравц",
+      "player_rating": 123013,
+      "shaman_rating": 265155,
+      "person_info": "http://vk.com/id19328856",
+      "exp": 19921284
+    },
+    {
+      "uid": 13373842,
+      "name": "ВФС",
+      "player_rating": 96467,
+      "shaman_rating": 140458,
+      "person_info": "https://ok.ru/profile/510975683660",
+      "exp": 18980351
+    },
+    {
+      "uid": 13344634,
+      "name": "Ловушка",
+      "player_rating": 295674,
+      "shaman_rating": 160399,
+      "person_info": "https://ok.ru/profile/517508373842",
+      "exp": 69511706
+    },
+    {
+      "uid": 13294392,
+      "name": "Дядя Кот",
+      "player_rating": 196871,
+      "shaman_rating": 111707,
+      "person_info": "https://ok.ru/profile/572933662012",
+      "exp": 40013621
+    },
+    {
+      "uid": 13166671,
+      "name": "Ягуар",
+      "player_rating": 88256,
+      "shaman_rating": 111083,
+      "person_info": "http://my.mail.ru/mail/maks_opapr_10/",
+      "exp": 16685018
+    },
+    {
+      "uid": 13064701,
+      "name": "IZI",
+      "player_rating": 127063,
+      "shaman_rating": 185529,
+      "person_info": "http://vk.com/id29250964",
+      "exp": 17652910
+    },
+    {
+      "uid": 12873779,
+      "name": "Catharsis",
+      "player_rating": 199753,
+      "shaman_rating": 171289,
+      "person_info": "http://vk.com/id204359661",
+      "exp": 40598903
+    },
+    {
+      "uid": 12834702,
+      "name": "Алекс",
+      "player_rating": 190295,
+      "shaman_rating": 211048,
+      "person_info": "https://ok.ru/profile/527469985036",
+      "exp": 22457827
+    },
+    {
+      "uid": 12834794,
+      "name": "Страх",
+      "player_rating": 339390,
+      "shaman_rating": 386695,
+      "person_info": "http://vk.com/id187545651",
+      "exp": 71144248
+    },
+    {
+      "uid": 12724741,
+      "name": "Габриэль",
+      "player_rating": 90227,
+      "shaman_rating": 189317,
+      "person_info": "http://vk.com/id218642194",
+      "exp": 13917994
+    },
+    {
+      "uid": 12704475,
+      "name": "Пудра",
+      "player_rating": 266107,
+      "shaman_rating": 510362,
+      "person_info": "http://vk.com/id223963406",
+      "exp": 41903806
+    },
+    {
+      "uid": 12740019,
+      "name": "хвостТОМАхаха",
+      "player_rating": 89669,
+      "shaman_rating": 113734,
+      "person_info": "http://www.odnoklassniki.ru/profile/551466950745",
+      "exp": 13008507
+    },
+    {
+      "uid": 12558904,
+      "name": "Вичуга",
+      "player_rating": 315997,
+      "shaman_rating": 117246,
+      "person_info": "http://vk.com/id213506465",
+      "exp": 66666666
+    },
+    {
+      "uid": 12496843,
+      "name": "Май",
+      "player_rating": 185508,
+      "shaman_rating": 177202,
+      "person_info": "http://vk.com/id189672869",
+      "exp": 37009959
+    },
+    {
+      "uid": 12440427,
+      "name": "Лиара",
+      "player_rating": 256077,
+      "shaman_rating": 249098,
+      "person_info": "http://vk.com/id73187436",
+      "exp": 48890787
+    },
+    {
+      "uid": 12420004,
+      "name": "БANШИ",
+      "player_rating": 56593,
+      "shaman_rating": 125177,
+      "person_info": "http://vk.com/id195939341",
+      "exp": 5628521
+    },
+    {
+      "uid": 12263355,
+      "name": "Божий Одуванчик",
+      "player_rating": 116123,
+      "shaman_rating": 228390,
+      "person_info": "http://vk.com/id178544670",
+      "exp": 16593753
+    },
+    {
+      "uid": 12165051,
+      "name": "Ангелочек Фыр",
+      "player_rating": 96022,
+      "shaman_rating": 151042,
+      "person_info": "https://my.mail.ru/mail/smuk_93/",
+      "exp": 17542120
+    },
+    {
+      "uid": 12084695,
+      "name": "mylove",
+      "player_rating": 151342,
+      "shaman_rating": 175450,
+      "person_info": "http://vk.com/id182281061",
+      "exp": 34119467
+    },
+    {
+      "uid": 12083579,
+      "name": "[Осколок льда]",
+      "player_rating": 124818,
+      "shaman_rating": 176754,
+      "person_info": "http://vk.com/id209042049",
+      "exp": 9195842
+    },
+    {
+      "uid": 12067973,
+      "name": "Formalin",
+      "player_rating": 91682,
+      "shaman_rating": 119282,
+      "person_info": "http://vk.com/id139672236",
+      "exp": 16494161
+    },
+    {
+      "uid": 12040532,
+      "name": "совушка",
+      "player_rating": 66410,
+      "shaman_rating": 131338,
+      "person_info": "http://vk.com/id138415108",
+      "exp": 9132905
+    },
+    {
+      "uid": 11844985,
+      "name": "Несмеяна",
+      "player_rating": 108165,
+      "shaman_rating": 135880,
+      "person_info": "http://vk.com/id33160933",
+      "exp": 20056103
+    },
+    {
+      "uid": 11841585,
+      "name": "Sierra",
+      "player_rating": 105926,
+      "shaman_rating": 176664,
+      "person_info": "http://vk.com/id205986402",
+      "exp": 20577023
+    },
+    {
+      "uid": 11798907,
+      "name": "[Ушел]",
+      "player_rating": 168678,
+      "shaman_rating": 142450,
+      "person_info": "http://vk.com/id115956763",
+      "exp": 35552784
+    },
+    {
+      "uid": 11759458,
+      "name": "Пиу",
+      "player_rating": 112458,
+      "shaman_rating": 157963,
+      "person_info": "http://vk.com/id173884925",
+      "exp": 16904024
+    },
+    {
+      "uid": 11588198,
+      "name": "Shirayuki",
+      "player_rating": 135778,
+      "shaman_rating": 218874,
+      "person_info": "https://my.mail.ru/mail/karina20_00/",
+      "exp": 30133296
+    },
+    {
+      "uid": 11527520,
+      "name": "Святой",
+      "player_rating": 101626,
+      "shaman_rating": 139781,
+      "person_info": "https://ok.ru/profile/508578124896",
+      "exp": 7096230
+    },
+    {
+      "uid": 11509932,
+      "name": "Джесси",
+      "player_rating": 141598,
+      "shaman_rating": 105541,
+      "person_info": "https://ok.ru/profile/561591115170",
+      "exp": 22306690
+    },
+    {
+      "uid": 11470233,
+      "name": "саня",
+      "player_rating": 155701,
+      "shaman_rating": 128278,
+      "person_info": "http://vk.com/id143660317",
+      "exp": 15071795
+    },
+    {
+      "uid": 11367389,
+      "name": "Злодейка",
+      "player_rating": 119628,
+      "shaman_rating": 106054,
+      "person_info": "http://vk.com/id176656709",
+      "exp": 19110576
+    },
+    {
+      "uid": 11231704,
+      "name": "Рарити",
+      "player_rating": 215223,
+      "shaman_rating": 235439,
+      "person_info": "http://vk.com/id134675751",
+      "exp": 33083165
+    },
+    {
+      "uid": 10716069,
+      "name": "meow",
+      "player_rating": 65554,
+      "shaman_rating": 112717,
+      "person_info": "https://ok.ru/profile/554975107798",
+      "exp": 6264768
+    },
+    {
+      "uid": 10681709,
+      "name": "Не Доверяй Мне",
+      "player_rating": 213545,
+      "shaman_rating": 101103,
+      "person_info": "http://vk.com/id196765476",
+      "exp": 42238696
+    },
+    {
+      "uid": 10464997,
+      "name": "Ночь",
+      "player_rating": 106733,
+      "shaman_rating": 163085,
+      "person_info": "http://vk.com/id203860721",
+      "exp": 13324846
+    },
+    {
+      "uid": 10270588,
+      "name": "Тильт",
+      "player_rating": 214837,
+      "shaman_rating": 104492,
+      "person_info": "http://vk.com/id145319859",
+      "exp": 42373067
+    },
+    {
+      "uid": 10089418,
+      "name": "Ирбис",
+      "player_rating": 111241,
+      "shaman_rating": 241449,
+      "person_info": "http://vk.com/id78289731",
+      "exp": 31056828
+    },
+    {
+      "uid": 9985558,
+      "name": "РЫЖАЯ БЕSТИЯ",
+      "player_rating": 100714,
+      "shaman_rating": 132858,
+      "person_info": "http://vk.com/id183286465",
+      "exp": 11796261
+    },
+    {
+      "uid": 9907267,
+      "name": "Сamellia",
+      "player_rating": 203412,
+      "shaman_rating": 225139,
+      "person_info": "https://ok.ru/profile/518105361227",
+      "exp": 38261650
+    },
+    {
+      "uid": 9905394,
+      "name": "l Madness l",
+      "player_rating": 110444,
+      "shaman_rating": 115835,
+      "person_info": "profile not found",
+      "exp": 15565878
+    },
+    {
+      "uid": 9824751,
+      "name": "Тэш",
+      "player_rating": 60034,
+      "shaman_rating": 101615,
+      "person_info": "http://vk.com/id199763465",
+      "exp": 4518159
+    },
+    {
+      "uid": 9660188,
+      "name": "l ДЕДА ШЕР l",
+      "player_rating": 93524,
+      "shaman_rating": 107450,
+      "person_info": "https://ok.ru/profile/510363194477",
+      "exp": 18732619
+    },
+    {
+      "uid": 9516530,
+      "name": "Химико",
+      "player_rating": 88620,
+      "shaman_rating": 172353,
+      "person_info": "http://www.odnoklassniki.ru/profile/556922274236",
+      "exp": 18700423
+    },
+    {
+      "uid": 9479297,
+      "name": "Муэрте",
+      "player_rating": 172805,
+      "shaman_rating": 157429,
+      "person_info": "http://vk.com/id9048061",
+      "exp": 26521369
+    },
+    {
+      "uid": 9466506,
+      "name": "INSIDE",
+      "player_rating": 261522,
+      "shaman_rating": 404179,
+      "person_info": "http://vk.com/id74925317",
+      "exp": 52059505
+    },
+    {
+      "uid": 9442454,
+      "name": "МглА",
+      "player_rating": 84298,
+      "shaman_rating": 140180,
+      "person_info": "profile not found",
+      "exp": 17958084
+    },
+    {
+      "uid": 9409679,
+      "name": "Рыжик",
+      "player_rating": 113798,
+      "shaman_rating": 149378,
+      "person_info": "https://www.facebook.com/app_scoped_user_id/100005040902671/",
+      "exp": 8191775
+    },
+    {
+      "uid": 9386729,
+      "name": "EVA",
+      "player_rating": 51343,
+      "shaman_rating": 125668,
+      "person_info": "https://fotostrana.ru/user/68489276",
+      "exp": 7848329
+    },
+    {
+      "uid": 9236896,
+      "name": "Kolibri",
+      "player_rating": 90704,
+      "shaman_rating": 121238,
+      "person_info": "http://vk.com/id140941136",
+      "exp": 19863729
+    },
+    {
+      "uid": 9196610,
+      "name": "ТИНКА",
+      "player_rating": 70995,
+      "shaman_rating": 113209,
+      "person_info": "http://my.mail.ru/mail/valya-1977ujl/",
+      "exp": 11972475
+    },
+    {
+      "uid": 9169749,
+      "name": "КроХа",
+      "player_rating": 120536,
+      "shaman_rating": 185402,
+      "person_info": "http://vk.com/id72241798",
+      "exp": 17977068
+    },
+    {
+      "uid": 9099973,
+      "name": "MORV",
+      "player_rating": 136251,
+      "shaman_rating": 127805,
+      "person_info": "https://ok.ru/profile/553217262769",
+      "exp": 16730241
+    },
+    {
+      "uid": 9077265,
+      "name": "Медик",
+      "player_rating": 83882,
+      "shaman_rating": 214513,
+      "person_info": "http://vk.com/id12932688",
+      "exp": 8848317
+    },
+    {
+      "uid": 9077963,
+      "name": "Ким",
+      "player_rating": 137578,
+      "shaman_rating": 139992,
+      "person_info": "profile not found",
+      "exp": 23664322
+    },
+    {
+      "uid": 8930222,
+      "name": "ИнквизициЯ",
+      "player_rating": 174901,
+      "shaman_rating": 361583,
+      "person_info": "http://vk.com/id22537511",
+      "exp": 32247475
+    },
+    {
+      "uid": 8876281,
+      "name": "Ichi Ni Kun Shi",
+      "player_rating": 88666,
+      "shaman_rating": 131150,
+      "person_info": "http://my.mail.ru/mail/lukiluk/",
+      "exp": 17434875
+    },
+    {
+      "uid": 8857784,
+      "name": "Зая Оникса",
+      "player_rating": 254880,
+      "shaman_rating": 462133,
+      "person_info": "http://vk.com/id193620026",
+      "exp": 21650354
+    },
+    {
+      "uid": 8843754,
+      "name": "Рогатик",
+      "player_rating": 90684,
+      "shaman_rating": 111227,
+      "person_info": "http://vk.com/id193526880",
+      "exp": 12738728
+    },
+    {
+      "uid": 8775959,
+      "name": "Lowskill",
+      "player_rating": 91708,
+      "shaman_rating": 108725,
+      "person_info": "https://my.mail.ru/mail/maxotron-0/",
+      "exp": 16073606
+    },
+    {
+      "uid": 8681222,
+      "name": "Teufel",
+      "player_rating": 88269,
+      "shaman_rating": 103837,
+      "person_info": "http://vk.com/id187743516",
+      "exp": 12778505
+    },
+    {
+      "uid": 8676689,
+      "name": "Listvenenko",
+      "player_rating": 138084,
+      "shaman_rating": 164600,
+      "person_info": "http://vk.com/id171036514",
+      "exp": 25132106
+    },
+    {
+      "uid": 8542206,
+      "name": "[ MY WAY ]",
+      "player_rating": 75979,
+      "shaman_rating": 136039,
+      "person_info": "https://ok.ru/profile/515051211595",
+      "exp": 7097993
+    },
+    {
+      "uid": 8520823,
+      "name": "[МедвЭD]",
+      "player_rating": 145255,
+      "shaman_rating": 219893,
+      "person_info": "http://vk.com/id191475985",
+      "exp": 21240982
+    },
+    {
+      "uid": 8505270,
+      "name": "Kill Paris",
+      "player_rating": 134820,
+      "shaman_rating": 119498,
+      "person_info": "http://vk.com/id85651222",
+      "exp": 26349891
+    },
+    {
+      "uid": 8492902,
+      "name": "рыжий хвостик",
+      "player_rating": 128436,
+      "shaman_rating": 225113,
+      "person_info": "http://vk.com/id11072801",
+      "exp": 20945049
     }
   ]
 }

@@ -1,10 +1,11 @@
+let rank;
+
 document.getElementById('calculatorForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const submitButton = this.querySelector('.submit-button');
     submitButton.classList.add('loading');
     submitButton.disabled = true;
-
     let timeoutTriggered = false;
 
     const loadingTimeout = setTimeout(() => {
@@ -20,7 +21,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     }, 7000);
 
     try {
-        let data = await getData(document.getElementById('numberInput').value);
+        let data = await getData(document.getElementById('numberInput').value, true);
         clearTimeout(loadingTimeout);
 
         if (!data || data === 'errorMessage' || data === 'error') {
@@ -35,7 +36,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         data_player = [];
         for (let player of data.statistics) {
             if (!player.uid.exp) {
-                const data = await getUser(player.uid.uid);
+                const data = await getData(player.uid.uid, false);
                 if (data !== null) {
                     player.uid.exp = data.exp;
                     player.uid.name = data.name + " | покинул клан";
@@ -48,8 +49,15 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             }
         }
 
-        const resultBlock = document.getElementById('result');
+        rank = {
+            id: data.id,
+            name: data.info.name,
+            players_exp: data.rank.dailyPlayerExp,
+            clan_exp: data.rank.dailyTotalExp,
+            raiting_exp: data.rank.DailyTotalRaiting,
+        };
 
+        const resultBlock = document.getElementById('result');
         const resultHTML = `
             <div class="photo-container">
                 <img src="${data.info.emblem}" alt="emblem" />
@@ -61,11 +69,11 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             <div class="result-text-small">
                 Вождь: 
                     <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.leader_id.uid}" target="_blank">
-                        ${data.leader_id.name}[${data.leader_id.level}]
+                        ${data.leader_id.name} [${data.leader_id.level}]
                     </a> <br>
-                Уровень клана: ${data.rank.level} <br>
-                Опыт клана: ${data.rank.exp.toLocaleString()} <br>
-                Количество участников: ${data.size} <br>
+                Участников: ${data.size} <br>
+                Уровень клана: ${data.rank.level} [${data.rank.exp.toLocaleString()} XP] <br>
+                Рейтинг клана: ${data.rating_info.rating_score.toLocaleString()} <br>
                 Стоимость тотемов: ${data.size.toLocaleString() * 60} <br>
             </div>
             Статистика клана: <br>
@@ -105,13 +113,21 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                                 </tr>
                             `;
                         }).join('')}
+                        <tr class="result-additional no-data-table-excel">
+                            <td style="width: 5%;"></td>
+                            <td style="width: 20%;">Всего: </td>
+                            <td style="width: 20%; text-align: center;">${data.rank.dailyPlayerExp.toLocaleString()}</td>
+                            <td style="width: 20%; text-align: center;">${data.rank.dailyTotalExp.toLocaleString()}</td>
+                            <td style="width: 20%; text-align: center;">${data.rank.DailyTotalRaiting.toLocaleString()}</td>
+                            <td style="width: 20%; text-align: center;"></td>
+                        </tr>
                 </tbody>
             </table> <br>
             <div class="result-additional">
-                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToExcel('${data.info.name}')">Сохранить статистику в Excel</button>
+                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToExcel('')">Сохранить статистику в Excel</button>
             </div><br>
             <div class="result-additional">
-                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToJson('${data.info.name}')">Сохранить статистику в Json</button>
+                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToJson('')">Сохранить статистику в Json</button>
             </div><br>
             <div class="result-additional">~ Xorek</div>
         `;
@@ -149,57 +165,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     }
 });
 
-async function getData(id) {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 15000);
-    try {
-        const response = await fetch('https://squirrelsquery.yukkerike.ru/clan/' + id + '?json', {
-            signal: controller.signal
-        });
-        clearTimeout(timeoutId);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        if (error.name === 'AbortError') {
-            console.error('Запрос отменен по таймауту (15 секунд)');
-        } else {
-            console.error('Ошибка:', error);
-        }
-        return 'error';
-    }
-}
-
-async function getUser(id) {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 15000);
-    try {
-        const response = await fetch('https://squirrelsquery.yukkerike.ru/user/' + id + '?json', {
-            signal: controller.signal
-        });
-        clearTimeout(timeoutId);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        return '---';
-    }
-}
-
-document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('copy-button') || e.target.classList.contains('copy-button-profile')) {
-        const textToCopy = e.target.getAttribute('data-copy');
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            const originalText = e.target.textContent;
-            e.target.textContent = 'Сохранено!';
-            e.target.classList.add('copied');
-            setTimeout(() => {
-                e.target.textContent = originalText;
-                e.target.classList.remove('copied');
-            }, 2000);
-        });
-    }
-});
-
-async function saveStatisticsToExcel(name) {
+async function saveStatisticsToExcel() {
     const table = document.getElementById('clan-statistics');
     if (!table) {
         console.error("Таблица не найдена!");
@@ -208,22 +174,24 @@ async function saveStatisticsToExcel(name) {
 
     const workbook = new ExcelJS.Workbook();
     const sheet = workbook.addWorksheet('Статистика клана');
-
     const rows = table.querySelectorAll('tbody tr');
     const headerRow = table.querySelector('thead tr');
     const headers = Array.from(headerRow.querySelectorAll('td')).map(cell => cell.textContent.trim());
     const currentTime = new Date().toLocaleString();
 
-    sheet.addRow(["Название клана:", name]);
+    sheet.addRow(["ID клана:", rank.id]);
+    sheet.addRow(["Название клана:", rank.name]);
     sheet.addRow(["Дата сохранения:", currentTime]);
-    sheet.addRow(headers);
+    sheet.addRow(headers); 
 
     rows.forEach(row => {
-        const rowData = Array.from(row.querySelectorAll('td')).map(cell => cell.textContent.trim());
-        sheet.addRow(rowData);
+        if (!row.classList.contains('no-data-table-excel')) {
+            const rowData = Array.from(row.querySelectorAll('td')).map(cell => cell.textContent.trim());
+            sheet.addRow(rowData);
+        }
     });
 
-    const headerRowNumber = 3;
+    const headerRowNumber = 4;
     headers.forEach((_, colIndex) => {
         const cell = sheet.getRow(headerRowNumber).getCell(colIndex + 1);
         cell.fill = {
@@ -247,53 +215,101 @@ async function saveStatisticsToExcel(name) {
         }
     });
 
+    const skippedColumns = ["Всего: ", "", ""];
+    sheet.addRow([
+        ...skippedColumns,
+        rank.players_exp.toLocaleString(),
+        rank.clan_exp.toLocaleString(),
+        rank.raiting_exp.toLocaleString()
+    ]);
+
     sheet.columns.forEach(column => {
         column.width = 20;
     });
 
     const buffer = await workbook.xlsx.writeBuffer();
-    saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `clan-statistics-${name}.xlsx`);
+    saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `clan_statistics-${rank.name}.xlsx`);
 }
 
-function saveStatisticsToJson(name) {
+function saveStatisticsToJson() {
     var table = document.getElementById('clan-statistics');
     if (!table) {
         console.error("Таблица не найдена!");
         return;
     }
 
-    const data = [];
     const rows = table.querySelectorAll('tbody tr');
     const headerRow = table.querySelector('thead tr');
     const headers = Array.from(headerRow.querySelectorAll('td')).map(cell => cell.textContent);
     const currentTime = new Date().toLocaleString();
     const statistics = {
         date: currentTime,
-        name: name,
+        id: rank.id,
+        name: rank.name,
+        total_players_exp: rank.players_exp,
+        total_clan_exp: rank.clan_exp,
+        total_raiting_exp: rank.raiting_exp,
         headers: headers,
-        rows: []
+        rows: [],
     };
 
     rows.forEach((row) => {
-        const rowData = [];
-        const cells = row.querySelectorAll('td');
+        if (!row.classList.contains('no-data-table-excel')) {
+            const rowData = [];
+            const cells = row.querySelectorAll('td');
 
-        cells.forEach((cell, index) => {
-            let cellValue = cell.textContent.trim();
-            if (index !== 2) {
-                cellValue = cellValue.replace(/\u00A0/g, '');
+            cells.forEach((cell, index) => {
+                let cellValue = cell.textContent.trim();
+                if (index !== 2) {
+                    cellValue = cellValue.replace(/\u00A0/g, '');
             }
 
             rowData.push(cellValue);
-        });
+            });
 
-        statistics.rows.push(rowData);
+            statistics.rows.push(rowData);
+        }
     });
 
     const json = JSON.stringify(statistics, null, 2);
     const blob = new Blob([json], { type: 'application/json' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'clan-statistics.json';
+    link.download = 'clan_statistics-' + rank.id + '.json';
     link.click();
 }
+
+async function getData(id, is_clan) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+    try {
+        const response = await fetch('https://squirrelsquery.yukkerike.ru/' + (is_clan ? 'clan/' : 'user/') + id + '?json', {
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            console.error('Запрос отменен по таймауту (15 секунд)');
+        } else {
+            console.error('Ошибка:', error);
+        }
+        return 'error';
+    }
+}
+
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('copy-button') || e.target.classList.contains('copy-button-profile')) {
+        const textToCopy = e.target.getAttribute('data-copy');
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const originalText = e.target.textContent;
+            e.target.textContent = 'Сохранено!';
+            e.target.classList.add('copied');
+            setTimeout(() => {
+                e.target.textContent = originalText;
+                e.target.classList.remove('copied');
+            }, 2000);
+        });
+    }
+});

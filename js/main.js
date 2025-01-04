@@ -108,35 +108,39 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                         Внимание! Игрок является модератором чата!
                     </div>
                 ` : ``}
+
                 ${data.uid == 2640274 ? `
                     <div class="result-additional text-down">
                         ${data.name}, епта!
                     </div>
-                ` : ``}
-                ${data.uid == 20637878 ? `
+                ` : data.uid == 20637878 ? `
                     <div class="result-additional text-down">
                         Самая лучшая девочка!
                     </div>
-                ` : ``}
-                ${data.uid == 19198621 ? `
+                ` : data.uid == 19198621 ? `
                     <div class="result-additional text-down">
                         ${data.name} лучший качер!
-                        
                     </div>
-                ` : ``}
-                ${data.uid == 13143497 ? `
+                ` : data.uid == 13143497 ? `
                     <div class="result-additional text-down">
                         Ура, ${data.name}, хехехе
                     </div>
-                ` : ``}
-                ${data.uid == 17816916 ? `
+                ` : data.uid == 17816916 ? `
                     <div class="result-additional text-down">
                         ${data.name} не испытывает счастья...
+                    </div>
+                ` : data.uid == 14070362 ? `
+                    <div class="result-additional text-down">
+                        ${data.name} курит как паровоз!
                     </div>
                 ` : ``}
             </div>
             <div class="result-additional">
-                Статус: ${data.online == 1 ? 'В сети' : 'Не в сети'}
+                Статус: 
+                    ${data.uid == 14070362
+                        ? (data.online == 1 ? 'Еще не ушел курить...' : 'Ушел покурить...') 
+                        : (data.online == 1 ? 'В сети' : 'Не в сети')
+                    }
             </div><br>
             <div class="result-additional">
                 До ${nextLevel} уровня осталось: ${remainingXP.toLocaleString()} XP
