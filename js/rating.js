@@ -35,7 +35,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         }
 
         const resultBlock = document.getElementById('result');
-        const currentSeason = getCurrentSeason();
+        const currentSeason = getCurrentSeason() - 1;
         const maxRating = Math.max(...data.rating_history.map(x => x.rating));
 
         const resultHTML = `
@@ -193,5 +193,5 @@ function getCurrentSeason() {
     const knownSeason = 487;
     const today = new Date();
     const weeksDiff = Math.floor((today - knownSeasonStart) / (7 * 24 * 60 * 60 * 1000)); 
-    return knownSeason + weeksDiff;
+    return knownSeason + weeksDiff + 1;
 }

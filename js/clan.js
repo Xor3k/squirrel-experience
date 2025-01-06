@@ -74,7 +74,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 Участников: ${data.size} <br>
                 Уровень клана: ${data.rank.level} [${data.rank.exp.toLocaleString()} XP] <br>
                 Рейтинг клана: ${data.rating_info.rating_score.toLocaleString()} <br>
-                Стоимость тотемов: ${data.size.toLocaleString() * 60} <br>
+                Стоимость тотемов: ${(data.size * 60).toLocaleString()} <br>
             </div>
             Статистика клана: <br>
             <table id="clan-statistics" class="rating-table" style="width: 100%; text-align: left;">
@@ -184,13 +184,27 @@ async function saveStatisticsToExcel() {
     sheet.addRow(["Дата сохранения:", currentTime]);
     sheet.addRow(headers); 
 
+    // Запись статистики после заголовков. Убраны пробелы в числах + выранивание по левому краю.
     rows.forEach(row => {
         if (!row.classList.contains('no-data-table-excel')) {
-            const rowData = Array.from(row.querySelectorAll('td')).map(cell => cell.textContent.trim());
+            const rowData = Array.from(row.querySelectorAll('td')).map((cell, index) => {
+                const text = cell.textContent.trim();
+                if (index !== 2) {
+                    const value = parseFloat(text.replace(/\s+/g, ''));
+                    return value;
+                } else {
+                    return text;
+                }
+            });
             sheet.addRow(rowData);
+
+            rowData.forEach((cell, index) => {
+                const cellRef = sheet.getCell(sheet.rowCount, index + 1);
+                cellRef.alignment = { horizontal: 'left' };
+            });
         }
     });
-
+    
     const headerRowNumber = 4;
     headers.forEach((_, colIndex) => {
         const cell = sheet.getRow(headerRowNumber).getCell(colIndex + 1);
@@ -218,9 +232,9 @@ async function saveStatisticsToExcel() {
     const skippedColumns = ["Всего: ", "", ""];
     sheet.addRow([
         ...skippedColumns,
-        rank.players_exp.toLocaleString(),
-        rank.clan_exp.toLocaleString(),
-        rank.raiting_exp.toLocaleString()
+        rank.players_exp,
+        rank.clan_exp,
+        rank.raiting_exp
     ]);
 
     sheet.columns.forEach(column => {
@@ -228,7 +242,7 @@ async function saveStatisticsToExcel() {
     });
 
     const buffer = await workbook.xlsx.writeBuffer();
-    saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `clan_statistics-${rank.name}.xlsx`);
+    saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `clan_statistics-${rank.name}[${currentTime}].xlsx`);
 }
 
 function saveStatisticsToJson() {
