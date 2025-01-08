@@ -105,11 +105,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                                     <td style="width: 20%; text-align: center;">${item.samples.toLocaleString()}</td>
                                     <td style="width: 20%; text-align: center;">${item.exp.toLocaleString()}</td>
                                     <td style="width: 20%; text-align: center;">${item.clan_rating.toLocaleString()}</td>
-                                    ${item.uid.exp ? `
-                                        <td style="width: 20%; text-align: center;">${item.uid.exp.toLocaleString()}</td>
-                                    ` : `
-                                        <td style="width: 20%; text-align: center;">---</td>
-                                    `}
+                                    <td style="width: 20%; text-align: center;">${item.uid.exp.toLocaleString()}</td>
                                 </tr>
                             `;
                         }).join('')}
@@ -276,9 +272,14 @@ function saveStatisticsToJson() {
                 let cellValue = cell.textContent.trim();
                 if (index !== 2) {
                     cellValue = cellValue.replace(/\u00A0/g, '');
-            }
+                }
 
-            rowData.push(cellValue);
+                const parsedValue = parseFloat(cellValue.replace(/[^0-9.-]+/g, ''));
+                if (!isNaN(parsedValue)) {
+                    cellValue = parsedValue;
+                }
+
+                rowData.push(cellValue);
             });
 
             statistics.rows.push(rowData);
@@ -289,10 +290,10 @@ function saveStatisticsToJson() {
     const blob = new Blob([json], { type: 'application/json' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'clan_statistics-' + rank.id + '.json';
+    link.download = 'clan_statistics-' + rank.name + '[' + currentTime + '].json';
     link.click();
 }
-
+0
 async function getData(id, is_clan) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 15000);

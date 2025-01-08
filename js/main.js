@@ -58,20 +58,37 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                             Внимание! Игрок является модератором чата!
                         </div>
                     ` : ``}
-                    <div class="result-additional text-down">
-                        и набрал больше на ${(data.exp - 66045137).toLocaleString()} XP от максимального уровня.
-                        <button class="copy-button" data-copy="${(data.exp - 66045137).toLocaleString()}">Копировать</button>
-                    </div><br>
-                    <div class="result-additional">
-                        Общий опыт: ${(data.exp).toLocaleString()}
-                        <button class="copy-button" data-copy="${(data.exp).toLocaleString()}">Копировать</button>
-                    </div><br>
-                    <div class="result-additional">
+                </div>
+                <div class="result-additional">
+                    Статус: 
+                        ${data.online == 1 ? 'В сети' : 'Не в сети'}
+                </div><br>
+                <div class="result-additional text-down">
+                    и набрал больше на ${(data.exp - 66045137).toLocaleString()} XP от максимального уровня.
+                    <button class="copy-button" data-copy="${(data.exp - 66045137).toLocaleString()}">Копировать</button>
+                </div><br>
+                <div class="result-additional">
+                    ${data.person_info.profile == null || data.person_info.profile == '' ? `
+                        <div class="result-additional">
+                            Профиль не найден...
+                        </div>
+                        ` : `
                         <a class="header-link" href="${data.person_info.profile}" target="_blank">${data.person_info.profile}</a>
                         <button class="copy-button-profile" data-copy="${data.person_info.profile}">Копировать</button>
-                    </div><br>
-                    <div class="result-additional">~ Xorek</div>
-                </div>
+                    `} 
+                </div><br>
+                <div class="result-additional">
+                    У игрока максимальный уровень: 200, поздравлем!
+                    <button class="copy-button" data-copy="${(data.exp).toLocaleString()}">Копировать</button>
+                </div><br>
+                <div class="result-additional">
+                    Общий опыт: ${(data.exp).toLocaleString()}
+                    <button class="copy-button" data-copy="${(data.exp).toLocaleString()}">Копировать</button>
+                </div><br>
+                <div class="result-additional">
+                    <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Перейти на yukkerike.ru + UID</a>
+                </div><br> 
+                <div class="result-additional">~ Xorek</div>
             `;
             resultBlock.innerHTML = resultHTML;
             resultBlock.classList.remove('hidden');
@@ -117,10 +134,6 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     <div class="result-additional text-down">
                         Самая лучшая девочка!
                     </div>
-                ` : data.uid == 19198621 ? `
-                    <div class="result-additional text-down">
-                        ${data.name} лучший качер!
-                    </div>
                 ` : data.uid == 13143497 ? `
                     <div class="result-additional text-down">
                         Ура, ${data.name}, хехехе
@@ -131,16 +144,13 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     </div>
                 ` : data.uid == 14070362 ? `
                     <div class="result-additional text-down">
-                        ${data.name} курит как паровоз!
+                        ${data.name} - это частичка Nevermore
                     </div>
                 ` : ``}
             </div>
             <div class="result-additional">
                 Статус: 
-                    ${data.uid == 14070362
-                        ? (data.online == 1 ? 'Еще не ушел курить...' : 'Ушел покурить...') 
-                        : (data.online == 1 ? 'В сети' : 'Не в сети')
-                    }
+                    ${data.online == 1  ? 'В сети' : 'Не в сети'}
             </div><br>
             <div class="result-additional">
                 До ${nextLevel} уровня осталось: ${remainingXP.toLocaleString()} XP
