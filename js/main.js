@@ -19,7 +19,6 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         timeoutTriggered = true;
     }, 7000);
  
-    let currentLevel = 0;
     let nextLevel = 0;
     let requiredXP = 0;
 
@@ -88,6 +87,15 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 <div class="result-additional">
                     <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Перейти на yukkerike.ru + UID</a>
                 </div><br> 
+                ${data.clan_id !== 0 ? `
+                    <div class="result-additional">
+                        <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${data.clan_id}" target="_blank">Посмотреть статистику клана на yukkerike.ru, ID: ${data.clan_id}</a>
+                    </div><br>
+                ` : `
+                    <div class="result-additional">
+                        Игрок без клана
+                    </div><br>
+                `}
                 <div class="result-additional">~ Xorek</div>
             `;
             resultBlock.innerHTML = resultHTML;
@@ -99,7 +107,6 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 if (data.exp < xp) {
                     nextLevel = parseInt(level);
                     requiredXP = xp;
-                    currentLevel = nextLevel - 1;
                     break;
                 }
             }
@@ -177,6 +184,15 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             <div class="result-additional">
                 <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Перейти на yukkerike.ru + UID</a>
             </div><br> 
+            ${data.clan_id !== 0 ? `
+                <div class="result-additional">
+                    <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${data.clan_id}" target="_blank">Посмотреть статистику клана на yukkerike.ru, ID: ${data.clan_id}</a>
+                </div><br>
+            ` : `
+                <div class="result-additional">
+                    Игрок без клана
+                </div><br>
+            `}
             <div class="result-additional">~ Xorek</div>
         `;
         resultBlock.innerHTML = resultHTML;

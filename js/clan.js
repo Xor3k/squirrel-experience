@@ -293,7 +293,7 @@ function saveStatisticsToJson() {
     link.download = 'clan_statistics-' + rank.name + '[' + currentTime + '].json';
     link.click();
 }
-0
+
 async function getData(id, is_clan) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 15000);

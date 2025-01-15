@@ -1,7 +1,7 @@
 function fillRatingTable() {
     let date_reload = document.getElementById('text-date-reload-table');
     date_reload.innerText = 'Последнее обновление: ' + dateReloadTable.toLocaleString();
-
+    
     let table = document.getElementById('rating-table-data');
     let max_player_rating = Math.max(...playerData.users.map(p => p.player_rating));
     let max_shaman_rating = Math.max(...playerData.users.map(p => p.shaman_rating));
@@ -110,21 +110,6 @@ function makeButton() {
     });
 }
 
-document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('copy-button') || e.target.classList.contains('copy-button-profile')) {
-        const textToCopy = e.target.getAttribute('data-copy');
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            const originalText = e.target.textContent;
-            e.target.textContent = 'Скопировано!';
-            e.target.classList.add('copied');
-            setTimeout(() => {
-                e.target.textContent = originalText;
-                e.target.classList.remove('copied');
-            }, 2000);
-        });
-    }
-});
-
 function initializeSortableTable() {
     const tableBody = document.getElementById('rating-table-data');
     const headers = document.querySelectorAll('.sortable');
@@ -179,6 +164,21 @@ function sortTable(tableBody, columnIndex, direction) {
         tableBody.appendChild(row);
     });
 }
+
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('copy-button') || e.target.classList.contains('copy-button-profile')) {
+        const textToCopy = e.target.getAttribute('data-copy');
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const originalText = e.target.textContent;
+            e.target.textContent = 'Скопировано!';
+            e.target.classList.add('copied');
+            setTimeout(() => {
+                e.target.textContent = originalText;
+                e.target.classList.remove('copied');
+            }, 2000);
+        });
+    }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     fillRatingTable();

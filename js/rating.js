@@ -94,10 +94,10 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     <tr class="result-additional">
                         <td colspan="3" style="text-align: center;">История рейтинга пуста</td>
                     </tr>
-                ` : data.rating_history.filter(item => item.season !== currentSeason)
+                ` : data.rating_history.filter(item => item.season !== currentSeason + 1)
                     .sort((a, b) => b.season - a.season)
                     .map(item => {
-                        const dateRange = getSeasonStartDate(item.season, currentSeason);
+                        const dateRange = getSeasonStartDate(item.season, currentSeason + 1);
                         return `
                             <tr class="result-additional">
                                 <td style="width: 25%;">Сезон: ${(item.season).toLocaleString()}</td>
