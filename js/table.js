@@ -60,6 +60,8 @@ function fillRatingTable() {
         `;
         table.appendChild(row);
     });
+
+    innerImpontantText();
 }
 
 function detectLevelByExp(exp) {
@@ -163,6 +165,19 @@ function sortTable(tableBody, columnIndex, direction) {
         row.children[0].innerText = index + 1;
         tableBody.appendChild(row);
     });
+}
+
+function innerImpontantText(){
+    const importantText = document.getElementById('planet');
+    importantText.innerHTML = `
+        <span class="not-highlight-text-table">You found</span>S<span class="not-highlight-text-table">quirrel</span> EX<span class="not-highlight-text-table">perience!</span>
+        <div class="container-planet">
+            <div class="sphere"></div>
+            <div class="particle orbit1"></div>
+            <div class="particle orbit2"></div>
+            <div class="particle orbit3"></div>
+        </div>
+    `
 }
 
 document.addEventListener('click', function(e) {

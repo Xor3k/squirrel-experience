@@ -25,7 +25,6 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         clearTimeout(loadingTimeout);
         console.log('Спасибо за использование Squirrel EXperience!)');
         console.log('Данные предоставлены squirrelsquery.yukkerike.ru. Обязательно посетите https://squirrelsquery.yukkerike.ru для поддержки!');
-        console.log(data);
 
         if (!data || data === 'errorMessage'  || data === 'error') {
             if (timeoutTriggered) {
@@ -75,7 +74,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 Коэффициент. Чем он выше - тем лучше, ведь вероятность, что белочка станет шаманом так же становится выше.
             </div><br>
             <div class="result-additional">
-                Текущий сезон ${currentSeason} <br> Текущий рейтинг: ${(data.rating_info.rating_score).toLocaleString()} <br>
+                Текущий сезон ${currentSeason + 1} <br> Текущий рейтинг: ${(data.rating_info.rating_score).toLocaleString()} <br>
                 Максимальный рейтинг:
                 ${!data.rating_history || data.rating_history.length === 0 ? `
                     Данных нет
@@ -86,7 +85,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             <table class="rating-table" style="width: 100%; text-align: left;">
                 <tr class="result-additional">
                     <!-- 20 - 40 - 40 -->
-                    <td style="width: 25%;">Сезон: ${currentSeason}</td>
+                    <td style="width: 25%;">Сезон: ${currentSeason + 1}</td>
                     <td style="width: 30%; text-align: center;">Рейтинг: ${(data.rating_info.rating_score).toLocaleString()}</td>
                     <td style="width: 55%; text-align: right;">Сезон не завершен</td>
                 </tr>
@@ -193,5 +192,5 @@ function getCurrentSeason() {
     const knownSeason = 487;
     const today = new Date();
     const weeksDiff = Math.floor((today - knownSeasonStart) / (7 * 24 * 60 * 60 * 1000)); 
-    return knownSeason + weeksDiff + 1;
+    return knownSeason + weeksDiff;
 }

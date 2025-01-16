@@ -1,7 +1,6 @@
-const player = document.getElementById('player');
 const skillNames = {
     0: "Большой орех",
-    1: "Массове безумие",
+    1: "Массовое безумие",
     2: "Обожание шамана",
     3: "Дух моржа",
     4: "Тонкий лёд",
@@ -10,7 +9,7 @@ const skillNames = {
     7: "Цепкие коготки",
     8: "Аура шустрости",
     9: "Указатель",
-    10: "Отстуающий",
+    10: "Отстающий",
     11: "Воодушевление",
     12: "Друг шамана",
     13: "Телепорт",
@@ -74,7 +73,6 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         timeoutTriggered = true;
     }, 7000);
 
-
     try {
         const data = await getData(document.getElementById('player').value);
         clearTimeout(loadingTimeout);
@@ -93,8 +91,23 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         console.log('Спасибо за использование Squirrel EXperience!)');
         console.log('Данные предоставлены squirrelsquery.yukkerike.ru. Обязательно посетите https://squirrelsquery.yukkerike.ru для поддержки!');
         
-        
+        const professions = [
+            { name: "Наставник", start: 0, end: 16 },
+            { name: "Вожак", start: 17, end: 33 },
+            { name: "Творец", start: 34, end: 51 }
+        ];
+
+        const skillLevels = {};
+        data.shaman_skills.forEach(skill => {
+            skillLevels[skill.skillId] = skill.levelFree + skill.levelPaid;
+        });
+
         data.shaman_skills.sort((a, b) => a.skillId - b.skillId);
+
+        const playerProfession = professions.find(profession =>
+            data.shaman_skills.some(skill => skill.skillId >= profession.start && skill.skillId <= profession.end)
+        );
+
         const resultHTML = `
             <div class="result-text">
                 ${data.vip_info.vip_exist !== 0 && data.moderator > 0 ? ` 
@@ -118,24 +131,39 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Перейти на yukkerike.ru + UID</a>
             </div><br> 
             <div class="result-text">
-                У игрока сейчас выбран: 
-                ${data.shaman_skills[0].skillId <= 16 ? `
-                    Наставник
-                ` : data.shaman_skills[0].skillId >= 17 && data.shaman_skills[0].skillId <= 32 ? `
-                    Вожак
-                ` : data.shaman_skills[0].skillId >= 33 ? `
-                    Творец
-                ` : ''}
+                У игрока сейчас выбран: ${playerProfession.name}
             </div>
-            <div class="result-text-small">
-                Имеется ${data.shaman_skills.length} навыков из 17 возможных: <br>
-                ${data.shaman_skills.map((skill, index) => `
-                    <div class="result-additional text-for-skills">
-                        ${index + 1}. ${skillNames[skill.skillId]}: ${skill.levelFree + skill.levelPaid} / 6
+            <div class="result-text">    
+                ${playerProfession ? `
+                    <div class="result-text-small">
+                        Имеется ${data.shaman_skills.length} навыков из 17 возможных: <br>
+                        ${Array.from({ length: playerProfession.end - playerProfession.start + 1 }, (_, i) => {
+                            const skillId = playerProfession.start + i;
+                            
+                            if (skillId === 40) return ''; 
+
+                            const skillName = skillNames[skillId];
+                            const skillLevel = skillLevels[skillId] || 0;
+                            const className = skillLevel > 2 && skillLevel < 5 ? 'shaman-skills-part' : skillLevel == 6 ? 'shaman-skills-full' : '';
+
+                            // Исключение навыка с ID 40, так как он, почему-то, пропущен, получая навыки игрока от сервера в data.shaman_skills
+                            // В исключение имею ввиду то, что я вывожу как currentIndex. Номер навыка в профессии, исключая 40-ой ID навыка
+                            const filteredSkills = Array.from({ length: playerProfession.end - playerProfession.start + 1 })
+                                .map((_, i) => playerProfession.start + i)
+                                .filter(skillId => skillId !== 40);  
+                            const currentIndex = filteredSkills.indexOf(skillId);
+
+                            return `
+                                <div>
+                                    ${currentIndex + 1}. ${skillName}: 
+                                    <span class="${className}"> ${skillLevel} / 6 </span>
+                                </div>
+                            `;
+                        }).join('')}
                     </div>
-                `).join('')}
+                ` : ``}
             </div>
-            `;
+        `;
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');
     } catch (error) {

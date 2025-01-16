@@ -1,6 +1,9 @@
 /* Основные стили */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    font-weight: 500;
     margin: 0;
     padding: 0;
     display: flex;
@@ -47,7 +50,6 @@ input::-webkit-inner-spin-button {
 .form-label {
     display: block;
     margin-bottom: 0.5rem;
-    font-weight: 500;
 }
 
 .form-control {
@@ -68,9 +70,6 @@ input::-webkit-inner-spin-button {
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 1.4em;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 500;
-    letter-spacing: 0.5px;
 }
 
 .header-text-additional {
@@ -79,10 +78,6 @@ input::-webkit-inner-spin-button {
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 0.7em;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    line-height: 1.5;
     display: inline-block;
     position: relative;
 }
@@ -202,32 +197,27 @@ button.stats-button:hover {
 
 .result-text {
     font-size: 0.7em;
-    font-family: 'Nunito', sans-serif;
     font-weight: 200;
-    letter-spacing: 0.5px;
-    line-height: 1.5;
     margin-bottom: 15px;
     font-size: 1.1rem;
 }
 
 .result-text-small {
     font-size: 0.4em;
-    font-family: 'Nunito', sans-serif;
     font-weight: 200;
-    letter-spacing: 0.5px;
-    line-height: 1.5;
     margin-bottom: 15px;
     font-size: 0.97rem;
 }
 
 .result-additional {
-    font-size: 0.3em;
-    font-family: 'Nunito', sans-serif;
+    font-size: 0.9em;
     font-weight: 400;
     letter-spacing: 0.2px;
     color: #888;
     text-align: left;
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .stats-block {
@@ -271,7 +261,6 @@ button.stats-button:hover {
 
 .stats-table td:last-child {
     text-align: right;
-    font-weight: 500;
 }
 
 /* Стили кнопок */
@@ -378,13 +367,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /* Кнопки скопировать */
-.result-additional {
-    color: #888;
-    font-size: 0.9rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 .copy-button,
 .copy-button-profile {
@@ -441,8 +423,6 @@ input[type="number"]::-webkit-outer-spin-button {
     align-items: center;
     gap: 10px;
     font-size: 1.1em;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 500;
     margin-bottom: 10px;
 }
 
@@ -591,9 +571,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .header-text-table {
     font-size: 0.9em;
-    font-family: 'Nunito', sans-serif;
     font-weight: 400;
-    letter-spacing: 0.3px;
     color: #888;
     text-align: left;
     display: block;
@@ -604,10 +582,6 @@ input[type="number"]::-webkit-outer-spin-button {
     bottom: -35px;
     right: -5px;
     font-size: 0.9em;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    line-height: 1.5;
     text-align: center;
     color: #888; 
 }
@@ -624,20 +598,14 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .rating-table-lider td {
     font-size: 1.1em;
-    font-family: 'Nunito', sans-serif;
     font-weight: 300;
-    letter-spacing: 0.3px;
-    line-height: 1.5;
     color: #ffffffcc;
     padding: 5px 0px;
 }
 
 .rating-table-data td {
     font-size: 1.1em;
-    font-family: 'Nunito', sans-serif;
     font-weight: 300;
-    letter-spacing: 0.3px;
-    line-height: 1.5;
     color: #888;
 }
 
@@ -689,8 +657,12 @@ input[type="number"]::-webkit-outer-spin-button {
     cursor: not-allowed;
 }
 
-.text-for-skills{
-    color: #f0f0f0;
+.shaman-skills-full {
+    color: #f3c200;
+}
+
+.shaman-skills-part {
+    color: #33ff00;
 }
 
 .sortable {
@@ -710,9 +682,6 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-top: 5;
     margin-bottom: 5px;
     font-size: 1.3em;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 500;
-    letter-spacing: 0.5px;
 }
 
 .error-description {
@@ -720,10 +689,6 @@ input[type="number"]::-webkit-outer-spin-button {
     text-align: left;
     margin-bottom: 5px;
     font-size: 0.9em;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    line-height: 1.5;
     display: block;
 }
 
@@ -759,10 +724,6 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Important text title! */
 .highlight-text-title {
     font-size: 1.1em;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    line-height: 1.5;
     position: absolute;
     top: 0.5%;
     right: 1%;
@@ -793,7 +754,6 @@ input[type="number"]::-webkit-outer-spin-button {
 .find-text-under-table {
     font-size: 1.3em;
     font-weight: 400;
-    font-family: 'Nunito', sans-serif;
     color: #ffffffcc;
     text-align: center;
     margin-bottom: 20%;
