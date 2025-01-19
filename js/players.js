@@ -212,7 +212,7 @@ async function saveStatisticsToExcel(datalayers) {
     const headers = [
         "№", 
         "UID", 
-        "Name", 
+        "Ник", 
         "Общий опыт игрока", 
         "Уровень", 
         "Уровень шамана", 
