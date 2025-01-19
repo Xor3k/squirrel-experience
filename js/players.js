@@ -284,7 +284,7 @@ async function saveStatisticsToJson() {
     const headers = [
         "№", 
         "UID", 
-        "Name", 
+        "Ник", 
         "Общий опыт игрока", 
         "Уровень", 
         "Уровень шамана", 
