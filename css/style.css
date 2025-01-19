@@ -9,7 +9,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    min-height: 100vh;
     background-color: #1a1a1a;
     color: #ffffff;
 }
@@ -560,7 +559,7 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Табличка рейтинга спасенок */
 .container-table {
     max-width: 850px;
-    min-width: 648px;
+    min-width: 420px;
     margin: 0 auto;
     position: relative;
 }
@@ -592,7 +591,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .rating-table-lider tr {
     padding: 5px 0;
-    min-width: 648px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -847,4 +845,30 @@ input[type="number"]::-webkit-outer-spin-button {
     100% {
         transform: translate(-50%, -50%) rotate(360deg) translateX(22.5px) translateY(-3px) rotate(-360deg);
     }
+}
+
+.container-players {
+    width: 100%;
+    max-width: 550px;
+    padding: 10px;
+    margin-top: 50px;
+    z-index: 2;
+}
+
+.data-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.data-table tr {
+    border-bottom: 1px solid #ffffff1a;
+}
+
+.data-table tr:last-child {
+    border-bottom: none;
+}
+
+.data-table td {
+    padding: 8px 0;
 }

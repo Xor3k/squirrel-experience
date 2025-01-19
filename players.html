@@ -11,7 +11,7 @@
     </head>
     <body>
         <div class="highlight-text-title">Squirrel EXperience</div>
-        <div class="container">
+        <div class="container-players">
             <div class="header-text">
                 <nav class="navigation">
                     <a href="index.html" class="nav-link active">Калькулятор опыта</a>
@@ -19,28 +19,19 @@
                     <a href="comparison.html" class="nav-link">Режим сравнения</a>
                 </nav>
                 <span class="header-text-additional">
-                    Страничка рассчитывает количество опыта для получения следующего уровня. <br>
-                    Данные предоставляет сайт 
-                    <a class="header-link" target="_blank" href="https://squirrelsquery.yukkerike.ru/">squirrelsquery.yukkerike.ru</a>. 
-                    Обязательно посетите 
-                    <a class="header-link" target="_blank" href="https://squirrelsquery.yukkerike.ru/">squirrelsquery.yukkerike.ru</a> 
-                    для поддержки и большего получения информации!
+                    Страничка запрашивает несколько игроков, выводя в табличке общую информацию о них. Больше информации в файлах.<br>
+                    Имейте ввиду, проверки на повторные UID игроков нет. 
+                    Для получения данных нескольких игроков в форме ниже введите их UID через запятую, без пробелов ниже 
+                    <div class="curved-arrow"></div>
                     <br>
-                    Если у игрока уровень ниже 150-го - будет рассчитываться, сколько ему осталось до 150-го. <br>
-                    <a href="players.html" class="nav-link">Игроки.</a><br>
-                    <a href="skills.html" class="nav-link">Навыки.</a><br>
-                    <a href="table.html" class="nav-link">Табличка.</a><br>
-                    <a href="clan.html" class="nav-link">Статистика клана.</a><br>
-                    <a href="rating.html" class="nav-link">История рейтинга.</a><br>
                 </span>
             </div>
             <form id="calculatorForm" class="calculator-form">
                 <div class="form-group">
-                    <label for="numberInput" class="form-label">Введите UID игрока</label>
-                    <input name="squirrel-id" class="form-control" id="numberInput" required>
+                    <label for="numberInput" class="form-label">Введите UID игроков</label>
+                    <input name="squirrel-uids" class="form-control" id="numberInput" required placeholder="Например: 1,2,3">
                 </div>
-                <button type="submit" class="submit-button">Рассчитать</button>
-                <button type="button" id="statsButton" class="stats-button">Табличка опыта</button>
+                <button type="submit" class="submit-button">Получить</button>
             </form>
             <div id="result" class="result-block hidden">
                 <!-- результат -->
@@ -55,8 +46,10 @@
     
             <div class="text">Xorek!</div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/exceljs/dist/exceljs.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
         <script src="js/data_js/data_level.js"></script>
         <script src="js/browser.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/players.js"></script>
     </body>
 </html>
