@@ -1,4 +1,4 @@
-const dateReloadTable = "15.01.2025, 05:00 (GMT+3)";
+const dateReloadTable = "23.01.2025, 13:40 (GMT+3)";
 const playerData = {
   "users": [
     {
@@ -12,10 +12,10 @@ const playerData = {
     {
       "uid": 2415189,
       "name": "онимэ",
-      "player_rating": 246921,
-      "shaman_rating": 220048,
+      "player_rating": 247320,
+      "shaman_rating": 220589,
       "person_info": "http://vk.com/id156864890",
-      "exp": 51206505
+      "exp": 51310714
     },
     {
       "uid": 2400646,
@@ -732,10 +732,10 @@ const playerData = {
     {
       "uid": 47056,
       "name": "Царь",
-      "player_rating": 175380,
-      "shaman_rating": 145922,
+      "player_rating": 175747,
+      "shaman_rating": 146006,
       "person_info": "http://vk.com/id133118282",
-      "exp": 33927964
+      "exp": 34139889
     },
     {
       "uid": 48566,
@@ -916,10 +916,10 @@ const playerData = {
     {
       "uid": 6146928,
       "name": "селёдка",
-      "player_rating": 235874,
-      "shaman_rating": 115501,
+      "player_rating": 236547,
+      "shaman_rating": 115506,
       "person_info": "https://my.mail.ru/mail/nastuyha_30/",
-      "exp": 43968918
+      "exp": 44110348
     },
     {
       "uid": 6107049,
@@ -1228,10 +1228,10 @@ const playerData = {
     {
       "uid": 3393711,
       "name": "Дашуля [Elite]",
-      "player_rating": 323666,
-      "shaman_rating": 253906,
+      "player_rating": 323802,
+      "shaman_rating": 253939,
       "person_info": "http://vk.com/id166806786",
-      "exp": 37489237
+      "exp": 37513627
     },
     {
       "uid": 3374283,
@@ -1292,10 +1292,10 @@ const playerData = {
     {
       "uid": 3204561,
       "name": "Сестричка",
-      "player_rating": 166637,
-      "shaman_rating": 151779,
+      "player_rating": 166690,
+      "shaman_rating": 151795,
       "person_info": "https://ok.ru/profile/522083438976",
-      "exp": 27694619
+      "exp": 27698167
     },
     {
       "uid": 3155352,
@@ -1324,10 +1324,10 @@ const playerData = {
     {
       "uid": 3063608,
       "name": "zStep",
-      "player_rating": 188025,
-      "shaman_rating": 313571,
+      "player_rating": 188331,
+      "shaman_rating": 314269,
       "person_info": "http://vk.com/id76645363",
-      "exp": 36511010
+      "exp": 36577559
     },
     {
       "uid": 3051240,
@@ -1388,10 +1388,10 @@ const playerData = {
     {
       "uid": 2640274,
       "name": "Мрак",
-      "player_rating": 190521,
-      "shaman_rating": 523769,
+      "player_rating": 193220,
+      "shaman_rating": 529821,
       "person_info": "https://my.mail.ru/mail/miyashov00/",
-      "exp": 33604060
+      "exp": 34183474
     },
     {
       "uid": 2607086,
@@ -1420,10 +1420,10 @@ const playerData = {
     {
       "uid": 2279667,
       "name": "ИкарУс",
-      "player_rating": 109298,
-      "shaman_rating": 143206,
+      "player_rating": 109335,
+      "shaman_rating": 143218,
       "person_info": "https://my.mail.ru/list/syntex/",
-      "exp": 9865315
+      "exp": 9869200
     },
     {
       "uid": 2141604,
@@ -1436,10 +1436,10 @@ const playerData = {
     {
       "uid": 2084358,
       "name": "sunder",
-      "player_rating": 189437,
-      "shaman_rating": 156754,
+      "player_rating": 191178,
+      "shaman_rating": 157604,
       "person_info": "https://my.mail.ru/mail/sonyasanya/",
-      "exp": 36975361
+      "exp": 37356105
     },
     {
       "uid": 2067385,
@@ -1700,10 +1700,10 @@ const playerData = {
     {
       "uid": 14070362,
       "name": "Evermore",
-      "player_rating": 281439,
-      "shaman_rating": 262418,
+      "player_rating": 282829,
+      "shaman_rating": 263653,
       "person_info": "http://vk.com/id233427447",
-      "exp": 58678663
+      "exp": 59023958
     },
     {
       "uid": 14052847,
@@ -1716,10 +1716,10 @@ const playerData = {
     {
       "uid": 14035695,
       "name": "Цитадель",
-      "player_rating": 103400,
-      "shaman_rating": 124352,
+      "player_rating": 103904,
+      "shaman_rating": 125115,
       "person_info": "http://vk.com/id239217393",
-      "exp": 16991418
+      "exp": 17087240
     },
     {
       "uid": 14020764,
@@ -2004,10 +2004,10 @@ const playerData = {
     {
       "uid": 1413732,
       "name": "ХАТЬФУ",
-      "player_rating": 310063,
-      "shaman_rating": 415569,
+      "player_rating": 311155,
+      "shaman_rating": 417852,
       "person_info": "http://vk.com/id152935501",
-      "exp": 66636864
+      "exp": 66883801
     },
     {
       "uid": 411478,
@@ -2044,10 +2044,10 @@ const playerData = {
     {
       "uid": 348232,
       "name": "MY GUN",
-      "player_rating": 170498,
-      "shaman_rating": 149533,
+      "player_rating": 170775,
+      "shaman_rating": 149538,
       "person_info": "http://vk.com/id104062983",
-      "exp": 27867938
+      "exp": 27924799
     },
     {
       "uid": 322793,
@@ -2060,10 +2060,10 @@ const playerData = {
     {
       "uid": 307243,
       "name": "Рыжуля",
-      "player_rating": 331517,
-      "shaman_rating": 365583,
+      "player_rating": 336073,
+      "shaman_rating": 366671,
       "person_info": "http://vk.com/id88852410",
-      "exp": 63310773
+      "exp": 64415875
     },
     {
       "uid": 385722,
@@ -2348,10 +2348,10 @@ const playerData = {
     {
       "uid": 9419675,
       "name": "Сладкий яд",
-      "player_rating": 164823,
+      "player_rating": 164826,
       "shaman_rating": 290071,
       "person_info": "https://my.mail.ru/mail/moryakovaelena/",
-      "exp": 27567257
+      "exp": 27567340
     },
     {
       "uid": 9411327,
@@ -2436,18 +2436,18 @@ const playerData = {
     {
       "uid": 7976765,
       "name": "ПерчиК",
-      "player_rating": 131484,
-      "shaman_rating": 119727,
+      "player_rating": 131740,
+      "shaman_rating": 119958,
       "person_info": "http://vk.com/id184861257",
-      "exp": 24680400
+      "exp": 24741713
     },
     {
       "uid": 7943953,
       "name": "Героин",
-      "player_rating": 142745,
+      "player_rating": 142749,
       "shaman_rating": 124023,
       "person_info": "https://my.mail.ru/bk/ms.skripchenko/",
-      "exp": 24957249
+      "exp": 24957669
     },
     {
       "uid": 7897406,
@@ -2492,10 +2492,10 @@ const playerData = {
     {
       "uid": 7617662,
       "name": "Besame",
-      "player_rating": 278593,
-      "shaman_rating": 427158,
+      "player_rating": 279424,
+      "shaman_rating": 428957,
       "person_info": "http://vk.com/id38242091",
-      "exp": 58594175
+      "exp": 58826604
     },
     {
       "uid": 7590875,
@@ -2596,10 +2596,10 @@ const playerData = {
     {
       "uid": 7143549,
       "name": "РЫСЬка",
-      "player_rating": 188759,
-      "shaman_rating": 219322,
+      "player_rating": 188872,
+      "shaman_rating": 219424,
       "person_info": "https://ok.ru/profile/514007085541",
-      "exp": 38805093
+      "exp": 38824222
     },
     {
       "uid": 7128071,
@@ -2612,10 +2612,10 @@ const playerData = {
     {
       "uid": 7121394,
       "name": "Asta",
-      "player_rating": 72768,
-      "shaman_rating": 104184,
+      "player_rating": 73377,
+      "shaman_rating": 104595,
       "person_info": "http://vk.com/id36251627",
-      "exp": 11757022
+      "exp": 11863410
     },
     {
       "uid": 7019046,
@@ -2644,18 +2644,18 @@ const playerData = {
     {
       "uid": 6789314,
       "name": "ТлстЛуи",
-      "player_rating": 93348,
-      "shaman_rating": 110086,
+      "player_rating": 93355,
+      "shaman_rating": 110089,
       "person_info": "http://vk.com/id113953116",
-      "exp": 14209918
+      "exp": 14210653
     },
     {
       "uid": 6743147,
       "name": "дурной сон",
-      "player_rating": 235324,
-      "shaman_rating": 164758,
+      "player_rating": 235697,
+      "shaman_rating": 164780,
       "person_info": "http://vk.com/id181726722",
-      "exp": 35686934
+      "exp": 35764133
     },
     {
       "uid": 6674456,
@@ -2668,18 +2668,18 @@ const playerData = {
     {
       "uid": 6631598,
       "name": "Кот Барсик",
-      "player_rating": 99009,
-      "shaman_rating": 131854,
+      "player_rating": 99317,
+      "shaman_rating": 131866,
       "person_info": "http://vk.com/id181460922",
-      "exp": 13950515
+      "exp": 13992859
     },
     {
       "uid": 6549620,
       "name": "[]Zlata[]",
-      "player_rating": 133061,
-      "shaman_rating": 100343,
+      "player_rating": 133277,
+      "shaman_rating": 100481,
       "person_info": "https://ok.ru/profile/496190065714",
-      "exp": 11688920
+      "exp": 11706160
     },
     {
       "uid": 6526351,
@@ -2692,18 +2692,18 @@ const playerData = {
     {
       "uid": 6431441,
       "name": "[ Прокурор ]",
-      "player_rating": 125619,
-      "shaman_rating": 184931,
+      "player_rating": 125788,
+      "shaman_rating": 185051,
       "person_info": "http://vk.com/id180708954",
-      "exp": 19291308
+      "exp": 19302809
     },
     {
       "uid": 6415238,
       "name": "Мурзилка",
-      "player_rating": 135317,
-      "shaman_rating": 102019,
+      "player_rating": 135713,
+      "shaman_rating": 102263,
       "person_info": "http://vk.com/id133290441",
-      "exp": 8803204
+      "exp": 8835164
     },
     {
       "uid": 6410201,
@@ -2716,10 +2716,10 @@ const playerData = {
     {
       "uid": 6389463,
       "name": "Героин",
-      "player_rating": 334514,
-      "shaman_rating": 300961,
+      "player_rating": 334735,
+      "shaman_rating": 301220,
       "person_info": "https://my.mail.ru/mail/darya.dasha.p/",
-      "exp": 75553912
+      "exp": 75597448
     },
     {
       "uid": 6349468,
@@ -2748,10 +2748,10 @@ const playerData = {
     {
       "uid": 5967737,
       "name": "misery",
-      "player_rating": 205863,
-      "shaman_rating": 108153,
+      "player_rating": 207344,
+      "shaman_rating": 108359,
       "person_info": "http://vk.com/id164790985",
-      "exp": 40405125
+      "exp": 40724711
     },
     {
       "uid": 5951835,
@@ -2892,10 +2892,10 @@ const playerData = {
     {
       "uid": 5267770,
       "name": "[АРМЕЕЦ]",
-      "player_rating": 115604,
-      "shaman_rating": 106329,
+      "player_rating": 116521,
+      "shaman_rating": 107177,
       "person_info": "http://vk.com/id66893500",
-      "exp": 13922468
+      "exp": 14066024
     },
     {
       "uid": 5275871,
@@ -3100,10 +3100,10 @@ const playerData = {
     {
       "uid": 4334064,
       "name": "Mini",
-      "player_rating": 93929,
-      "shaman_rating": 100596,
+      "player_rating": 94071,
+      "shaman_rating": 100642,
       "person_info": "https://my.mail.ru/mail/www.nataly7/",
-      "exp": 11729971
+      "exp": 11746572
     },
     {
       "uid": 4315596,
@@ -3116,10 +3116,10 @@ const playerData = {
     {
       "uid": 4260771,
       "name": "Цербер",
-      "player_rating": 126706,
-      "shaman_rating": 100821,
+      "player_rating": 127344,
+      "shaman_rating": 101244,
       "person_info": "http://vk.com/id165619328",
-      "exp": 24101108
+      "exp": 24217755
     },
     {
       "uid": 4194384,
@@ -3212,10 +3212,10 @@ const playerData = {
     {
       "uid": 16150974,
       "name": "[Барс]",
-      "player_rating": 119072,
-      "shaman_rating": 139534,
+      "player_rating": 119491,
+      "shaman_rating": 139870,
       "person_info": "http://vk.com/id270667118",
-      "exp": 19783474
+      "exp": 19872949
     },
     {
       "uid": 16186849,
@@ -3276,10 +3276,10 @@ const playerData = {
     {
       "uid": 15809044,
       "name": "117 Rus",
-      "player_rating": 44782,
-      "shaman_rating": 129360,
+      "player_rating": 45444,
+      "shaman_rating": 129635,
       "person_info": "http://vk.com/id135683367",
-      "exp": 4566540
+      "exp": 4606110
     },
     {
       "uid": 15641999,
@@ -3300,10 +3300,10 @@ const playerData = {
     {
       "uid": 15436864,
       "name": "Луняшка",
-      "player_rating": 158781,
-      "shaman_rating": 187346,
+      "player_rating": 159914,
+      "shaman_rating": 187792,
       "person_info": "http://vk.com/id228653519",
-      "exp": 29143631
+      "exp": 29322177
     },
     {
       "uid": 15389957,
@@ -3311,7 +3311,7 @@ const playerData = {
       "player_rating": 69791,
       "shaman_rating": 100780,
       "person_info": "http://vk.com/id257629698",
-      "exp": 12162106
+      "exp": 12162606
     },
     {
       "uid": 15275031,
@@ -3340,10 +3340,10 @@ const playerData = {
     {
       "uid": 15051147,
       "name": "ЛюБиМаЯ ТоБоЙ",
-      "player_rating": 103159,
+      "player_rating": 103192,
       "shaman_rating": 180294,
-      "person_info": "profile not found",
-      "exp": 15082626
+      "person_info": "https://ok.ru/profile/525966696016",
+      "exp": 15090716
     },
     {
       "uid": 15011671,
@@ -3420,10 +3420,10 @@ const playerData = {
     {
       "uid": 14382731,
       "name": "Незабудка",
-      "player_rating": 191400,
-      "shaman_rating": 150235,
-      "person_info": "http://www.odnoklassniki.ru/profile/456931168359",
-      "exp": 37589139
+      "player_rating": 194082,
+      "shaman_rating": 151939,
+      "person_info": "https://ok.ru/profile/456931168359",
+      "exp": 38361396
     },
     {
       "uid": 14306465,
@@ -3500,18 +3500,18 @@ const playerData = {
     {
       "uid": 13344634,
       "name": "Ловушка",
-      "player_rating": 296220,
-      "shaman_rating": 160644,
+      "player_rating": 296437,
+      "shaman_rating": 160849,
       "person_info": "https://ok.ru/profile/517508373842",
-      "exp": 69712967
+      "exp": 69784031
     },
     {
       "uid": 13294392,
       "name": "Дядя Кот",
-      "player_rating": 198422,
-      "shaman_rating": 112501,
+      "player_rating": 199954,
+      "shaman_rating": 113244,
       "person_info": "https://ok.ru/profile/572933662012",
-      "exp": 40541986
+      "exp": 40886611
     },
     {
       "uid": 13166671,
@@ -3540,18 +3540,18 @@ const playerData = {
     {
       "uid": 12834702,
       "name": "Алекс",
-      "player_rating": 191648,
-      "shaman_rating": 212201,
+      "player_rating": 191974,
+      "shaman_rating": 212446,
       "person_info": "https://ok.ru/profile/527469985036",
-      "exp": 22764275
+      "exp": 22805838
     },
     {
       "uid": 12834794,
       "name": "Страх",
-      "player_rating": 339390,
-      "shaman_rating": 386695,
+      "player_rating": 339444,
+      "shaman_rating": 386764,
       "person_info": "http://vk.com/id187545651",
-      "exp": 71144298
+      "exp": 71155373
     },
     {
       "uid": 12724741,
@@ -3564,10 +3564,10 @@ const playerData = {
     {
       "uid": 12704475,
       "name": "Пудра",
-      "player_rating": 266245,
-      "shaman_rating": 510498,
+      "player_rating": 266252,
+      "shaman_rating": 510502,
       "person_info": "http://vk.com/id223963406",
-      "exp": 41921767
+      "exp": 41922389
     },
     {
       "uid": 12740019,
@@ -3580,10 +3580,10 @@ const playerData = {
     {
       "uid": 12558904,
       "name": "Вичуга",
-      "player_rating": 315997,
-      "shaman_rating": 117246,
+      "player_rating": 316039,
+      "shaman_rating": 117279,
       "person_info": "http://vk.com/id213506465",
-      "exp": 66666666
+      "exp": 66681291
     },
     {
       "uid": 12496843,
@@ -3596,10 +3596,10 @@ const playerData = {
     {
       "uid": 12440427,
       "name": "Лиара",
-      "player_rating": 256273,
-      "shaman_rating": 249099,
+      "player_rating": 256296,
+      "shaman_rating": 249100,
       "person_info": "http://vk.com/id73187436",
-      "exp": 48966578
+      "exp": 48977368
     },
     {
       "uid": 12420004,
@@ -3636,10 +3636,10 @@ const playerData = {
     {
       "uid": 12083579,
       "name": "[Осколок льда]",
-      "player_rating": 125251,
-      "shaman_rating": 176951,
+      "player_rating": 125582,
+      "shaman_rating": 177097,
       "person_info": "http://vk.com/id209042049",
-      "exp": 9268033
+      "exp": 9303079
     },
     {
       "uid": 12067973,
@@ -3708,18 +3708,18 @@ const playerData = {
     {
       "uid": 11509932,
       "name": "Джесси",
-      "player_rating": 141616,
+      "player_rating": 141618,
       "shaman_rating": 105541,
       "person_info": "https://ok.ru/profile/561591115170",
-      "exp": 22309755
+      "exp": 22310441
     },
     {
       "uid": 11470233,
       "name": "саня",
-      "player_rating": 156813,
-      "shaman_rating": 128721,
+      "player_rating": 156851,
+      "shaman_rating": 128740,
       "person_info": "http://vk.com/id143660317",
-      "exp": 15208015
+      "exp": 15210970
     },
     {
       "uid": 11367389,
@@ -3764,10 +3764,10 @@ const playerData = {
     {
       "uid": 10270588,
       "name": "Тильт",
-      "player_rating": 215486,
-      "shaman_rating": 104589,
+      "player_rating": 216729,
+      "shaman_rating": 104682,
       "person_info": "http://vk.com/id145319859",
-      "exp": 42596575
+      "exp": 42921485
     },
     {
       "uid": 10089418,
@@ -3783,23 +3783,23 @@ const playerData = {
       "player_rating": 100742,
       "shaman_rating": 132860,
       "person_info": "http://vk.com/id183286465",
-      "exp": 11799356
+      "exp": 11799406
     },
     {
       "uid": 9907267,
       "name": "Сamellia",
-      "player_rating": 203613,
-      "shaman_rating": 225207,
+      "player_rating": 203733,
+      "shaman_rating": 225275,
       "person_info": "https://ok.ru/profile/518105361227",
-      "exp": 38291160
+      "exp": 38305015
     },
     {
       "uid": 9905394,
       "name": "l Madness l",
-      "player_rating": 113595,
-      "shaman_rating": 120142,
-      "person_info": "profile not found",
-      "exp": 16313227
+      "player_rating": 115439,
+      "shaman_rating": 121619,
+      "person_info": "https://ok.ru/profile/553165981001",
+      "exp": 16701980
     },
     {
       "uid": 9824751,
@@ -3892,10 +3892,10 @@ const playerData = {
     {
       "uid": 9099973,
       "name": "MORV",
-      "player_rating": 137632,
-      "shaman_rating": 129381,
+      "player_rating": 138293,
+      "shaman_rating": 129999,
       "person_info": "https://ok.ru/profile/553217262769",
-      "exp": 16979374
+      "exp": 17036408
     },
     {
       "uid": 9077265,
@@ -3964,10 +3964,10 @@ const playerData = {
     {
       "uid": 8676689,
       "name": "Listvenenko",
-      "player_rating": 138754,
-      "shaman_rating": 165393,
+      "player_rating": 139249,
+      "shaman_rating": 166074,
       "person_info": "http://vk.com/id171036514",
-      "exp": 25302906
+      "exp": 25401947
     },
     {
       "uid": 8542206,
@@ -4004,26 +4004,26 @@ const playerData = {
     {
       "uid": 21102181,
       "name": "Феник",
-      "player_rating": 48949,
-      "shaman_rating": 251563,
+      "player_rating": 49093,
+      "shaman_rating": 252609,
       "person_info": "http://vk.com/id739171933",
-      "exp": 9936259
+      "exp": 9959124
     },
     {
       "uid": 20927343,
-      "name": "l",
-      "player_rating": 149330,
-      "shaman_rating": 134967,
+      "name": "GM",
+      "player_rating": 151617,
+      "shaman_rating": 137693,
       "person_info": "http://vk.com/id557223758",
-      "exp": 31045276
+      "exp": 31556900
     },
     {
       "uid": 20850091,
       "name": "Истерия",
-      "player_rating": 164594,
-      "shaman_rating": 140904,
+      "player_rating": 165024,
+      "shaman_rating": 141404,
       "person_info": "http://vk.com/id539665404",
-      "exp": 26770923
+      "exp": 26864836
     },
     {
       "uid": 20790533,
@@ -4036,34 +4036,34 @@ const playerData = {
     {
       "uid": 20227110,
       "name": "Escape",
-      "player_rating": 366022,
-      "shaman_rating": 659866,
+      "player_rating": 366366,
+      "shaman_rating": 659979,
       "person_info": "http://vk.com/id325777696",
-      "exp": 68745803
+      "exp": 68807881
     },
     {
       "uid": 19966735,
       "name": "Sirokko",
-      "player_rating": 162778,
-      "shaman_rating": 125933,
+      "player_rating": 162893,
+      "shaman_rating": 126018,
       "person_info": "http://vk.com/id322470491",
-      "exp": 21245568
+      "exp": 21257534
     },
     {
       "uid": 19901438,
       "name": "ЖИЖ",
-      "player_rating": 203997,
-      "shaman_rating": 100857,
+      "player_rating": 204550,
+      "shaman_rating": 100858,
       "person_info": "http://vk.com/id378165728",
-      "exp": 42757289
+      "exp": 42873419
     },
     {
       "uid": 19856468,
       "name": "Tyrant",
-      "player_rating": 41322,
-      "shaman_rating": 127929,
+      "player_rating": 41325,
+      "shaman_rating": 127930,
       "person_info": "http://vk.com/id367359199",
-      "exp": 7935748
+      "exp": 7936063
     },
     {
       "uid": 19399886,
@@ -4083,11 +4083,11 @@ const playerData = {
     },
     {
       "uid": 19198621,
-      "name": "blissful",
-      "player_rating": 100722,
-      "shaman_rating": 123108,
+      "name": "incubus",
+      "player_rating": 101827,
+      "shaman_rating": 125013,
       "person_info": "http://vk.com/id350352752",
-      "exp": 23008289
+      "exp": 23380364
     },
     {
       "uid": 19095348,
@@ -4100,10 +4100,10 @@ const playerData = {
     {
       "uid": 19085018,
       "name": "Aristokratka",
-      "player_rating": 109331,
-      "shaman_rating": 120694,
+      "player_rating": 109340,
+      "shaman_rating": 120714,
       "person_info": "http://vk.com/id341036120",
-      "exp": 24500206
+      "exp": 24501496
     },
     {
       "uid": 18764457,
@@ -4188,10 +4188,10 @@ const playerData = {
     {
       "uid": 18145252,
       "name": "Despair",
-      "player_rating": 396276,
-      "shaman_rating": 577939,
+      "player_rating": 396919,
+      "shaman_rating": 579255,
       "person_info": "http://vk.com/id312873138",
-      "exp": 95406914
+      "exp": 95577254
     },
     {
       "uid": 18040287,
@@ -4204,10 +4204,10 @@ const playerData = {
     {
       "uid": 18020123,
       "name": "[BERSERK]",
-      "player_rating": 132129,
-      "shaman_rating": 149524,
+      "player_rating": 132605,
+      "shaman_rating": 150321,
       "person_info": "https://my.mail.ru/mail/lis.romka/",
-      "exp": 22387787
+      "exp": 22452550
     },
     {
       "uid": 17986739,
@@ -4220,16 +4220,16 @@ const playerData = {
     {
       "uid": 17902038,
       "name": "ЭхО",
-      "player_rating": 114377,
+      "player_rating": 114421,
       "shaman_rating": 117699,
       "person_info": "http://vk.com/id71468253",
-      "exp": 16952456
+      "exp": 16957076
     },
     {
       "uid": 17768354,
       "name": "Madness",
       "player_rating": 72672,
-      "shaman_rating": 143053,
+      "shaman_rating": 143054,
       "person_info": "http://vk.com/id292291202",
       "exp": 9894533
     },
@@ -4244,10 +4244,10 @@ const playerData = {
     {
       "uid": 17714933,
       "name": "SoftlySlowly",
-      "player_rating": 154237,
-      "shaman_rating": 212905,
+      "player_rating": 154250,
+      "shaman_rating": 212921,
       "person_info": "http://vk.com/id257940725",
-      "exp": 28479288
+      "exp": 28490853
     },
     {
       "uid": 17703525,
@@ -4356,10 +4356,10 @@ const playerData = {
     {
       "uid": 16363505,
       "name": "Grilaxe",
-      "player_rating": 114042,
-      "shaman_rating": 144503,
-      "person_info": "profile not found",
-      "exp": 18645829
+      "player_rating": 114526,
+      "shaman_rating": 144595,
+      "person_info": "https://ok.ru/profile/560492923204",
+      "exp": 18753514
     },
     {
       "uid": 16235789,

@@ -21,6 +21,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
  
     let nextLevel = 0;
     let requiredXP = 0;
+    let percent = 0;
 
     try {
         let data = await getData(document.getElementById('numberInput').value);
@@ -63,7 +64,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                         ${data.online == 1 ? 'В сети' : 'Не в сети'}
                 </div><br>
                 <div class="result-additional text-down">
-                    и набрал больше на ${(data.exp - 66045137).toLocaleString()} XP от максимального уровня.
+                    и набрал больше на ${(data.exp - 66045137).toLocaleString()} XP от максимального уровня.<br>
+                    Процент выполнения уровня: 100%
                     <button class="copy-button" data-copy="${(data.exp - 66045137).toLocaleString()}">Копировать</button>
                 </div><br>
                 <div class="result-additional">
@@ -105,8 +107,11 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             for (let level in levelRequirements) {
                 let xp = levelRequirements[level];
                 if (data.exp < xp) {
-                    nextLevel = parseInt(level);
+                    let currentLevelExp = levelRequirements[level - 1];
+                    let nextLevelExp = levelRequirements[level];
+                    nextLevel = level;
                     requiredXP = xp;
+                    percent = ((data.exp - currentLevelExp)/(nextLevelExp - currentLevelExp) * 100).toFixed(2);
                     break;
                 }
             }
@@ -125,7 +130,6 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                         <span class="moderator-color">${data.name}</span> 
                     ` : ` ${data.name} `
                 }
-
                 | Текущий уровень: ${data.level} <br>
                 ${data.moderator == 1 ? `
                     <div class="result-additional warning-color">
@@ -160,7 +164,9 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     ${data.online == 1  ? 'В сети' : 'Не в сети'}
             </div><br>
             <div class="result-additional">
-                До ${nextLevel} уровня осталось: ${remainingXP.toLocaleString()} XP
+                До ${nextLevel} уровня осталось: ${remainingXP.toLocaleString()} XP <br>
+                ${ data.level > 150 ? ` Процент выполнения уровня: ${percent}%` 
+                : `Чтобы узнать показатель прогресса, необходим 150-ый уровень!`} 
                 <button class="copy-button" data-copy="${remainingXP.toLocaleString()}">Копировать</button>
             </div><br>
             <div class="result-additional">

@@ -46,6 +46,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                         exp: data.exp,
                         level: data.level,
                         clan_id: data.clan_id || "Без клана",
+                        shaman_exp: data.shaman_exp,
                         shaman_level: data.shaman_level,
                         rating_player: data.rating_info.rating_player,
                         rating_shaman: data.rating_info.rating_shaman,
@@ -56,14 +57,14 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     break;
                 } catch (error) {
                     clearTimeout(timeoutId);
-                    console.log(`Попытка ${attempt} для ID ${id} не удалась.`);
+                    console.log(`Попытка ${attempt} для UID ${id} не удалась.`);
         
                     if (error.name === "AbortError") {
-                        console.log(`Запрос для ID ${id} был прерван по таймауту.`);
+                        console.log(`Запрос для UID ${id} был прерван по таймауту.`);
                     }
         
                     if (attempt === maxRetries) {
-                        console.log(`Не удалось получить данные для ID ${id} после ${maxRetries} попыток.`);
+                        console.log(`Не удалось получить данные для UID ${id} после ${maxRetries} попыток.`);
                     } else {
                         await new Promise(resolve => setTimeout(resolve, delay));
                     }
@@ -72,7 +73,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         
             if (!success) {
                 failedIds.push(id);
-                console.log(`ID ${id} пропущен после всех попыток.`);
+                console.log(`UID ${id} пропущен после всех попыток.`);
             }
         }
         clearTimeout(loadingTimeout);
@@ -86,7 +87,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         const resultHTML = `
             Всего игроков: ${players.length} <br>
             ${!failedIds || failedIds.length === 0 ? '' : 
-                `Не удалось получить ${failedIds.length} игрока(ов) c UID: <br>
+                `<br><span class="result-additional"> Не удалось получить ${failedIds.length} игрока(ов) c UID: </span>
                 <span class="result-additional">${failedIds.map(id => `${id}`).join(', ')}</span>`}
             <br>
             Данные игроков: <br>
@@ -210,16 +211,17 @@ async function saveStatisticsToExcel(datalayers) {
     const currentTime = new Date().toLocaleString();
 
     const headers = [
-        "№", 
-        "UID", 
-        "Ник", 
-        "Общий опыт игрока", 
-        "Уровень", 
-        "Уровень шамана", 
-        "Кол-во игр", 
-        "Спасено белок", 
-        "ID клана", 
-        "Максимум рейтинга", 
+        "№",
+        "UID",
+        "Ник",
+        "Общий опыт игрока",
+        "Уровень",
+        "Опыт шамана",
+        "Уровень шамана",
+        "Кол-во игр",
+        "Спасено белок",
+        "ID клана",
+        "Максимум рейтинга",
         "Профиль"
     ];
 
@@ -245,6 +247,7 @@ async function saveStatisticsToExcel(datalayers) {
             player.name,
             player.exp,
             player.level,
+            player.shaman_exp,
             player.shaman_level,
             player.rating_player,
             player.rating_shaman,
@@ -282,16 +285,17 @@ async function saveStatisticsToJson() {
     const currentTime = new Date().toLocaleString();
 
     const headers = [
-        "№", 
-        "UID", 
-        "Ник", 
-        "Общий опыт игрока", 
-        "Уровень", 
-        "Уровень шамана", 
-        "Кол-во игр", 
-        "Спасено белок", 
-        "ID клана", 
-        "Максимум рейтинга", 
+        "№",
+        "UID",
+        "Ник",
+        "Общий опыт игрока",
+        "Уровень",
+        "Опыт шамана",
+        "Уровень шамана",
+        "Кол-во игр",
+        "Спасено белок",
+        "ID клана",
+        "Максимум рейтинга",
         "Профиль"
     ];
 
@@ -301,6 +305,7 @@ async function saveStatisticsToJson() {
         name: player.name,
         exp: player.exp,
         level: player.level,
+        shaman_exp: player.shaman_exp,
         shaman_level: player.shaman_level,
         rating_player: player.rating_player,
         rating_shaman: player.rating_shaman,
@@ -310,7 +315,7 @@ async function saveStatisticsToJson() {
     }));
 
     const jsonData = {
-        timeSaved: currentTime,
+        date: currentTime,
         headers: headers,
         rows: playersData
     };
