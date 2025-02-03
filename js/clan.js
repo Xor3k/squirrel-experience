@@ -237,31 +237,8 @@ async function saveStatisticsToExcel() {
         column.width = 20;
     });
 
-    // const buffer = await workbook.xlsx.writeBuffer();
-    // saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `clan_statistics-${rank.name}[${currentTime}].xlsx`);
-
     const buffer = await workbook.xlsx.writeBuffer();
-    const blob = new Blob([buffer], {
-        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    });
-
-    const url = URL.createObjectURL(blob);
-    const filename = `clan_statistics-${rank.name}[${currentTime}].xlsx`;
-
-    console.log(filename);
-    if (navigator.canShare && navigator.canShare({ files: [new File([blob], filename)] })) {
-        const file = new File([blob], filename, { type: blob.type });
-        navigator.share({ files: [file], title: filename }).catch(console.error);
-    } else {
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-
-    URL.revokeObjectURL(url);
+    saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `clan_statistics-${rank.name}[${currentTime}].xlsx`);
 }
 
 function saveStatisticsToJson() {
@@ -309,36 +286,12 @@ function saveStatisticsToJson() {
         }
     });
 
-    // const json = JSON.stringify(statistics, null, 2);
-    // const blob = new Blob([json], { type: 'application/json' });
-    // const link = document.createElement('a');
-    // link.href = URL.createObjectURL(blob);
-    // link.download = 'clan_statistics-' + rank.name + '[' + currentTime + '].json';
-    // link.click();
-
     const json = JSON.stringify(statistics, null, 2);
-    const blob = new Blob([json], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const filename = `clan_statistics-${rank.name}[${currentTime}].json`;
-
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-    if (isSafari) {
-        const reader = new FileReader();
-        reader.onloadend = function () {
-            location.href = reader.result;
-        };
-        reader.readAsDataURL(blob);
-    } else {
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-
-    URL.revokeObjectURL(url);
+    const blob = new Blob([json], { type: 'application/json' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'clan_statistics-' + rank.name + '[' + currentTime + '].json';
+    link.click();
 }
 
 async function getData(id, is_clan) {

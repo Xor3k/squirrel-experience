@@ -201,13 +201,12 @@ function maxRating(rating_history) {
 
 async function saveStatisticsToExcel(datalayers) {
     if (!dataPlayers || !Array.isArray(dataPlayers)) {
-        console.error("Данные игроков не найдены или неверный формат!");
+        console.error("Данные игроков не найдены!");
         return;
     }
 
     const workbook = new ExcelJS.Workbook();
     const sheet = workbook.addWorksheet('Статистика игроков');
-
     const currentTime = new Date().toLocaleString();
 
     const headers = [
@@ -273,19 +272,45 @@ async function saveStatisticsToExcel(datalayers) {
     });
 
     // const buffer = await workbook.xlsx.writeBuffer();
-    // saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `players_statistics[${currentTime}].xlsx`);
+    // const blob = new Blob([buffer], { type: 'application/octet-stream' });
+    // const url = URL.createObjectURL(blob);
+    // const filename = `players_statistics[${currentTime}].xlsx`;
+
+    // if (navigator.canShare && navigator.canShare({ files: [new File([blob], filename)] })) {
+    //     const file = new File([blob], filename, { type: blob.type });
+    //     navigator.share({ files: [file], title: filename }).catch(console.error);
+    // } else {
+    //     const link = document.createElement("a");
+    //     link.href = url;
+    //     link.download = filename;
+    //     document.body.appendChild(link);
+    //     link.click();
+    //     document.body.removeChild(link);
+    // }
+
+    // URL.revokeObjectURL(url);
 
     const buffer = await workbook.xlsx.writeBuffer();
-    const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    const blob = new Blob([buffer], { type: 'application/octet-stream' });
     const url = URL.createObjectURL(blob);
+    const filename = `players_statistics[${currentTime}].xlsx`;
 
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `players_statistics[${currentTime}].xlsx`;
-
-    if (navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")) {
-        window.open(url, "_blank");
+    if (navigator.userAgent.includes("iPhone") || navigator.userAgent.includes("iPad")) {
+        if (navigator.canShare && navigator.canShare({ files: [new File([blob], filename)] })) {
+            const file = new File([blob], filename, { type: blob.type });
+            navigator.share({ files: [file], title: filename }).catch(console.error);
+        } else {
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     } else {
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -294,9 +319,10 @@ async function saveStatisticsToExcel(datalayers) {
     URL.revokeObjectURL(url);
 }
 
+
 async function saveStatisticsToJson() {
     if (!dataPlayers || !Array.isArray(dataPlayers)) {
-        console.error("Данные игроков не найдены или неверный формат!");
+        console.error("Данные игроков не найдены!");
         return;
     }
 
@@ -338,21 +364,27 @@ async function saveStatisticsToJson() {
         rows: playersData
     };
 
-    // const jsonString = JSON.stringify(jsonData, null, 2);
-    // const blob = new Blob([jsonString], { type: 'application/json' });
-    // saveAs(blob, `players_statistics[${currentTime}].json`);
-
     const json = JSON.stringify(jsonData, null, 2);
     const blob = new Blob([json], { type: "application/json" });
     const url = URL.createObjectURL(blob);
+    const filename = `players_statistics[${currentTime}].json`;
 
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `players_statistics[${currentTime}].json`;
-
-    if (navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")) {
-        window.open(url, "_blank");
+    if (navigator.userAgent.includes("iPhone") || navigator.userAgent.includes("iPad")) {
+        if (navigator.canShare && navigator.canShare({ files: [new File([blob], filename)] })) {
+            const file = new File([blob], filename, { type: blob.type });
+            navigator.share({ files: [file], title: filename }).catch(console.error);
+        } else {
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     } else {
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -360,6 +392,7 @@ async function saveStatisticsToJson() {
 
     URL.revokeObjectURL(url);
 }
+
 
 document.addEventListener('click', function(e) {
     if (e.target.classList.contains('copy-button') || e.target.classList.contains('copy-button-profile')) {
