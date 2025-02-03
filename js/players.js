@@ -272,8 +272,26 @@ async function saveStatisticsToExcel(datalayers) {
         column.width = 20;
     });
 
+    // const buffer = await workbook.xlsx.writeBuffer();
+    // saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `players_statistics[${currentTime}].xlsx`);
+
     const buffer = await workbook.xlsx.writeBuffer();
-    saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `players_statistics[${currentTime}].xlsx`);
+    const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `players_statistics[${currentTime}].xlsx`;
+
+    if (navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")) {
+        window.open(url, "_blank");
+    } else {
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    URL.revokeObjectURL(url);
 }
 
 async function saveStatisticsToJson() {
@@ -320,9 +338,27 @@ async function saveStatisticsToJson() {
         rows: playersData
     };
 
-    const jsonString = JSON.stringify(jsonData, null, 2);
-    const blob = new Blob([jsonString], { type: 'application/json' });
-    saveAs(blob, `players_statistics[${currentTime}].json`);
+    // const jsonString = JSON.stringify(jsonData, null, 2);
+    // const blob = new Blob([jsonString], { type: 'application/json' });
+    // saveAs(blob, `players_statistics[${currentTime}].json`);
+
+    const json = JSON.stringify(jsonData, null, 2);
+    const blob = new Blob([json], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `players_statistics[${currentTime}].json`;
+
+    if (navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")) {
+        window.open(url, "_blank");
+    } else {
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    URL.revokeObjectURL(url);
 }
 
 document.addEventListener('click', function(e) {

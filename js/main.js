@@ -165,7 +165,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             </div><br>
             <div class="result-additional">
                 До ${nextLevel} уровня осталось: ${remainingXP.toLocaleString()} XP <br>
-                ${ data.level > 150 ? ` Процент выполнения уровня: ${percent}%` 
+                ${data.level > 150 ? ` Процент выполнения уровня: ${percent}%` 
                 : `Чтобы узнать показатель прогресса, необходим 150-ый уровень!`} 
                 <button class="copy-button" data-copy="${remainingXP.toLocaleString()}">Копировать</button>
             </div><br>

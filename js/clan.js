@@ -237,8 +237,26 @@ async function saveStatisticsToExcel() {
         column.width = 20;
     });
 
+    // const buffer = await workbook.xlsx.writeBuffer();
+    // saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `clan_statistics-${rank.name}[${currentTime}].xlsx`);
+
     const buffer = await workbook.xlsx.writeBuffer();
-    saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `clan_statistics-${rank.name}[${currentTime}].xlsx`);
+    const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `clan_statistics-${rank.name}[${currentTime}].xlsx`;
+
+    if (navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")) {
+        window.open(url, "_blank");
+    } else {
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    URL.revokeObjectURL(url);
 }
 
 function saveStatisticsToJson() {
@@ -286,12 +304,30 @@ function saveStatisticsToJson() {
         }
     });
 
+    // const json = JSON.stringify(statistics, null, 2);
+    // const blob = new Blob([json], { type: 'application/json' });
+    // const link = document.createElement('a');
+    // link.href = URL.createObjectURL(blob);
+    // link.download = 'clan_statistics-' + rank.name + '[' + currentTime + '].json';
+    // link.click();
+
     const json = JSON.stringify(statistics, null, 2);
-    const blob = new Blob([json], { type: 'application/json' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'clan_statistics-' + rank.name + '[' + currentTime + '].json';
-    link.click();
+    const blob = new Blob([json], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `clan_statistics-${rank.name}[${currentTime}].json`;
+
+    if (navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")) {
+        window.open(url, "_blank");
+    } else {
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    URL.revokeObjectURL(url);
 }
 
 async function getData(id, is_clan) {
