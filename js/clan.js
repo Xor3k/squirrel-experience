@@ -241,16 +241,24 @@ async function saveStatisticsToExcel() {
     // saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `clan_statistics-${rank.name}[${currentTime}].xlsx`);
 
     const buffer = await workbook.xlsx.writeBuffer();
-    const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    const blob = new Blob([buffer], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    });
+
     const url = URL.createObjectURL(blob);
+    const filename = `clan_statistics-${rank.name}[${currentTime}].xlsx`;
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `clan_statistics-${rank.name}[${currentTime}].xlsx`;
-
-    if (navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")) {
-        window.open(url, "_blank");
+    if (isSafari) {
+        const reader = new FileReader();
+        reader.onloadend = function () {
+            location.href = reader.result;
+        };
+        reader.readAsDataURL(blob);
     } else {
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -314,14 +322,19 @@ function saveStatisticsToJson() {
     const json = JSON.stringify(statistics, null, 2);
     const blob = new Blob([json], { type: "application/json" });
     const url = URL.createObjectURL(blob);
+    const filename = `clan_statistics-${rank.name}[${currentTime}].json`;
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `clan_statistics-${rank.name}[${currentTime}].json`;
-
-    if (navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")) {
-        window.open(url, "_blank");
+    if (isSafari) {
+        const reader = new FileReader();
+        reader.onloadend = function () {
+            location.href = reader.result;
+        };
+        reader.readAsDataURL(blob);
     } else {
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
