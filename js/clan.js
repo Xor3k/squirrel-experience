@@ -247,14 +247,11 @@ async function saveStatisticsToExcel() {
 
     const url = URL.createObjectURL(blob);
     const filename = `clan_statistics-${rank.name}[${currentTime}].xlsx`;
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-    if (isSafari) {
-        const reader = new FileReader();
-        reader.onloadend = function () {
-            location.href = reader.result;
-        };
-        reader.readAsDataURL(blob);
+    console.log(filename);
+    if (navigator.canShare && navigator.canShare({ files: [new File([blob], filename)] })) {
+        const file = new File([blob], filename, { type: blob.type });
+        navigator.share({ files: [file], title: filename }).catch(console.error);
     } else {
         const link = document.createElement("a");
         link.href = url;
@@ -323,6 +320,7 @@ function saveStatisticsToJson() {
     const blob = new Blob([json], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const filename = `clan_statistics-${rank.name}[${currentTime}].json`;
+
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
     if (isSafari) {
