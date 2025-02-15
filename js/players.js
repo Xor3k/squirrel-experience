@@ -213,14 +213,14 @@ async function saveStatisticsToExcel(datalayers) {
         "№",
         "UID",
         "Ник",
-        "Общий опыт игрока",
         "Уровень",
-        "Опыт шамана",
+        "Общий опыт игрока",
         "Уровень шамана",
+        "Опыт шамана",
         "Кол-во игр",
         "Спасено белок",
-        "ID клана",
         "Максимум рейтинга",
+        "ID клана",
         "Профиль"
     ];
 
@@ -244,14 +244,14 @@ async function saveStatisticsToExcel(datalayers) {
             rowIndex + 1,
             player.uid,
             player.name,
-            player.exp,
             player.level,
-            player.shaman_exp,
+            player.exp,
             player.shaman_level,
+            player.shaman_exp,
             player.rating_player,
             player.rating_shaman,
-            player.clan_id,
             player.max_rating,
+            player.clan_id,
             player.profile
         ];
 
@@ -332,14 +332,14 @@ async function saveStatisticsToJson() {
         "№",
         "UID",
         "Ник",
-        "Общий опыт игрока",
         "Уровень",
-        "Опыт шамана",
+        "Общий опыт игрока",
         "Уровень шамана",
+        "Опыт шамана",
         "Кол-во игр",
         "Спасено белок",
-        "ID клана",
         "Максимум рейтинга",
+        "ID клана",
         "Профиль"
     ];
 
@@ -347,14 +347,14 @@ async function saveStatisticsToJson() {
         number: index + 1,
         uid: player.uid,
         name: player.name,
-        exp: player.exp,
         level: player.level,
-        shaman_exp: player.shaman_exp,
+        exp: player.exp,
         shaman_level: player.shaman_level,
+        shaman_exp: player.shaman_exp,
         rating_player: player.rating_player,
         rating_shaman: player.rating_shaman,
-        clan_id: player.clan_id,
         max_rating: player.max_rating,
+        clan_id: player.clan_id,
         profile: player.profile
     }));
 

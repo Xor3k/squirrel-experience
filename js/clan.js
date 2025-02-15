@@ -1,4 +1,4 @@
-let rank;
+let clanData;
 
 document.getElementById('calculatorForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -48,40 +48,32 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 }
             }
         }
-
-        rank = {
-            id: data.id,
-            name: data.info.name,
-            players_exp: data.rank.dailyPlayerExp,
-            clan_exp: data.rank.dailyTotalExp,
-            raiting_exp: data.rank.DailyTotalRaiting,
-        };
+        clanData = data;
 
         const resultBlock = document.getElementById('result');
         const resultHTML = `
             <div class="photo-container">
-                <img src="${data.info.emblem}" alt="emblem" />
-                <span class="img-text">${data.info.name}</span>
+                <img src="${clanData.info.emblem}" alt="emblem" />
+                <span class="img-text">${clanData.info.name}</span>
             </div><br>
             <div class="result-additional">
-                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${data.id}" target="_blank">Перейти на yukkerike.ru + ID</a>
+                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${clanData.id}" target="_blank">Перейти на yukkerike.ru + ID</a>
             </div><br>
             <div class="result-text-small">
                 Вождь: 
-                    <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.leader_id.uid}" target="_blank">
-                        ${data.leader_id.name} [${data.leader_id.level}]
+                    <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${clanData.leader_id.uid}" target="_blank">
+                        ${clanData.leader_id.name} [${clanData.leader_id.level}]
                     </a> <br>
-                Участников: ${data.size} <br>
-                Уровень клана: ${data.rank.level} [${data.rank.exp.toLocaleString()} XP] <br>
-                Рейтинг клана: ${data.rating_info.rating_score.toLocaleString()} <br>
-                Стоимость тотемов: ${(data.size * 60).toLocaleString()} <br>
+                Участников: ${clanData.size} <br>
+                Уровень клана: ${clanData.rank.level} [${clanData.rank.exp.toLocaleString()} XP] <br>
+                Рейтинг клана: ${clanData.rating_info.rating_score.toLocaleString()} <br>
+                Стоимость тотемов: ${(clanData.size * 60).toLocaleString()} <br>
             </div>
             Статистика клана: <br>
             <table id="clan-statistics" class="rating-table" style="width: 100%; text-align: left;">
                 <thead>
                     <tr class="result-additional text-table-clan">
                         <td style="width: 5%;">№</td>
-                        <td style="display: none; width: 4%;">UID</td>
                         <td style="width: 20%; text-align: left;">Ник</td>
                         <td style="width: 20%; text-align: center;">Опыт игрока</td>
                         <td style="width: 20%; text-align: center;">Опыт клана</td>
@@ -90,40 +82,35 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     </tr>
                 </thead>
                 <tbody id="clan-statistics-data">
-                    ${!data.statistics || data.statistics.length === 0 ? `
-                        <tr class="result-additional">
-                            <td colspan="3" style="text-align: center;">Что-то пошло не так...</td>
-                        </tr>
-                    ` : data.statistics.map((item, index) => {
-                            return `
-                                <tr class="result-additional">
-                                    <td style="width: 5%;">${index + 1}</td>
-                                    <td style="display: none; width: 5%;">${item.uid.uid}</td>
-                                    <td style="width: 20%; text-align: left;">
-                                        <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${item.uid.uid}" target="_blank">${item.uid.name}</a>
-                                    </td>
-                                    <td style="width: 20%; text-align: center;">${item.samples.toLocaleString()}</td>
-                                    <td style="width: 20%; text-align: center;">${item.exp.toLocaleString()}</td>
-                                    <td style="width: 20%; text-align: center;">${item.clan_rating.toLocaleString()}</td>
-                                    <td style="width: 20%; text-align: center;">${item.uid.exp.toLocaleString()}</td>
-                                </tr>
-                            `;
-                        }).join('')}
-                        <tr class="result-additional no-data-table-excel">
-                            <td style="width: 5%;"></td>
-                            <td style="width: 20%;">Всего: </td>
-                            <td style="width: 20%; text-align: center;">${data.rank.dailyPlayerExp.toLocaleString()}</td>
-                            <td style="width: 20%; text-align: center;">${data.rank.dailyTotalExp.toLocaleString()}</td>
-                            <td style="width: 20%; text-align: center;">${data.rank.DailyTotalRaiting.toLocaleString()}</td>
-                            <td style="width: 20%; text-align: center;"></td>
-                        </tr>
+                    ${clanData.statistics.map((item, index) => {
+                        return `
+                            <tr class="result-additional">
+                                <td style="width: 5%;">${index + 1}</td>
+                                <td style="width: 20%; text-align: left;">
+                                    <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${item.uid.uid}" target="_blank">${item.uid.name} [${item.uid.level}]</a>
+                                </td>
+                                <td style="width: 20%; text-align: center;">${item.samples.toLocaleString()}</td>
+                                <td style="width: 20%; text-align: center;">${item.exp.toLocaleString()}</td>
+                                <td style="width: 20%; text-align: center;">${item.clan_rating.toLocaleString()}</td>
+                                <td style="width: 20%; text-align: center;">${item.uid.exp.toLocaleString()}</td>
+                            </tr>
+                        `;
+                    }).join('')}
+                    <tr class="result-additional no-data-table-excel">
+                        <td style="width: 5%;"></td>
+                        <td style="width: 20%;">Всего: </td>
+                        <td style="width: 20%; text-align: center;">${clanData.rank.dailyPlayerExp.toLocaleString()}</td>
+                        <td style="width: 20%; text-align: center;">${clanData.rank.dailyTotalExp.toLocaleString()}</td>
+                        <td style="width: 20%; text-align: center;">${clanData.rank.DailyTotalRaiting.toLocaleString()}</td>
+                        <td style="width: 20%; text-align: center;"></td>
+                    </tr>
                 </tbody>
             </table> <br>
             <div class="result-additional">
-                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToExcel('')">Сохранить статистику в Excel</button>
+                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToExcel()">Сохранить статистику в Excel</button>
             </div><br>
             <div class="result-additional">
-                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToJson('')">Сохранить статистику в Json</button>
+                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToJson()">Сохранить статистику в Json</button>
             </div><br>
             <div class="result-additional">~ Xorek</div>
         `;
@@ -162,46 +149,18 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
 });
 
 async function saveStatisticsToExcel() {
-    const table = document.getElementById('clan-statistics');
-    if (!table) {
-        console.error("Таблица не найдена!");
-        return;
-    }
-
     const workbook = new ExcelJS.Workbook();
     const sheet = workbook.addWorksheet('Статистика клана');
-    const rows = table.querySelectorAll('tbody tr');
-    const headerRow = table.querySelector('thead tr');
-    const headers = Array.from(headerRow.querySelectorAll('td')).map(cell => cell.textContent.trim());
+    const headers = ["№", "UID", "Ник", "Опыт игрока", "Опыт клана", "Очки рейтинга", "Общий опыт игрока"];
     const currentTime = new Date().toLocaleString();
 
-    sheet.addRow(["ID клана:", rank.id]);
-    sheet.addRow(["Название клана:", rank.name]);
+    sheet.addRow(["ID клана:", clanData.id]);
+    sheet.addRow(["UID вождя:", clanData.leader_id.uid]);
+    sheet.addRow(["Название клана:", clanData.info.name]);
     sheet.addRow(["Дата сохранения:", currentTime]);
-    sheet.addRow(headers); 
+    sheet.addRow(headers);
 
-    // Запись статистики после заголовков. Убраны пробелы в числах + выранивание по левому краю.
-    rows.forEach(row => {
-        if (!row.classList.contains('no-data-table-excel')) {
-            const rowData = Array.from(row.querySelectorAll('td')).map((cell, index) => {
-                const text = cell.textContent.trim();
-                if (index !== 2) {
-                    const value = parseFloat(text.replace(/\s+/g, ''));
-                    return value;
-                } else {
-                    return text;
-                }
-            });
-            sheet.addRow(rowData);
-
-            rowData.forEach((cell, index) => {
-                const cellRef = sheet.getCell(sheet.rowCount, index + 1);
-                cellRef.alignment = { horizontal: 'left' };
-            });
-        }
-    });
-    
-    const headerRowNumber = 4;
+    const headerRowNumber = 5;
     headers.forEach((_, colIndex) => {
         const cell = sheet.getRow(headerRowNumber).getCell(colIndex + 1);
         cell.fill = {
@@ -213,24 +172,36 @@ async function saveStatisticsToExcel() {
         cell.alignment = { horizontal: 'center' };
     });
 
-    sheet.eachRow((row, rowNumber) => {
-        if (rowNumber > headerRowNumber) {
-            row.eachCell(cell => {
-                cell.fill = {
-                    type: 'pattern',
-                    pattern: 'solid',
-                    fgColor: { argb: rowNumber % 2 === 0 ? 'B0C4DE' : 'D6E4F0' }
-                };
-            });
-        }
+    clanData.statistics.forEach((item, rowIndex) => {
+        const rowData = [
+            rowIndex + 1,
+            item.uid.uid,
+            item.uid.name,
+            item.samples,
+            item.exp,
+            item.clan_rating,
+            item.uid.exp
+        ];
+
+        sheet.addRow(rowData);
+        const currentRow = sheet.getRow(headerRowNumber + rowIndex + 1);
+        currentRow.eachCell((cell, colIndex) => {
+            cell.alignment = { horizontal: 'left' };
+            cell.fill = {
+                type: 'pattern',
+                pattern: 'solid',
+                fgColor: { argb: rowIndex % 2 === 0 ? 'B0C4DE' : 'D6E4F0' }
+            };
+        });
     });
 
-    const skippedColumns = ["Всего: ", "", ""];
     sheet.addRow([
-        ...skippedColumns,
-        rank.players_exp,
-        rank.clan_exp,
-        rank.raiting_exp
+        "Всего: ",
+        "",
+        clanData.rank.dailyPlayerExp,
+        clanData.rank.dailyTotalExp,
+        clanData.rank.DailyTotalRaiting,
+        ""
     ]);
 
     sheet.columns.forEach(column => {
@@ -238,60 +209,65 @@ async function saveStatisticsToExcel() {
     });
 
     const buffer = await workbook.xlsx.writeBuffer();
-    saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `clan_statistics-${rank.name}[${currentTime}].xlsx`);
+    const blob = new Blob([buffer], { type: 'application/octet-stream' });
+    const filename = `clan_statistics-${clanData.info.name}[${currentTime}].xlsx`;
+
+    saveFile(blob, filename);
 }
 
 function saveStatisticsToJson() {
-    var table = document.getElementById('clan-statistics');
-    if (!table) {
-        console.error("Таблица не найдена!");
-        return;
-    }
-
-    const rows = table.querySelectorAll('tbody tr');
-    const headerRow = table.querySelector('thead tr');
-    const headers = Array.from(headerRow.querySelectorAll('td')).map(cell => cell.textContent);
     const currentTime = new Date().toLocaleString();
     const statistics = {
         date: currentTime,
-        id: rank.id,
-        name: rank.name,
-        total_players_exp: rank.players_exp,
-        total_clan_exp: rank.clan_exp,
-        total_raiting_exp: rank.raiting_exp,
-        headers: headers,
-        rows: [],
+        id: clanData.id,
+        leader_id: clanData.leader_id.uid,
+        name: clanData.info.name,
+        total_players_exp: clanData.rank.dailyPlayerExp,
+        total_clan_exp: clanData.rank.dailyTotalExp,
+        total_raiting_exp: clanData.rank.DailyTotalRaiting,
+        headers: ["№", "UID", "Ник", "Опыт игрока", "Опыт клана", "Очки рейтинга", "Общий опыт игрока"],
+        rows: clanData.statistics.map((item, index) => [
+            index + 1,
+            item.uid.uid,
+            item.uid.name,
+            item.samples,
+            item.exp,
+            item.clan_rating,
+            item.uid.exp
+        ])
     };
-
-    rows.forEach((row) => {
-        if (!row.classList.contains('no-data-table-excel')) {
-            const rowData = [];
-            const cells = row.querySelectorAll('td');
-
-            cells.forEach((cell, index) => {
-                let cellValue = cell.textContent.trim();
-                if (index !== 2) {
-                    cellValue = cellValue.replace(/\u00A0/g, '');
-                }
-
-                const parsedValue = parseFloat(cellValue.replace(/[^0-9.-]+/g, ''));
-                if (!isNaN(parsedValue)) {
-                    cellValue = parsedValue;
-                }
-
-                rowData.push(cellValue);
-            });
-
-            statistics.rows.push(rowData);
-        }
-    });
 
     const json = JSON.stringify(statistics, null, 2);
     const blob = new Blob([json], { type: 'application/json' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'clan_statistics-' + rank.name + '[' + currentTime + '].json';
-    link.click();
+    const filename = `clan_statistics-${clanData.info.name}[${currentTime}].json`;
+
+    saveFile(blob, filename);
+}
+
+function saveFile(blob, filename) {
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    console.log(isIOS);
+    if (isIOS) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const link = document.createElement('a');
+            link.href = event.target.result;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+        reader.readAsDataURL(blob);
+    } else {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
 }
 
 async function getData(id, is_clan) {
