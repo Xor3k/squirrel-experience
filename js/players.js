@@ -199,7 +199,7 @@ function maxRating(rating_history) {
     return maxRatingValue;
 }
 
-async function saveStatisticsToExcel(datalayers) {
+async function saveStatisticsToExcel() {
     if (!dataPlayers || !Array.isArray(dataPlayers)) {
         console.error("Данные игроков не найдены!");
         return;
@@ -271,54 +271,12 @@ async function saveStatisticsToExcel(datalayers) {
         column.width = 20;
     });
 
-    // const buffer = await workbook.xlsx.writeBuffer();
-    // const blob = new Blob([buffer], { type: 'application/octet-stream' });
-    // const url = URL.createObjectURL(blob);
-    // const filename = `players_statistics[${currentTime}].xlsx`;
-
-    // if (navigator.canShare && navigator.canShare({ files: [new File([blob], filename)] })) {
-    //     const file = new File([blob], filename, { type: blob.type });
-    //     navigator.share({ files: [file], title: filename }).catch(console.error);
-    // } else {
-    //     const link = document.createElement("a");
-    //     link.href = url;
-    //     link.download = filename;
-    //     document.body.appendChild(link);
-    //     link.click();
-    //     document.body.removeChild(link);
-    // }
-
-    // URL.revokeObjectURL(url);
-
     const buffer = await workbook.xlsx.writeBuffer();
     const blob = new Blob([buffer], { type: 'application/octet-stream' });
-    const url = URL.createObjectURL(blob);
     const filename = `players_statistics[${currentTime}].xlsx`;
 
-    if (navigator.userAgent.includes("iPhone") || navigator.userAgent.includes("iPad")) {
-        if (navigator.canShare && navigator.canShare({ files: [new File([blob], filename)] })) {
-            const file = new File([blob], filename, { type: blob.type });
-            navigator.share({ files: [file], title: filename }).catch(console.error);
-        } else {
-            const link = document.createElement("a");
-            link.href = url;
-            link.download = filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-    } else {
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-
-    URL.revokeObjectURL(url);
+    saveFile(blob, filename);
 }
-
 
 async function saveStatisticsToJson() {
     if (!dataPlayers || !Array.isArray(dataPlayers)) {
@@ -366,33 +324,35 @@ async function saveStatisticsToJson() {
 
     const json = JSON.stringify(jsonData, null, 2);
     const blob = new Blob([json], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
     const filename = `players_statistics[${currentTime}].json`;
 
-    if (navigator.userAgent.includes("iPhone") || navigator.userAgent.includes("iPad")) {
-        if (navigator.canShare && navigator.canShare({ files: [new File([blob], filename)] })) {
-            const file = new File([blob], filename, { type: blob.type });
-            navigator.share({ files: [file], title: filename }).catch(console.error);
-        } else {
-            const link = document.createElement("a");
-            link.href = url;
+    saveFile(blob, filename);
+}
+
+function saveFile(blob, filename) {
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (isIOS) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const link = document.createElement('a');
+            link.href = event.target.result;
             link.download = filename;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-        }
+        };
+        reader.readAsDataURL(blob);
     } else {
-        const link = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
         link.href = url;
         link.download = filename;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+        URL.revokeObjectURL(url);
     }
-
-    URL.revokeObjectURL(url);
 }
-
 
 document.addEventListener('click', function(e) {
     if (e.target.classList.contains('copy-button') || e.target.classList.contains('copy-button-profile')) {

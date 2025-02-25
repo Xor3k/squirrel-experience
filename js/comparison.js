@@ -39,72 +39,142 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         }
 
         const difference = Math.abs(two_sqr.exp - one_sqr.exp);
+        const oneMaxRating = Math.max(...one_sqr.rating_history.map(x => x.rating));
+        const twoMaxRating = Math.max(...two_sqr.rating_history.map(x => x.rating));
+
         const resultHTML = `
-            <div class="result-text">
-                ${one_sqr.vip_info.vip_exist !== 0 && one_sqr.moderator > 0 ? ` 
-                    <span class="moderator-color">${one_sqr.name} [${one_sqr.level}]</span> 
-                    <img src="img/gold_wings.png" class="icon-vip">
-                ` : one_sqr.vip_info.vip_exist !== 0 ? ` 
-                    <span class="vip-color-${one_sqr.vip_info.vip_color}"> 
-                        ${one_sqr.name} [${one_sqr.level}] 
-                        <img src="img/gold_wings.png" class="icon-vip"> 
-                    </span> 
-                ` : ` ${one_sqr.name} [${one_sqr.level}] `}
-                и 
-                ${two_sqr.vip_info.vip_exist !== 0 && two_sqr.moderator > 0 ? ` 
-                    <span class="moderator-color">${two_sqr.name} [${two_sqr.level}]</span> 
-                    <img src="img/gold_wings.png" class="icon-vip">
-                ` : two_sqr.vip_info.vip_exist !== 0 ? ` 
-                    <span class="vip-color-${two_sqr.vip_info.vip_color}"> 
-                        ${two_sqr.name} [${two_sqr.level}] 
-                        <img src="img/gold_wings.png" class="icon-vip"> 
-                    </span> 
-                ` : ` ${two_sqr.name} [${two_sqr.level}] `}
-                <br>
-                ${one_sqr.moderator == 1 ? `
-                    <div class="result-additional warning-color">
-                        Внимание! Игрок ${one_sqr.name} является модератором чата!
-                    </div>
-                ` : ``}
-                ${two_sqr.moderator == 1 ? `
-                    <div class="result-additional warning-color">
-                        Внимание! Игрок ${two_sqr.name} является модератором чата!
-                    </div>
-                ` : ``}
-            </div>
+            <table class="comparison-table">
+                <tr>
+                    <td>Ник игрока</td>
+                    <td>
+                        ${one_sqr.vip_info.vip_exist !== 0 && one_sqr.moderator > 0 ? ` 
+                            <span class="moderator-color">${one_sqr.name}</span> 
+                            <img src="img/gold_wings.png" class="icon-vip">
+                        ` : one_sqr.vip_info.vip_exist !== 0 ? ` 
+                            <span class="vip-color-${one_sqr.vip_info.vip_color}"> 
+                                ${one_sqr.name}
+                                <img src="img/gold_wings.png" class="icon-vip"> 
+                            </span> 
+                        ` : ` ${one_sqr.name} `}
+                    </td>
+                    <td>
+                        ${two_sqr.vip_info.vip_exist !== 0 && two_sqr.moderator > 0 ? ` 
+                            <span class="moderator-color">${two_sqr.name}</span> 
+                            <img src="img/gold_wings.png" class="icon-vip">
+                        ` : two_sqr.vip_info.vip_exist !== 0 ? ` 
+                            <span class="vip-color-${two_sqr.vip_info.vip_color}"> 
+                                ${two_sqr.name}
+                                <img src="img/gold_wings.png" class="icon-vip"> 
+                            </span> 
+                        ` : ` ${two_sqr.name} `}
+                    </td>
+                </tr>
+                <tr title="Разница в уровнях: ${Math.abs(one_sqr.level - two_sqr.level)}">
+                    <td>Уровень</td>
+                    <td>${one_sqr.level}</td>
+                    <td>${two_sqr.level}</td>
+                </tr>
+                <tr title="Разница в опыте: ${difference.toLocaleString()}">
+                    <td>Опыт</td>
+                    <td>${one_sqr.exp.toLocaleString()}</td>
+                    <td>${two_sqr.exp.toLocaleString()}</td>
+                </tr>
+                <tr>
+                    <td>Разница</td>
+                    <td colspan="2">
+                        ${one_sqr.exp > two_sqr.exp ? 
+                            `Игрок ${one_sqr.name} набрал больше на ${difference.toLocaleString()} xp` : 
+                            `Игрок ${two_sqr.name} набрал больше на ${difference.toLocaleString()} xp`
+                        }
+                    </td>
+                </tr>
+                <tr title="Разница в уровнях шамана: ${Math.abs(one_sqr.shaman_level - two_sqr.shaman_level)}">
+                    <td>Уровень шамана</td>
+                    <td>${one_sqr.shaman_level}</td>
+                    <td>${two_sqr.shaman_level}</td>
+                </tr>
+                <tr>
+                    <td>Разница</td>
+                    <td colspan="2">
+                        ${one_sqr.shaman_exp === two_sqr.shaman_exp ? 
+                            'Оба игрока достигли одинакового опыта шамана' :
+                            one_sqr.shaman_exp > two_sqr.shaman_exp ? 
+                            `Игрок ${one_sqr.name} набрал больше опыта шамана на ${(one_sqr.shaman_exp - two_sqr.shaman_exp).toLocaleString()}` : 
+                            `Игрок ${two_sqr.name} набрал больше опыта шамана на ${(two_sqr.shaman_exp - one_sqr.shaman_exp).toLocaleString()}`
+                        }
+                    </td>
+                </tr>
+                <tr title="Разница в количестве игр: ${Math.abs(one_sqr.rating_info.rating_player - two_sqr.rating_info.rating_player).toLocaleString()}">
+                    <td>Кол-во игр</td>
+                    <td>${one_sqr.rating_info.rating_player.toLocaleString()}</td>
+                    <td>${two_sqr.rating_info.rating_player.toLocaleString()}</td>
+                </tr>
+                <tr title="Разница в спасенных белках: ${Math.abs(one_sqr.rating_info.rating_shaman - two_sqr.rating_info.rating_shaman).toLocaleString()}">
+                    <td>Спасено белок</td>
+                    <td>${one_sqr.rating_info.rating_shaman.toLocaleString()}</td>
+                    <td>${two_sqr.rating_info.rating_shaman.toLocaleString()}</td>
+                </tr>
+                <tr title="Разница в коэффициенте: ${Math.abs((one_sqr.rating_info.rating_shaman / one_sqr.rating_info.rating_player) - (two_sqr.rating_info.rating_shaman / two_sqr.rating_info.rating_player)).toFixed(2)}">
+                    <td>Коэффициент</td>
+                    <td>${(one_sqr.rating_info.rating_shaman / one_sqr.rating_info.rating_player).toFixed(2)}</td>
+                    <td>${(two_sqr.rating_info.rating_shaman / two_sqr.rating_info.rating_player).toFixed(2)}</td>
+                </tr>
+                <tr title="Разница в рейтинге: ${Math.abs(one_sqr.rating_info.rating_score - two_sqr.rating_info.rating_score).toLocaleString()}">
+                    <td>Очки рейтинга</td>
+                    <td>${one_sqr.rating_info.rating_score.toLocaleString()}</td>
+                    <td>${two_sqr.rating_info.rating_score.toLocaleString()}</td>
+                </tr>
+                <tr title="Разница в максимальном рейтинге: ${Math.abs(oneMaxRating - twoMaxRating).toLocaleString()}">
+                    <td>Максимальный рейтинг</td>
+                    <td>${oneMaxRating.toLocaleString()}</td>
+                    <td>${twoMaxRating.toLocaleString()}</td>
+                </tr>
+                <tr title="*Разница в среднем опыте за раунд: ${Math.abs((one_sqr.exp / one_sqr.rating_info.rating_player) - (two_sqr.exp / two_sqr.rating_info.rating_player)).toFixed(2)}">
+                    <td>*Средний опыт за раунд</td>
+                    <td>${(one_sqr.exp / one_sqr.rating_info.rating_player).toFixed(2)}</td>
+                    <td>${(two_sqr.exp / two_sqr.rating_info.rating_player).toFixed(2)}</td>
+                </tr>
+                <tr title="Разница в кол-ве приглашенных игроков: ${Math.abs(one_sqr.shaman_level - two_sqr.shaman_level)}">
+                    <td>Приглашенные игроки</td>
+                    <td>${one_sqr.person_info.referrer}</td>
+                    <td>${two_sqr.person_info.referrer}</td>
+                </tr>
+                <tr>
+                    <td>Ссылка на профиль</td>
+                    <td>
+                        ${one_sqr.person_info.profile ? `
+                            <a class="header-link" href="${one_sqr.person_info.profile}" target="_blank">${one_sqr.name}</a>
+                        ` : 'Не указан'}
+                    </td>
+                    <td>
+                        ${two_sqr.person_info.profile ? `
+                            <a class="header-link" href="${two_sqr.person_info.profile}" target="_blank">${two_sqr.name}</a>
+                        ` : 'Не указан'}
+                    </td>
+                </tr>
+                <tr>
+                    <td><a class="header-link" href="https://squirrelsquery.yukkerike.ru/" target="_blank">Карточка игрока</a></td>
+                    <td>
+                        ${one_sqr.person_info.profile ? `
+                            <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${one_sqr.uid}" target="_blank">${one_sqr.name}</a>
+                        ` : 'Не указан'}
+                    </td>
+                    <td>
+                        ${two_sqr.person_info.profile ? `
+                            <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${two_sqr.uid}" target="_blank">${two_sqr.name}</a>
+                        ` : 'Не указан'}
+                    </td>
+                </tr>
+            </table><br>
             <div class="result-additional">
-                Разница в опыте: ${difference.toLocaleString()} XP <br>
-                Лидирует: ${one_sqr.exp > two_sqr.exp ? one_sqr.name : two_sqr.name}
-                <button class="copy-button" data-copy="${difference.toLocaleString()}">Копировать</button>
-            </div><br>
-            <div class="result-additional">
-                ${one_sqr.person_info.profile == null || one_sqr.person_info.profile == '' ? `
-                    <div class="result-additional">
-                        Профиль игрока ${one_sqr.name} не найден...
-                    </div>
-                ` : `
-                    <a class="header-link" href="${one_sqr.person_info.profile}" target="_blank">1. ${one_sqr.person_info.profile}</a>
-                    <button class="copy-button-profile" data-copy="${one_sqr.person_info.profile}">Копировать</button>
-                `}
-                </div><br>
-                <div class="result-additional">
-                    ${two_sqr.person_info.profile == null || two_sqr.person_info.profile == '' ? `
-                        <div class="result-additional">
-                            Профиль игрока ${two_sqr.name} не найден...
-                        </div>
-                    ` : `
-                    <a class="header-link" href="${two_sqr.person_info.profile}" target="_blank">2. ${two_sqr.person_info.profile}</a>
-                    <button class="copy-button-profile" data-copy="${two_sqr.person_info.profile}">Копировать</button>
-                `}
-            </div><br>
-            <div class="result-additional">
-                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${one_sqr.uid}" target="_blank">Перейти на yukkerike.ru + UID [${one_sqr.name}]</a>
-            </div><br>
-            <div class="result-additional">
-                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${two_sqr.uid}" target="_blank">Перейти на yukkerike.ru + UID [${two_sqr.name}]</a>
-            </div><br>
+                *Средний опыт за раунд.
+                Формула: Общий опыт игрока / кол-во игр. Тотемы не учитываются в расчете, как и полученный опыт
+                за коллекции, бонусные награды и так далее.
+            </div><br> 
             <div class="result-additional">~ Xorek</div>
         `;
+
+
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');
     } catch (error) {
