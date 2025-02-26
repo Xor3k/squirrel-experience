@@ -57,7 +57,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 <span class="img-text">${clanData.info.name}</span>
             </div><br>
             <div class="result-additional">
-                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${clanData.id}" target="_blank">Перейти на yukkerike.ru + ID</a>
+                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${clanData.id}" target="_blank">Карточка клана</a>
             </div><br>
             <div class="result-text-small">
                 Вождь: 

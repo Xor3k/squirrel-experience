@@ -87,11 +87,11 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     <button class="copy-button" data-copy="${(data.exp).toLocaleString()}">Копировать</button>
                 </div><br>
                 <div class="result-additional">
-                    <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Перейти на yukkerike.ru + UID</a>
+                    <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Карточка игрока</a>
                 </div><br> 
                 ${data.clan_id !== 0 ? `
                     <div class="result-additional">
-                        <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${data.clan_id}" target="_blank">Посмотреть статистику клана на yukkerike.ru, ID: ${data.clan_id}</a>
+                        <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${data.clan_id}" target="_blank">Карточка клана, статистика, ID: ${data.clan_id}</a>
                     </div><br>
                 ` : `
                     <div class="result-additional">
@@ -151,7 +151,10 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     </div>
                 ` : data.uid == 17816916 ? `
                     <div class="result-additional text-down">
-                        ${data.name} не испытывает счастья...
+                        ${data.name} не испытывает счастья... <br>
+                        Не хочу, чтобы кто-то испытал ту же боль и разочарование, что и я.
+                        Берегите себя, учитесь на чужих ошибках, не создавайте проблем, которых можно избежать. 
+                        Иногда один неверный шаг оставляет шрамы на всю жизнь
                     </div>
                 ` : data.uid == 14070362 ? `
                     <div class="result-additional text-down">
@@ -188,11 +191,11 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 <button class="copy-button" data-copy="${(data.exp).toLocaleString()}">Копировать</button>
             </div><br> 
             <div class="result-additional">
-                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Перейти на yukkerike.ru + UID</a>
+                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Карточка игрока</a>
             </div><br> 
             ${data.clan_id !== 0 ? `
                 <div class="result-additional">
-                    <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${data.clan_id}" target="_blank">Посмотреть статистику клана на yukkerike.ru, ID: ${data.clan_id}</a>
+                    <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${data.clan_id}" target="_blank">Карточка клана, статистика, ID: ${data.clan_id}</a>
                 </div><br>
             ` : `
                 <div class="result-additional">

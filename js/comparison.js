@@ -129,12 +129,12 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     <td>${oneMaxRating.toLocaleString()}</td>
                     <td>${twoMaxRating.toLocaleString()}</td>
                 </tr>
-                <tr title="*Разница в среднем опыте за раунд: ${Math.abs((one_sqr.exp / one_sqr.rating_info.rating_player) - (two_sqr.exp / two_sqr.rating_info.rating_player)).toFixed(2)}">
-                    <td>*Средний опыт за раунд</td>
+                <tr title="Разница в среднем опыте за раунд: ${Math.abs((one_sqr.exp / one_sqr.rating_info.rating_player) - (two_sqr.exp / two_sqr.rating_info.rating_player)).toFixed(2)}">
+                    <td>Средний опыт за раунд</td>
                     <td>${(one_sqr.exp / one_sqr.rating_info.rating_player).toFixed(2)}</td>
                     <td>${(two_sqr.exp / two_sqr.rating_info.rating_player).toFixed(2)}</td>
                 </tr>
-                <tr title="Разница в кол-ве приглашенных игроков: ${Math.abs(one_sqr.shaman_level - two_sqr.shaman_level)}">
+                <tr title="Разница в кол-ве приглашенных игроков: ${Math.abs(one_sqr.person_info.referrer - two_sqr.person_info.referrer)}">
                     <td>Приглашенные игроки</td>
                     <td>${one_sqr.person_info.referrer}</td>
                     <td>${two_sqr.person_info.referrer}</td>
@@ -167,13 +167,17 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 </tr>
             </table><br>
             <div class="result-additional">
-                *Средний опыт за раунд.
-                Формула: Общий опыт игрока / кол-во игр. Тотемы не учитываются в расчете, как и полученный опыт
-                за коллекции, бонусные награды и так далее.
+                ⚠️ Важно! Средний опыт за раунд. Этот показатель не отражает точного значение и является лишь приблизительным за каждый отдельный раунд. <br>
+                Формула: Общий опыт игрока / Количество игр. <br>
+                Учитывайте, что это не точное значение за один раунд и в расчет может входить: <br>
+                - опыт за коллекции, <br>
+                - разный опыт на каждой локации, <br>
+                - разные уровни тотемов (дают разное количество опыта на разных уровнях), <br>
+                - наличия или отсутсвие VIP статус в игре (который дает надбавку к опыту),
+                - бонусные награды, подарки и другие источники. <br>
             </div><br> 
             <div class="result-additional">~ Xorek</div>
         `;
-
 
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');

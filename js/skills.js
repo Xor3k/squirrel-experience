@@ -128,7 +128,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 ` : ''}
             </div>
             <div class="result-additional">
-                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Перейти на yukkerike.ru + UID</a>
+                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Карточка игрока</a>
             </div><br> 
             <div class="result-text">
                 У игрока сейчас выбран: ${playerProfession.name}
