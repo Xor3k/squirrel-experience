@@ -1,4 +1,4 @@
-const player = document.getElementById('player');
+const clan = document.getElementById('clan-id');
 
 document.getElementById('calculatorForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -21,7 +21,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     }, 7000);
 
     try {
-        const data = await getData(document.getElementById('player').value);
+        const data = await getData(document.getElementById('clan-id').value);
+
         clearTimeout(loadingTimeout);
         console.log('Спасибо за использование Squirrel EXperience!)');
         console.log('Данные предоставлены squirrelsquery.yukkerike.ru. Обязательно посетите https://squirrelsquery.yukkerike.ru для поддержки!');
@@ -38,40 +39,36 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         const maxRating = Math.max(...data.rating_history.map(x => x.rating));
 
         const resultHTML = `
-            <div class="result-text">
-                ${data.vip_info.vip_exist !== 0 && data.moderator > 0 ? ` 
-                    <span class="moderator-color">${data.name}</span> 
-                    <img src="img/gold_wings.png" class="icon-vip">
-                ` : data.vip_info.vip_exist !== 0 ? `
-                    <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span> 
-                    <img src="img/gold_wings.png" class="icon-vip"> 
-                ` : data.vip_info.vip_exist == 0 && data.moderator > 0 ? `
-                    <span class="moderator-color">${data.name}</span> 
-                ` : ` ${data.name} `
-                }
-                | Текущий уровень: ${data.level} <br>
-                ${data.moderator == 1 ? `
-                    <div class="result-additional warning-color">
-                        Внимание! Игрок является модератором чата!
-                    </div>
-                ` : ''}
-            </div>
-            <div class="result-additional">
-                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Карточка игрока</a>
-            </div><br> 
-            <div class="result-additional"> 
-                Количество побед: ${(data.rating_info.rating_player).toLocaleString()} <br>
-                Спасено белок: ${(data.rating_info.rating_shaman).toLocaleString()}
-                <div class="highlight-text">
-                    Разница: ${(Math.abs(data.rating_info.rating_shaman - data.rating_info.rating_player) / Math.max(data.rating_info.rating_shaman, data.rating_info.rating_player) * 100).toFixed(2)}%.
-                </div>
+            <div class="photo-container">
+                <img src="${data.info.emblem}" alt="emblem" />
+                <span class="img-text">${data.info.name}</span>
             </div><br>
             <div class="result-additional">
-                Формула: количество спасенных белочек / количество побед + округление до 2 знаков после запятой.
-                <div class="highlight-text">Коэффициент: ${(data.rating_info.rating_shaman / data.rating_info.rating_player).toFixed(2)}</div>
+                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${data.id}" target="_blank">Карточка клана, больше информации</a>
+            </div><br>
+            <div class="result-additional"><br>
+                Активные тотемы: <br>
+                ${data.totems.slotData
+                    .filter(slot => slot.totem_id in totems)
+                    .map((slot, index) => {
+                        const totem = totems[slot.totem_id];
+                        return index === 0 
+                            ? `${totem.name}.` 
+                            : `${totem.name}, истекает через ${expires(slot.expires)}.`;
+                    })
+                    .join('<br>')}
             </div><br>
             <div class="result-additional">
-                Коэффициент. Чем он выше - тем лучше, ведь вероятность, что белочка станет шаманом так же становится выше.
+                Уровни тотемов у клана: <br>
+                ${data.totem_rangs
+                    .filter(slot => slot.totem_id in totems)
+                    .map(slot => {
+                        const totem = totems[slot.totem_id];
+                        return `
+                            ${totem.name}: Уровень ${slot.level}. 
+                        `;
+                    })
+                    .join('<br>')}
             </div><br>
             <div class="result-additional">
                 Текущий сезон ${currentSeason + 1} <br> Текущий рейтинг: ${(data.rating_info.rating_score).toLocaleString()} <br>
@@ -83,7 +80,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 }
             </div>
             <table class="rating-table" style="width: 100%; text-align: left;">
-                <tr class="result-additional">
+                <tr class="result-additional current-season">
                     <td style="width: 25%;">Сезон: ${currentSeason + 1}</td>
                     <td style="width: 30%; text-align: center;">Рейтинг: ${(data.rating_info.rating_score).toLocaleString()}</td>
                     <td style="width: 45%; text-align: right;">Сезон не завершен</td>
@@ -124,7 +121,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             resultBlock.innerHTML = resultHTML;
             resultBlock.classList.remove('hidden');
         } else {
-            resultBlock.innerHTML = `
+            const errorHTML = `
                 <div class="error-message">
                     <div class="error-title">Произошла ошибка!</div>
                     <div class="error-description">
@@ -133,7 +130,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     </div>
                 </div>
             `;
-            resultBlock.innerHTML = resultHTML;
+            resultBlock.innerHTML = errorHTML;
             resultBlock.classList.remove('hidden');
         }
     } finally {
@@ -147,7 +144,7 @@ async function getData(id) {
     const timeoutId = setTimeout(() => controller.abort(), 15000);
 
     try {
-        const response = await fetch('https://squirrelsquery.yukkerike.ru/user/' + id + '?json', {
+        const response = await fetch('https://squirrelsquery.yukkerike.ru/clan/' + id + '?json', {
             signal: controller.signal
         });
         clearTimeout(timeoutId);
@@ -187,9 +184,21 @@ function getSeasonStartDate(season, currentSeason) {
 }
 
 function getCurrentSeason() {
-    const knownSeasonStart = new Date('2024-12-02');
-    const knownSeason = 487;
+    const knownSeasonStart = new Date('2025-02-17');
+    const knownSeason = 498;
     const today = new Date();
     const weeksDiff = Math.floor((today - knownSeasonStart) / (7 * 24 * 60 * 60 * 1000)); 
     return knownSeason + weeksDiff;
+}
+
+function expires(seconds) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+
+    const formattedHours = String(hours).padStart(2, '0');
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+
+    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 }

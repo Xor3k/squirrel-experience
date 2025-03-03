@@ -163,6 +163,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     </div>
                 ` : ``}
             </div>
+            <br>
+            <div class="result-additional">~ Xorek</div>
         `;
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');

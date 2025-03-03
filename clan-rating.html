@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Рейтинг игроков | Squirrel EXperience</title>
+        <title>Рейтинг кланов | Squirrel EXperience</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="icon" type="image/png" href="img/ferret.png">
         <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
@@ -19,20 +19,20 @@
                 <a href="comparison.html" class="nav-link">Режим сравнения</a>
             </nav>
             <span class="header-text-additional">
-                История рейтинга. <br> Показывает историю рейтинга игрока за все время.
-                Насколько понимаю, история рейтинга хранит накопленные очки за каждую неделю, 
-                если вы получали очки рейтинга в течение данной недели. <br> 
-                Начало истории рейтинга - это ваши первые полученные очки рейтинга в игре.
+                История рейтинга клана. <br> Показывает историю рейтинга клана за все время.
+                Как и в история рейтинга игрока, рейтинг кланов хранит накопленные очки за каждую неделю, 
+                если клан получал очки рейтинга в течение данной недели. <br> 
+                Начало истории рейтинга - это первые полученные очки рейтинга клана.
                 На основе этих предположений и выводится очки рейтинга, с расчетом даты начала и конца недельного рейтинга.
             </span> 
             <span class="header-text-additional">
-                Введите UID игрока в форме ниже <div class="curved-arrow"></div>
+                Введите ID клана в форме ниже <div class="curved-arrow"></div>
             </span>
         </div>
         <form id="calculatorForm" class="calculator-form">
             <div class="form-group">
-                <label for="player" class="form-label">UID игрока</label>
-                <input class="form-control" id="player" required>
+                <label for="clan-id" class="form-label">ID клана</label>
+                <input class="form-control" id="clan-id" required>
             </div>
             <button type="submit" class="submit-button">Рассчитать</button>
         </form>
@@ -43,6 +43,6 @@
     </div>
     <script src="js/data_js/data_level.js"></script>
     <script src="js/browser.js"></script>
-    <script src="js/rating.js"></script>
+    <script src="js/clan_rating.js"></script>
 </body>
 </html>

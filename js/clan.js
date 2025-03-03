@@ -57,7 +57,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 <span class="img-text">${clanData.info.name}</span>
             </div><br>
             <div class="result-additional">
-                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${clanData.id}" target="_blank">Карточка клана</a>
+                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${clanData.id}" target="_blank">Карточка клана, больше информации</a>
             </div><br>
             <div class="result-text-small">
                 Вождь: 
@@ -67,8 +67,20 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 Участников: ${clanData.size} <br>
                 Уровень клана: ${clanData.rank.level} [${clanData.rank.exp.toLocaleString()} XP] <br>
                 Рейтинг клана: ${clanData.rating_info.rating_score.toLocaleString()} <br>
-                Стоимость тотемов: ${(clanData.size * 60).toLocaleString()} <br>
+                Стоимость тотемов: ${(clanData.size * 60).toLocaleString()}
             </div>
+            <div class="result-additional"><br>
+                Активные тотемы: <br>
+                ${data.totems.slotData
+                    .filter(slot => slot.totem_id in totems)
+                    .map((slot, index) => {
+                        const totem = totems[slot.totem_id];
+                        return index === 0 
+                            ? `${totem.name}.` 
+                            : `${totem.name}, истекает через ${expires(slot.expires)}.`;
+                    })
+                    .join('<br>')}
+            </div><br>
             Статистика клана: <br>
             <table id="clan-statistics" class="rating-table" style="width: 100%; text-align: left;">
                 <thead>
@@ -96,14 +108,6 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                             </tr>
                         `;
                     }).join('')}
-                    <tr class="result-additional no-data-table-excel">
-                        <td style="width: 5%;"></td>
-                        <td style="width: 20%;">Всего: </td>
-                        <td style="width: 20%; text-align: center;">${clanData.rank.dailyPlayerExp.toLocaleString()}</td>
-                        <td style="width: 20%; text-align: center;">${clanData.rank.dailyTotalExp.toLocaleString()}</td>
-                        <td style="width: 20%; text-align: center;">${clanData.rank.DailyTotalRaiting.toLocaleString()}</td>
-                        <td style="width: 20%; text-align: center;"></td>
-                    </tr>
                 </tbody>
             </table> <br>
             <div class="result-additional">
@@ -287,6 +291,18 @@ async function getData(id, is_clan) {
         }
         return 'error';
     }
+}
+
+function expires(seconds) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+
+    const formattedHours = String(hours).padStart(2, '0');
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+
+    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 }
 
 document.addEventListener('click', function(e) {
