@@ -58,6 +58,11 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                             Внимание! Игрок является модератором чата!
                         </div>
                     ` : ``}
+
+                    ${data.uid == 14070362 ? `
+                    <div class="result-additional text-down">
+                        ${data.name} - это частичка Nevermore
+                    </div>` : ``}
                 </div>
                 <div class="result-additional">
                     Статус: 
@@ -156,9 +161,9 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                         Берегите себя, учитесь на чужих ошибках, не создавайте проблем, которых можно избежать. 
                         Иногда один неверный шаг оставляет шрамы на всю жизнь
                     </div>
-                ` : data.uid == 14070362 ? `
+                ` : data.uid == 10270588 ? `
                     <div class="result-additional text-down">
-                        ${data.name} - это частичка Nevermore
+                        ${data.name}, художник, епта!
                     </div>
                 ` : ``}
             </div>
