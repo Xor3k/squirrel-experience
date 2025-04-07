@@ -12,7 +12,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     const loadingTimeout = setTimeout(() => {
         const timeoutBlock = document.getElementById('result');
         timeoutBlock.innerHTML = `
-            <div class="error-title">Запрос выполняется дольше обычного...</div> <br>
+            <div class="error-title">Запрос выполняется дольше обычного...</div>
+            <hr>
             <div class="error-description">
                 Возможно, интернет соединение слишком слабое или сервер игры отключен...
             </div>
@@ -36,74 +37,86 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
 
         const resultBlock = document.getElementById('result');
         const currentSeason = getCurrentSeason() - 1;
-        const maxRating = Math.max(...data.rating_history.map(x => x.rating));
+        let maxRating = data.rating_info.rating_score;
+        let maxRatingSeason = currentSeason + 1;
+
+        if (data.rating_history && data.rating_history.length > 0) {
+            data.rating_history.forEach(item => {
+                if (item.rating > maxRating) {
+                    maxRating = item.rating;
+                    maxRatingSeason = item.season;
+                }
+            });
+        }
 
         const resultHTML = `
             <div class="photo-container">
                 <img src="${data.info.emblem}" alt="emblem" />
                 <span class="img-text">${data.info.name}</span>
-            </div><br>
-            <div class="result-additional">
-                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${data.id}" target="_blank">Карточка клана, больше информации</a>
-            </div><br>
-            <div class="result-additional"><br>
-                Активные тотемы: <br>
-                ${data.totems.slotData
-                    .filter(slot => slot.totem_id in totems)
-                    .map((slot, index) => {
-                        const totem = totems[slot.totem_id];
-                        return index === 0 
-                            ? `${totem.name}.` 
-                            : `${totem.name}, истекает через ${expires(slot.expires)}.`;
-                    })
-                    .join('<br>')}
-            </div><br>
-            <div class="result-additional">
-                Уровни тотемов у клана: <br>
-                ${data.totem_rangs
+            </div>
+
+            <dl class="result-details">
+                <dt>Карточка клана:</dt>
+                <dd><a class="info-link" href="https://squirrelsquery.yukkerike.ru/clan/${data.id}" target="_blank">${data.info.name}, больше информации</a></dd>
+
+                <dt>Текущий сезон:</dt>
+                <dd>${(currentSeason + 1).toLocaleString()}</dd>
+
+                <dt>Текущий рейтинг:</dt>
+                <dd>${(data.rating_info.rating_score).toLocaleString()}</dd>
+
+                <dt>Макс. рейтинг:</dt>
+                <dd>${(maxRating).toLocaleString()} (Сезон ${maxRatingSeason})</dd>
+
+                <dt>Уровни тотемов:</dt>
+                <dd>
+                    ${data.totem_rangs
                     .filter(slot => slot.totem_id in totems)
                     .map(slot => {
                         const totem = totems[slot.totem_id];
                         return `
-                            ${totem.name}: Уровень ${slot.level}. 
+                            ${totem.name}: ${slot.level} уровень. 
                         `;
                     })
                     .join('<br>')}
-            </div><br>
-            <div class="result-additional">
-                Текущий сезон ${currentSeason + 1} <br> Текущий рейтинг: ${(data.rating_info.rating_score).toLocaleString()} <br>
-                Максимальный рейтинг:
-                ${!data.rating_history || data.rating_history.length === 0 ? `
-                    Данных нет
-                ` : 
-                    `${(maxRating).toLocaleString()}`
-                }
-            </div>
-            <table class="rating-table" style="width: 100%; text-align: left;">
-                <tr class="result-additional current-season">
-                    <td style="width: 25%;">Сезон: ${currentSeason + 1}</td>
-                    <td style="width: 30%; text-align: center;">Рейтинг: ${(data.rating_info.rating_score).toLocaleString()}</td>
-                    <td style="width: 45%; text-align: right;">Сезон не завершен</td>
-                </tr>
-                ${!data.rating_history || data.rating_history.length === 0 ? `
-                    <tr class="result-additional">
-                        <td colspan="3" style="text-align: center;">История рейтинга пуста</td>
+                </dd>
+            </dl>
+
+            <hr>
+            <h3 class="table-title" style="margin-top: 30px;">История рейтинга клана по сезонам</h3>
+            <table class="stats-table" style="margin-bottom: 20px;"> <!-- Use stats-table -->
+                <thead>
+                    <tr>
+                        <th>Сезон</th>
+                        <th style="text-align: center;">Рейтинг</th>
+                        <th style="text-align: right;">Период</th>
                     </tr>
-                ` : data.rating_history.filter(item => item.season !== currentSeason + 1)
-                    .sort((a, b) => b.season - a.season)
-                    .map(item => {
-                        const dateRange = getSeasonStartDate(item.season, currentSeason + 1);
-                        return `
-                            <tr class="result-additional">
-                                <td style="width: 25%;">Сезон: ${(item.season).toLocaleString()}</td>
-                                <td style="width: 30%; text-align: center;">Рейтинг: ${(item.rating).toLocaleString()}</td>
-                                <td style="width: 45%; text-align: right;">${dateRange}</td>
-                            </tr>
-                        `;
-                    }).join('')}
+                </thead>
+                <tbody>
+                     <tr> <!-- Current Season Always First -->
+                        <td>${currentSeason + 1}</td>
+                        <td style="text-align: center;">${(data.rating_info.rating_score).toLocaleString()}</td>
+                        <td style="text-align: right;">Текущая неделя</td>
+                    </tr>
+                    ${!data.rating_history || data.rating_history.length === 0 ? `
+                        <tr>
+                            <td colspan="3" style="text-align: center; padding: 20px;">История рейтинга пуста</td>
+                        </tr>
+                    ` : data.rating_history.filter(item => item.season !== currentSeason + 1)
+                        .sort((a, b) => b.season - a.season)
+                        .map(item => {
+                            const dateRange = getSeasonStartDate(item.season, currentSeason + 1);
+                            return `
+                                <tr> <!-- Removed result-additional -->
+                                    <td>${(item.season).toLocaleString()}</td>
+                                    <td style="text-align: center;">${(item.rating).toLocaleString()}</td>
+                                    <td style="text-align: right;">${dateRange}</td>
+                                </tr>
+                            `;
+                        }).join('')}
+                </tbody>
             </table>
-            <br>
-            <div class="result-additional">~ Xorek</div>
+            <div class="result-footer">~ Xorek</div>
         `;
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');
@@ -112,7 +125,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         if (error.message === 'error connection') {
             const resultHTML = `
                 <div class="error-message">
-                    <div class="error-title">Похоже, сервер игры отключен...</div> <br>
+                    <div class="error-title">Похоже, сервер игры отключен...</div>
+                    <hr>
                     <div class="error-description">
                         Соединение с сервером игры прервано. Попробуйте позже. 
                     </div>
@@ -124,6 +138,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             const errorHTML = `
                 <div class="error-message">
                     <div class="error-title">Произошла ошибка!</div>
+                    <hr>
                     <div class="error-description">
                         Не удалось получить данные игрока. Возможно, указан неверный UID или связь прервана. <br>
                         Повторите попытку еще раз. 

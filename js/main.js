@@ -10,7 +10,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     const loadingTimeout = setTimeout(() => {
         const timeoutBlock = document.getElementById('result');
         timeoutBlock.innerHTML = `
-            <div class="error-title">Запрос выполняется дольше обычного...</div> <br>
+            <div class="error-title">Запрос выполняется дольше обычного...</div>
+            <hr>
             <div class="error-description">
                 Возможно, интернет соединение слишком слабое или сервер игры отключен...
             </div>
@@ -41,69 +42,78 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         if (data.exp >= 66045137) {
             const resultHTML = `
                 <div class="result-text">
-                    Игрок 
-                    ${data.vip_info.vip_exist !== 0 && data.moderator > 0 ? ` 
-                        <span class="moderator-color">${data.name}</span> 
+                    Игрок
+                    ${data.vip_info.vip_exist !== 0 && data.moderator > 0 ? `
+                        <span class="moderator-color">${data.name}</span>
                         <img src="img/gold_wings.png" class="icon-vip">
                     ` : data.vip_info.vip_exist !== 0 ? `
-                        <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span> 
-                        <img src="img/gold_wings.png" class="icon-vip"> 
+                        <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span>
+                        <img src="img/gold_wings.png" class="icon-vip">
                     ` : data.vip_info.vip_exist == 0 && data.moderator > 0 ? `
-                        <span class="moderator-color">${data.name}</span> 
+                        <span class="moderator-color">${data.name}</span>
                     ` : ` ${data.name} `
                     }
-                    достиг максимального уровня!) <br>
+                    достиг максимального уровня!)
                     ${data.moderator == 1 ? `
-                        <div class="result-additional warning-color">
+                        <span class="result-warning warning-color">
                             Внимание! Игрок является модератором чата!
-                        </div>
+                        </span>
                     ` : ``}
-
                     ${data.uid == 14070362 ? `
-                    <div class="result-additional text-down">
-                        ${data.name} - это частичка Nevermore
-                    </div>` : ``}
+                        <span class="result-special">${data.name} - это частичка Nevermore</span>
+                    ` : ``}
                 </div>
-                <div class="result-additional">
-                    Статус: 
-                        ${data.online == 1 ? 'В сети' : 'Не в сети'}
-                </div><br>
-                <div class="result-additional text-down">
-                    и набрал больше на ${(data.exp - 66045137).toLocaleString()} XP от максимального уровня.<br>
-                    Процент выполнения уровня: 100%
-                    <button class="copy-button" data-copy="${(data.exp - 66045137).toLocaleString()}">Копировать</button>
-                </div><br>
-                <div class="result-additional">
-                    ${data.person_info.profile == null || data.person_info.profile == '' ? `
-                        <div class="result-additional">
-                            Профиль не найден...
-                        </div>
+                <hr>
+                <dl class="result-details">
+                    <dt>Статус:</dt>
+                    <dd>${data.online == 1 ? 'В сети' : 'Не в сети'}</dd>
+
+                    <dt>Процент выполнения:</dt>
+                    <dd>100%</dd>
+
+                    <dt>Кол-во пыта после 200-го:</dt>
+                    <dd>
+                        ${(data.exp - 66045137).toLocaleString()} XP
+                        <button class="copy-button" data-copy="${(data.exp - 66045137).toLocaleString()}">Копировать</button>
+                    </dd>
+
+                    <dt>Профиль:</dt>
+                    <dd>
+                        ${data.person_info.profile == null || data.person_info.profile == '' ? `
+                            <span>Профиль не найден...</span>
                         ` : `
-                        <a class="header-link" href="${data.person_info.profile}" target="_blank">${data.person_info.profile}</a>
-                        <button class="copy-button-profile" data-copy="${data.person_info.profile}">Копировать</button>
-                    `} 
-                </div><br>
-                <div class="result-additional">
-                    У игрока максимальный уровень: 200, поздравлем!
-                    <button class="copy-button" data-copy="${(data.exp).toLocaleString()}">Копировать</button>
-                </div><br>
-                <div class="result-additional">
-                    Общий опыт: ${(data.exp).toLocaleString()}
-                    <button class="copy-button" data-copy="${(data.exp).toLocaleString()}">Копировать</button>
-                </div><br>
-                <div class="result-additional">
-                    <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Карточка игрока</a>
-                </div><br> 
-                ${data.clan_id !== 0 ? `
-                    <div class="result-additional">
-                        <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${data.clan_id}" target="_blank">Карточка клана, статистика, ID: ${data.clan_id}</a>
-                    </div><br>
-                ` : `
-                    <div class="result-additional">
-                        Игрок без клана
-                    </div><br>
-                `}
-                <div class="result-additional">~ Xorek</div>
+                            <a class="info-link" href="${data.person_info.profile}" target="_blank">${data.person_info.profile}</a>
+                            <button class="copy-button-profile" data-copy="${data.person_info.profile}">Копировать</button>
+                        `}
+                    </dd>
+
+                    <dt>Текущий уровень:</dt>
+                    <dd>
+                        200 (Максимальный)
+                    </dd>
+
+                    <dt>Общий опыт:</dt>
+                    <dd>
+                        ${(data.exp).toLocaleString()} XP
+                        <button class="copy-button" data-copy="${(data.exp).toLocaleString()}">Копировать</button>
+                    </dd>
+
+                    <dt>Карточка игрока:</dt>
+                    <dd>
+                        <a class="info-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">${data.name}</a>
+                    </dd>
+
+                    ${data.clan_id !== 0 ? `
+                        <dt>Клан (ID: ${data.clan_id}):</dt>
+                        <dd>
+                            <a class="info-link" href="https://squirrelsquery.yukkerike.ru/clan/${data.clan_id}" target="_blank">Карточка клана</a>
+                        </dd>
+                    ` : `
+                        <dt>Клан:</dt>
+                        <dd>Без клана</dd>
+                    `}
+                </dl>
+                <div class="result-footer">~ Xorek</div>
             `;
             resultBlock.innerHTML = resultHTML;
             resultBlock.classList.remove('hidden');
@@ -112,7 +122,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             for (let level in levelRequirements) {
                 let xp = levelRequirements[level];
                 if (data.exp < xp) {
-                    let currentLevelExp = levelRequirements[level - 1];
+                    let currentLevelExp = levelRequirements[level - 1] || 0; // Handle level 1
                     let nextLevelExp = levelRequirements[level];
                     nextLevel = level;
                     requiredXP = xp;
@@ -124,90 +134,97 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
 
         let remainingXP = requiredXP - data.exp;
         const resultHTML = `
-            <div class="result-text">
-                ${data.vip_info.vip_exist !== 0 && data.moderator > 0 ? ` 
-                        <span class="moderator-color">${data.name}</span> 
+             <div class="result-text">
+                ${data.vip_info.vip_exist !== 0 && data.moderator > 0 ? `
+                        <span class="moderator-color">${data.name}</span>
                         <img src="img/gold_wings.png" class="icon-vip">
                     ` : data.vip_info.vip_exist !== 0 ? `
-                        <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span> 
-                        <img src="img/gold_wings.png" class="icon-vip"> 
+                        <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span>
+                        <img src="img/gold_wings.png" class="icon-vip">
                     ` : data.vip_info.vip_exist == 0 && data.moderator > 0 ? `
-                        <span class="moderator-color">${data.name}</span> 
+                        <span class="moderator-color">${data.name}</span>
                     ` : ` ${data.name} `
                 }
-                | Текущий уровень: ${data.level} <br>
-                ${data.moderator == 1 ? `
-                    <div class="result-additional warning-color">
+                | Текущий уровень: ${data.level}
+                 ${data.moderator == 1 ? `
+                    <span class="result-warning warning-color">
                         Внимание! Игрок является модератором чата!
-                    </div>
-                ` : ``}
-
+                    </span>
+                 ` : ``}
                 ${data.uid == 2640274 ? `
-                    <div class="result-additional text-down">
-                        ${data.name}, епта!
-                    </div>
+                    <span class="result-special">${data.name}, епта!</span>
                 ` : data.uid == 20637878 ? `
-                    <div class="result-additional text-down">
-                        Самая лучшая девочка!
-                    </div>
+                    <span class="result-special">Самая лучшая девочка!</span>
                 ` : data.uid == 13143497 ? `
-                    <div class="result-additional text-down">
-                        Ура, ${data.name}, хехехе
-                    </div>
+                    <span class="result-special">Ура, ${data.name}, хехехе</span>
                 ` : data.uid == 17816916 ? `
-                    <div class="result-additional text-down">
-                        ${data.name} не испытывает счастья... <br>
+                    <span class="result-special">
+                        ${data.name} не испытывает счастья...<br>
                         Не хочу, чтобы кто-то испытал ту же боль и разочарование, что и я.
-                        Берегите себя, учитесь на чужих ошибках, не создавайте проблем, которых можно избежать. 
+                        Берегите себя, учитесь на чужих ошибках, не создавайте проблем, которых можно избежать.
                         Иногда один неверный шаг оставляет шрамы на всю жизнь
-                    </div>
+                    </span>
                 ` : data.uid == 10270588 ? `
-                    <div class="result-additional text-down">
-                        ${data.name}, художник, епта!
-                    </div>
+                    <span class="result-special">${data.name}, художник, епта!</span>
                 ` : ``}
             </div>
-            <div class="result-additional">
-                Статус: 
-                    ${data.online == 1  ? 'В сети' : 'Не в сети'}
-            </div><br>
-            <div class="result-additional">
-                До ${nextLevel} уровня осталось: ${remainingXP.toLocaleString()} XP <br>
-                ${data.level > 150 ? ` Процент выполнения уровня: ${percent}%` 
-                : `Чтобы узнать показатель прогресса, необходим 150-ый уровень!`} 
-                <button class="copy-button" data-copy="${remainingXP.toLocaleString()}">Копировать</button>
-            </div><br>
-            <div class="result-additional">
-                ${data.person_info.profile == null || data.person_info.profile == '' ? `
-                    <div class="result-additional">
-                        Профиль не найден...
-                    </div>
+            <hr>
+            <dl class="result-details">
+                <dt>Статус:</dt>
+                <dd>${data.online == 1 ? 'В сети' : 'Не в сети'}</dd>
+
+                <dt>До ${nextLevel} уровня:</dt>
+                <dd>
+                    ${remainingXP.toLocaleString()} XP
+                    <button class="copy-button" data-copy="${remainingXP.toLocaleString()}">Копировать</button>
+                </dd>
+
+                 ${data.level >= 100 ? `
+                    <dt>Прогресс уровня:</dt>
+                    <dd>${percent}%</dd>
+                 ` : `
+                     <dt>Прогресс уровня:</dt>
+                     <dd>(Доступно с 100 уровня)</dd>
+                 `}
+
+                <dt>Профиль:</dt>
+                <dd>
+                     ${data.person_info.profile == null || data.person_info.profile == '' ? `
+                        <span>Профиль не найден...</span>
                     ` : `
-                    <a class="header-link" href="${data.person_info.profile}" target="_blank">${data.person_info.profile}</a>
-                    <button class="copy-button-profile" data-copy="${data.person_info.profile}">Копировать</button>
-                `} 
-            </div><br>
-            <div class="result-additional">
-                До 200-го уровня осталось: ${(66045137 - data.exp).toLocaleString()} XP
-                <button class="copy-button" data-copy="${(66045137 - data.exp).toLocaleString()}">Копировать</button>
-            </div><br>
-            <div class="result-additional">
-                Общий опыт: ${(data.exp).toLocaleString()}
-                <button class="copy-button" data-copy="${(data.exp).toLocaleString()}">Копировать</button>
-            </div><br> 
-            <div class="result-additional">
-                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Карточка игрока</a>
-            </div><br> 
-            ${data.clan_id !== 0 ? `
-                <div class="result-additional">
-                    <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${data.clan_id}" target="_blank">Карточка клана, статистика, ID: ${data.clan_id}</a>
-                </div><br>
-            ` : `
-                <div class="result-additional">
-                    Игрок без клана
-                </div><br>
-            `}
-            <div class="result-additional">~ Xorek</div>
+                        <a class="info-link" href="${data.person_info.profile}" target="_blank">${data.person_info.profile}</a>
+                        <button class="copy-button-profile" data-copy="${data.person_info.profile}">Копировать</button>
+                    `}
+                </dd>
+
+                <dt>До 200-го уровня:</dt>
+                <dd>
+                    ${(66045137 - data.exp).toLocaleString()} XP
+                    <button class="copy-button" data-copy="${(66045137 - data.exp).toLocaleString()}">Копировать</button>
+                </dd>
+
+                <dt>Общий опыт:</dt>
+                <dd>
+                    ${(data.exp).toLocaleString()} XP
+                    <button class="copy-button" data-copy="${(data.exp).toLocaleString()}">Копировать</button>
+                </dd>
+
+                <dt>Карточка игрока:</dt>
+                <dd>
+                    <a class="info-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">${data.name}</a>
+                </dd>
+
+                ${data.clan_id !== 0 ? `
+                    <dt>Карточка клана:</dt>
+                    <dd>
+                        <a class="info-link" href="https://squirrelsquery.yukkerike.ru/clan/${data.clan_id}" target="_blank">Клан (ID: ${data.clan_id})</a>
+                    </dd>
+                ` : `
+                    <dt>Клан:</dt>
+                    <dd>Без клана</dd>
+                `}
+            </dl>
+            <div class="result-footer">~ Xorek</div>
         `;
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');
@@ -216,7 +233,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         if (error.message === 'error connection') {
             const resultHTML = `
                 <div class="error-message">
-                    <div class="error-title">Похоже, сервер игры отключен...</div> <br>
+                    <div class="error-title">Похоже, сервер игры отключен...</div>
+                    <hr>
                     <div class="error-description">
                         Соединение с сервером игры прервано. Попробуйте позже. 
                     </div>
@@ -227,7 +245,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         } else {
             const resultHTML = `
                 <div class="error-message">
-                    <div class="error-title">Произошла ошибка!</div> <br>
+                    <div class="error-title">Произошла ошибка!</div>
+                    <hr>
                     <div class="error-description">
                         Не удалось получить данные игрока. Возможно, указан неверный UID или связь прервана. <br>
                         Повторите попытку еще раз. 

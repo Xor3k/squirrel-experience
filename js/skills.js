@@ -64,7 +64,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     const loadingTimeout = setTimeout(() => {
         const timeoutBlock = document.getElementById('result');
         timeoutBlock.innerHTML = `
-            <div class="error-title">Запрос выполняется дольше обычного...</div> <br>
+            <div class="error-title">Запрос выполняется дольше обычного...</div>
+            <hr>
             <div class="error-description">
                 Возможно, интернет соединение слишком слабое или сервер игры отключен...
             </div>
@@ -97,9 +98,13 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             { name: "Творец", start: 34, end: 51 }
         ];
 
+        let count_full_skills = 0;
         const skillLevels = {};
         data.shaman_skills.forEach(skill => {
             skillLevels[skill.skillId] = skill.levelFree + skill.levelPaid;
+            if (skill.levelPaid === 3 && skill.levelFree === 3) {
+                count_full_skills += 1;
+            }
         });
 
         data.shaman_skills.sort((a, b) => a.skillId - b.skillId);
@@ -110,33 +115,38 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
 
         const resultHTML = `
             <div class="result-text">
-                ${data.vip_info.vip_exist !== 0 && data.moderator > 0 ? ` 
-                    <span class="moderator-color">${data.name}</span> 
+                ${data.vip_info.vip_exist !== 0 && data.moderator > 0 ? `
+                    <span class="moderator-color">${data.name}</span>
                     <img src="img/gold_wings.png" class="icon-vip">
                 ` : data.vip_info.vip_exist !== 0 ? `
-                    <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span> 
-                    <img src="img/gold_wings.png" class="icon-vip"> 
+                    <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span>
+                    <img src="img/gold_wings.png" class="icon-vip">
                 ` : data.vip_info.vip_exist == 0 && data.moderator > 0 ? `
-                    <span class="moderator-color">${data.name}</span> 
+                    <span class="moderator-color">${data.name}</span>
                 ` : ` ${data.name} `
                 }
-                | Текущий уровень: ${data.level}  [${data.shaman_level}] <br>
+                | Текущий уровень: ${data.level} [${data.shaman_level}] <br>
                 ${data.moderator == 1 ? `
-                    <div class="result-additional warning-color">
+                    <span class="result-warning warning-color">
                         Внимание! Игрок является модератором чата!
-                    </div>
+                    </span>
                 ` : ''}
             </div>
-            <div class="result-additional">
-                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Карточка игрока</a>
-            </div><br> 
-            <div class="result-text">
-                У игрока сейчас выбран: ${playerProfession.name}
-            </div>
-            <div class="result-text">    
-                ${playerProfession ? `
+            <hr>
+            <dl class="result-details">
+                <dt>Карточка игрока:</dt>
+                <dd>
+                    <a class="info-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">${data.name}</a>
+                </dd>
+                <dt>Профессия:</dt>
+                <dd>
+                    ${playerProfession.name} <br>
+                    Имеется ${data.shaman_skills.length} навыков из 17 возможных. <br>
+                    Из них ${count_full_skills} прокаченны полностью.
+                </dd>
+                <dt>Навыки:</dt>
+                <dd>
                     <div class="result-text-small">
-                        Имеется ${data.shaman_skills.length} навыков из 17 возможных: <br>
                         ${Array.from({ length: playerProfession.end - playerProfession.start + 1 }, (_, i) => {
                             const skillId = playerProfession.start + i;
                             
@@ -146,8 +156,6 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                             const skillLevel = skillLevels[skillId] || 0;
                             const className = skillLevel > 2 && skillLevel < 5 ? 'shaman-skills-part' : skillLevel == 6 ? 'shaman-skills-full' : '';
 
-                            // Исключение навыка с ID 40, так как он, почему-то, пропущен, получая навыки игрока от сервера в data.shaman_skills
-                            // В исключение имею ввиду то, что я вывожу как currentIndex. Номер навыка в профессии, исключая 40-ой ID навыка
                             const filteredSkills = Array.from({ length: playerProfession.end - playerProfession.start + 1 })
                                 .map((_, i) => playerProfession.start + i)
                                 .filter(skillId => skillId !== 40);  
@@ -161,10 +169,9 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                             `;
                         }).join('')}
                     </div>
-                ` : ``}
-            </div>
-            <br>
-            <div class="result-additional">~ Xorek</div>
+                </dd>
+            </dl>
+            <div class="result-footer">~ Xorek</div>
         `;
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');
@@ -174,7 +181,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         if (error.message === 'error connection') {
             resultHTML = `
                 <div class="error-message">
-                    <div class="error-title">Похоже, сервер игры отключен...</div> <br>
+                    <div class="error-title">Похоже, сервер игры отключен...</div>
+                    <hr>
                     <div class="error-description">
                         Соединение с сервером игры прервано. Попробуйте позже. 
                     </div>
@@ -194,6 +202,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             resultHTML = `
                 <div class="error-message">
                     <div class="error-title">Произошла ошибка!</div>
+                    <hr>
                     <div class="error-description">
                         Не удалось получить данные игрока. Возможно, указан неверный UID или связь прервана. <br>
                         Повторите попытку еще раз. 

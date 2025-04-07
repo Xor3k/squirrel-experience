@@ -10,33 +10,53 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap" rel="stylesheet">
     </head>
 <body>
-    <div class="highlight-text-title">Squirrel EXperience</div>
     <div class="container">
-        <div class="header-text ">
+        <header class="main-header">
+            <div class="site-title">Squirrel EXperience</div>
             <nav class="navigation">
-                <a href="index.html" class="nav-link">Калькулятор опыта</a>
+                <a href="index.html" class="nav-link">Калькулятор</a>
                 <span class="nav-separator">/</span>
-                <a href="comparison.html" class="nav-link active">Режим сравнения</a>
+                <a href="comparison.html" class="nav-link active">Сравнение</a>
+                <span class="nav-separator">/</span>
+                <a href="players.html" class="nav-link">Игроки</a>
+                <span class="nav-separator">/</span>
+                <a href="skills.html" class="nav-link">Навыки</a>
+                <span class="nav-separator">/</span>
+                <a href="table.html" class="nav-link">Таблица</a>
+                <span class="nav-separator">/</span>
+                <a href="clan.html" class="nav-link">Клан</a>
+                <span class="nav-separator">/</span>
+                <a href="rating.html" class="nav-link">Рейтинг</a>
+                <span class="nav-separator">/</span>
+                <a href="clan-rating.html" class="nav-link">Рейтинг клана</a>
             </nav>
-            <span class="header-text-additional">
-                Режим сравнения. Рассчитывает разницу в опыте у игрока A и игрока B.
-            </span> 
-            <span class="header-text-additional">
-                Введите ID игроков в форме ниже <div class="curved-arrow"></div>
-            </span>
-        </div>
-        <form id="calculatorForm" class="calculator-form">
-            <div class="form-group">
-                <label for="player-a" class="form-label">UID игрока A</label>
-                <input class="form-control" id="player-a" required>
-                <label for="player-b" class="form-label label-margin-top">UID игрока B</label>
-                <input class="form-control" id="player-b" required>
+        </header>
+
+        <main>
+            <hr>
+            <p class="info-text">
+                Рассчитывает разницу в опыте, количестве игр, спасеннок, коэффициенте и рейтинге между двумя игроками.
+            </p>
+             <form id="calculatorForm" class="calculator-form">
+                <h2 class="form-title">Сравнение игроков</h2>
+                <div class="form-group">
+                    <label for="player-a" class="form-label">UID игрока A</label>
+                    <input class="form-control" id="player-a" required placeholder="Введите UID первого игрока">
+                </div>
+                 <div class="form-group">
+                    <label for="player-b" class="form-label">UID игрока B</label>
+                    <input class="form-control" id="player-b" required placeholder="Введите UID второго игрока">
+                </div>
+                 <div class="button-group">
+                     <button type="submit" class="submit-button">Сравнить</button>
+                </div>
+            </form> 
+
+            <div id="result" class="result-block hidden">
+                <!-- результат сравнения -->
             </div>
-            <button type="submit" class="submit-button">Рассчитать</button>
-        </form>
-        <div id="result" class="result-block hidden">
-            <!-- результат -->
-        </div>
+        </main>
+
         <div class="text">Xorek!</div>
     </div>
     <script src="js/data_js/data_level.js"></script>

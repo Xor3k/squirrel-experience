@@ -37,39 +37,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
     }
-    else {
-        importantText();
-    }
 });
-
-// Important text title!
-function importantText() {
-    const importantText = document.querySelector('.highlight-text-title');
-    const letters = importantText.innerText.split('');
-    importantText.innerHTML = '';
-
-    const firstFadeIndexes = [1, 2, 3, 4, 5, 6, 7, 11, 12, 13, 14, 15, 16, 17, 18];
-    const firstDelay = 2000;
-    const SecondDelay = 4000;
-
-    letters.forEach((letter, index) => {
-        const span = document.createElement('span');
-        span.textContent = letter;
-        span.classList.add('highlight-title');
-        importantText.appendChild(span);
-
-        if (firstFadeIndexes.includes(index)) {
-            setTimeout(() => {
-                span.classList.add('faded-title');
-            }, firstDelay);
-        } else {
-            setTimeout(() => {
-                span.classList.add('faded-title');
-            }, SecondDelay);
-        }
-    });
-
-    setTimeout(() => {
-        importantText.classList.add('disappear-title');
-    }, SecondDelay);
-}

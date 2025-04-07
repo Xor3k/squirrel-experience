@@ -3,42 +3,55 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Рейтинг игроков | Squirrel EXperience</title>
+        <title>Рейтинг игрока | Squirrel EXperience</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="icon" type="image/png" href="img/ferret.png">
         <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap" rel="stylesheet">
     </head>
 <body>
-    <div class="highlight-text-title">Squirrel EXperience</div>
     <div class="container">
-        <div class="header-text">
+        <header class="main-header">
+            <div class="site-title">Squirrel EXperience</div>
             <nav class="navigation">
-                <a href="index.html" class="nav-link">Калькулятор опыта</a>
+                <a href="index.html" class="nav-link">Калькулятор</a>
                 <span class="nav-separator">/</span>
-                <a href="comparison.html" class="nav-link">Режим сравнения</a>
+                <a href="comparison.html" class="nav-link">Сравнение</a>
+                <span class="nav-separator">/</span>
+                <a href="players.html" class="nav-link">Игроки</a>
+                <span class="nav-separator">/</span>
+                <a href="skills.html" class="nav-link">Навыки</a>
+                <span class="nav-separator">/</span>
+                <a href="table.html" class="nav-link">Таблица</a>
+                <span class="nav-separator">/</span>
+                <a href="clan.html" class="nav-link">Клан</a>
+                <span class="nav-separator">/</span>
+                <a href="rating.html" class="nav-link active">Рейтинг</a>
+                <span class="nav-separator">/</span>
+                <a href="clan-rating.html" class="nav-link">Рейтинг клана</a>
             </nav>
-            <span class="header-text-additional">
-                История рейтинга. <br> Показывает историю рейтинга игрока за все время.
-                Насколько понимаю, история рейтинга хранит накопленные очки за каждую неделю, 
-                если вы получали очки рейтинга в течение данной недели. <br> 
-                Начало истории рейтинга - это ваши первые полученные очки рейтинга в игре.
-                На основе этих предположений и выводится очки рейтинга, с расчетом даты начала и конца недельного рейтинга.
-            </span> 
-            <span class="header-text-additional">
-                Введите UID игрока в форме ниже <div class="curved-arrow"></div>
-            </span>
-        </div>
-        <form id="calculatorForm" class="calculator-form">
-            <div class="form-group">
-                <label for="player" class="form-label">UID игрока</label>
-                <input class="form-control" id="player" required>
+        </header>
+
+        <main>
+            <hr>
+            <p class="info-text">
+                Показывает историю рейтинга игрока за все время. История хранит накопленные очки за каждую неделю, если игрок получал очки рейтинга в течение этой недели. Начало истории - первые полученные очки рейтинга.
+            </p>
+            <form id="calculatorForm" class="calculator-form">
+                <h2 class="form-title">История рейтинга игрока</h2>
+                <div class="form-group">
+                    <label for="player" class="form-label">UID игрока</label>
+                    <input class="form-control" id="player" required placeholder="Введите UID игрока">
+                </div>
+                 <div class="button-group">
+                    <button type="submit" class="submit-button">Рассчитать</button>
+                </div>
+            </form>
+            <div id="result" class="result-block hidden">
+                <!-- результат -->
             </div>
-            <button type="submit" class="submit-button">Рассчитать</button>
-        </form>
-        <div id="result" class="result-block hidden">
-            <!-- результат -->
-        </div>
+        </main>
+
         <div class="text">Xorek!</div>
     </div>
     <script src="js/data_js/data_level.js"></script>

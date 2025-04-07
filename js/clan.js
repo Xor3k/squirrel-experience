@@ -11,7 +11,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     const loadingTimeout = setTimeout(() => {
         const timeoutBlock = document.getElementById('result');
         timeoutBlock.innerHTML = `
-            <div class="error-title">Запрос выполняется дольше обычного...</div> <br>
+            <div class="error-title">Запрос выполняется дольше обычного...</div>
+            <hr>
             <div class="error-description">
                 Возможно, интернет соединение слишком слабое или сервер игры отключен...
             </div>
@@ -55,68 +56,101 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             <div class="photo-container">
                 <img src="${clanData.info.emblem}" alt="emblem" />
                 <span class="img-text">${clanData.info.name}</span>
-            </div><br>
-            <div class="result-additional">
-                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/clan/${clanData.id}" target="_blank">Карточка клана, больше информации</a>
-            </div><br>
-            <div class="result-text-small">
-                Вождь: 
-                    <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${clanData.leader_id.uid}" target="_blank">
-                        ${clanData.leader_id.name} [${clanData.leader_id.level}]
-                    </a> <br>
-                Участников: ${clanData.size} <br>
-                Уровень клана: ${clanData.rank.level} [${clanData.rank.exp.toLocaleString()} XP] <br>
-                Рейтинг клана: ${clanData.rating_info.rating_score.toLocaleString()} <br>
-                Стоимость тотемов: ${(clanData.size * 60).toLocaleString()}
             </div>
-            <div class="result-additional"><br>
-                Активные тотемы: <br>
-                ${data.totems.slotData
-                    .filter(slot => slot.totem_id in totems)
-                    .map((slot, index) => {
-                        const totem = totems[slot.totem_id];
-                        return index === 0 
-                            ? `${totem.name}.` 
-                            : `${totem.name}, истекает через ${expires(slot.expires)}.`;
-                    })
-                    .join('<br>')}
-            </div><br>
-            Статистика клана: <br>
-            <table id="clan-statistics" class="rating-table" style="width: 100%; text-align: left;">
-                <thead>
-                    <tr class="result-additional text-table-clan">
-                        <td style="width: 5%;">№</td>
-                        <td style="width: 20%; text-align: left;">Ник</td>
-                        <td style="width: 20%; text-align: center;">Опыт игрока</td>
-                        <td style="width: 20%; text-align: center;">Опыт клана</td>
-                        <td style="width: 20%; text-align: center;">Очки рейтинга</td>
-                        <td style="width: 20%; text-align: center;">Общий опыт игрока</td>
-                    </tr>
-                </thead>
-                <tbody id="clan-statistics-data">
-                    ${clanData.statistics.map((item, index) => {
-                        return `
-                            <tr class="result-additional">
-                                <td style="width: 5%;">${index + 1}</td>
-                                <td style="width: 20%; text-align: left;">
-                                    <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${item.uid.uid}" target="_blank">${item.uid.name} [${item.uid.level}]</a>
-                                </td>
-                                <td style="width: 20%; text-align: center;">${item.samples.toLocaleString()}</td>
-                                <td style="width: 20%; text-align: center;">${item.exp.toLocaleString()}</td>
-                                <td style="width: 20%; text-align: center;">${item.clan_rating.toLocaleString()}</td>
-                                <td style="width: 20%; text-align: center;">${item.uid.exp.toLocaleString()}</td>
+            <div class="clan-section">
+                <h4 class="clan-section-title">Основные данные</h4>
+                <div class="clan-info-grid">
+                    <div>Вождь:</div>
+                    <div>
+                        <a class="info-link" href="https://squirrelsquery.yukkerike.ru/user/${clanData.leader_id.uid}" target="_blank">
+                            ${clanData.leader_id.name} [${clanData.leader_id.level}]
+                        </a>
+                    </div>
+                    <div>Участников:</div>
+                    <div>${clanData.size}</div>
+                    <div>Уровень клана:</div>
+                    <div>${clanData.rank.level} <span class="xp-details">[${clanData.rank.exp.toLocaleString()} XP]</span></div>
+                    <div>Рейтинг клана:</div>
+                    <div>${clanData.rating_info.rating_score.toLocaleString()}</div>
+                    <div>Стоимость тотемов:</div>
+                    <div>${(clanData.size * 60).toLocaleString()}</div>
+                    <div>Карточка клана:</div>
+                    <div>
+                        <a class="info-link" href="https://squirrelsquery.yukkerike.ru/clan/${clanData.id}" target="_blank">
+                            ${clanData.info.name}, больше информации
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clan-section">
+                <h4 class="clan-section-title">Активные тотемы</h4>
+                <div class="clan-totems-list">
+                    ${data.totems.slotData
+                        .filter(slot => slot.totem_id in totems)
+                        .map((slot, index) => {
+                            const totem = totems[slot.totem_id];
+                            const expiryText = index === 0 ? '(Постоянный)' : `(истекает через ${expires(slot.expires)})`;
+                            return `<div class="totem-item">
+                                        <span>${totem.name}</span>
+                                        <span class="totem-expiry">${expiryText}</span>
+                                    </div>`;
+                        })
+                        .join('')}
+                    ${data.totems.slotData.filter(slot => slot.totem_id in totems).length === 0 ? '<div class="no-totems">Нет активных тотемов</div>' : ''}
+                </div>
+            </div>
+            
+            <div class="clan-section">
+                <h4 class="clan-section-title">Статистика клана</h4>
+                <div class="table-content">
+                    <table id="clan-statistics" class="clan-stats-table">
+                        <thead>
+                            <tr>
+                                <th class="col-rank">№</th>
+                                <th class="col-nick text-left">Ник</th>
+                                <th class="col-samples text-center">Опыт игрока</th>
+                                <th class="col-clan-exp text-center">Опыт клана</th>
+                                <th class="col-rating text-center">Очки рейтинга</th>
+                                <th class="col-total-exp text-center">Общий опыт игрока</th>
                             </tr>
-                        `;
-                    }).join('')}
-                </tbody>
-            </table> <br>
-            <div class="result-additional">
-                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToExcel()">Сохранить статистику в Excel</button>
-            </div><br>
-            <div class="result-additional">
-                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToJson()">Сохранить статистику в Json</button>
-            </div><br>
-            <div class="result-additional">~ Xorek</div>
+                        </thead>
+                        <tbody id="clan-statistics-data">
+                            ${clanData.statistics.map((item, index) => {
+                                return `
+                                    <tr>
+                                        <td class="col-rank text-center">${index + 1}</td>
+                                        <td class="col-nick text-left">
+                                            <a class="info-link" href="https://squirrelsquery.yukkerike.ru/user/${item.uid.uid || 0}" target="_blank">
+                                                ${item.uid.name} 
+                                            </a>
+                                        </td>
+                                        <td class="col-samples text-center">${item.samples.toLocaleString()}</td>
+                                        <td class="col-clan-exp text-center">${item.exp.toLocaleString()}</td>
+                                        <td class="col-rating text-center">${item.clan_rating.toLocaleString()}</td>
+                                        <td class="col-total-exp text-center">${typeof item.uid.exp === 'number' ? item.uid.exp.toLocaleString() : 'N/A'}</td>
+                                    </tr>
+                                `;
+                            }).join('')}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" class="text-right total-label">Всего:</td>
+                                <td class="col-samples text-center total-value">${clanData.rank.dailyPlayerExp.toLocaleString()}</td>
+                                <td class="col-clan-exp text-center total-value">${clanData.rank.dailyTotalExp.toLocaleString()}</td>
+                                <td class="col-rating text-center total-value">${clanData.rank.DailyTotalRaiting.toLocaleString()}</td>
+                                <td class="col-total-exp text-center"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <hr>
+                <div class="save-buttons-group">
+                    <button class="stats-button" id="save-excel-btn" onclick="saveStatisticsToExcel()">Сохранить в Excel</button>
+                    <button class="stats-button" id="save-json-btn" onclick="saveStatisticsToJson()">Сохранить в Json</button>
+                </div>
+            </div>
+            <div class="result-footer">~ Xorek</div>
         `;
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');
@@ -125,7 +159,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         if (error.message === 'error connection') {
             const resultHTML = `
                 <div class="error-message">
-                    <div class="error-title">Похоже, сервер игры отключен...</div> <br>
+                    <div class="error-title">Похоже, сервер игры отключен...</div>
+                    <hr>
                     <div class="error-description">
                         Соединение с сервером игры прервано. Попробуйте позже. 
                     </div>
@@ -136,9 +171,10 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         } else {
             const resultHTML = `
                 <div class="error-message">
-                    <div class="error-title">Произошла ошибка!</div> <br>
+                    <div class="error-title">Произошла ошибка!</div>
+                    <hr>
                     <div class="error-description">
-                        Не удалось получить данные клана. Возможно, указан неверный ID или связь прервана. <br>
+                        Не удалось получить данные игрока. Возможно, указан неверный UID или связь прервана. <br>
                         Повторите попытку еще раз. 
                     </div>
                 </div>

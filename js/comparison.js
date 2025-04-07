@@ -13,7 +13,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     const loadingTimeout = setTimeout(() => {
         const timeoutBlock = document.getElementById('result');
         timeoutBlock.innerHTML = `
-            <div class="error-title">Запрос выполняется дольше обычного...</div> <br>
+            <div class="error-title">Запрос выполняется дольше обычного...</div>
+            <hr>
             <div class="error-description">
                 Возможно, интернет соединение слишком слабое или сервер игры отключен...
             </div>
@@ -29,11 +30,11 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         const resultBlock = document.getElementById('result');
 
         if (!one_sqr || !two_sqr || one_sqr === 'errorMessage' || two_sqr === 'errorMessage') {
-            throw new Error();
+            throw new Error('player error');
         }
         if (one_sqr === 'error' || two_sqr === 'error') {
-            if (timeoutTriggered) {
-                throw new Error('error connection');
+            if (one_sqr === 'error timeout' || two_sqr === 'error timeout') {
+                throw new Error('error timeout');
             }
             throw new Error();
         }
@@ -143,25 +144,25 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     <td>Ссылка на профиль</td>
                     <td>
                         ${one_sqr.person_info.profile ? `
-                            <a class="header-link" href="${one_sqr.person_info.profile}" target="_blank">${one_sqr.name}</a>
+                            <a class="info-link" href="${one_sqr.person_info.profile}" target="_blank">${one_sqr.name}</a>
                         ` : 'Не указан'}
                     </td>
                     <td>
                         ${two_sqr.person_info.profile ? `
-                            <a class="header-link" href="${two_sqr.person_info.profile}" target="_blank">${two_sqr.name}</a>
+                            <a class="info-link" href="${two_sqr.person_info.profile}" target="_blank">${two_sqr.name}</a>
                         ` : 'Не указан'}
                     </td>
                 </tr>
                 <tr>
-                    <td><a class="header-link" href="https://squirrelsquery.yukkerike.ru/" target="_blank">Карточка игрока</a></td>
+                    <td><a class="info-link" href="https://squirrelsquery.yukkerike.ru/" target="_blank">Карточка игрока</a></td>
                     <td>
                         ${one_sqr.person_info.profile ? `
-                            <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${one_sqr.uid}" target="_blank">${one_sqr.name}</a>
+                            <a class="info-link" href="https://squirrelsquery.yukkerike.ru/user/${one_sqr.uid}" target="_blank">${one_sqr.name}</a>
                         ` : 'Не указан'}
                     </td>
                     <td>
                         ${two_sqr.person_info.profile ? `
-                            <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${two_sqr.uid}" target="_blank">${two_sqr.name}</a>
+                            <a class="info-link" href="https://squirrelsquery.yukkerike.ru/user/${two_sqr.uid}" target="_blank">${two_sqr.name}</a>
                         ` : 'Не указан'}
                     </td>
                 </tr>
@@ -176,16 +177,18 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 - Наличие или отсутствие  VIP-статуса (дает бонус к опыту),<br>
                 - Бонусные награды, подарки, обмен коллекций и другие источники.<br>
             </div><br> 
-            <div class="result-additional">~ Xorek</div>
+            <div class="result-footer">~ Xorek</div>
         `;
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');
     } catch (error) {
+        console.log(error.message)
         const resultBlock = document.getElementById('result');
         if (error.message === 'error connection') {
             const resultHTML = `
                 <div class="error-message">
-                    <div class="error-title">Похоже, сервер игры отключен...</div> <br>
+                    <div class="error-title">Похоже, сервер игры отключен...</div>
+                    <hr>
                     <div class="error-description">
                         Соединение с сервером игры прервано. Попробуйте позже. 
                     </div>
@@ -193,12 +196,27 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             `;
             resultBlock.innerHTML = resultHTML;
             resultBlock.classList.remove('hidden');
+        } else if (error.message === 'server error') {
+            const resultHTML = `
+                <div class="error-message">
+                    <div class="error-title">Похоже, сервер игры отключен...</div>
+                    <hr>
+                    <div class="error-description">
+                        Соединение с сервером игры прервано. Попробуйте позже. 
+                    </div>
+                </div>
+            `;
+            resultBlock.innerHTML = resultHTML;
+            resultBlock.classList.remove('hidden');
+        } else if (error.message === 'error timeout') {
+            throw new Error('error timeout');
         } else {
             const resultHTML = `
                 <div class="error-message">
                     <div class="error-title">Произошла ошибка!</div>
+                    <hr>
                     <div class="error-description">
-                        Не удалось получить данные игроков. Возможно, один из UID указан неверно или связь прервана. <br>
+                        Не удалось получить данные игрока. Возможно, указан неверный UID или связь прервана. <br>
                         Повторите попытку еще раз. 
                     </div>
                 </div>

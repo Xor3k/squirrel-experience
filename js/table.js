@@ -1,6 +1,6 @@
 function fillRatingTable() {
     let date_reload = document.getElementById('text-date-reload-table');
-    date_reload.innerText = 'Последнее обновление: ' + dateReloadTable.toLocaleString();
+    date_reload.innerHTML = 'Последнее обновление: <span class="underline-text-reload">' + dateReloadTable.toLocaleString() + '</span>';
     
     let table = document.getElementById('rating-table-data');
     let max_player_rating = Math.max(...playerData.users.map(p => p.player_rating));
@@ -17,40 +17,39 @@ function fillRatingTable() {
     playerData.users.forEach((player, index) => {
         let current_koef = (player.shaman_rating / player.player_rating).toFixed(2);
         const row = document.createElement('tr');
-        row.className = 'result-additional';
         row.innerHTML = `
-            <td style="width: 4%; text-align: left;">${index + 1}</td>
-            <td style="width: 13%; text-align: left;">| ${player.uid}</td>
-            <td style="width: 27%; text-align: left;">
-                <div class="hidden-container" id="hidden-container"> 
+            <td>${index + 1}</td>
+            <td style="text-align: left;">${player.uid}</td>
+            <td style="text-align: left;">
+                <div class="hidden-container">
                     <span> ${player.name} [${detectLevelByExp(player.exp)}] </span>
-                    <div class="popup" id="popup">
+                    <div class="popup">
                         <button class="copy-button-profile" data-copy="${player.uid}">Скопировать UID</button>
                         <button class="copy-button-profile" data-copy="${player.name}">Скопировать Ник</button> 
                         ${player.person_info !== 'profile not found' && player.person_info !== null && player.person_info !== '' ? `
-                            <button onclick="window.open('${player.person_info}', '_blank')">Открыть профиль: `+ detectSocialNetwork(player.person_info) + `</button>
+                            <button onclick="window.open('${player.person_info}', '_blank')">Открыть профиль: ${detectSocialNetwork(player.person_info)}</button>
                         ` : `
                             <button class="button-disabled">Профиль не найден</button>
                         `}
-                        <button class="copy-button-profile" onclick="window.open('https://squirrelsquery.yukkerike.ru/user/${player.uid}', '_blank')">Перейти на yukkerike + UID</button> 
+                        <button class="copy-button-profile" onclick="window.open('https://squirrelsquery.yukkerike.ru/user/${player.uid}', '_blank')">Карточка игрока</button>
                     </div> 
                 </div>
             </td>
-            <td style="width: 23%; text-align: center;">
+            <td style="text-align: center;">
                 ${max_shaman_rating === player.shaman_rating ? `
                     <span class="max-count-rating">${player.shaman_rating.toLocaleString()}</span>
                 ` : `
                     <span>${player.shaman_rating.toLocaleString()}</span>
                 `}
             </td>
-            <td style="width: 23%; text-align: center;">
+            <td style="text-align: center;">
                 ${max_player_rating === player.player_rating ? `
                     <span class="max-count-rating">${player.player_rating.toLocaleString()}</span>
                 ` : `
                     <span>${player.player_rating.toLocaleString()}</span>
                 `}
             </td>
-            <td style="width: 10%; text-align: center;">
+            <td style="text-align: center;">
                 ${parseFloat(max_koef) == parseFloat(current_koef) ? `
                     <span class="max-count-rating">${current_koef}</span>
                 ` : `
@@ -65,8 +64,8 @@ function fillRatingTable() {
 }
 
 function detectLevelByExp(exp) {
-    if (exp < 4292475) {
-        return '...150';
+    if (exp < 1605310) {
+        return '...<100';
     }
 
     for (let level in levelRequirements) {
@@ -135,36 +134,27 @@ function initializeSortableTable() {
 
 function sortTable(tableBody, columnIndex, direction) {
     const rows = Array.from(tableBody.querySelectorAll('tr'));
-
-    const parseCellValue = (cellText, columnIndex) => {
-        if (columnIndex === 1) {
-            return cellText.replace(/\|\s*/, '').trim();
-        }
-        return cellText.trim();
-    };
+    const collator = new Intl.Collator('ru', { numeric: true });
+    const fragment = document.createDocumentFragment();
 
     rows.sort((rowA, rowB) => {
-        const cellA = rowA.children[columnIndex]?.innerText || '';
-        const cellB = rowB.children[columnIndex]?.innerText || '';
-
-        const valueA = parseCellValue(cellA, columnIndex);
-        const valueB = parseCellValue(cellB, columnIndex);
-
-        const numA = parseFloat(valueA);
-        const numB = parseFloat(valueB);
+        const cellA = (rowA.children[columnIndex]?.innerText || '').trim();
+        const cellB = (rowB.children[columnIndex]?.innerText || '').trim();
+        const numA = parseFloat(cellA);
+        const numB = parseFloat(cellB);
 
         if (!isNaN(numA) && !isNaN(numB)) {
             return direction * (numA - numB);
         }
-        
-        return direction * valueA.localeCompare(valueB, 'ru');
+        return direction * collator.compare(cellA, cellB);
+    });
+    rows.forEach((row, index) => {
+        row.children[0].innerText = index + 1;
+        fragment.appendChild(row);
     });
 
     tableBody.innerHTML = '';
-    rows.forEach((row, index) => {
-        row.children[0].innerText = index + 1;
-        tableBody.appendChild(row);
-    });
+    tableBody.appendChild(fragment);
 }
 
 function innerImpontantText(){

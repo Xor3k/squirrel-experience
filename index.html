@@ -7,53 +7,62 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="icon" type="image/png" href="img/ferret.png">
         <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class="highlight-text-title">Squirrel EXperience</div>
         <div class="container">
-            <div class="header-text">
+            <header class="main-header">
+                <div class="site-title">Squirrel EXperience</div>
                 <nav class="navigation">
-                    <a href="index.html" class="nav-link active">Калькулятор опыта</a>
+                    <a href="index.html" class="nav-link active">Калькулятор</a>
                     <span class="nav-separator">/</span>
-                    <a href="comparison.html" class="nav-link">Режим сравнения</a>
+                    <a href="comparison.html" class="nav-link">Сравнение</a>
+                    <span class="nav-separator">/</span>
+                    <a href="players.html" class="nav-link">Игроки</a>
+                    <span class="nav-separator">/</span>
+                    <a href="skills.html" class="nav-link">Навыки</a>
+                    <span class="nav-separator">/</span>
+                    <a href="table.html" class="nav-link">Таблица</a>
+                    <span class="nav-separator">/</span>
+                    <a href="clan.html" class="nav-link">Клан</a>
+                    <span class="nav-separator">/</span>
+                    <a href="rating.html" class="nav-link">Рейтинг</a>
+                     <span class="nav-separator">/</span>
+                    <a href="clan-rating.html" class="nav-link">Рейтинг клана</a>
                 </nav>
-                <span class="header-text-additional">
-                    Страничка рассчитывает количество опыта для получения следующего уровня. <br>
-                    Данные предоставляет сайт 
-                    <a class="header-link" target="_blank" href="https://squirrelsquery.yukkerike.ru/">squirrelsquery.yukkerike.ru</a>. 
-                    Обязательно посетите 
-                    <a class="header-link" target="_blank" href="https://squirrelsquery.yukkerike.ru/">squirrelsquery.yukkerike.ru</a> 
-                    для поддержки и большего получения информации!
-                    <br>
-                    Если у игрока уровень ниже 150-го - будет рассчитываться, сколько ему осталось до 150-го. <br>
-                    <a href="players.html" class="nav-link">Игроки.</a><br>
-                    <a href="skills.html" class="nav-link">Навыки.</a><br>
-                    <a href="table.html" class="nav-link">Табличка.</a><br>
-                    <a href="clan.html" class="nav-link">Статистика клана.</a><br>
-                    <a href="rating.html" class="nav-link">История рейтинга.</a><br>
-                    <a href="clan-rating.html" class="nav-link">История рейтинга клана.</a><br>
-                </span>
-            </div>
-            <form id="calculatorForm" class="calculator-form">
-                <div class="form-group">
-                    <label for="numberInput" class="form-label">Введите UID игрока</label>
-                    <input name="squirrel-id" class="form-control" id="numberInput" required>
+            </header>
+
+            <main>
+                <hr>
+                <p class="info-text">
+                    Страница рассчитывает количество опыта для получения следующего уровня (или до 100, если уровень ниже).<br>
+                    Данные предоставляет сайт
+                    <a class="info-link" target="_blank" href="https://squirrelsquery.yukkerike.ru/">squirrelsquery.yukkerike.ru</a>.
+                    Посетите его для поддержки и дополнительной информации!
+                </p>
+                <form id="calculatorForm" class="calculator-form">
+                    <h2 class="form-title">Калькулятор опыта</h2>
+                    <div class="form-group">
+                        <label for="numberInput" class="form-label">Введите UID игрока</label>
+                        <input name="squirrel-id" class="form-control" id="numberInput" required placeholder="Например, 123456">
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="submit-button">Рассчитать</button>
+                        <button type="button" id="statsButton" class="stats-button">Таблица опыта</button>
+                    </div>
+                </form>
+                <div id="result" class="result-block hidden">
+                    <!-- результат -->
                 </div>
-                <button type="submit" class="submit-button">Рассчитать</button>
-                <button type="button" id="statsButton" class="stats-button">Табличка опыта</button>
-            </form>
-            <div id="result" class="result-block hidden">
-                <!-- результат -->
-            </div>
-    
-            <!-- Табличка -->
-            <div id="statsTable" class="stats-block hidden">
-                <table class="stats-table">
-                    <!-- data from js/data_js/data_level.js -->
-                </table>
-            </div>
-    
+                <!-- Табличка -->
+                <div id="statsTable" class="stats-block hidden">
+                    <h3 class="table-title">Таблица уровней</h3>
+                    <table class="stats-table">
+                        <!-- data from js/data_js/data_level.js -->
+                    </table>
+                </div>
+            </main>
+
             <div class="text">Xorek!</div>
         </div>
         <script src="js/data_js/data_level.js"></script>

@@ -12,9 +12,12 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     const loadingTimeout = setTimeout(() => {
         const timeoutBlock = document.getElementById('result');
         timeoutBlock.innerHTML = `
-            <div class="error-title">Запрос выполняется дольше обычного...</div> <br>
+            <div class="error-title">Запрос выполняется дольше обычного...</div>
+            <hr>
             <div class="error-description">
-                Возможно, вы запрашиваете большое количество игроков и они долго обрабатываются. А может интернет соединение слишком слабое или сервер игры отключен... <br>
+                Возможно, вы запрашиваете большое количество игроков, 
+                что требует некоторого времени для получения всех данных. 
+                Также, возможно, ваше интернет-соединение недостаточно стабильно или сервер временно недоступен. 
                 Запрос будет отменет через минуту.
             </div>
         `;
@@ -85,58 +88,68 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
 
         const resultBlock = document.getElementById('result');
         const resultHTML = `
-            Всего игроков: ${players.length} <br>
-            ${!failedIds || failedIds.length === 0 ? '' : 
-                `<br><span class="result-additional"> Не удалось получить ${failedIds.length} игрока(ов) c UID: </span>
-                <span class="result-additional">${failedIds.map(id => `${id}`).join(', ')}</span>`}
-            <br>
-            Данные игроков: <br>
-            <table id="players" class="data-table" style="width: 100%; text-align: left;">
+            <h3 class="table-title">Результаты поиска</h3>
+            <p class="info-text">Всего найдено: ${players.length}</p>
+            ${!failedIds || failedIds.length === 0 ? '' :
+                `<p class="info-text warning-color" style="font-size: 0.85em; margin-bottom: 15px;">
+                    Не удалось получить ${failedIds.length} игрока(ов) c UID: ${failedIds.map(id => `${id}`).join(', ')}
+                </p>`
+            }
+            <table id="players" class="stats-table" style="margin-bottom: 20px;">
                 <thead>
-                    <tr class="result-additional text-table-clan">
-                        <td style="width: 5%;">№</td>
-                        <td style="width: 35%; text-align: left;">Ник</td>
-                        <td style="width: 20%; text-align: left;">Общий опыт игрока</td>
-                        <td style="width: 20%; text-align: left;">Кол-во игр</td>
-                        <td style="width: 20%; text-align: left;">Спасено белок</td>
+                    <tr>
+                        <th>№</th>
+                        <th style="text-align: left;">Ник</th>
+                        <th style="text-align: left;">Опыт</th>
+                        <th style="text-align: left;">Кол-во игр</th>
+                        <th style="text-align: left;">Спасенок</th>
                     </tr>
                 </thead>
                 <tbody id="players-data">
                     ${!players || players.length === 0 ? `
-                        <tr class="result-additional">
-                            <td colspan="3" style="text-align: center;">Что-то пошло не так...</td>
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: 20px;">Игроки не найдены или произошла ошибка...</td>
                         </tr>
                     ` : players.map((player, index) => {
+                            const profileLink = player.profile === "Профиль не найден" ?
+                                `<span>${player.profile}</span>` :
+                                `<a class="info-link" href="${player.profile}" target="_blank">Профиль</a>`;
+
                             return `
-                                <tr class="result-additional">
-                                    <td style="width: 5%;">${index + 1}</td>
-                                    <td style="width: 35%; text-align: left;">
-                                        <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${player.uid}" target="_blank">${player.name} [${player.level}]</a>
+                                <tr>
+                                    <td>${index + 1}</td>
+                                    <td style="text-align: left;">
+                                        <a class="info-link" href="https://squirrelsquery.yukkerike.ru/user/${player.uid}" target="_blank">
+                                            ${player.name} [${player.level}]
+                                        </a>
                                     </td>
-                                    <td style="width: 20%; text-align: left;">${player.exp.toLocaleString()}</td>
-                                    <td style="width: 20%; text-align: left;">${player.rating_player.toLocaleString()}</td>
-                                    <td style="width: 20%; text-align: left;">${player.rating_shaman.toLocaleString()}</td>
+                                    <td style="text-align: left;">${player.exp.toLocaleString()}</td>
+                                    <td style="text-align: left;">${player.rating_player.toLocaleString()}</td>
+                                    <td style="text-align: left;">${player.rating_shaman.toLocaleString()}</td>
                                 </tr>
                             `;
                         }).join('')}
                 </tbody>
-            </table> <br>
-            <div class="result-additional">
-                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToExcel('')">Сохранить в Excel</button>
-            </div><br>
-            <div class="result-additional">
-                <button class="copy-button-profile" id="save-btn" onclick="saveStatisticsToJson('')">Сохранить в Json</button>
-            </div><br>
-            <div class="result-additional">~ Xorek</div>
+            </table>
+            <div class="button-group">
+                <button class="stats-button" id="save-excel-btn">Сохранить в Excel</button>
+                <button class="stats-button" id="save-json-btn">Сохранить в Json</button>
+            </div>
+            <div class="result-footer" style="margin-top: 20px;">~ Xorek</div>
         `;
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');
+
+        document.getElementById('save-excel-btn')?.addEventListener('click', () => saveStatisticsToExcel());
+        document.getElementById('save-json-btn')?.addEventListener('click', () => saveStatisticsToJson());
+
     } catch (error) {
         const resultBlock = document.getElementById('result');
         if (error.message === 'error connection') {
             const resultHTML = `
                 <div class="error-message">
-                    <div class="error-title">Похоже, сервер игры отключен...</div> <br>
+                    <div class="error-title">Похоже, сервер игры отключен...</div>
+                    <hr>
                     <div class="error-description">
                         Соединение с сервером игры прервано. Попробуйте позже. 
                     </div>
@@ -147,9 +160,10 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         } else {
             const resultHTML = `
                 <div class="error-message">
-                    <div class="error-title">Произошла ошибка!</div> <br>
+                    <div class="error-title">Произошла ошибка!</div>
+                    <hr>
                     <div class="error-description">
-                        Не удалось получить данные игроков. Возможно, один из указаных UID неправильный или связь прервана. <br>
+                        Не удалось получить данные игрока. Возможно, указан неверный UID или связь прервана. <br>
                         Повторите попытку еще раз. 
                     </div>
                 </div>

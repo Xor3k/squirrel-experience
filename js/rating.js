@@ -12,7 +12,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
     const loadingTimeout = setTimeout(() => {
         const timeoutBlock = document.getElementById('result');
         timeoutBlock.innerHTML = `
-            <div class="error-title">Запрос выполняется дольше обычного...</div> <br>
+            <div class="error-title">Запрос выполняется дольше обычного...</div>
+            <hr>
             <div class="error-description">
                 Возможно, интернет соединение слишком слабое или сервер игры отключен...
             </div>
@@ -35,78 +36,95 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
 
         const resultBlock = document.getElementById('result');
         const currentSeason = getCurrentSeason() - 1;
-        const maxRating = Math.max(...data.rating_history.map(x => x.rating));
+        let maxRating = data.rating_info.rating_score;
+        let maxRatingSeason = currentSeason + 1;
+
+        if (data.rating_history && data.rating_history.length > 0) {
+            data.rating_history.forEach(item => {
+                if (item.rating > maxRating) {
+                    maxRating = item.rating;
+                    maxRatingSeason = item.season;
+                }
+            });
+        }
 
         const resultHTML = `
             <div class="result-text">
-                ${data.vip_info.vip_exist !== 0 && data.moderator > 0 ? ` 
-                    <span class="moderator-color">${data.name}</span> 
+                ${data.vip_info.vip_exist !== 0 && data.moderator > 0 ? `
+                    <span class="moderator-color">${data.name}</span>
                     <img src="img/gold_wings.png" class="icon-vip">
                 ` : data.vip_info.vip_exist !== 0 ? `
-                    <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span> 
-                    <img src="img/gold_wings.png" class="icon-vip"> 
+                    <span class="vip-color-${data.vip_info.vip_color}">${data.name}</span>
+                    <img src="img/gold_wings.png" class="icon-vip">
                 ` : data.vip_info.vip_exist == 0 && data.moderator > 0 ? `
-                    <span class="moderator-color">${data.name}</span> 
+                    <span class="moderator-color">${data.name}</span>
                 ` : ` ${data.name} `
                 }
-                | Текущий уровень: ${data.level} <br>
+                | Текущий уровень: ${data.level}
                 ${data.moderator == 1 ? `
-                    <div class="result-additional warning-color">
+                    <span class="result-warning warning-color">
                         Внимание! Игрок является модератором чата!
-                    </div>
+                    </span>
                 ` : ''}
             </div>
-            <div class="result-additional">
-                <a class="header-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">Карточка игрока</a>
-            </div><br> 
-            <div class="result-additional"> 
-                Количество побед: ${(data.rating_info.rating_player).toLocaleString()} <br>
-                Спасено белок: ${(data.rating_info.rating_shaman).toLocaleString()}
-                <div class="highlight-text">
-                    Разница: ${(Math.abs(data.rating_info.rating_shaman - data.rating_info.rating_player) / Math.max(data.rating_info.rating_shaman, data.rating_info.rating_player) * 100).toFixed(2)}%.
-                </div>
-            </div><br>
-            <div class="result-additional">
-                Формула: количество спасенных белочек / количество побед + округление до 2 знаков после запятой.
-                <div class="highlight-text">Коэффициент: ${(data.rating_info.rating_shaman / data.rating_info.rating_player).toFixed(2)}</div>
-            </div><br>
-            <div class="result-additional">
-                Коэффициент. Чем он выше - тем лучше, ведь вероятность, что белочка станет шаманом так же становится выше.
-            </div><br>
-            <div class="result-additional">
-                Текущий сезон ${currentSeason + 1} <br> Текущий рейтинг: ${(data.rating_info.rating_score).toLocaleString()} <br>
-                Максимальный рейтинг:
-                ${!data.rating_history || data.rating_history.length === 0 ? `
-                    Данных нет
-                ` : 
-                    `${(maxRating).toLocaleString()}`
-                }
-            </div>
-            <table class="rating-table" style="width: 100%; text-align: left;">
-                <tr class="result-additional">
-                    <td style="width: 25%;">Сезон: ${currentSeason + 1}</td>
-                    <td style="width: 30%; text-align: center;">Рейтинг: ${(data.rating_info.rating_score).toLocaleString()}</td>
-                    <td style="width: 45%; text-align: right;">Сезон не завершен</td>
-                </tr>
-                ${!data.rating_history || data.rating_history.length === 0 ? `
-                    <tr class="result-additional">
-                        <td colspan="3" style="text-align: center;">История рейтинга пуста</td>
+            <hr>
+            <dl class="result-details">
+                <dt>Кол-во игр:</dt>
+                <dd>${(data.rating_info.rating_player).toLocaleString()}</dd>
+
+                <dt>Спасено белок:</dt>
+                <dd>${(data.rating_info.rating_shaman).toLocaleString()}</dd>
+
+                <dt>Коэф. (Спасено/Побед):</dt>
+                <dd><span class="highlight-text">${(data.rating_info.rating_shaman / data.rating_info.rating_player).toFixed(2)}</span></dd>
+
+                <dt>Разница (Белки vs Победы):</dt>
+                <dd><span class="highlight-text">${(Math.abs(data.rating_info.rating_shaman - data.rating_info.rating_player) / Math.max(data.rating_info.rating_shaman, data.rating_info.rating_player) * 100).toFixed(2)}%</span></dd>
+
+                <dt>Текущий рейтинг:</dt>
+                <dd>${(data.rating_info.rating_score).toLocaleString()}</dd>
+
+                <dt>Макс. рейтинг:</dt>
+                <dd>${(maxRating).toLocaleString()} (Сезон ${maxRatingSeason})</dd>
+
+                <dt>Карточка игрока:</dt>
+                <dd><a class="info-link" href="https://squirrelsquery.yukkerike.ru/user/${data.uid}" target="_blank">${data.name}</a></dd>
+            </dl>
+            <hr>
+            <h3 class="table-title" style="margin-top: 30px;">История рейтинга по сезонам</h3>
+            <table class="stats-table" style="margin-bottom: 20px;">
+                <thead>
+                    <tr>
+                        <th>Сезон</th>
+                        <th style="text-align: center;">Рейтинг</th>
+                        <th style="text-align: right;">Период</th>
                     </tr>
-                ` : data.rating_history.filter(item => item.season !== currentSeason + 1)
-                    .sort((a, b) => b.season - a.season)
-                    .map(item => {
-                        const dateRange = getSeasonStartDate(item.season, currentSeason + 1);
-                        return `
-                            <tr class="result-additional">
-                                <td style="width: 25%;">Сезон: ${(item.season).toLocaleString()}</td>
-                                <td style="width: 30%; text-align: center;">Рейтинг: ${(item.rating).toLocaleString()}</td>
-                                <td style="width: 45%; text-align: right;">${dateRange}</td>
-                            </tr>
-                        `;
-                    }).join('')}
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${currentSeason + 1}</td>
+                        <td style="text-align: center;">${(data.rating_info.rating_score).toLocaleString()}</td>
+                        <td style="text-align: right;">Текущая неделя</td>
+                    </tr>
+                    ${!data.rating_history || data.rating_history.length === 0 ? `
+                        <tr>
+                            <td colspan="3" style="text-align: center; padding: 20px;">История рейтинга пуста</td>
+                        </tr>
+                    ` : data.rating_history.filter(item => item.season !== currentSeason + 1)
+                        .sort((a, b) => b.season - a.season)
+                        .map(item => {
+                            const dateRange = getSeasonStartDate(item.season, currentSeason + 1);
+                            return `
+                                <tr>
+                                    <td>${(item.season).toLocaleString()}</td>
+                                    <td style="text-align: center;">${(item.rating).toLocaleString()}</td>
+                                    <td style="text-align: right;">${dateRange}</td>
+                                </tr>
+                            `;
+                        }).join('')}
+                </tbody>
             </table>
-            <br>
-            <div class="result-additional">~ Xorek</div>
+            <div class="result-footer">~ Xorek</div>
         `;
         resultBlock.innerHTML = resultHTML;
         resultBlock.classList.remove('hidden');
@@ -115,7 +133,8 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
         if (error.message === 'error connection') {
             const resultHTML = `
                 <div class="error-message">
-                    <div class="error-title">Похоже, сервер игры отключен...</div> <br>
+                    <div class="error-title">Похоже, сервер игры отключен...</div>
+                    <hr>
                     <div class="error-description">
                         Соединение с сервером игры прервано. Попробуйте позже. 
                     </div>
@@ -127,6 +146,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
             resultBlock.innerHTML = `
                 <div class="error-message">
                     <div class="error-title">Произошла ошибка!</div>
+                    <hr>
                     <div class="error-description">
                         Не удалось получить данные игрока. Возможно, указан неверный UID или связь прервана. <br>
                         Повторите попытку еще раз. 

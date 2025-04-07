@@ -6,11 +6,12 @@ body {
     font-weight: 500;
     margin: 0;
     padding: 0;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    background-color: #1a1a1a;
-    color: #ffffff;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -22,127 +23,107 @@ input::-webkit-inner-spin-button {
 
 .container {
     width: 100%;
-    max-width: 500px;
-    padding: 10px;
-    margin-top: 50px;
+    max-width: 600px;
+    padding: 20px;
     z-index: 2;
 }
 
-/* Отступ */
-.text-down {
-    margin-top: 10px;
-    display: inline-block;
+.site-title {
+    opacity: 0.07;
 }
 
 /* Стили формы */
 .calculator-form {
-    background: #2d2d2d;
+    background: #252525;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px;
+}
+
+.form-title {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
 }
 
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
 }
 
 .form-label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+    color: #c0c0c0;
 }
 
 .form-control {
     width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #404040;
-    border-radius: 4px;
+    padding: 0.75rem;
+    border: 1px solid #444444;
+    border-radius: 6px;
     font-size: 1rem;
     box-sizing: border-box;
-    background-color: #2d2d2d;
+    background-color: #1f1f1f;
     color: #ffffff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Текст над формой */ 
-.header-text {
-    color: #ffffffcc;
-    text-align: left;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 1.4em;
+.form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
 }
 
-.header-text-additional {
-    color: #ffffffcc;
-    text-align: left;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-size: 0.7em;
-    display: inline-block;
-    position: relative;
-}
-
-.header-link {
-    color: #ffffffcc;
-    text-decoration: none;
-    border-bottom: 0.5px solid #ffffffcc;
-    transition: opacity 0.2s ease;
-}
-
-.header-link:hover {
-    opacity: 0.7;
-}
-
-/* Cтрелочка вниз */
-.curved-arrow {
-    position: relative;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-    margin-bottom: -14px;
-    margin-left: 2px;
-}
-
-.curved-arrow::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 12px;
-    height: 10px;
-    border-top: 2px solid rgba(255, 255, 255, 0.8);
-    border-right: 2px solid rgba(255, 255, 255, 0.8);
-    border-radius: 0 25px 0 0;
-}
-
-.curved-arrow::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 3px;
-    width: 0;
-    height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 6px solid rgba(255, 255, 255, 0.8);
+.form-control::placeholder {
+    color: #666;
+    opacity: 1;
 }
 
 /* Стили кнопок формы */
-.submit-button {
-    width: 100%;
+.submit-button,
+.stats-button {
+    flex-grow: 0;
+    width: auto;
     position: relative;
-    padding: 0.75rem;
-    background-color: #0066cc;
-    color: white;
+    padding: 0.8rem 1rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.4s ease;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 1.5rem;
+}
+
+.button-group .submit-button {
+    width: calc(65% - 7.5px);
+}
+
+.button-group .stats-button {
+    width: calc(35% - 7.5px);
+}
+
+.button-group > :only-child {
+    width: 100%;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: white;
 }
 
 .submit-button:hover {
-    background-color: #0052a3;
+    background-color: #0056b3;
 }
 
 .submit-button.loading {
@@ -152,11 +133,11 @@ input::-webkit-inner-spin-button {
 .submit-button.loading::after {
     content: "";
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     top: 50%;
     left: 50%;
-    margin: -10px 0 0 -10px;
+    margin: -9px 0 0 -9px;
     border: 3px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     border-top-color: #fff;
@@ -167,72 +148,148 @@ input::-webkit-inner-spin-button {
     to { transform: rotate(360deg); }
 }
 
-button.stats-button {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: #2d2d2d !important;
-    color: white;
+.stats-button {
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 10px;
-    transition: background-color 0.4s ease;
+    background-color: #252525;
+    color: #cccccc;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
-button.stats-button:hover {
-    background-color: #3d3d3d !important;
+.stats-button:hover {
+    background-color: #353535;
+    color: #ffffff;
+}
+
+.submit-button:active,
+.stats-button:active {
+    transform: scale(0.98);
 }
 
 /* Стили для вывода результата*/
 .result-block {
-    margin-top: 20px;
-    padding: 1.5rem;
-    background: #2d2d2d;
+    margin-top: 30px;
+    padding: 1.5rem 2rem;
+    background: #252525;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
 }
 
 .result-text {
-    font-size: 0.7em;
+    font-size: 1.1em;
     font-weight: 200;
     margin-bottom: 15px;
-    font-size: 1.1rem;
+    color: #e0e0e0;
+    line-height: 1.4;
 }
 
 .result-text-small {
-    font-size: 0.4em;
+    font-size: 0.95em;
     font-weight: 200;
     margin-bottom: 15px;
-    font-size: 0.97rem;
+    color: #b0b0b0;
+}
+
+.result-text .result-warning,
+.result-text .result-special {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #b0b0b0;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.result-text .result-warning {
+    font-weight: 500;
+    color: #ff3333;
 }
 
 .result-additional {
-    font-size: 0.9em;
-    font-weight: 400;
-    letter-spacing: 0.2px;
-    color: #888;
-    text-align: left;
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    display: block;
+}
+
+.result-details {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 8px 15px;
+    align-items: baseline;
+}
+
+.result-details dt,
+.result-details dd {
+    padding: 0;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.result-details dt {
+    color: #999999;
+    font-weight: 500;
+    text-align: right;
+}
+
+.result-details dd {
+    color: #999999;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.result-details dd span {
+    flex-grow: 1;
+    margin-right: 10px;
+    color: #b0b0b0;
+}
+
+.result-details dd .info-link {
+    margin-right: auto;
+}
+
+.result-details dd button {
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+.result-footer { 
+    text-align: right;
+    color: #777777;
+    font-size: 0.9em;
+    margin-top: 15px;
+    border-top: 2px solid #555555;
+    padding-top: 10px;
+}
+
 .stats-block {
-    margin-top: 20px;
-    padding: 1.5rem;
-    background: #2d2d2d;
+    margin-top: 30px;
+    padding: 2rem;
+    background: #252525;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     opacity: 0;
-    transform: translateY(-20px);
-    transition: all 0.3s ease;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    margin-bottom: 30px;
 }
 
 .stats-block.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.table-title {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 500;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
 }
 
 /* Стили таблицы */
@@ -242,7 +299,7 @@ button.stats-button:hover {
 }
 
 .stats-table tr {
-    border-bottom: 1px solid #404040;
+    border-bottom: 1px solid #3f3f3f;
 }
 
 .stats-table tr:last-child {
@@ -250,46 +307,25 @@ button.stats-button:hover {
 }
 
 .stats-table td {
-    padding: 12px 8px;
-    color: #ffffff;
+    padding: 10px 8px;
+    color: #cccccc;
+    font-size: 0.95em;
 }
 
 .stats-table td:first-child {
-    color: #888;
+    color: #999999;
+    font-weight: 500;
 }
 
 .stats-table td:last-child {
     text-align: right;
+    font-weight: 500;
+    color: #ffffff;
 }
-
-/* Стили кнопок */
-.submit-button, .stats-button {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: #0066cc;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.submit-button:hover, .stats-button:hover {
-    background-color: #0052a3;
-}
-
-.stats-button {
-    margin-top: 10px;
-}
-
 
 /* Стили цифр в таблице */
 .separator {
     border-bottom: none !important;
-}
-
-.separator.with-margin td {
-    padding-top: 30px !important;  
 }
 
 .separator td {
@@ -366,7 +402,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /* Кнопки скопировать */
-
 .copy-button,
 .copy-button-profile {
     background: transparent;
@@ -393,18 +428,6 @@ input[type="number"]::-webkit-outer-spin-button {
     color: #fff;
 }
 
-/* Некорректный браузер */
-.browser-message {
-    background-color: #f0f0f0;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 14px;
-    color: #333;
-    animation: fadeIn 0.5s ease-in;
-}
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -418,64 +441,35 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* Навигация */
 .navigation {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 12px;
+    font-size: 1em;
     margin-bottom: 10px;
 }
 
 .nav-link {
-    color: rgba(255, 255, 255, 0.8);
+    color: #b0b0b0;
     text-decoration: none;
-    transition: all 0.3s ease;
-    opacity: 0.6;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8;
+    padding: 4px 8px;
+    border-radius: 4px;
 }
 
 .nav-link:hover {
-    opacity: 0.9;
+    color: #ffffff;
+    opacity: 1;
+    background-color: #2f2f2f;
 }
 
 .nav-link.active {
+    color: #ffffff;
+    font-weight: 500;
     opacity: 1;
     cursor: default;
-}
-
-.nav-separator {
-    color: #ffffff66;
-    margin: 0 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-}
-
-.label-margin-top {
-    margin-top: 20px;
-}
-
-/* Таблица рейтинга */
-.rating-table, .data-table, .comparison-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 10px 0;
-}
-
-.rating-table tr, .data-table tr, .comparison-table tr {
-    border-bottom: 1px solid #ffffff1a;
-}
-
-.rating-table tr:last-child, .data-table tr:last-child, .comparison-table tr:last-child {
-    border-bottom: none;
-}
-
-.rating-table td, .data-table td, .comparison-table td {
-    padding: 8px 0;
-}
-
-/* подчеркивание - выделение */
-.underline-text {
-    text-decoration: underline;
+    background-color: #2a2a2a;
 }
 
 .highlight-text {
@@ -483,6 +477,14 @@ input[type="number"]::-webkit-outer-spin-button {
     border-bottom: 1px solid rgba(255, 215, 0, 0.5);
     font-size: 0.9rem;
     min-width: 150px;
+}
+
+.result-details dd .highlight-text {
+    border-bottom: none;
+    font-size: inherit;
+    min-width: auto;
+    font-weight: 500;
+    color: #ffd700;
 }
 
 /* цвета вип статусов */
@@ -536,71 +538,23 @@ input[type="number"]::-webkit-outer-spin-button {
 .max-count-rating {
     color: #ffe033;
     animation: pulse 2.5s infinite;
+    font-weight: 500;
+    display: inline-block;
 }
 
 @keyframes pulse {
     0% {
-        opacity: 0.2;
+        opacity: 0.6;
     }
     50% {
         opacity: 1;
     }
     100% {
-        opacity: 0.2;
+        opacity: 0.6;
     }
 }
 
-/* Табличка рейтинга спасенок */
-.container-table {
-    max-width: 850px;
-    min-width: 420px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.container-table .header-text {
-    text-align: center;
-}
-
-.header-text-table {
-    font-size: 0.9em;
-    font-weight: 400;
-    color: #888;
-    text-align: left;
-    display: block;
-}
-
-.text-date-reload-table {
-    position: absolute;
-    bottom: -35px;
-    right: -5px;
-    font-size: 0.9em;
-    text-align: center;
-    color: #888; 
-}
-
-.rating-table-lider {
-    margin-bottom: 200px;
-}
-
-.rating-table-lider tr {
-    padding: 5px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.rating-table-lider td {
-    font-size: 1.1em;
-    font-weight: 300;
-    color: #ffffffcc;
-    padding: 5px 0px;
-}
-
-.rating-table-data td {
-    font-size: 1.1em;
-    font-weight: 300;
-    color: #888;
-}
-
+/* Карточка с информацией о пользоваталях в табличке со спасенками */
 .hidden-container {
     position: relative;
     display: inline-block;
@@ -641,20 +595,25 @@ input[type="number"]::-webkit-outer-spin-button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    font-size: 1em;
+    text-align: center;
 }
 
-.button-disabled {
+.popup button:hover {
+    background-color: #555555;
+    color: #ffffff;
+}
+
+.popup .button-disabled {
     pointer-events: none;
     opacity: 0.5;
     cursor: not-allowed;
+    background-color: #444444;
+    color: #888888;
 }
 
-.shaman-skills-full {
-    color: #f3c200;
-}
-
-.shaman-skills-part {
-    color: #33ff00;
+.result-details dd .info-link {
+    margin-right: auto;
 }
 
 .sortable {
@@ -664,6 +623,10 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .sortable:hover {
     color: #888; 
+    text-decoration: underline;
+}
+
+.underline-text-reload{
     text-decoration: underline;
 }
 
@@ -684,63 +647,50 @@ input[type="number"]::-webkit-outer-spin-button {
     display: block;
 }
 
-/* Таблица клана */
-.clan-container {
-    width: 100%;
-    max-width: 550px;
-}
-
-.text-table-clan {
-    color: #ffffffcc;
-}
-
 .photo-container {
     display: flex;
     align-items: center;
     gap: 1rem;
-}
-
-.photo-container {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    margin-bottom: 15px;
 }
 
 .photo-container img {
-    max-width: 100px;
+    max-width: 80px;
     height: auto;
     object-fit: cover;
-    cursor: none;
-}
-
-/* Important text title! */
-.highlight-text-title {
-    font-size: 1.1em;
-    position: absolute;
-    top: 0.5%;
-    right: 1%;
-    display: inline;
-    pointer-events: none;
+    cursor: default;
+    border-radius: 4px;
 }
 
 @media (max-width: 600px) {
-    .highlight-text-title {
-        display: none;
+    body {
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
-}
 
-.highlight-title {
-    color: #ffffffcc;
-    transition: opacity 1s ease;
-}
+    .result-details {
+        grid-template-columns: 1fr;
+        gap: 4px 0;
+        align-items: start;
+    }
 
-.faded-title {
-    opacity: 0.2;
-}
+    .result-details dt {
+        text-align: left;
+        padding-bottom: 2px;
+        font-size: 0.9em;
+        color: #aaaaaa;
+        grid-column: 1 / -1;
+    }
 
-.disappear-title {
-    opacity: 0;
-    transition: opacity 2s ease;
+    .result-details dd {
+        padding-top: 0;
+        padding-bottom: 10px;
+        grid-column: 1 / -1;
+    }
+
+    .result-details dd .info-link {
+        margin-right: 10px;
+    }
 }
 
 .find-text-under-table {
@@ -749,7 +699,6 @@ input[type="number"]::-webkit-outer-spin-button {
     color: #ffffffcc;
     text-align: center;
     margin-bottom: 20%;
-
     letter-spacing: 0.2px;
     text-align: center;
     margin-bottom: 20%;
@@ -841,32 +790,6 @@ input[type="number"]::-webkit-outer-spin-button {
     }
 }
 
-.container-players {
-    width: 100%;
-    max-width: 550px;
-    padding: 10px;
-    margin-top: 50px;
-    z-index: 2;
-}
-
-.data-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 10px 0;
-}
-
-.data-table tr {
-    border-bottom: 1px solid #ffffff1a;
-}
-
-.data-table tr:last-child {
-    border-bottom: none;
-}
-
-.data-table td {
-    padding: 8px 0;
-}
-
 /* Таблица сравнения игроков */
 .comparison-table {
     border-collapse: collapse;
@@ -907,4 +830,288 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .comparison-table td:nth-child(3) {
     color: #888;
+}
+
+.info-text {
+    font-size: 0.9em;
+    color: #999999;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.info-link {
+    color: #e0e0e0;
+    text-decoration: none;
+    border-bottom: 1px solid #777777;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.info-link:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+@media (max-width: 600px) {
+    .stats-block, .result-block {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .comparison-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .comparison-table tr {
+        display: table-row;
+    }
+
+    .comparison-table td {
+        display: table-cell;
+        width: auto;
+        min-width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .navigation {
+        font-size: 0.95em;
+        gap: 6px 10px;
+    }
+
+    .calculator-form, .result-block, .stats-block {
+        padding: 1.5rem;
+    }
+
+    .form-title {
+        font-size: 1.3em;
+    }
+
+    .table-title {
+        font-size: 1.2em;
+    }
+
+    .button-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button-group .submit-button, 
+    .button-group .stats-button {
+        width: 100%;
+    }
+
+    body {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+.stats-table th,
+.stats-table td {
+    vertical-align: middle;
+}
+
+.table-content {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
+}
+
+.table-content::-webkit-scrollbar {
+    display: none;
+}
+
+@media (min-width: 601px) {
+    .table-content {
+        overflow: hidden;
+    }
+}
+
+/* Кланы */
+.clan-section {
+    margin-bottom: 25px;
+}
+
+.clan-section:last-child {
+    margin-bottom: 0;
+}
+
+.clan-section-title {
+    font-size: 1.1em;
+    color: #c0c0c0;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 500;
+    border-bottom: 1px solid #3a3a3a;
+    padding-bottom: 5px;
+}
+
+.clan-info-grid {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 8px 15px;
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #999999;
+}
+
+.clan-info-grid div:nth-child(odd) {
+    font-weight: 500;
+    text-align: right;
+}
+
+.clan-info-grid div:nth-child(even) {
+    color: #d0d0d0;
+    font-weight: 400;
+}
+
+.clan-info-grid .info-link {
+    color: #e0e0e0;
+    text-decoration: none;
+    border-bottom: 1px solid #777777;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+.clan-info-grid .info-link:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+.xp-details {
+    font-size: 0.9em;
+    color: #888;
+}
+
+@media (max-width: 600px) {
+    .clan-info-grid {
+        grid-template-columns: 1fr;
+        gap: 2px 0;
+    }
+    .clan-info-grid div:nth-child(odd) {
+        text-align: left;
+        font-size: 0.9em;
+        color: #aaa;
+        margin-bottom: 2px;
+    }
+     .clan-info-grid div:nth-child(even) {
+        margin-bottom: 8px;
+        padding-left: 5px; 
+    }
+
+    .totem-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+    }
+}
+
+.clan-stats-table td .info-link {
+    color: #e0e0e0;
+    text-decoration: none;
+    border-bottom: 1px solid #777777;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+.clan-stats-table td .info-link:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+.clan-info-grid .info-link {
+    color: #e0e0e0;
+    text-decoration: none;
+    border-bottom: 1px solid #777777;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+.clan-info-grid .info-link:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+.clan-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+.clan-stats-table thead tr {
+    border-bottom: 1px solid #3f3f3f;
+}
+
+.clan-stats-table th {
+    color: #999999;
+    padding: 10px 8px;
+    font-weight: 500;
+    background-color: transparent;
+    border-bottom: 1px solid #3f3f3f;
+    white-space: pre-line;
+}
+
+.clan-stats-table th.text-left { text-align: left; }
+.clan-stats-table th.text-center { text-align: center; }
+.clan-stats-table th.text-right { text-align: right; }
+
+
+.clan-stats-table tbody tr {
+    border-bottom: 1px solid #3f3f3f;
+    transition: background-color 0.2s ease;
+}
+
+.clan-stats-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.clan-stats-table tbody tr:hover {
+    background-color: #2f2f2f;
+}
+
+.clan-stats-table td {
+    padding: 10px 8px;
+    color: #cccccc;
+    vertical-align: middle;
+}
+
+.clan-stats-table td.col-rank {
+    color: #999999;
+}
+
+.clan-stats-table td .info-link {
+    color: #e0e0e0;
+    border-bottom: 1px solid #777777;
+    text-decoration: none;
+}
+.clan-stats-table td .info-link:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+@media (max-width: 700px) {
+    .table-content {
+        overflow-x: auto;
+    }
+}
+
+.clan-stats-table tfoot tr {
+    border-top: 1px solid #4a4a4a;
+}
+
+.clan-stats-table tfoot td {
+    padding: 10px 8px;
+    font-weight: 500;
+    color: #e0e0e0;
+}
+
+.clan-stats-table .total-label {
+    padding-right: 15px;
 }

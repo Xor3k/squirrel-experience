@@ -10,40 +10,49 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class="highlight-text-title">Squirrel EXperience</div>
-        <div class="container-players">
-            <div class="header-text">
+        <div class="container">
+            <header class="main-header">
+                <div class="site-title">Squirrel EXperience</div>
                 <nav class="navigation">
-                    <a href="index.html" class="nav-link active">Калькулятор опыта</a>
+                    <a href="index.html" class="nav-link">Калькулятор</a>
                     <span class="nav-separator">/</span>
-                    <a href="comparison.html" class="nav-link">Режим сравнения</a>
+                    <a href="comparison.html" class="nav-link">Сравнение</a>
+                    <span class="nav-separator">/</span>
+                    <a href="players.html" class="nav-link active">Игроки</a>
+                    <span class="nav-separator">/</span>
+                    <a href="skills.html" class="nav-link">Навыки</a>
+                    <span class="nav-separator">/</span>
+                    <a href="table.html" class="nav-link">Таблица</a>
+                    <span class="nav-separator">/</span>
+                    <a href="clan.html" class="nav-link">Клан</a>
+                    <span class="nav-separator">/</span>
+                    <a href="rating.html" class="nav-link">Рейтинг</a>
+                    <span class="nav-separator">/</span>
+                    <a href="clan-rating.html" class="nav-link">Рейтинг клана</a>
                 </nav>
-                <span class="header-text-additional">
-                    Страничка запрашивает несколько игроков, выводя в табличке общую информацию о них. Больше информации в файлах.<br>
-                    Имейте в виду, проверки на повторные UID игроков нет. 
-                    Для получения данных нескольких игроков в форме ниже введите их UID через запятую, без пробелов ниже 
-                    <div class="curved-arrow"></div>
-                    <br>
-                </span>
-            </div>
-            <form id="calculatorForm" class="calculator-form">
-                <div class="form-group">
-                    <label for="numberInput" class="form-label">Введите UID игроков</label>
-                    <input name="squirrel-uids" class="form-control" id="numberInput" required placeholder="Например: 1,2,3">
+            </header>
+
+            <main>
+                <hr>
+                <p class="info-text">
+                    Запрашивает информацию о нескольких игроках и выводит в таблице. Данные можно сохранить в Excel или JSON.
+                    Имейте в виду, проверки на повторные UID нет.
+                </p>
+                <form id="calculatorForm" class="calculator-form">
+                    <h2 class="form-title">Информация об игроках</h2>
+                    <div class="form-group">
+                        <label for="numberInput" class="form-label">Введите UID игроков через запятую</label>
+                        <input name="squirrel-uids" class="form-control" id="numberInput" required placeholder="Например: 1,2,3">
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="submit-button">Получить</button>
+                    </div>
+                </form>
+                <div id="result" class="result-block hidden">
+                    <!-- результат (таблица игроков) -->
                 </div>
-                <button type="submit" class="submit-button">Получить</button>
-            </form>
-            <div id="result" class="result-block hidden">
-                <!-- результат -->
-            </div>
-    
-            <!-- Табличка -->
-            <div id="statsTable" class="stats-block hidden">
-                <table class="stats-table">
-                    <!-- data from js/data_js/data_level.js -->
-                </table>
-            </div>
-    
+            </main>
+
             <div class="text">Xorek!</div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/exceljs/dist/exceljs.min.js"></script>

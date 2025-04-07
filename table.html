@@ -7,43 +7,62 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="icon" type="image/png" href="img/ferret.png">
         <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;500;600&display=swap" rel="stylesheet">
     </head>
 <body>
-    <div class="highlight-text-title">Squirrel EXperience</div>
-    <div class="container-table">
-        <div class="header-text">
+    <div class="container">
+         <header class="main-header">
+            <div class="site-title">Squirrel EXperience</div>
             <nav class="navigation">
-                <a href="index.html" class="nav-link">Калькулятор опыта</a>
+                <a href="index.html" class="nav-link">Калькулятор</a>
                 <span class="nav-separator">/</span>
-                <a href="comparison.html" class="nav-link">Режим сравнения</a>
+                <a href="comparison.html" class="nav-link">Сравнение</a>
+                <span class="nav-separator">/</span>
+                <a href="players.html" class="nav-link">Игроки</a>
+                <span class="nav-separator">/</span>
+                <a href="skills.html" class="nav-link">Навыки</a>
+                <span class="nav-separator">/</span>
+                <a href="table.html" class="nav-link active">Таблица</a>
+                <span class="nav-separator">/</span>
+                <a href="clan.html" class="nav-link">Клан</a>
+                <span class="nav-separator">/</span>
+                <a href="rating.html" class="nav-link">Рейтинг</a>
+                <span class="nav-separator">/</span>
+                <a href="clan-rating.html" class="nav-link">Рейтинг клана</a>
             </nav>
-            <span class="header-text-additional">
-                Рейтинг по спасенным белочкам. <br> Небольшая статичная табличка с топом игроков, которые набрали больше 
-                100 000 спасенных белочек. Период проверки игроков с 20.12.2024 по 30.12.2024.
-                Имейте в виду, что данные обновляются вручную и возможны некоторые несоответствия или ошибки данных в
-                <div class="curved-arrow"></div>
-                <span id="text-date-reload-table" class="text-date-reload-table"></span>
-            </span>
-        </div>
-        <div class="table-content">
-            <table id="rating-table" class="rating-table-lider" style="width: 100%;">
-                <thead>
-                    <tr class="header-text-table">
-                        <td style="width: 4%; text-align: left;" data-column="0" class="sortable">№</td>
-                        <td style="width: 13%; text-align: left;" data-column="1" class="sortable">UID</td>
-                        <td style="width: 27%; text-align: left;" data-column="2" class="sortable">Никнейм</td>
-                        <td style="width: 23%; text-align: center;" data-column="3" class="sortable">Кол-во спасенных</td>
-                        <td style="width: 23%; text-align: center;" data-column="4" class="sortable">Кол-во игр</td>
-                        <td style="width: 10%; text-align: center;" data-column="5" class="sortable">Коэффициент</td>
-                    </tr>
-                </thead>
-                <tbody class="rating-table-data" id="rating-table-data">
+        </header>
+        <main>
+            <hr>
+            <div class="content-block">
+                 <p class="info-text" style="margin-bottom: 25px;">
+                    Небольшая статичная таблица с топом игроков (>100 000 спасенных).
+                    Игроки были собраны с 20.12.2024 по 30.12.2024. Данные обновляются вручную.<br>
+                    <span id="text-date-reload-table"></span>
+                 </p>
 
-                </tbody>
-            </table>
-        </div>
-        <div id="planet" class="find-text-under-table"></div>
+                 <div class="table-content stats-block visible">
+                    <h2 class="form-title">Рейтинг по спасенным белкам <hr></h2>
+                     <table id="rating-table" class="stats-table">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-column="0" style="width: 4%;">№</th>
+                                <th class="sortable" data-column="1" style="width: 13%; text-align: left;">UID</th>
+                                <th class="sortable" data-column="2" style="width: 27%; text-align: left;">Никнейм</th>
+                                <th class="sortable" data-column="3" style="width: 23%; text-align: center;">Спасенных</th>
+                                <th class="sortable" data-column="4" style="width: 23%; text-align: center;">Игр</th>
+                                <th class="sortable" data-column="5" style="width: 10%; text-align: center;">Коэф.</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rating-table-data">
+
+                        </tbody>
+                    </table>
+                 </div>
+
+                <div id="planet" class="find-text-under-table hidden"></div>
+             </div>
+        </main>
+
         <div class="text">Xorek!</div>
     </div>
     <script src="js/data_js/data_level.js"></script>
