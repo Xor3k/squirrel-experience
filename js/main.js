@@ -71,7 +71,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                     <dt>Процент выполнения:</dt>
                     <dd>100%</dd>
 
-                    <dt>Кол-во пыта после 200-го:</dt>
+                    <dt>Кол-во опыта после 200-го:</dt>
                     <dd>
                         ${(data.exp - 66045137).toLocaleString()} XP
                         <button class="copy-button" data-copy="${(data.exp - 66045137).toLocaleString()}">Копировать</button>

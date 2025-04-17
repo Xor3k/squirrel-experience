@@ -78,7 +78,7 @@ document.getElementById('calculatorForm').addEventListener('submit', async funct
                 <dt>Коэф. (Спасено/Побед):</dt>
                 <dd><span class="highlight-text">${(data.rating_info.rating_shaman / data.rating_info.rating_player).toFixed(2)}</span></dd>
 
-                <dt>Разница (Белки vs Победы):</dt>
+                <dt>Разница (Белки/Победы):</dt>
                 <dd><span class="highlight-text">${(Math.abs(data.rating_info.rating_shaman - data.rating_info.rating_player) / Math.max(data.rating_info.rating_shaman, data.rating_info.rating_player) * 100).toFixed(2)}%</span></dd>
 
                 <dt>Текущий рейтинг:</dt>
