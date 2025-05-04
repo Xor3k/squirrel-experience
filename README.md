@@ -3,4 +3,4 @@ And much more in future versions!
 
 Date created: 6'th December 2024
 
-Closing date: May 5, 2025, at 01:44 (Almaty time)
+Closing date: May 5, 2025, at 01:44 (GMT+5)
